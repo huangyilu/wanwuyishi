@@ -203,24 +203,20 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
             <div className={panel.title}>账本</div>
             <div className={panel.sub}>整数分记账 · 共同支出自动算清谁该给谁，个人花费单独记录</div>
           </div>
+          <div className={s.headSummary}>
+            <div className={s.hsMain}>
+              <span className={s.hsK}>总支出</span>
+              <span className={s.hsV}>{formatMoney(totalBase, baseCurrency)}</span>
+            </div>
+            <div className={s.hsSub}>
+              <span>{expenses.length} 笔</span>
+              <span className={s.hsSep} />
+              <span>{members.length} 人</span>
+            </div>
+          </div>
         </div>
 
         <div className={panel.body}>
-        <div className={s.summary}>
-          <div className={s.summaryItem}>
-            <div className={s.k}>总支出（{baseCurrency}）</div>
-            <div className={s.v}>{formatMoney(totalBase, baseCurrency)}</div>
-          </div>
-          <div className={s.summaryItem}>
-            <div className={s.k}>笔数</div>
-            <div className={s.v}>{expenses.length}</div>
-          </div>
-          <div className={s.summaryItem}>
-            <div className={s.k}>参与人</div>
-            <div className={s.v}>{members.length}</div>
-          </div>
-        </div>
-
         <div className={s.grid}>
           {/* 记一笔（常驻侧栏） */}
           <section className={`${s.colForm} ${s.section}`} ref={formRef}>
@@ -302,6 +298,7 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
                       value={fxRate}
                       onChange={(e) => setFxRate(e.target.value.replace(/[^\d.]/g, ''))}
                     />
+                    <div className={s.hint}>汇率仅为参考，以实际为准；金额按整数分四舍五入。</div>
                   </div>
                 </div>
 
@@ -363,7 +360,6 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
                       取消
                     </button>
                   )}
-                  <span className={s.hint}>汇率仅为参考，以实际为准；金额按整数分四舍五入。</span>
                 </div>
               </div>
             </section>
@@ -389,10 +385,11 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
                               {isPersonal ? '个人' : 'AA'}
                             </span>
                           </div>
-                          <div className={s.expMeta}>
-                            {nameOf(e.payerMemberId)} 代付
-                            {isPersonal ? ' · 个人自付' : ` · 分摊：${shareNames}`}
-                          </div>
+                        <div className={s.expMeta}>
+                          {isPersonal
+                            ? `${nameOf(e.payerMemberId)} 自付`
+                            : `${nameOf(e.payerMemberId)} 支付 · 分摊：${shareNames}`}
+                        </div>
                         </div>
                         <div className={s.expAmt}>
                           <div className={s.base}>{formatMoney(base, baseCurrency)}</div>
