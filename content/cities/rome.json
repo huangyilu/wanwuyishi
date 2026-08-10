@@ -1,0 +1,39 @@
+{
+  "id": "city-rome",
+  "name": "罗马",
+  "localName": "Roma",
+  "country": "it",
+  "location": { "lat": 41.9028, "lng": 12.4964 },
+  "timezone": "Europe/Rome",
+  "survival": [
+    {
+      "topic": "water",
+      "summary": "全城遍布 nasoni 免费直饮水龙头，水质可靠，自带水壶可省下大量瓶装水开销。",
+      "tips": ["堵住出水口下方小孔，水会从上方小孔喷出，方便直接饮用"],
+      "source": "https://www.acea.it/",
+      "verifiedAt": "2026-08-04"
+    },
+    {
+      "topic": "toilet",
+      "summary": "公共厕所稀少且多收费（约 1 欧）；博物馆、麦当劳与咖啡馆是更现实的选择。",
+      "tips": ["咖啡馆厕所通常需消费，吧台站着喝杯 espresso 最便宜"],
+      "source": "https://www.turismoroma.it/",
+      "verifiedAt": "2026-08-04"
+    },
+    {
+      "topic": "transport",
+      "summary": "地铁仅 A/B/C 三线，覆盖有限，市中心以步行与公交为主；单程票 100 分钟内可换乘。",
+      "tips": ["上车必须打票，查票罚款高", "打车用官方出租或 FreeNow，避免拉客者"],
+      "source": "https://www.atac.roma.it/",
+      "verifiedAt": "2026-08-04"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Roma Pass",
+      "scope": "罗马市区公共交通 + 博物馆",
+      "benefits": ["48/72 小时版本", "含 1-2 个景点免费入场", "公共交通不限次"],
+      "url": "https://www.romapass.it/"
+    }
+  ]
+}

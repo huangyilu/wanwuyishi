@@ -1,0 +1,27 @@
+{
+  "id": "poi-seceda",
+  "type": "viewpoint",
+  "name": "休斯山",
+  "localName": "Seceda",
+  "city": "city-dolomites",
+  "country": "it",
+  "location": { "lat": 46.5639, "lng": 11.8497 },
+  "tags": ["观景", "缆车", "徒步"],
+  "popularity": 84,
+  "officialUrl": "https://www.seceda.it/",
+  "visit": { "durationMinutes": [120, 240], "durationNote": "含缆车与山脊徒步半天", "bestTime": "上午顺光、云海概率高" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [{ "from": "05-15", "to": "10-31", "note": "缆车夏季运营；冬季为滑雪道" }] },
+  "booking": { "required": false, "leadDays": 0 },
+  "facilities": { "toilet": "山顶 Rifugio", "water": "山屋" },
+  "volatile": {
+    "price": { "value": "Ortisei → Seceda 缆车往返约 28 欧", "source": "https://www.valgardena.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "缆车约 08:30-17:30（依季节）", "source": "https://www.valgardena.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "刃状山脊", "location": "山顶步道", "why": "一侧垂直草坡、一侧深渊，正对 Odle 群峰，是多洛米蒂最上镜山脊之一。" },
+      { "name": "Ortisei 缆车上站", "location": "山脊起点", "why": "出缆车即步入山脊步道，平路为主、难度低。" }
+    ],
+    "tips": ["从 Ortisei 或 S. Cristina 乘缆车", "回程可走下到 Fermeda 再坐另一缆车", "风大带外套", "雪季改滑雪"]
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "poi-louvre": {
+    "src": "/img/pois/poi-louvre.jpg",
+    "author": "Arunkumar Vijayan",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Cour_Carrée_du_Louvre_in_2019.jpg"
+  },
+  "poi-colosseum": {
+    "src": "/img/pois/poi-colosseum.jpg",
+    "author": "Wilfredor",
+    "license": "CC0",
+    "page": "https://commons.wikimedia.org/wiki/File:Colosseum_of_Rome_and_Roman_forum.jpg"
+  },
+  "poi-eiffel-tower": {
+    "src": "/img/pois/poi-eiffel-tower.jpg",
+    "author": "Maksim Sokolov",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Eiffel_Tower_in_2022_02.jpg"
+  },
+  "poi-vatican-museums": {
+    "src": "/img/pois/poi-vatican-museums.jpg",
+    "author": "Deb Nystrom",
+    "license": "CC BY 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Courtyard,_Vatican_Museum_(45510285915).jpg"
+  },
+  "poi-uffizi": {
+    "src": "/img/pois/poi-uffizi.jpg",
+    "author": "Diego Delso",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Galería_Uffizi,_Florencia,_Italia,_2022-09-18,_DD_29.jpg"
+  },
+  "poi-duomo-florence": {
+    "src": "/img/pois/poi-duomo-florence.jpg",
+    "author": "Dllu",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Florence_Cathedral_seen_from_Piazzale_Michelangelo_night_dllu.jpg"
+  },
+  "poi-orsay": {
+    "src": "/img/pois/poi-orsay.jpg",
+    "author": "DXR",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Musee_d'Orsay_and_Pont_Royal,_North-West_view_140402_1.jpg"
+  },
+  "poi-pantheon-rome": {
+    "src": "/img/pois/poi-pantheon-rome.jpg",
+    "author": "NikonZ7II",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pantheon_(Rome)_-_Right_side_and_front.jpg"
+  },
+  "poi-mount-pilatus": {
+    "src": "/img/pois/poi-mount-pilatus.jpg",
+    "author": "Liridon",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Luzern_-_Mount_Pilatus_-_March_2019_(01).jpg"
+  },
+  "poi-chapel-bridge": {
+    "src": "/img/pois/poi-chapel-bridge.jpg",
+    "author": "Ymblanter",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Lucerne_Kapellbrücke_and_Wasserturm_from_the_west.jpg"
+  },
+  "poi-sainte-chapelle": {
+    "src": "/img/pois/poi-sainte-chapelle.jpg",
+    "author": "Oldmanisold",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Sainte_Chapelle_Interior_Stained_Glass.jpg"
+  },
+  "poi-accademia": {
+    "src": "/img/pois/poi-accademia.jpg",
+    "author": "Commonists",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AMichelangelo's%20David%20-%20right%20view%202.jpg"
+  },
+  "poi-ponte-vecchio": {
+    "src": "/img/pois/poi-ponte-vecchio.jpg",
+    "author": "Jan Drewes",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3APanorama%20of%20the%20Ponte%20Vecchio%20in%20Florence%2C%20Italy.jpg"
+  },
+  "poi-piazzale-michelangelo": {
+    "src": "/img/pois/poi-piazzale-michelangelo.jpg",
+    "author": "Wikibusters",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3APanorama%20of%20Florence%20from%20Piazzale%20Michelangelo.jpg"
+  },
+  "poi-duomo-milano": {
+    "src": "/img/pois/poi-duomo-milano.jpg",
+    "author": "Leonhard Lenz",
+    "license": "CC0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ADuomo%20di%20Milano%202022-09-28%2008.jpg"
+  },
+  "poi-last-supper": {
+    "src": "/img/pois/poi-last-supper.jpg",
+    "author": "Leonardo da Vinci",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File%3AThe%20Last%20Supper%20-%20Leonardo%20Da%20Vinci%20-%20High%20Resolution%2032x16.jpg"
+  },
+  "poi-galleria-vittorio": {
+    "src": "/img/pois/poi-galleria-vittorio.jpg",
+    "author": "Terragio67",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AThe%20glass%20dome%20-%20Galleria%20Vittorio%20Emanuele%20II%20-%20Milan.jpg"
+  },
+  "poi-sforza-castle": {
+    "src": "/img/pois/poi-sforza-castle.jpg",
+    "author": "Terragio67",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ACastello%20Sforzesco%20(Milano)%20-%20Portico%20dell%20Elefante.jpg"
+  },
+  "poi-pinacoteca-brera": {
+    "src": "/img/pois/poi-pinacoteca-brera.jpg",
+    "author": "Rijksmuseum",
+    "license": "CC0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ABinnenplaats%20van%20de%20Pinacoteca%20di%20Brera%20te%20Milaan%2C%20RP-F-2001-7-1023-49.jpg"
+  },
+  "poi-san-marco": {
+    "src": "/img/pois/poi-san-marco.jpg",
+    "author": "This Photo was taken by Wolfgang Moroder.  \n\nFeel free to use my photos, but please mention me as the author and send me a  message. \n\n\n\nThis image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here not appropriate.\n\n\n\nPlease do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3APanorama%20Piazza%20San%20Marco%20and%20Venice%20on%20Easter%202013.jpg"
+  },
+  "poi-st-marks-basilica": {
+    "src": "/img/pois/poi-st-marks-basilica.jpg",
+    "author": "Didier Descouens",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3A(Venice)%20Doge's%20Palace%20and%20campanile%20of%20St.%20Mark's%20Basilica%20facing%20the%20sea.jpg"
+  },
+  "poi-doge-palace": {
+    "src": "/img/pois/poi-doge-palace.jpg",
+    "author": "Benh LIEU SONG",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File%3APiazzetta%20San%20Marco%20Venice%20BLS.jpg"
+  },
+  "poi-rialto-bridge": {
+    "src": "/img/pois/poi-rialto-bridge.jpg",
+    "author": "This Photo was taken by Wolfgang Moroder.  \n\nFeel free to use my photos, but please mention me as the author and send me a  message. \n\n\n\nThis image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here not appropriate.\n\n\n\nPlease do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3APonte%20di%20Rialto%20facciata%20ovest%20di%20sera.jpg"
+  },
+  "poi-bridge-of-sighs": {
+    "src": "/img/pois/poi-bridge-of-sighs.jpg",
+    "author": "kallerna",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ABridge%20of%20Sighs%20sea%20facade%20Venice.jpg"
+  },
+  "poi-mann": {
+    "src": "/img/pois/poi-mann.jpg",
+    "author": "Phyrexian",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ANapoli%20-%20Museo%20archeologico%20nazionale%203903.jpg"
+  },
+  "poi-castel-dellovo": {
+    "src": "/img/pois/poi-castel-dellovo.jpg",
+    "author": "PaestumPaestum",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ACastel%20dell'%20ovo.jpg"
+  },
+  "poi-galleria-umberto": {
+    "src": "/img/pois/poi-galleria-umberto.jpg",
+    "author": "This Photo was taken by Wolfgang Moroder.  \n\nFeel free to use my photos, but please mention me as the author and send me a  message. \n\n\n\nThis image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here not appropriate.\n\n\n\nPlease do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AGalleria%20Umberto%20I%20Napoli%20timpano%20con%20angeli.jpg"
+  },
+  "poi-vesuvius": {
+    "src": "/img/pois/poi-vesuvius.jpg",
+    "author": "Ekrem Canli",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AVesuvius%20from%20Monte%20Somma%20(Panorama%20II).jpg"
+  },
+  "poi-pompeii": {
+    "src": "/img/pois/poi-pompeii.jpg",
+    "author": "Commonists",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AAncient%20Roman%20frescos%20in%20Casa%20del%20Criptoportico%20(Pompeii).jpg"
+  },
+  "poi-blue-grotto": {
+    "src": "/img/pois/poi-blue-grotto.jpg",
+    "author": "Elenagm",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AGrotta%20azzurra.capri.JPG"
+  },
+  "poi-gardens-augustus": {
+    "src": "/img/pois/poi-gardens-augustus.jpg",
+    "author": "Jenny",
+    "license": "CC BY 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AIsle%20of%20Capri%209.jpg"
+  },
+  "poi-tre-cime": {
+    "src": "/img/pois/poi-tre-cime.jpg",
+    "author": "This Photo was taken by Wolfgang Moroder.  \n\nFeel free to use my photos, but please mention me as the author and send me a  message. \n\n\n\nThis image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here not appropriate.\n\n\n\nPlease do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ADrei%20Zinnen%20Tre%20Cime%20di%20Lavaredo%20Dolomites.jpg"
+  },
+  "poi-seceda": {
+    "src": "/img/pois/poi-seceda.jpg",
+    "author": "This Photo was taken by Wolfgang Moroder.  \n\nFeel free to use my photos, but please mention me as the author and send me a  message. \n\n\n\nThis image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here not appropriate.\n\n\n\nPlease do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AOdles%20Seceda%20Saslonch%20da%20Resciesa%20dedite.jpg"
+  },
+  "poi-val-di-funes": {
+    "src": "/img/pois/poi-val-di-funes.jpg",
+    "author": "This Photo was taken by Wolfgang Moroder.  \n\nFeel free to use my photos, but please mention me as the author and send me a  message. \n\n\n\nThis image is not in the public domain. Please respect the copyright protection. It may only be used according to the rules mentioned here. This specifically excludes use in social media, if applicable terms of the licenses listed here not appropriate.\n\n\n\nPlease do not upload an updated image here without consultation with the Author. The author would like to make corrections only at his own source. This ensures that the changes are preserved.Please if you think that any changes should be required, please inform the author.Otherwise you can upload a new image with a new name. Please use one of the templates derivative or extract.",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ASass%20de%20Putia%20Odle%20di%20Eores%20Serighelamoos%20B%C3%B6rz%20Val%20Badia.jpg"
+  },
+  "poi-lago-misurina": {
+    "src": "/img/pois/poi-lago-misurina.jpg",
+    "author": "KlausFoehl",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ALago%20di%20Misurina%20panoramic01%202019-01-11.jpg"
+  },
+  "poi-jungfraujoch": {
+    "src": "/img/pois/poi-jungfraujoch.jpg",
+    "author": "VasuVR",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AJungfrau%20ViewFrom%20EigenGlatscher%20SL41%2012L11R%20small.jpg"
+  },
+  "poi-harder-kulm": {
+    "src": "/img/pois/poi-harder-kulm.jpg",
+    "author": "Ank Kumar",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AView%20of%20Interlaken%20and%20Lake%20Brienz%20from%20Harder%20Kulm%20(Ank%20Kumar)%2002.jpg"
+  },
+  "poi-schilthorn": {
+    "src": "/img/pois/poi-schilthorn.jpg",
+    "author": "Ank Kumar",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ASchilthorn%20Cable%20Car%2C%20Swiss%20Alps%20(Ank%20Kumar)%2004.jpg"
+  },
+  "poi-lake-brienz": {
+    "src": "/img/pois/poi-lake-brienz.jpg",
+    "author": "Andrew Bossi",
+    "license": "CC BY-SA 2.5",
+    "page": "https://commons.wikimedia.org/wiki/File%3A5528-5531%20-%20Oberried%20and%20Brienz%20on%20the%20Brienzersee%20-%20toneadj.JPG"
+  },
+  "poi-lake-thun": {
+    "src": "/img/pois/poi-lake-thun.jpg",
+    "author": "MartySwissCH",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ALake%20Thun%20Panorama%202022%20(view%20from%20Niesen).jpg"
+  },
+  "poi-matterhorn": {
+    "src": "/img/pois/poi-matterhorn.jpg",
+    "author": "NOTE: This image is a panorama  consisting of multiple frames that were merged or stitched in software. As a result, this image necessarily underwent some form of digital manipulation. These manipulations may include blending, blurring, cloning, and colour and perspective adjustments. As a result of these adjustments, the image content may be slightly different from reality at the points where multiple images were combined. This manipulation is often required due to lens, perspective, and parallax distortions.",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3ACH.VS.Zermatt%20Sunnegga%20Grindjisee%20Matterhorn%209034%2016x9-R%2016K.jpg"
+  },
+  "poi-gornergrat": {
+    "src": "/img/pois/poi-gornergrat.jpg",
+    "author": "Ka23 13",
+    "license": "CC BY-SA 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File%3AGornergrat%2020130701%20211902.jpg"
+  }
+}

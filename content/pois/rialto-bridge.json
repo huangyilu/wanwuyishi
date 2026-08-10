@@ -1,0 +1,24 @@
+{
+  "id": "poi-rialto-bridge",
+  "type": "landmark",
+  "name": "里亚托桥",
+  "localName": "Ponte di Rialto",
+  "city": "city-venice",
+  "country": "it",
+  "location": { "lat": 45.438, "lng": 12.3358 },
+  "tags": ["桥", "地标", "市场"],
+  "popularity": 85,
+  "visit": { "durationMinutes": [20, 45], "durationNote": "20-45 分钟", "bestTime": "清晨或傍晚光影" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "步行过桥免费", "source": "https://www.turismovenezia.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "全天开放；桥上商铺约 10:00-19:00", "source": "https://www.turismovenezia.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "中央拱廊与店铺", "location": "桥面", "why": "唯一横跨大运河的步行石桥，两侧珠宝与纪念品店。" },
+      { "name": "大运河视角", "location": "桥中央", "why": "向圣马可方向看是经典明信片机位。" }
+    ],
+    "tips": ["清晨人少好拍", "桥下水上巴士站可乘船游运河", "旁的 Rialto 市场早上去最鲜活"]
+  }
+}

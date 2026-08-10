@@ -1,0 +1,27 @@
+{
+  "id": "poi-last-supper",
+  "type": "church",
+  "name": "圣母感恩堂《最后的晚餐》",
+  "localName": "Cenacolo Vinciano",
+  "city": "city-milan",
+  "country": "it",
+  "location": { "lat": 45.4659, "lng": 9.1707 },
+  "tags": ["壁画", "达芬奇", "文艺复兴"],
+  "popularity": 88,
+  "officialUrl": "https://cenacolovinciano.org/",
+  "visit": { "durationMinutes": [30, 60], "durationNote": "含讲解约 45 分钟（每次限 15-25 人、停留约 15 分钟）", "bestTime": "上午光线柔和" },
+  "openness": { "closedWeekdays": [1], "closedDates": ["2026-01-01", "2026-12-25", "2026-05-01"], "seasonal": [] },
+  "booking": { "required": true, "leadDays": 60, "url": "https://cenacolovinciano.org/" },
+  "volatile": {
+    "price": { "value": "门票约 15 欧 + 预约费约 2 欧，须官网锁时段", "source": "https://cenacolovinciano.org/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "周二至周日 08:15-19:00，周一闭馆，每场约 15 分钟", "source": "https://cenacolovinciano.org/", "verifiedAt": "2026-08-06" },
+    "booking": { "value": "极度抢手，旺季需提前数周预约；官网选具体日期时段", "source": "https://cenacolovinciano.org/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "达·芬奇《最后的晚餐》", "location": "修道院餐厅（refectory）墙面", "why": "文艺复兴巅峰湿壁画，透视焦点落在基督，叛徒犹大的戏剧性构图象征西方艺术范本。" },
+      { "name": "餐厅空间", "location": "Santa Maria delle Grazie 修道院", "why": "需先经教堂再到后院餐厅，注意保留票根。" }
+    ],
+    "tips": ["提前 1-2 月订票，临时几乎无票", "准时到场，迟到禁入", "隔壁教堂本堂免费可顺道看"]
+  }
+}

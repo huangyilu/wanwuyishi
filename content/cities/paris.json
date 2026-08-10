@@ -1,0 +1,46 @@
+{
+  "id": "city-paris",
+  "name": "巴黎",
+  "localName": "Paris",
+  "country": "fr",
+  "location": { "lat": 48.8566, "lng": 2.3522 },
+  "timezone": "Europe/Paris",
+  "survival": [
+    {
+      "topic": "toilet",
+      "summary": "市政公厕（Sanisette）多数免费，地图搜 toilettes publiques；百货与博物馆内厕所可靠但排队。",
+      "tips": ["备 1 欧硬币应对少数收费厕所", "博物馆馆内厕所见各 POI 的 facilities 字段"],
+      "source": "https://www.paris.fr/",
+      "verifiedAt": "2026-08-04"
+    },
+    {
+      "topic": "wifi",
+      "summary": "可靠方案是出发前购买欧洲 eSIM；市政免费 Wi-Fi（Paris Wi-Fi）覆盖公园与图书馆，仅作应急。",
+      "tips": ["地铁站内基本无信号，导航请提前离线缓存"],
+      "source": "https://www.paris.fr/",
+      "verifiedAt": "2026-08-04"
+    },
+    {
+      "topic": "transport",
+      "summary": "地铁与 RER 已全面支持实体 Navigo 卡与手机购票；单程票为 Ticket t+ 电子票。",
+      "tips": ["机场往返建议 RER B 或机场大巴，注意罢工公告", "巴黎大区通票 Navigo Easy 适合多日多次乘坐"],
+      "source": "https://www.ratp.fr/",
+      "verifiedAt": "2026-08-04"
+    },
+    {
+      "topic": "safety",
+      "summary": "总体安全，但北站、蒙马特、地铁 4 号线扒窃高发；随身包前背，勿在露天座位放手机。",
+      "tips": ["常见骗局：签名募捐、手环强售、假戒指"],
+      "source": "https://www.paris.fr/",
+      "verifiedAt": "2026-08-04"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Paris Museum Pass",
+      "scope": "巴黎及大区约 50 家博物馆与古迹",
+      "benefits": ["含卢浮宫、奥赛等主要馆", "多数馆免排队进安检（仍需官网预约时段）"],
+      "url": "https://www.parismuseumpass.fr/"
+    }
+  ]
+}

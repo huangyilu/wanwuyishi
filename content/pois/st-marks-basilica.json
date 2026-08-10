@@ -1,0 +1,27 @@
+{
+  "id": "poi-st-marks-basilica",
+  "type": "church",
+  "name": "圣马可大教堂",
+  "localName": "Basilica di San Marco",
+  "city": "city-venice",
+  "country": "it",
+  "location": { "lat": 45.4339, "lng": 12.3405 },
+  "tags": ["拜占庭", "教堂", "黄金马赛克"],
+  "popularity": 90,
+  "officialUrl": "https://www.basilicasanmarco.it/",
+  "visit": { "durationMinutes": [45, 90], "durationNote": "45 分钟-1.5 小时", "bestTime": "上午顺光看马赛克" },
+  "openness": { "closedWeekdays": [], "closedDates": ["2026-12-25", "2026-01-01"], "seasonal": [] },
+  "booking": { "required": true, "leadDays": 1, "url": "https://www.basilicasanmarco.it/" },
+  "volatile": {
+    "price": { "value": "主教堂免费入内；登露台/珍宝馆/博物馆另购，需官网预约时段", "source": "https://www.basilicasanmarco.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "约 09:30-17:15（周日与节日下午开放），需着装遮肩", "source": "https://www.basilicasanmarco.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "黄金祭坛 Pala d'Oro", "location": "主祭坛后方", "why": "金银与数千颗宝石镶嵌，拜占庭工艺巅峰。" },
+      { "name": "黄金马赛克穹顶", "location": "中殿与穹顶", "why": "8000+ 平方米马赛克讲述圣经与圣马可生平，金底制造神性光辉。" },
+      { "name": "四匹青铜马", "location": "博物馆（原作）", "why": "古希腊/罗马铜马，曾立于正立面，现以复制品展示。" }
+    ],
+    "tips": ["着装要求严格，肩膝遮住", "免费入场需排队，预约可走快速通道", "地面随潮起起落，雨天易积水"]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "city-lucerne",
+  "name": "琉森",
+  "localName": "Luzern",
+  "country": "ch",
+  "location": { "lat": 47.0502, "lng": 8.3093 },
+  "timezone": "Europe/Zurich",
+  "survival": [
+    {
+      "topic": "payment",
+      "summary": "刷卡与手机支付普及；商品标价含税，物价显著高于法意，餐饮预算需上调。",
+      "tips": ["超市 Coop / Migros 的熟食是控制餐饮预算的现实方案"],
+      "source": "https://www.myswitzerland.com/",
+      "verifiedAt": "2026-08-04"
+    },
+    {
+      "topic": "transport",
+      "summary": "火车准点率高，班次密集；持 Swiss Travel Pass 可无限次乘坐火车、船与多数市内交通。",
+      "tips": ["山峰缆车多为部分折扣而非全免，出发前核对权益清单", "山区天气变化快，登山前查看山顶实时摄像头"],
+      "source": "https://www.sbb.ch/",
+      "verifiedAt": "2026-08-04"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Swiss Travel Pass",
+      "scope": "全瑞士火车、长途巴士、游船与 90 多个城市的市内交通",
+      "benefits": ["连续 3/4/6/8/15 天版本", "500 多家博物馆免费入场", "部分登山铁路 25%-50% 折扣"],
+      "url": "https://www.sbb.ch/en/tickets-offers/tickets-for-tourists/swiss-travel-pass.html"
+    }
+  ]
+}

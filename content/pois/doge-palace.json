@@ -1,0 +1,30 @@
+{
+  "id": "poi-doge-palace",
+  "type": "museum",
+  "name": "总督宫",
+  "localName": "Palazzo Ducale",
+  "city": "city-venice",
+  "country": "it",
+  "location": { "lat": 45.434, "lng": 12.3408 },
+  "tags": ["哥特", "博物馆", "叹息桥"],
+  "popularity": 89,
+  "officialUrl": "https://palazzoducale.visitmuve.it/",
+  "visit": { "durationMinutes": [90, 180], "durationNote": "1.5-3 小时", "bestTime": "开馆即入避团队" },
+  "openness": { "closedWeekdays": [], "closedDates": ["2026-12-25"], "seasonal": [] },
+  "booking": { "required": true, "leadDays": 1, "url": "https://palazzoducale.visitmuve.it/" },
+  "facilities": { "toilet": "馆内可用", "wifi": "免费", "accessible": true },
+  "volatile": {
+    "price": { "value": "成人约 25 欧（含叹息桥通道与考古博物馆联票），官网预约", "source": "https://palazzoducale.visitmuve.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "约 09:00-19:00（最后入场 18:00），旺季延长", "source": "https://palazzoducale.visitmuve.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "entrances": "持票走团队/预约通道，室内动线含金色楼梯、大议会厅、军械库，最后经叹息桥到监狱。",
+    "highlights": [
+      { "name": "金色楼梯（Scala d'Oro）", "location": "入口层", "why": "镀金天顶，通往总督私室，奢华的权力展示。" },
+      { "name": "大议会厅与丁托列托《天堂》", "location": "二层主厅", "why": "世界最大油画之一，描绘天堂，气势逼人。" },
+      { "name": "叹息桥通道", "location": "宫与监狱之间", "why": "犯人最后看一眼威尼斯的著名走廊，联票含此通道。" }
+    ],
+    "collections": "威尼斯共和国权力中枢，哥特式外墙与文艺复兴内饰并存。",
+    "tips": ["联票含对面考古博物馆，一天有效", "安检后无大包寄存处，轻装", "与圣马可广场、教堂可串成半日"]
+  }
+}

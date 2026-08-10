@@ -1,0 +1,17 @@
+/* Leaflet 自定义标记（城市名气泡）。全局样式：divIcon 的 html 不走 CSS Module 哈希。 */
+.ww-city .ww-city-pin {
+  display: inline-block;
+  background: #fff;
+  border: 1.5px solid var(--brand);
+  color: var(--text-1);
+  font: 600 12px/1.5 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  padding: 1px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.ww-city {
+  background: transparent;
+  border: none;
+}

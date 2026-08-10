@@ -1,0 +1,25 @@
+{
+  "id": "city-capri",
+  "name": "卡普里",
+  "localName": "Capri",
+  "country": "it",
+  "location": { "lat": 40.55, "lng": 14.242 },
+  "timezone": "Europe/Rome",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "从那不勒斯或索伦托乘水翼船（aliscafi）约 50-80 分钟到卡普里港；岛上巴士（ATP）与缆车（funicolare）连接港口与上镇。",
+      "tips": ["旺季船票紧张，建议提前网购", "上镇可乘缆车，行李多较不便"],
+      "source": "https://www.capritourism.com/",
+      "verifiedAt": "2026-08-06"
+    },
+    {
+      "topic": "payment",
+      "summary": "岛上物价偏高，餐厅与海滩俱乐部价格含服务费；建议现金与卡都备。",
+      "tips": [],
+      "source": "https://www.capritourism.com/",
+      "verifiedAt": "2026-08-06"
+    }
+  ],
+  "transitPasses": []
+}

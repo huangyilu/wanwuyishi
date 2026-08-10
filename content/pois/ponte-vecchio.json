@@ -1,0 +1,23 @@
+{
+  "id": "poi-ponte-vecchio",
+  "type": "landmark",
+  "name": "老桥",
+  "localName": "Ponte Vecchio",
+  "city": "city-florence",
+  "country": "it",
+  "location": { "lat": 43.7685, "lng": 11.2532 },
+  "tags": ["地标", "桥", "珠宝"],
+  "popularity": 82,
+  "visit": { "durationMinutes": [30, 60], "durationNote": "30 分钟-1 小时", "bestTime": "清晨或黄昏人少光影好" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "步行过桥免费", "source": "https://www.feelflorence.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "桥上店铺约 10:00-19:00；通道全天可走", "source": "https://www.feelflorence.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "瓦萨里走廊", "location": "桥上层", "why": "美第奇的空中私道，连接旧宫与皮蒂宫，不从桥面走。" }
+    ],
+    "tips": ["桥上全是金店，可看橱窗不必买", "黄昏在桥两端拍阿诺河最出片", "上游的圣三一桥（Ponte Santa Trinita）人更少"]
+  }
+}

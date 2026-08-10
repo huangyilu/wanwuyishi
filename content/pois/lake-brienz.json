@@ -1,0 +1,25 @@
+{
+  "id": "poi-lake-brienz",
+  "type": "viewpoint",
+  "name": "布里恩茨湖",
+  "localName": "Brienzersee",
+  "city": "city-interlaken",
+  "country": "ch",
+  "location": { "lat": 46.75, "lng": 8.03 },
+  "tags": ["湖", "游船", "绿松石"],
+  "popularity": 78,
+  "visit": { "durationMinutes": [120, 240], "durationNote": "含船游约半日", "bestTime": "上午湖面平静" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "price": { "value": "Interlaken 出发游船单程约 1 小时，联票依 BLS 公布", "source": "https://www.interlaken.ch/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "游船约 4-10 月每日运营", "source": "https://www.interlaken.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "绿松石湖水", "location": "湖面", "why": "因融雪矿物呈独特蓝绿色，被誉为瑞士最美湖色之一。" },
+      { "name": "布里恩茨镇与齿轮火车", "location": "东端", "why": "可转乘布里恩茨山齿轮火车（Brienz Rothorn）登顶。" }
+    ],
+    "tips": ["持 Jungfrau Travel Pass 可打折", "与图恩湖串联一日船游", "东侧更静、西端近镇"]
+  }
+}

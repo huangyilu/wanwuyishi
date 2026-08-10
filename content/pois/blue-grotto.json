@@ -1,0 +1,24 @@
+{
+  "id": "poi-blue-grotto",
+  "type": "viewpoint",
+  "name": "蓝洞",
+  "localName": "Grotta Azzurra",
+  "city": "city-capri",
+  "country": "it",
+  "location": { "lat": 40.557, "lng": 14.203 },
+  "tags": ["海洞", "蓝", "自然奇观"],
+  "popularity": 84,
+  "visit": { "durationMinutes": [45, 90], "durationNote": "含摆渡船往返约 1-1.5 小时", "bestTime": "上午 11 点前后光线最蓝" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [{ "from": "04-01", "to": "10-31", "note": "约复活节至 10 月开放，且仅风平浪静、浪小、晴天时进入" }] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "price": { "value": "小船进入约 14 欧/人（含划桨船夫小费），现场现金支付", "source": "https://www.capritourism.com/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "海况允许时约 09:00-17:00；浪大即关", "source": "https://www.capritourism.com/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "荧光蓝水面", "location": "洞内", "why": "洞口光线经水下折射，水面呈现魔幻电光蓝，是卡普里象征。" }
+    ],
+    "tips": ["海况决定开放，去前问港口或酒店", "从 Anacapri 乘中巴到蓝洞码头再换小艇", "晕船者慎入，洞口低需弯腰", "早上去光线最蓝、排队短"]
+  }
+}

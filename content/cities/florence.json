@@ -1,0 +1,25 @@
+{
+  "id": "city-florence",
+  "name": "佛罗伦萨",
+  "localName": "Firenze",
+  "country": "it",
+  "location": { "lat": 43.7696, "lng": 11.2558 },
+  "timezone": "Europe/Rome",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "老城区极小，几乎所有景点步行可达；老城为 ZTL 限行区，自驾进入会被罚款。",
+      "tips": ["火车站 S.M.N. 步行至主教堂约 12 分钟", "去比萨、锡耶纳当天往返均可"],
+      "source": "https://www.comune.fi.it/",
+      "verifiedAt": "2026-08-04"
+    },
+    {
+      "topic": "toilet",
+      "summary": "老城有少量收费公厕（约 1 欧）；乌菲兹、学院美术馆馆内厕所免费可用。",
+      "tips": [],
+      "source": "https://www.feelflorence.it/",
+      "verifiedAt": "2026-08-04"
+    }
+  ],
+  "transitPasses": []
+}

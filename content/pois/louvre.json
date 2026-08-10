@@ -1,0 +1,119 @@
+{
+  "id": "poi-louvre",
+  "type": "museum",
+  "name": "卢浮宫",
+  "localName": "Musée du Louvre",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8606, "lng": 2.3376 },
+  "tags": ["世界级", "绘画", "雕塑", "古文明"],
+  "popularity": 100,
+  "wikidataId": "Q19675",
+  "officialUrl": "https://www.louvre.fr/",
+  "visit": {
+    "durationMinutes": [180, 300],
+    "durationNote": "3-4 小时（精华）/ 半天以上（细逛）",
+    "bestTime": "开馆即入，或周三、周五夜场人最少"
+  },
+  "openness": {
+    "closedWeekdays": [2],
+    "closedDates": ["2026-01-01", "2026-05-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 7,
+    "url": "https://www.ticketlouvre.fr/"
+  },
+  "facilities": {
+    "toilet": "馆内多处，免费",
+    "wifi": "免费",
+    "locker": "金字塔大厅下方免费寄存，大件行李不可入馆",
+    "water": "馆内有饮水处",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "成人票 22 欧元；欧洲经济区 26 岁以下免费；预约制",
+      "source": "https://www.louvre.fr/en/visit/hours-admission",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "09:00-18:00，周二闭馆；周五延长至 21:45",
+      "source": "https://www.louvre.fr/en/visit/hours-admission",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "官网按时段预约，旺季建议提前 1 周；持博物馆通票同样需预约时段",
+      "source": "https://www.ticketlouvre.fr/",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "金字塔主入口排队最久；Carrousel du Louvre（Rivoli 街 99 号，地下商场内）与 Porte des Lions 入口人明显少。持预约票走对应时段通道。",
+    "routes": [
+      {
+        "name": "首次经典 3 小时",
+        "durationMinutes": 180,
+        "stops": [
+          "德农馆 · 萨莫色雷斯的胜利女神（达鲁楼梯）",
+          "德农馆 · 意大利绘画长廊",
+          "德农馆 · 蒙娜丽莎（711 室）",
+          "德农馆 · 迦拿的婚礼（蒙娜丽莎对面墙）",
+          "叙利馆 · 米洛的维纳斯",
+          "叙利馆 · 古埃及馆",
+          "黎塞留馆 · 汉谟拉比法典"
+        ]
+      },
+      {
+        "name": "避人潮 90 分钟（夜场适用）",
+        "durationMinutes": 90,
+        "stops": [
+          "黎塞留馆 · 拿破仑三世套房",
+          "黎塞留馆 · 法国雕塑中庭（马利中庭）",
+          "叙利馆 · 中世纪卢浮宫城墙地基"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "蒙娜丽莎",
+        "location": "德农馆 2 层 · 711 室（万国厅）",
+        "why": "全馆唯一需要排队近距离观看的作品，画作本身很小，站远处看反而完整。"
+      },
+      {
+        "name": "萨莫色雷斯的胜利女神",
+        "location": "德农馆 · 达鲁楼梯顶端",
+        "why": "楼梯转角处的布置本身就是展陈设计的教科书。"
+      },
+      {
+        "name": "米洛的维纳斯",
+        "location": "叙利馆 0 层 · 345 室",
+        "why": "希腊化时期雕塑代表作，四周可绕行观看。"
+      },
+      {
+        "name": "汉谟拉比法典",
+        "location": "黎塞留馆 0 层 · 美索不达米亚展区",
+        "why": "现存最完整的古代法典石碑，人类成文法的起点。"
+      },
+      {
+        "name": "拿破仑三世套房",
+        "location": "黎塞留馆 1 层",
+        "why": "免费附赠的一座宫殿，游客密度远低于绘画区。"
+      }
+    ],
+    "collections": "按三个馆翼分区：德农（意大利绘画、大型法国绘画、古希腊罗马雕塑）、叙利（古埃及、古希腊、法国绘画）、黎塞留（近东、法国雕塑、装饰艺术、北方绘画）。",
+    "tips": [
+      "馆内地图在入口免费领取，中文版在服务台索取。",
+      "官方导览用任天堂 Switch 设备，约 6 欧，定位功能实用。",
+      "大件行李与大背包不可入馆，随身包需过安检。",
+      "从 Carrousel 入口进可以顺路解决午餐，馆内餐饮价格偏高。",
+      "闭馆前 30 分钟开始清场，最后一个展厅要留出余量。"
+    ]
+  },
+  "image": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Louvre_Museum_Wikimedia_Commons.jpg/640px-Louvre_Museum_Wikimedia_Commons.jpg",
+    "credit": "Benh LIEU SONG, Wikimedia Commons",
+    "license": "CC BY-SA 3.0"
+  }
+}

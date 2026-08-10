@@ -1,0 +1,23 @@
+{
+  "id": "poi-galleria-umberto",
+  "type": "landmark",
+  "name": "翁贝托一世长廊",
+  "localName": "Galleria Umberto I",
+  "city": "city-naples",
+  "country": "it",
+  "location": { "lat": 40.838, "lng": 14.2491 },
+  "tags": ["拱廊", "建筑", "购物"],
+  "popularity": 72,
+  "visit": { "durationMinutes": [20, 45], "durationNote": "20-45 分钟", "bestTime": "白天看玻璃穹顶" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "穿行免费", "source": "https://www.turismonapoli.com/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "全天开放，店铺约 10:00-20:00", "source": "https://www.turismonapoli.com/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "交叉玻璃穹顶", "location": "中央", "why": "19 世纪钢铁玻璃拱廊，与米兰埃马努埃莱长廊同款。" }
+    ],
+    "tips": ["紧邻圣卡洛剧院与托莱多街，顺路", "廊内咖啡座贵，看一眼即可", "仰拍穹顶几何最出片"]
+  }
+}

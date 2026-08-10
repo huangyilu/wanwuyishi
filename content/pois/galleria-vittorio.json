@@ -1,0 +1,24 @@
+{
+  "id": "poi-galleria-vittorio",
+  "type": "landmark",
+  "name": "埃马努埃莱二世长廊",
+  "localName": "Galleria Vittorio Emanuele II",
+  "city": "city-milan",
+  "country": "it",
+  "location": { "lat": 45.4659, "lng": 9.1899 },
+  "tags": ["拱廊", "购物", "建筑"],
+  "popularity": 80,
+  "visit": { "durationMinutes": [30, 60], "durationNote": "30 分钟-1 小时", "bestTime": "白天看玻璃穹顶，夜晚霓虹美" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "穿行免费；店铺与咖啡馆另计", "source": "https://www.turismo.milano.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "拱廊全天开放，店铺约 10:00-21:00", "source": "https://www.turismo.milano.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "玻璃马赛克穹顶", "location": "中央十字交叉处", "why": "19 世纪钢铁玻璃建筑杰作，地面黄道十二宫马赛克。" },
+      { "name": "转运铜牛", "location": "廊内地面", "why": "踩公牛生殖器转三圈据说带来好运，地面被磨得发亮。" }
+    ],
+    "tips": ["连接大教堂与斯卡拉歌剧院，顺路走", "廊内咖啡馆贵，看过即走", "顶棚拍照仰拍最壮观"]
+  }
+}

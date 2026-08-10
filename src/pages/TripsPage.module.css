@@ -1,0 +1,147 @@
+.page {
+  height: 100%;
+  padding: 28px 20px 60px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+.page::-webkit-scrollbar {
+  width: 9px;
+}
+.page::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.h1 {
+  font-size: 20px;
+}
+
+.lead {
+  margin: 6px 0 20px;
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+.creator {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+}
+
+.titleField {
+  flex: 1;
+  min-width: 200px;
+}
+
+.dateField {
+  width: 140px;
+  padding: 6px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg);
+  font-family: var(--font-num);
+}
+
+.tips {
+  margin: 8px 2px 0;
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.joinRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 13px;
+}
+.joinRow button {
+  margin-left: auto;
+}
+
+.list {
+  margin-top: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--text-1);
+}
+.row:last-child {
+  border-bottom: none;
+}
+.row:hover {
+  background: var(--bg-hover);
+  text-decoration: none;
+}
+
+.rowMain {
+  flex: 1;
+  min-width: 0;
+}
+
+.rowTitle {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rowSub {
+  margin-top: 2px;
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.status {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 11px;
+}
+
+.del {
+  padding: 2px 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-3);
+  visibility: hidden;
+}
+.row:hover .del {
+  visibility: visible;
+}
+.del:hover {
+  color: var(--warn);
+}
+
+.empty {
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 13px;
+}

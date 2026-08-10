@@ -1,0 +1,89 @@
+{
+  "id": "poi-mount-pilatus",
+  "type": "viewpoint",
+  "name": "皮拉图斯山",
+  "localName": "Pilatus",
+  "city": "city-lucerne",
+  "country": "ch",
+  "location": { "lat": 46.9793, "lng": 8.2525 },
+  "tags": ["雪山", "观景", "缆车"],
+  "popularity": 85,
+  "wikidataId": "Q666118",
+  "officialUrl": "https://www.pilatus.ch/",
+  "visit": {
+    "durationMinutes": [300, 480],
+    "durationNote": "金色环游全程 5-8 小时",
+    "bestTime": "上午山顶云层最少，出发前先看山顶实时摄像头"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": [],
+    "seasonal": [
+      {
+        "from": "05-15",
+        "to": "11-15",
+        "note": "阿尔卑纳赫施塔德齿轨登山铁路仅在此区间运行，冬季须走缆车一侧往返"
+      }
+    ]
+  },
+  "booking": {
+    "required": false,
+    "leadDays": 2,
+    "url": "https://www.pilatus.ch/en/discover/golden-round-trip"
+  },
+  "facilities": {
+    "toilet": "山顶站与中途站均有",
+    "wifi": "山顶餐厅有",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "金色环游套票约 116 瑞士法郎；持 Swiss Travel Pass 可享折扣（非全免）",
+      "source": "https://www.pilatus.ch/en/discover/golden-round-trip",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "首班与末班随季节变化，山顶缆车通常 08:30-17:30；恶劣天气临时停运",
+      "source": "https://www.pilatus.ch/en/",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "旺季齿轨铁路建议提前订时段票，缆车一侧可现场买",
+      "source": "https://www.pilatus.ch/en/discover/golden-round-trip",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "金色环游标准方向：琉森乘船至阿尔卑纳赫施塔德 → 齿轨登山铁路上山 → 缆车下至克里恩斯 → 巴士回琉森。反向亦可，上午上山云少。",
+    "routes": [
+      {
+        "name": "金色环游（顺时针）",
+        "durationMinutes": 420,
+        "stops": [
+          "琉森码头乘船（约 1 小时 10 分）",
+          "阿尔卑纳赫施塔德换乘齿轨铁路（全球最陡，48% 坡度）",
+          "山顶 Pilatus Kulm 观景台与环山步道",
+          "空中缆车 Dragon Ride 至 Fräkmüntegg",
+          "小缆车至克里恩斯，巴士 1 号线回市区"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "Pilatus Kulm 观景台",
+        "location": "海拔 2132 米山顶",
+        "why": "晴天可见琉森湖全貌与远处的艾格峰群。"
+      },
+      {
+        "name": "齿轨登山铁路",
+        "location": "阿尔卑纳赫施塔德一侧",
+        "why": "48% 最大坡度，世界最陡齿轨铁路，坐右侧视野更好。"
+      }
+    ],
+    "tips": [
+      "山顶温度比市区低 10-15 度，夏季也要带外套。",
+      "出发前查看官网山顶摄像头，云雾天上山等于花钱看白墙。",
+      "Swiss Travel Pass 是折扣不是免费，务必核对权益清单再买。"
+    ]
+  }
+}

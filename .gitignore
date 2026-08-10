@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+.env
+.env.*
+!.env.example
+
+# 构建产物：由 content/ 经 scripts/build-index.ts 生成，不手改也不提交
+public/data/
+
+# 瓦片/打包构建工具的本地缓存（JDK 等），非前端源码
+.tilebuild/
+
+# 项目本地记忆/工作区元数据（含内部讨论，不进公网仓库）
+.workbuddy/

@@ -1,0 +1,123 @@
+/* 标签页面板共享外框：账本 / 打包 共用，保证切换标签时视觉一致。
+   只管"外壳词汇"——页面→卡片→头部条→小节头→空态；
+   各面板内部布局（账本双栏结算、打包清单流）保留在各自的 module 里。 */
+
+.page {
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* 居中卡片：PC 宽屏尽量吃满宽度（超宽屏再放宽），移动端铺满（见底部媒体查询） */
+.card {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* 超宽屏进一步放开，避免两侧大片留白 */
+@media (min-width: 1600px) {
+  .card {
+    max-width: 1480px;
+  }
+}
+
+/* 头部条：标题 + 副标题(上下叠) + 右侧操作 */
+.head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.sub {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: 2px;
+}
+.headAction {
+  margin-left: auto;
+}
+
+/* 内容区：可滚动，统一内距 */
+.body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+/* 小节头：品牌菱形标记（与卡片头同血缘） */
+.sectionHead {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-1);
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sectionHead::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--brand);
+  transform: rotate(45deg);
+  flex: none;
+}
+
+/* 嵌套底卡 / 说明（账本概览、打包气候参考等） */
+.cardSoft {
+  padding: 12px 14px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.empty {
+  padding: 28px;
+  text-align: center;
+  color: var(--text-3);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 0;
+  }
+  .card {
+    max-width: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+  }
+  .body {
+    padding: 16px 14px 48px;
+  }
+}

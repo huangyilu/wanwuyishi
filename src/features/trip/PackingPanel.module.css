@@ -1,0 +1,193 @@
+/* 打包内部样式。外框（page/card/head/body/sectionHead/empty）已抽到
+   ui/panel.module.css 与账本共用，保证切换标签视觉一致。
+   保留打包自身特色：进度条、分类清单流、hover 显删除、勾选手感。 */
+
+/* 顶部固定栏：添加 + 进度 + 气候参考 三等分并排；滚动时常驻 */
+.topBar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: stretch;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--surface-1);
+  padding: 4px 0 12px;
+  margin-bottom: 4px;
+}
+/* 三栏统一卡片底，区分彼此 */
+.topBar > * {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+.topBar > .progress,
+.topBar > .note,
+.topBar > .addRow {
+  margin: 0;
+}
+@media (max-width: 900px) {
+  .topBar {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+/* 进度条 */
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.barFill {
+  height: 100%;
+  background: var(--ok);
+  border-radius: 999px;
+  transition: width 0.2s;
+}
+.progressText {
+  font-size: 12px;
+  color: var(--text-3);
+  font-family: var(--font-num);
+  white-space: nowrap;
+}
+
+/* 气候参考：嵌套底卡，与账本概览同语汇 */
+.note {
+  margin: 0 0 14px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* 分类清单：自适应多列网格铺满宽度（宽屏不再单列长列表） */
+.catGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 18px 22px;
+  padding: 0 0 24px;
+}
+
+/* 分类头：与共享 .sectionHead 统一品牌菱形标记 */
+.cat {
+  min-width: 0;
+  margin-top: 0;
+}
+.catHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 10px;
+}
+.catHead::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--brand);
+  transform: rotate(45deg);
+  flex: none;
+}
+
+/* 清单行：轻量列表项，hover 高亮显删除；保留打包自身手感 */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+}
+.row:hover {
+  background: var(--bg-hover);
+}
+.rowDone .text {
+  color: var(--text-3);
+  text-decoration: line-through;
+}
+
+.check {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--ok);
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+  padding: 3px 8px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-1);
+  font-size: 13px;
+}
+.text:hover {
+  border-color: var(--line);
+}
+.text:focus {
+  border-color: var(--brand);
+  outline: none;
+  background: var(--bg);
+}
+
+.assignee {
+  flex: none;
+  max-width: 96px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.del {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border: none;
+  background: transparent;
+  color: var(--text-3);
+  font-size: 15px;
+  line-height: 1;
+  visibility: hidden;
+}
+.row:hover .del {
+  visibility: visible;
+}
+.del:hover {
+  color: var(--warn);
+}
+
+/* 添加行：在顶部固定栏里作为第三等分；去掉独立分隔线 */
+.addRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.topBar > .addRow {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+.addRow .text {
+  border-color: var(--border);
+  background: var(--bg);
+}

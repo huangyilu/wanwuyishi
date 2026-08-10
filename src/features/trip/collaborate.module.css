@@ -1,0 +1,161 @@
+/* 协作弹窗（邀请 / 加入）共用样式，与 LoginDialog 同套浮层语言 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 6, 4, 0.62);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 60;
+}
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  max-height: 86vh;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  padding: 22px 22px 20px;
+  animation: pop 0.14s ease-out;
+}
+@keyframes pop {
+  from {
+    transform: translateY(6px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--text-3);
+  cursor: pointer;
+}
+.close:hover {
+  color: var(--text-1);
+}
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+.sub {
+  margin: 4px 0 16px;
+  font-size: 12px;
+  color: var(--text-3);
+  line-height: 1.6;
+}
+.label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-3);
+  margin: 14px 0 4px;
+}
+.row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+.row > div {
+  flex: 1;
+  min-width: 0;
+}
+.full {
+  width: 100%;
+  justify-content: center;
+  margin-top: 16px;
+}
+.field {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-1);
+  color: var(--text-1);
+  font-size: 13px;
+}
+.linkBox {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+.linkBox input {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+}
+.hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+.err {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  background: var(--warn-soft);
+  color: var(--warn);
+  font-size: 12px;
+}
+.ok {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  background: var(--ok-soft);
+  color: var(--ok);
+  font-size: 12px;
+}
+.list {
+  margin-top: 18px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.listTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+  margin-bottom: 8px;
+}
+.inv {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  background: var(--surface-1);
+}
+.invMain {
+  flex: 1;
+  min-width: 0;
+}
+.invMeta {
+  font-size: 11px;
+  color: var(--text-3);
+  margin-top: 2px;
+}
+.invToken {
+  font-family: var(--font-num);
+  font-size: 12px;
+  color: var(--text-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.btnSm {
+  flex: none;
+}

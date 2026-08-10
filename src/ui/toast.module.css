@@ -1,0 +1,90 @@
+/* 全局 toast —— 固定在顶部居中，浅纸风卡片 + 语义色左边线 */
+.root {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 16px;
+  min-width: 220px;
+  max-width: calc(100vw - 32px);
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  color: var(--text-1);
+  font-size: 13px;
+  line-height: 1.4;
+  cursor: pointer;
+  animation: toast-in 0.18s ease-out;
+}
+
+.icon {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-sans);
+}
+
+.msg {
+  flex: 1;
+}
+
+.success {
+  border-left-color: var(--ok);
+}
+.success .icon {
+  background: var(--ok);
+}
+
+.error {
+  border-left-color: var(--danger);
+}
+.error .icon {
+  background: var(--danger);
+}
+
+.warn {
+  border-left-color: var(--warn);
+}
+.warn .icon {
+  background: var(--warn);
+}
+
+.info {
+  border-left-color: var(--brand);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

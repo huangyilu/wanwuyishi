@@ -1,0 +1,25 @@
+{
+  "id": "poi-lago-misurina",
+  "type": "viewpoint",
+  "name": "密苏里纳湖",
+  "localName": "Lago di Misurina",
+  "city": "city-dolomites",
+  "country": "it",
+  "location": { "lat": 46.5833, "lng": 12.2564 },
+  "tags": ["湖", "倒影", "徒步"],
+  "popularity": 76,
+  "visit": { "durationMinutes": [60, 120], "durationNote": "环湖漫步 1-2 小时", "bestTime": "清晨平静如镜" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "price": { "value": "免费开放；冬季为天然滑冰场", "source": "https://www.dolomiti.org/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "全天开放", "source": "https://www.dolomiti.org/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "湖面倒影", "location": "环湖步道", "why": "三面峰峦环抱，无风时如镜，是三峰山方向的前哨驿站。" },
+      { "name": "三峰山摆渡站", "location": "湖畔停车场", "why": "夏季前往三峰山的中转换乘点。" }
+    ],
+    "tips": ["是去三峰山的补给与停车点，可一并安排", "环湖木栈道平缓，老少皆宜", "冬季湖面结冰可滑冰"]
+  }
+}

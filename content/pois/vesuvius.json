@@ -1,0 +1,28 @@
+{
+  "id": "poi-vesuvius",
+  "type": "park",
+  "name": "维苏威火山",
+  "localName": "Vesuvio",
+  "city": "city-naples",
+  "country": "it",
+  "location": { "lat": 40.8318, "lng": 14.4278 },
+  "tags": ["火山", "徒步", "全景"],
+  "popularity": 80,
+  "officialUrl": "https://www.parconazionalevesuvio.it/",
+  "visit": { "durationMinutes": [120, 180], "durationNote": "含交通往返约半天", "bestTime": "上午云少、能见度好" },
+  "openness": { "closedWeekdays": [], "closedDates": ["2026-12-25"], "seasonal": [{ "from": "01-01", "to": "12-31", "note": "全年开放，但大风/恶劣天气临时关闭" }] },
+  "booking": { "required": true, "leadDays": 1, "url": "https://www.parconazionalevesuvio.it/" },
+  "facilities": { "toilet": "入口处", "water": "入口小卖部" },
+  "volatile": {
+    "price": { "value": "火山口步道门票约 10 欧，官网预约时段（含公园向导）", "source": "https://www.parconazionalevesuvio.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "约 09:00-16:00 最后入场，依季节与天气", "source": "https://www.parconazionalevesuvio.it/", "verifiedAt": "2026-08-06" },
+    "booking": { "value": "旺季须官网预约具体时段，从 Ercolano 或 Torre del Greco 换乘公园中巴上山", "source": "https://www.parconazionalevesuvio.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "火山口边缘", "location": "步道尽头平台", "why": "绕火山口走一圈，看喷气孔与那不勒斯湾全景，脚下是 79 年掩埋庞贝的同一座火山。" },
+      { "name": "远眺那不勒斯湾", "location": "步道沿线", "why": "晴天可见卡普里，左侧是庞贝方向。" }
+    ],
+    "tips": ["穿防滑鞋，火山砂路滑", "预约中巴班次，自驾只能到中转停车场", "与庞贝安排不同天，体力消耗大"]
+  }
+}

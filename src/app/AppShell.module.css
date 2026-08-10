@@ -1,0 +1,180 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-sub);
+}
+
+.header {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: var(--header-h);
+  padding: 0 16px;
+  border-bottom: 1px solid var(--line);
+  /* 探险质感：顶栏下方一条极淡的暖橙描边，像盖了枚印 */
+  box-shadow: 0 1px 0 rgba(255, 138, 76, 0.16);
+  background: var(--bg);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-1);
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.brand:hover {
+  text-decoration: none;
+}
+.brandDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-soft);
+}
+.slogan {
+  color: var(--text-3);
+  font-size: 11px;
+  font-weight: 400;
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
+
+.nav {
+  display: flex;
+  gap: 2px;
+  margin-left: 12px;
+}
+
+.navLink {
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  color: var(--text-2);
+  font-size: 13px;
+  transition: background 0.12s, color 0.12s;
+}
+.navLink:hover {
+  background: var(--bg-hover);
+  text-decoration: none;
+  color: var(--text-1);
+}
+.navActive {
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.storage {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text-3);
+  font-size: 11px;
+  background: var(--surface-1);
+}
+.dotLocal {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--st-candidate);
+}
+.dotCloud {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ok);
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+}
+
+/* 移动端外壳 ------------------------------------------------------------ */
+
+.mShell {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-sub);
+}
+
+.mBody {
+  flex: 1;
+  min-height: 0;
+}
+
+.mTabs {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  background: var(--bg);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.mTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 0;
+  color: var(--text-3);
+  font-size: 11px;
+  transition: color 0.12s;
+}
+.mTab:hover {
+  text-decoration: none;
+}
+.mTabActive {
+  color: var(--brand);
+}
+.mTabIcon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.mAuthRow {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+}
+
+/* 移动壳顶部「切到作战台」独立控件（与 PC 顶栏的「随身模式」呼应，不是导航 tab） */
+.mSwitch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-1);
+  color: var(--text-2);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.mSwitch:hover {
+  border-color: var(--brand);
+  color: var(--brand-ink);
+  text-decoration: none;
+}

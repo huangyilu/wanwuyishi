@@ -1,0 +1,42 @@
+{
+  "id": "it",
+  "name": "意大利",
+  "localName": "Italia",
+  "currency": "EUR",
+  "languages": ["意大利语"],
+  "timezone": "Europe/Rome",
+  "plugTypes": ["C", "F", "L"],
+  "emergencyNumbers": {
+    "通用紧急": "112",
+    "警察": "113",
+    "急救": "118"
+  },
+  "tipping": "账单常含 coperto（座位费），不强制小费；咖啡吧台价与堂食价不同。",
+  "visa": {
+    "visaArea": "schengen",
+    "type": "申根短期旅游签证（C 类）",
+    "applyChannel": "意大利驻华使领馆授权的意大利签证申请中心",
+    "materials": [
+      "有效期至少覆盖离境后 3 个月的护照",
+      "签证申请表与照片",
+      "覆盖全程的申根旅行医疗保险（保额不低于 3 万欧元）",
+      "往返机票预订单",
+      "全程住宿预订证明",
+      "行程单（日期 / 城市 / 交通 / 住宿）",
+      "在职证明与近 6 个月银行流水"
+    ],
+    "fee": {
+      "value": "签证费 90 欧元 + 签证中心服务费（以官网公布为准）",
+      "source": "https://vistoperitalia.esteri.it/",
+      "verifiedAt": "2026-08-04"
+    },
+    "processingDays": {
+      "value": "使馆审理通常 15 个日历日，旺季可能延长",
+      "source": "https://vistoperitalia.esteri.it/",
+      "verifiedAt": "2026-08-04"
+    },
+    "earliestApplyDays": 180,
+    "latestApplyDays": 21,
+    "notes": ["与法国、瑞士同属申根区，全程只需一张申根签证。"]
+  }
+}

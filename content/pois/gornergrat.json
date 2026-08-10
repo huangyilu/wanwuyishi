@@ -1,0 +1,27 @@
+{
+  "id": "poi-gornergrat",
+  "type": "viewpoint",
+  "name": "戈尔内格拉特",
+  "localName": "Gornergrat",
+  "city": "city-zermatt",
+  "country": "ch",
+  "location": { "lat": 45.9833, "lng": 7.7833 },
+  "tags": ["观景", "火车", "冰川"],
+  "popularity": 86,
+  "officialUrl": "https://www.gornergrat.ch/",
+  "visit": { "durationMinutes": [180, 300], "durationNote": "含齿轮火车半日", "bestTime": "晴日清晨能见度最佳" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [{ "from": "01-01", "to": "12-31", "note": "全年运营，冬季为滑雪连接线" }] },
+  "booking": { "required": false, "leadDays": 0 },
+  "facilities": { "toilet": "山顶站", "wifi": "免费" },
+  "volatile": {
+    "price": { "value": "齿轮火车往返约 84 瑞郎（Zermatt↔Gornergrat）", "source": "https://www.gornergrat.ch/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "火车约 07:00-17:30（依季节）", "source": "https://www.gornergrat.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "露天观景台", "location": "3089m 山顶", "why": "正面马特洪峰与蒙特罗莎群峰、戈内拉特冰川同框，无遮挡。" },
+      { "name": "Riffelsee 倒影", "location": "下行一站", "why": "平缓步道到湖边，拍马特洪峰水中倒影。" }
+    ],
+    "tips": ["选右侧座位上山，峰景在右手", "山顶有天文台与教堂", "与马特洪峰安排同一天"]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "poi-jungfraujoch",
+  "type": "viewpoint",
+  "name": "少女峰·欧洲之巅",
+  "localName": "Jungfraujoch - Top of Europe",
+  "city": "city-interlaken",
+  "country": "ch",
+  "location": { "lat": 46.5471, "lng": 7.985 },
+  "tags": ["雪山", "冰川", "欧洲之巅"],
+  "popularity": 93,
+  "officialUrl": "https://www.jungfrau.ch/",
+  "visit": { "durationMinutes": [300, 480], "durationNote": "往返含齿轮火车约一整天", "bestTime": "晴日上午能见度最好" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [{ "from": "01-01", "to": "12-31", "note": "全年运营，但大风/大雪可能停运，务必查天气" }] },
+  "booking": { "required": true, "leadDays": 1, "url": "https://www.jungfrau.ch/" },
+  "facilities": { "toilet": "山顶站内", "wifi": "免费", "accessible": true },
+  "volatile": {
+    "price": { "value": "因特拉肯往返约 210+ 瑞郎，官网提前购有折扣", "source": "https://www.jungfrau.ch/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "齿轮火车约 08:00-17:00 上行（依季节），山顶停留约 2 小时", "source": "https://www.jungfrau.ch/", "verifiedAt": "2026-08-06" },
+    "booking": { "value": "官网提前购指定班次票，旺季售罄快", "source": "https://www.jungfrau.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "entrances": "从 Interlaken Ost 乘火车到 Kleine Scheidegg 换齿轨上山；山顶即『欧洲之巅』站。",
+    "highlights": [
+      { "name": "斯芬克斯观景台", "location": "山顶 3571m", "why": "360° 看阿莱奇冰川与四大峰，欧洲最高观景台之一。" },
+      { "name": "阿莱奇冰川（Aletsch）", "location": "冰川平台", "why": "阿尔卑斯最长冰川，从观景台俯瞰蔚为壮观。" },
+      { "name": "冰宫（Ice Palace）", "location": "山体内部", "why": "凿入冰川的冰雕隧道，恒温零下。" }
+    ],
+    "collections": "高山火车站、天文台、冰川与冰宫一体化的『欧洲之巅』体验。",
+    "tips": ["提前购、查天气，山顶常年零下带厚衣", "高原反应者放慢节奏", "回程可在 Eigergletscher 下看艾格北壁"]
+  }
+}

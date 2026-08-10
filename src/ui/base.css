@@ -1,0 +1,200 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  /* 信息密度取实用工具风：查得到优先于好看 */
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-1);
+  background: var(--bg-sub);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--brand-soft);
+  color: var(--text-1);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+p {
+  margin: 0 0 8px;
+}
+
+ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+.boot-skeleton {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-3);
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+/* 通用小组件 ------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface-1);
+  color: var(--text-1);
+  font-size: 13px;
+  white-space: nowrap;
+  transition: background 0.12s, border-color 0.12s, transform 0.04s;
+}
+.btn:hover {
+  background: var(--bg-hover);
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: var(--on-brand);
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: var(--brand-hover);
+}
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 12px;
+}
+.btn-ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--text-2);
+}
+.btn-ghost:hover {
+  background: var(--bg-hover);
+  color: var(--text-1);
+}
+
+.field {
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg-inset);
+  color: var(--text-1);
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.field::placeholder {
+  color: var(--text-3);
+}
+.field:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-soft);
+}
+
+.tag {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--text-2);
+  font-size: 11px;
+  line-height: 17px;
+  white-space: nowrap;
+}
+
+.num {
+  font-family: var(--font-num);
+  font-variant-numeric: tabular-nums;
+}
+
+.muted {
+  color: var(--text-3);
+}
+
+.scroll-y {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.scroll-y::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.scroll-y::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.scroll-y::-webkit-scrollbar-thumb:hover {
+  background: var(--line-strong);
+  background-clip: padding-box;
+}
+.scroll-y::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 打印：签证行程单与旅行记录都靠浏览器打印导出 PDF，不引入 PDF 库 */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #111;
+    font-size: 11pt;
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "poi-pantheon-rome",
+  "type": "landmark",
+  "name": "万神殿",
+  "localName": "Pantheon",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.8986, "lng": 12.4769 },
+  "tags": ["古罗马", "建筑", "宗教场所"],
+  "popularity": 88,
+  "wikidataId": "Q99309",
+  "officialUrl": "https://www.pantheonroma.com/",
+  "visit": {
+    "durationMinutes": [30, 60],
+    "durationNote": "30 分钟-1 小时",
+    "bestTime": "正午前后阳光透过穹顶天眼投下光柱"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": ["2026-01-01", "2026-05-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": false,
+    "leadDays": 0,
+    "url": "https://www.pantheonroma.com/"
+  },
+  "facilities": {
+    "toilet": "无（广场周边咖啡馆）",
+    "water": "广场有 nasoni 直饮水"
+  },
+  "volatile": {
+    "price": {
+      "value": "成人票 5 欧元（此前为免费，现已改为收费）",
+      "source": "https://www.pantheonroma.com/",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "每日 09:00-19:00，宗教活动期间临时关闭",
+      "source": "https://www.pantheonroma.com/",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "正门在 Piazza della Rotonda，排队通常 15 分钟内。",
+    "routes": [],
+    "highlights": [
+      {
+        "name": "穹顶天眼（Oculus）",
+        "location": "穹顶正中",
+        "why": "直径 9 米，是室内唯一光源；下雨时地面排水孔仍在工作。"
+      },
+      {
+        "name": "拉斐尔之墓",
+        "location": "殿内左侧第三个壁龛",
+        "why": "文艺复兴巨匠长眠处，墓志铭值得一读。"
+      }
+    ],
+    "tips": [
+      "着装要求同教堂：遮肩遮膝。",
+      "广场周边餐厅溢价明显，往北走两个街区价格立刻正常。"
+    ]
+  }
+}

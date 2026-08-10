@@ -1,0 +1,33 @@
+{
+  "id": "city-venice",
+  "name": "威尼斯",
+  "localName": "Venezia",
+  "country": "it",
+  "location": { "lat": 45.4408, "lng": 12.3155 },
+  "timezone": "Europe/Rome",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "威尼斯本岛无车，靠步行与水上巴士（Vaporetto）。主岛火车站 Venezia S. Lucia；机场可乘快艇或大巴到罗马广场（Piazzale Roma）。",
+      "tips": ["水上巴士单程贵，建议买 24/48/72 小时 ACTV 通票", "住本岛免去拖行李过桥之苦"],
+      "source": "https://www.venezia.it/",
+      "verifiedAt": "2026-08-06"
+    },
+    {
+      "topic": "payment",
+      "summary": "多数商户收现金与卡；水上巴士与景点推荐提前网购。旺季日游客需线上缴纳入城税。",
+      "tips": [],
+      "source": "https://actv.avmspa.it/",
+      "verifiedAt": "2026-08-06"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "ACTV 24/48/72h 通票",
+      "scope": "水上巴士与公交",
+      "benefits": ["无限次 Vaporetto"],
+      "price": { "value": "24h 约 25 欧 / 48h 约 35 欧", "source": "https://actv.avmspa.it/", "verifiedAt": "2026-08-06" },
+      "url": "https://actv.avmspa.it/"
+    }
+  ]
+}

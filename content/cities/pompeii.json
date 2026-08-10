@@ -1,0 +1,25 @@
+{
+  "id": "city-pompeii",
+  "name": "庞贝",
+  "localName": "Pompei",
+  "country": "it",
+  "location": { "lat": 40.7497, "lng": 14.4869 },
+  "timezone": "Europe/Rome",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "从那不勒斯乘 Circumvesuviana 线到 Pompei Scavi - Villa dei Misteri 站，步行即达遗址入口；园区树荫极少。",
+      "tips": ["自带水与帽，正午暴晒", "入口分 Porta Marina 与 Piazza Anfiteatro 两侧"],
+      "source": "https://pompeiisites.org/",
+      "verifiedAt": "2026-08-06"
+    },
+    {
+      "topic": "water",
+      "summary": "园区内饮水点稀少，夏季炎热，建议携带 1L+ 饮水；入口与咖啡亭可补水。",
+      "tips": [],
+      "source": "https://pompeiisites.org/",
+      "verifiedAt": "2026-08-06"
+    }
+  ],
+  "transitPasses": []
+}

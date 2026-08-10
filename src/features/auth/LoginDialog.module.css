@@ -1,0 +1,118 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 6, 4, 0.62);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 60;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  padding: 24px 22px 20px;
+  animation: pop 0.14s ease-out;
+}
+
+@keyframes pop {
+  from {
+    transform: translateY(6px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--text-3);
+  cursor: pointer;
+}
+.close:hover {
+  color: var(--text-1);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+.sub {
+  margin: 4px 0 16px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-3);
+  margin: 12px 0 4px;
+}
+
+.full {
+  width: 100%;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.switch {
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-2);
+  text-align: center;
+}
+
+.alt {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.link {
+  background: none;
+  border: none;
+  color: var(--brand);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+.err {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  background: var(--warn-soft);
+  color: var(--warn);
+  font-size: 12px;
+}
+.ok {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  background: var(--ok-soft);
+  color: var(--ok);
+  font-size: 12px;
+}

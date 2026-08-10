@@ -1,0 +1,25 @@
+{
+  "id": "poi-val-di-funes",
+  "type": "viewpoint",
+  "name": "富内斯山谷",
+  "localName": "Val di Funes",
+  "city": "city-dolomites",
+  "country": "it",
+  "location": { "lat": 46.642, "lng": 11.769 },
+  "tags": ["山谷", "教堂", "明信片"],
+  "popularity": 80,
+  "visit": { "durationMinutes": [120, 180], "durationNote": "含取景与短徒步半天", "bestTime": "清晨或傍晚光线最柔" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "price": { "value": "免费开放，停车小费/收费依停车场", "source": "https://www.villnoess.net/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "全天开放", "source": "https://www.villnoess.net/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "圣乔瓦尼教堂（S. Giovanni）", "location": "山谷草甸", "why": "孤立于草甸中的小教堂，与 Odle 锯齿群峰同框，是多洛米蒂最经典构图。" },
+      { "name": "Santa Maddalena 村", "location": "山谷深处", "why": "尖顶教堂配峰峦，晨雾时如仙境。" }
+    ],
+    "tips": ["自驾最方便，村口有停车场", "清晨无风时草甸倒影最佳", "与三峰山可安排在同一区域多日"]
+  }
+}

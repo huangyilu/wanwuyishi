@@ -1,0 +1,31 @@
+{
+  "id": "poi-duomo-milano",
+  "type": "church",
+  "name": "米兰大教堂",
+  "localName": "Duomo di Milano",
+  "city": "city-milan",
+  "country": "it",
+  "location": { "lat": 45.4642, "lng": 9.19 },
+  "tags": ["哥特", "地标", "教堂"],
+  "popularity": 93,
+  "officialUrl": "https://www.duomomilano.it/",
+  "visit": { "durationMinutes": [90, 180], "durationNote": "1.5-3 小时（含登顶）", "bestTime": "早上去人少，登顶看广场全景" },
+  "openness": { "closedWeekdays": [], "closedDates": ["2026-12-25"], "seasonal": [] },
+  "booking": { "required": true, "leadDays": 3, "url": "https://www.duomomilano.it/" },
+  "facilities": { "toilet": "游客中心可用", "wifi": "广场免费", "accessible": true },
+  "volatile": {
+    "price": { "value": "教堂免费入内；登顶电梯票约 18-22 欧，步行约 10 欧", "source": "https://www.duomomilano.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "每日约 09:00-19:00（最后入场 18:10），登顶时间略短", "source": "https://www.duomomilano.it/", "verifiedAt": "2026-08-06" },
+    "booking": { "value": "登顶与博物馆建议官网按时段预约，旺季排队很长", "source": "https://www.duomomilano.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "entrances": "正门入教堂需着装遮肩；登顶从侧面电梯/楼梯口，凭票分流。",
+    "highlights": [
+      { "name": "镀金圣母像 Madunina", "location": "最高尖塔顶端", "why": "米兰的守护象征，本地人视其为城市灵魂。" },
+      { "name": "屋顶露台", "location": "登顶平台", "why": "近距离看 135 座尖塔与 3400+ 雕像，俯瞰埃马努埃莱长廊与广场。" },
+      { "name": "教堂博物馆（Museo del Duomo）", "location": "南侧独立馆", "why": "藏原作雕像与彩窗草图，避开人群。" }
+    ],
+    "collections": "世界最大的哥特式教堂，大理石外墙、无数圣经人物雕像与彩色玻璃窗。",
+    "tips": ["登顶选电梯省体力，露台风大带外套", "官网购票比现场便宜且免排", "正门安检，别带大包"]
+  }
+}

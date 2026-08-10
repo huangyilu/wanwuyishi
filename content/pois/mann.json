@@ -1,0 +1,29 @@
+{
+  "id": "poi-mann",
+  "type": "museum",
+  "name": "那不勒斯国家考古博物馆",
+  "localName": "Museo Archeologico Nazionale di Napoli",
+  "city": "city-naples",
+  "country": "it",
+  "location": { "lat": 40.8538, "lng": 14.2514 },
+  "tags": ["考古", "庞贝文物", "雕塑"],
+  "popularity": 86,
+  "officialUrl": "https://mannapoli.it/",
+  "visit": { "durationMinutes": [120, 180], "durationNote": "2-3 小时", "bestTime": "上午体力好时看雕塑" },
+  "openness": { "closedWeekdays": [2], "closedDates": ["2026-01-01", "2026-12-25", "2026-05-01"], "seasonal": [] },
+  "booking": { "required": true, "leadDays": 1, "url": "https://mannapoli.it/" },
+  "facilities": { "toilet": "馆内可用", "wifi": "免费", "accessible": true },
+  "volatile": {
+    "price": { "value": "成人票约 18 欧，官网预约", "source": "https://mannapoli.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "周三至周一 09:00-19:30，周二闭馆", "source": "https://mannapoli.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "法尔内塞收藏（Farnese）", "location": "一层大厅", "why": "罗马雕塑巅峰，赫拉克勒斯与法尔内塞公牛体量惊人。" },
+      { "name": "庞贝与赫库兰尼姆壁画", "location": "二层", "why": "从遗址取出的湿壁画，色彩鲜艳，是理解罗马室内装饰的关键。" },
+      { "name": "秘密厅（Gabinetto Segreto）", "location": "独立展区", "why": "庞贝情色与生育主题文物，曾长期封存，现有限开放。" }
+    ],
+    "collections": "全球最重要的罗马考古收藏之一，大量来自庞贝、赫库兰尼姆与卡普阿。",
+    "tips": ["去庞贝前一天先来此处，文物与遗址互为注解", "闭馆日周二，别跑空", "官网有预约，旺季排队"]
+  }
+}

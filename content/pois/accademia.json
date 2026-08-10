@@ -1,0 +1,30 @@
+{
+  "id": "poi-accademia",
+  "type": "museum",
+  "name": "学院美术馆",
+  "localName": "Galleria dell'Accademia",
+  "city": "city-florence",
+  "country": "it",
+  "location": { "lat": 43.777, "lng": 11.2594 },
+  "tags": ["文艺复兴", "雕塑", "大卫"],
+  "popularity": 90,
+  "officialUrl": "https://www.galleriaaccademiafirenze.it/",
+  "visit": { "durationMinutes": [60, 120], "durationNote": "1-2 小时", "bestTime": "开馆首场避开团队人潮" },
+  "openness": { "closedWeekdays": [1], "closedDates": ["2026-01-01", "2026-12-25", "2026-05-01"], "seasonal": [] },
+  "booking": { "required": true, "leadDays": 7, "url": "https://www.galleriaaccademiafirenze.it/" },
+  "facilities": { "toilet": "馆内免费", "wifi": "免费", "accessible": true },
+  "volatile": {
+    "price": { "value": "成人票约 16 欧（含预约费），官网按时段预约", "source": "https://www.galleriaaccademiafirenze.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "周二至周日 08:15-18:50，周一闭馆", "source": "https://www.galleriaaccademiafirenze.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "entrances": "持预约票走 Via Ricasoli 入口，安检后直入一层大卫厅。",
+    "highlights": [
+      { "name": "米开朗基罗《大卫》", "location": "一层 · 大卫厅（Tribune）", "why": "原作高 5.17 米，未完成的《囚徒》系列环绕，是全世界被复制最多的雕塑。" },
+      { "name": "《被缚的奴隶》《垂死的奴隶》", "location": "一层 · 大厅两侧", "why": "肌肉张力极具戏剧性，体现米氏『把石头从束缚中解放』的理念。" },
+      { "name": "圣马太（San Matteo）", "location": "一层 · 转角", "why": "未完成状态反而更显米开朗基罗的『蓄势待发』。" }
+    ],
+    "collections": "除米开朗基罗雕塑外，还藏有佛罗伦萨绘画（13-16 世纪）与乐器厅（含斯特拉迪瓦里琴）。",
+    "tips": ["与乌菲兹分两个半天，避免审美疲劳", "官网预约务必选具体时段，迟到可能被拒", "馆不大，1.5 小时足够，不必抢早场票"]
+  }
+}

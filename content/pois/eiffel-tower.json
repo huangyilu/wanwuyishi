@@ -1,0 +1,71 @@
+{
+  "id": "poi-eiffel-tower",
+  "type": "landmark",
+  "name": "埃菲尔铁塔",
+  "localName": "Tour Eiffel",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8584, "lng": 2.2945 },
+  "tags": ["地标", "观景", "夜景"],
+  "popularity": 98,
+  "wikidataId": "Q243",
+  "officialUrl": "https://www.toureiffel.paris/",
+  "visit": {
+    "durationMinutes": [90, 150],
+    "durationNote": "登顶含排队 1.5-2.5 小时；仅在塔下拍照 30 分钟",
+    "bestTime": "日落前 1 小时上塔，可同时看到白天与夜景"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": [],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 30,
+    "url": "https://www.toureiffel.paris/en/rates-opening-times"
+  },
+  "facilities": {
+    "toilet": "各层均有",
+    "wifi": "部分区域",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "电梯至顶层成人约 35 欧元；楼梯至二层约 12 欧元（以官网为准）",
+      "source": "https://www.toureiffel.paris/en/rates-opening-times",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "旺季 09:00-次日 00:45，淡季 09:30-23:45",
+      "source": "https://www.toureiffel.paris/en/rates-opening-times",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "官网提前 60 天放票，顶层票常在开售当天售罄，务必提前抢",
+      "source": "https://www.toureiffel.paris/en/rates-opening-times",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "东柱与西柱为已购票通道，南柱为楼梯票通道，北柱为现场购票。安检队伍在塔下围栏外。",
+    "routes": [],
+    "highlights": [
+      {
+        "name": "夏乐宫平台",
+        "location": "特罗卡德罗广场（河对岸）",
+        "why": "正面全景机位，日出时几乎无人。"
+      },
+      {
+        "name": "整点灯光秀",
+        "location": "塔下战神广场或河对岸",
+        "why": "天黑后每整点闪烁 5 分钟，最后一场时长更久。"
+      }
+    ],
+    "tips": [
+      "二层视野其实优于顶层（能看清街道肌理），预算有限可只买二层。",
+      "塔下强售埃菲尔小挂件与签名募捐是典型骗局，直接走开。",
+      "带大包会被安检拦下，尽量轻装。"
+    ]
+  }
+}

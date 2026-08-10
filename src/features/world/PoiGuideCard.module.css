@@ -1,0 +1,269 @@
+.card {
+  padding: 14px 16px 32px;
+}
+
+/* 顶部配图横幅（出血到卡片两侧） */
+.hero {
+  position: relative;
+  margin: -14px -16px 14px;
+  height: 190px;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background: var(--bg-sub);
+}
+
+.heroImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.heroShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(8, 6, 4, 0.86) 0%,
+    rgba(8, 6, 4, 0.32) 52%,
+    rgba(8, 6, 4, 0.42) 100%
+  );
+}
+
+.heroText {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 12px;
+}
+
+.heroText .name {
+  color: #fff;
+  font-size: 22px;
+  line-height: 1.2;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+.heroText .localName {
+  margin-top: 2px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 12px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.6);
+}
+
+.heroCredit {
+  display: inline-block;
+  margin-top: 7px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+}
+.heroCredit:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.heroLink {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(20, 16, 12, 0.55);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(4px);
+}
+.heroLink:hover {
+  background: rgba(20, 16, 12, 0.8);
+}
+
+.head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.name {
+  font-size: 17px;
+  line-height: 1.3;
+}
+
+.localName {
+  margin-top: 2px;
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 8px 0 0;
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 4px 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+
+.metaKey {
+  color: var(--text-3);
+}
+
+.section {
+  margin-top: 18px;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+}
+
+.sectionTitle::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.volatile {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.vRow {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.vRow:last-child {
+  border-bottom: none;
+}
+
+.vKey {
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.vValue {
+  font-size: 12.5px;
+}
+
+.vFoot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.stale {
+  color: var(--warn);
+}
+
+.staleBanner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 6px 9px;
+  border-radius: var(--radius);
+  background: var(--warn-soft);
+  color: var(--warn);
+  font-size: 12px;
+}
+
+.route {
+  margin-bottom: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--brand);
+  border-radius: var(--radius);
+  background: var(--bg);
+}
+
+.routeName {
+  font-weight: 600;
+  font-size: 12.5px;
+}
+
+.stops {
+  margin: 6px 0 0;
+  padding-left: 16px;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+.stops li {
+  margin-bottom: 2px;
+}
+
+.highlight {
+  padding: 8px 10px;
+  border-bottom: 1px dashed var(--line);
+}
+.highlight:last-child {
+  border-bottom: none;
+}
+
+.hName {
+  font-weight: 600;
+  font-size: 12.5px;
+}
+
+.hLoc {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 5px;
+  border-radius: 3px;
+  background: var(--info-soft);
+  color: var(--st-visited);
+  font-size: 11px;
+}
+
+.hWhy {
+  margin-top: 2px;
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.tips {
+  padding-left: 16px;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+.tips li {
+  margin-bottom: 3px;
+}
+
+.text {
+  font-size: 12.5px;
+  color: var(--text-2);
+  white-space: pre-wrap;
+}
+
+.actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.empty {
+  padding: 40px 16px;
+  text-align: center;
+  color: var(--text-3);
+}

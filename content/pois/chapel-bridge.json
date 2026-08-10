@@ -1,0 +1,56 @@
+{
+  "id": "poi-chapel-bridge",
+  "type": "landmark",
+  "name": "卡佩尔廊桥",
+  "localName": "Kapellbrücke",
+  "city": "city-lucerne",
+  "country": "ch",
+  "location": { "lat": 47.0517, "lng": 8.3076 },
+  "tags": ["地标", "老城", "免费"],
+  "popularity": 82,
+  "wikidataId": "Q666377",
+  "officialUrl": "https://www.luzern.com/",
+  "visit": {
+    "durationMinutes": [20, 40],
+    "durationNote": "20-40 分钟，可与老城步行串联",
+    "bestTime": "清晨或日落，天鹅与倒影都在"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": [],
+    "seasonal": []
+  },
+  "facilities": {
+    "toilet": "老城广场附近有收费公厕",
+    "water": "老城有公共饮水池"
+  },
+  "volatile": {
+    "price": {
+      "value": "免费",
+      "source": "https://www.luzern.com/en/highlight/chapel-bridge/",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "全天开放",
+      "source": "https://www.luzern.com/en/highlight/chapel-bridge/",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "两端均可上桥，火车站一侧步行 5 分钟即到。",
+    "routes": [],
+    "highlights": [
+      {
+        "name": "桥内三角楣板绘画",
+        "location": "桥顶横梁",
+        "why": "17 世纪绘制的琉森城史，1993 年大火后部分为焦黑原件，刻意保留未修复。"
+      },
+      {
+        "name": "水塔（Wasserturm）",
+        "location": "桥中段",
+        "why": "曾作监狱与档案室，是琉森最上镜的构图元素。"
+      }
+    ],
+    "tips": ["与穆塞格城墙、狮子纪念碑串成老城两小时步行线最顺。"]
+  }
+}

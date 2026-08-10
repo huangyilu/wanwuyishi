@@ -1,0 +1,97 @@
+{
+  "id": "poi-vatican-museums",
+  "type": "museum",
+  "name": "梵蒂冈博物馆",
+  "localName": "Musei Vaticani",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.9065, "lng": 12.4536 },
+  "tags": ["世界级", "绘画", "宗教场所"],
+  "popularity": 96,
+  "wikidataId": "Q193036",
+  "officialUrl": "https://www.museivaticani.va/",
+  "visit": {
+    "durationMinutes": [180, 300],
+    "durationNote": "3-5 小时（含西斯廷礼拜堂与圣彼得大教堂）",
+    "bestTime": "开馆首场（08:00）或周五夜场"
+  },
+  "openness": {
+    "closedWeekdays": [0],
+    "closedDates": ["2026-01-01", "2026-01-06", "2026-08-15", "2026-11-01", "2026-12-25", "2026-12-26"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 21,
+    "url": "https://tickets.museivaticani.va/"
+  },
+  "facilities": {
+    "toilet": "馆内多处",
+    "wifi": "无稳定公共 Wi-Fi",
+    "locker": "免费寄存（大包必存）",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "成人票 20 欧元 + 5 欧元官网预约费",
+      "source": "https://tickets.museivaticani.va/",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "周一至周六 08:00-19:00（最后入场 17:00），周日闭馆（每月最后一个周日免费开放至 14:00）",
+      "source": "https://www.museivaticani.va/content/museivaticani/en/visita-i-musei/scegli-la-visita/orari-e-biglietti.html",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "官网提前放票，旺季 3 周内售罄；非官方渠道加价严重",
+      "source": "https://tickets.museivaticani.va/",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "入口在 Viale Vaticano（与圣彼得广场不在同一侧，步行绕行约 15 分钟）。已预约票走左侧通道。",
+    "routes": [
+      {
+        "name": "西斯廷主线 3 小时",
+        "durationMinutes": 180,
+        "stops": [
+          "松果中庭（集合与讲解常在这里）",
+          "八角庭院 · 拉奥孔群像",
+          "地图廊",
+          "拉斐尔画室 · 雅典学院",
+          "西斯廷礼拜堂",
+          "（跟团专用通道可直达）圣彼得大教堂"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "西斯廷礼拜堂穹顶",
+        "location": "参观动线终点",
+        "why": "米开朗基罗《创世纪》与《最后的审判》，进门后先靠墙坐下再抬头，站着看会被人流推走。"
+      },
+      {
+        "name": "雅典学院",
+        "location": "拉斐尔画室 · 签字厅",
+        "why": "文艺复兴透视法的巅峰，画中人物几乎是一部哲学史点名册。"
+      },
+      {
+        "name": "拉奥孔群像",
+        "location": "八角庭院",
+        "why": "1506 年出土后直接改变了米开朗基罗的雕塑观。"
+      },
+      {
+        "name": "地图廊",
+        "location": "通往拉斐尔画室的长廊",
+        "why": "40 幅 16 世纪意大利地形壁画，天顶装饰密度惊人。"
+      }
+    ],
+    "collections": "从埃及馆、古典雕塑、地图廊、拉斐尔画室到西斯廷礼拜堂，参观动线基本单向不可回头。",
+    "tips": [
+      "西斯廷礼拜堂内禁止拍照与交谈，保安会持续提醒。",
+      "着装要求：肩膀与膝盖必须遮住，否则会被拒绝入场。",
+      "从西斯廷礼拜堂右侧的团体通道可直通圣彼得大教堂，省下一次广场安检长队（是否开放视当日管理）。",
+      "全程约 7 公里步行，穿舒适的鞋。"
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "city-naples",
+  "name": "那不勒斯",
+  "localName": "Napoli",
+  "country": "it",
+  "location": { "lat": 40.8518, "lng": 14.2681 },
+  "timezone": "Europe/Rome",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "那不勒斯中央车站连通罗马（高铁约 1h）与庞贝（Circumvesuviana 小火车）。老城地铁 Line 1 多个艺术车站。",
+      "tips": ["去庞贝在 Garibaldi 站乘 Circumvesuviana 到 Pompei Scavi", "机场有 Alibus 接驳中央车站"],
+      "source": "https://www.turismonapoli.com/",
+      "verifiedAt": "2026-08-06"
+    },
+    {
+      "topic": "safety",
+      "summary": "老城某些街区扒手较多，财物贴身；避免深夜独行偏僻巷弄，摩托抢包是常见手法。",
+      "tips": ["背包前背、手机不要拿在手上", "的士用白色官方车并确认打表"],
+      "source": "https://www.turismonapoli.com/",
+      "verifiedAt": "2026-08-06"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "UNICO 日票",
+      "scope": "市内公交、地铁、缆车",
+      "benefits": ["全日无限次市内交通"],
+      "price": { "value": "约 4.5 欧/日", "source": "https://www.anm.it/", "verifiedAt": "2026-08-06" },
+      "url": "https://www.anm.it/"
+    }
+  ]
+}

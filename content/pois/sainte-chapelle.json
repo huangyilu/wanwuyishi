@@ -1,0 +1,69 @@
+{
+  "id": "poi-sainte-chapelle",
+  "type": "church",
+  "name": "圣礼拜堂",
+  "localName": "Sainte-Chapelle",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8554, "lng": 2.345 },
+  "tags": ["彩窗", "哥特", "宗教场所"],
+  "popularity": 78,
+  "wikidataId": "Q194433",
+  "officialUrl": "https://www.sainte-chapelle.fr/",
+  "visit": {
+    "durationMinutes": [45, 75],
+    "durationNote": "45 分钟-1 小时",
+    "bestTime": "晴天上午光线穿过彩窗最好"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": ["2026-01-01", "2026-05-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 3,
+    "url": "https://www.sainte-chapelle.fr/en"
+  },
+  "facilities": {
+    "toilet": "有",
+    "accessible": false
+  },
+  "volatile": {
+    "price": {
+      "value": "成人票 13 欧元；与巴黎古监狱联票约 20 欧元",
+      "source": "https://www.sainte-chapelle.fr/en",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "旺季 09:00-19:00，淡季 09:00-17:00",
+      "source": "https://www.sainte-chapelle.fr/en",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "位于司法宫内，需过法院级安检，队伍常在门外；建议官网预约时段",
+      "source": "https://www.sainte-chapelle.fr/en",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "入口在 4 Boulevard du Palais，与司法宫共用安检口，刀具与液体一律不可带入。",
+    "routes": [],
+    "highlights": [
+      {
+        "name": "上层礼拜堂 15 面彩窗",
+        "location": "二层",
+        "why": "1113 个圣经场景，从左下角开始按 Z 字顺序阅读。"
+      },
+      {
+        "name": "玫瑰花窗",
+        "location": "二层西侧",
+        "why": "火焰哥特风格，讲述《启示录》，午后受光最佳。"
+      }
+    ],
+    "tips": [
+      "先进的是低矮的下层礼拜堂，别在这里停留太久，重点在上层。",
+      "阴天效果会打折，可与同区的巴黎古监狱、圣母院外观串在一起。"
+    ]
+  }
+}

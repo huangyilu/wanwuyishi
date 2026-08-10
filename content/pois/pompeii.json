@@ -1,0 +1,31 @@
+{
+  "id": "poi-pompeii",
+  "type": "park",
+  "name": "庞贝考古公园",
+  "localName": "Parco Archeologico di Pompei",
+  "city": "city-pompeii",
+  "country": "it",
+  "location": { "lat": 40.7497, "lng": 14.4869 },
+  "tags": ["世界遗产", "古罗马", "遗址"],
+  "popularity": 92,
+  "officialUrl": "https://pompeiisites.org/",
+  "visit": { "durationMinutes": [180, 300], "durationNote": "半天到一天", "bestTime": "开馆即入避酷热与团队" },
+  "openness": { "closedWeekdays": [], "closedDates": ["2026-01-01", "2026-05-01", "2026-12-25"], "seasonal": [] },
+  "booking": { "required": true, "leadDays": 1, "url": "https://pompeiisites.org/" },
+  "facilities": { "toilet": "各入口与站点", "water": "饮水点少，自备", "accessible": true },
+  "volatile": {
+    "price": { "value": "成人约 18 欧（含 Boscoreale 等），官网预约", "source": "https://pompeiisites.org/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "每日约 09:00-19:00（最后入场 17:00）", "source": "https://pompeiisites.org/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "entrances": "主要入口 Porta Marina（近车站）与 Piazza Anfiteatro；Porta Marina 沿线景点密集，Anfiteatro 侧人少。",
+    "highlights": [
+      { "name": "维提之家（Casa dei Vettii）", "location": "西北区", "why": "修复后重开的豪宅，湿壁画与花园保存极好，是庞贝『打卡』核心。" },
+      { "name": "阿波罗神庙与庞贝广场", "location": "城中心", "why": "城市公共生活心脏，远眺维苏威。" },
+      { "name": "角斗士营房与圆形剧场", "location": "东南区", "why": "可容近 2 万人的罗马剧场，墙壁涂鸦保留至今。" },
+      { "name": "悲剧诗人之家", "location": "南区", "why": "入口『小心恶犬』马赛克闻名。" }
+    ],
+    "collections": "被 79 年维苏威喷发定格的罗马城市，街道、fresco、店铺、人体石膏模完整保留。",
+    "tips": ["园区极大，先定路线别贪多", "穿防滑鞋、自带水与帽", "与那不勒斯国家考古博物馆互为补充", "导览 APP 可离线下载"]
+  }
+}

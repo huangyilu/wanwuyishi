@@ -1,0 +1,24 @@
+{
+  "id": "poi-piazzale-michelangelo",
+  "type": "viewpoint",
+  "name": "米开朗基罗广场",
+  "localName": "Piazzale Michelangelo",
+  "city": "city-florence",
+  "country": "it",
+  "location": { "lat": 43.7613, "lng": 11.269 },
+  "tags": ["观景", "日落", "全景"],
+  "popularity": 84,
+  "visit": { "durationMinutes": [30, 90], "durationNote": "30 分钟-1.5 小时", "bestTime": "日落前 1 小时占好机位" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "免费开放", "source": "https://www.feelflorence.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "全天开放", "source": "https://www.feelflorence.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "佛罗伦萨全景", "location": "广场平台", "why": "正对老城：大教堂红顶、旧宫、阿诺河与老桥同框，是明信片机位。" },
+      { "name": "大卫青铜复制品", "location": "广场中央", "why": "与学院美术馆原作呼应，可近距离绕看。" }
+    ],
+    "tips": ["从老城沿台阶上行约 15 分钟，或乘 12/13 路公交", "带三脚架拍蓝调时刻", "旁有玫瑰园（Giardino delle Rose）免费"]
+  }
+}

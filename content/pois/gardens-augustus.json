@@ -1,0 +1,24 @@
+{
+  "id": "poi-gardens-augustus",
+  "type": "park",
+  "name": "奥古斯都花园",
+  "localName": "Giardini di Augusto",
+  "city": "city-capri",
+  "country": "it",
+  "location": { "lat": 40.549, "lng": 14.242 },
+  "tags": ["花园", "观景", "全景"],
+  "popularity": 76,
+  "visit": { "durationMinutes": [30, 60], "durationNote": "30-60 分钟", "bestTime": "上午光线好、人少" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "门票约 1.5 欧", "source": "https://www.capritourism.com/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "约 09:00-19:00（依季节）", "source": "https://www.capritourism.com/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "Faraglioni 巨岩全景", "location": "观景台", "why": "俯瞰海上三座巨岩与蜿蜒的 Via Krupp 之字形小路，是卡普里招牌机位。" },
+      { "name": "阶梯花园区", "location": "园内", "why": "地中海植物与绣球花季（春末）极美。" }
+    ],
+    "tips": ["与蓝洞不同方向，可在上镇半日游串联", "Via Krupp 下行到海边 Marina Piccola", "免费观景点附近有付费位，挑人少的角度"]
+  }
+}

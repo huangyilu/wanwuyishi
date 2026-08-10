@@ -1,0 +1,26 @@
+{
+  "id": "poi-harder-kulm",
+  "type": "viewpoint",
+  "name": "哈德昆",
+  "localName": "Harder Kulm",
+  "city": "city-interlaken",
+  "country": "ch",
+  "location": { "lat": 46.6797, "lng": 7.8628 },
+  "tags": ["观景", "缆车", "两湖"],
+  "popularity": 80,
+  "officialUrl": "https://www.jungfrau.ch/",
+  "visit": { "durationMinutes": [90, 150], "durationNote": "含缆车约 1.5-2.5 小时", "bestTime": "黄昏看两湖金光" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [{ "from": "04-01", "to": "11-15", "note": "缆车约 4 月至 11 月中旬运营" }] },
+  "booking": { "required": false, "leadDays": 0 },
+  "facilities": { "toilet": "山顶餐厅", "wifi": "免费" },
+  "volatile": {
+    "price": { "value": "缆车往返约 38 瑞郎", "source": "https://www.jungfrau.ch/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "缆车约 09:00-18:00（依季节）", "source": "https://www.jungfrau.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "『两湖之桥』平台", "location": "山顶悬空平台", "why": "同时俯瞰布里恩茨湖与图恩湖，夹在中间的因特拉肯尽收眼底。" }
+    ],
+    "tips": ["镇内步行即达缆车站", "黄昏光线最佳、人也少", "山顶餐厅可边吃边看"]
+  }
+}

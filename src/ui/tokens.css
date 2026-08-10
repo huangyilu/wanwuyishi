@@ -1,0 +1,68 @@
+/* 设计 token —— 浅色 · 青瓷绿 + 暖纸风（teal 品牌 + 米纸画布）
+   说明：浅/暗主题靠变量驱动切换，改这一处即可全局换肤；组件不写死颜色。 */
+:root {
+  /* —— 品牌：青瓷绿，作主色与强调 —— */
+  --brand: #4a7f7c;
+  --brand-hover: #3d6b68;
+  --brand-soft: rgba(74, 127, 124, 0.1);
+  --brand-ink: #386460; /* 浅底上的品牌文字（深青，保证对比） */
+  --on-brand: #ffffff; /* 品牌底（青瓷绿）上的反白文字 */
+
+  /* —— 文字：墨绿灰 → 中灰 三级 —— */
+  --text-1: #2c332f;
+  --text-2: #626960;
+  --text-3: #949a90;
+
+  /* —— 表面层级：暖纸色画布，白面板逐级抬升 —— */
+  --bg-sub: #f0ede4; /* 画布 / 页面底 */
+  --bg: #ffffff; /* 面板 / 卡片 */
+  --surface-1: #ffffff;
+  --surface-2: #f4f1e8; /* 略灰的嵌套面板 */
+  --bg-hover: #e9e5d9; /* hover 态 */
+  --bg-inset: #ece8dc; /* 输入框内陷底 */
+
+  /* —— 描边（暖米灰） —— */
+  --line: #e2ddd0;
+  --line-strong: #cbc4b2;
+  --border: var(--line);
+  --border-strong: var(--line-strong);
+
+  /* —— 行程状态色（浅底可读） —— */
+  --st-wishlist: #a19c90;
+  --st-candidate: #b9852a;
+  --st-confirmed: #2f9462;
+  --st-visited: #4a7fc0;
+  --st-dropped: #9aa39c;
+
+  /* —— 语义色 —— */
+  --warn: #d2552f;
+  --warn-soft: rgba(210, 85, 47, 0.12);
+  --danger: #d2552f;
+  --ok: #2f9462;
+  --ok-soft: rgba(47, 148, 98, 0.12);
+  --ok-border: rgba(47, 148, 98, 0.4);
+  --info-soft: rgba(74, 127, 192, 0.12);
+
+  /* —— 字体 —— */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei',
+    'Segoe UI', Roboto, sans-serif;
+  --font-num: 'SF Mono', 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  /* 探险手帐感：老式衬线，中文回落到宋体 */
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, 'Songti SC',
+    'STSong', serif;
+
+  /* —— 圆角 —— */
+  --radius-sm: 6px;
+  --radius: 9px;
+  --radius-lg: 14px;
+
+  /* —— 阴影（浅底用淡绿灰投影，保持柔和层次） —— */
+  --shadow-sm: 0 1px 2px rgba(20, 40, 30, 0.06);
+  --shadow: 0 8px 24px rgba(20, 40, 30, 0.10);
+  --shadow-lg: 0 18px 48px rgba(20, 40, 30, 0.14);
+
+  /* —— 布局常量 —— */
+  --header-h: 50px;
+  --left-w: 288px;
+  --right-w: 384px;
+}

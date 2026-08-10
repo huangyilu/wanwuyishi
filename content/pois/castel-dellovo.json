@@ -1,0 +1,24 @@
+{
+  "id": "poi-castel-dellovo",
+  "type": "landmark",
+  "name": "蛋堡",
+  "localName": "Castel dell'Ovo",
+  "city": "city-naples",
+  "country": "it",
+  "location": { "lat": 40.8286, "lng": 14.2486 },
+  "tags": ["城堡", "海景", "地标"],
+  "popularity": 78,
+  "visit": { "durationMinutes": [45, 90], "durationNote": "45 分钟-1.5 小时", "bestTime": "日落前看海湾与维苏威" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "城堡庭院免费入内；内部特展另票", "source": "https://www.turismonapoli.com/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "约 09:00-19:30（最后入场 19:00）", "source": "https://www.turismonapoli.com/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "海角平台", "location": "城堡末端", "why": "伸入海中，正面维苏威与那不勒斯湾，是免费最佳观景点。" },
+      { "name": "传说之蛋", "location": "地窖", "why": "维吉尔所藏的魔法蛋支撑城堡，破裂则城市倾覆的传说。" }
+    ],
+    "tips": ["免费，傍晚去最舒服", "附近渔村 Borgo Marinaro 海鲜餐厅多", "步行从海滨大道可达"]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "poi-pinacoteca-brera",
+  "type": "museum",
+  "name": "布雷拉画廊",
+  "localName": "Pinacoteca di Brera",
+  "city": "city-milan",
+  "country": "it",
+  "location": { "lat": 45.4728, "lng": 9.186 },
+  "tags": ["绘画", "文艺复兴", "古典"],
+  "popularity": 78,
+  "officialUrl": "https://pinacotecabrera.org/",
+  "visit": { "durationMinutes": [90, 150], "durationNote": "1.5-2.5 小时", "bestTime": "工作日人少" },
+  "openness": { "closedWeekdays": [1], "closedDates": ["2026-01-01", "2026-12-25", "2026-05-01"], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "成人票约 15 欧，官网或现场购票", "source": "https://pinacotecabrera.org/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "周二至周日 08:30-19:15，周一闭馆", "source": "https://pinacotecabrera.org/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "拉斐尔《圣母的婚礼》", "location": "主厅", "why": "拉斐尔早期杰作，完美对称构图，与达·芬奇的传承清晰可辨。" },
+      { "name": "曼特尼亚《死去的基督》", "location": "独立展厅", "why": "极端透视的遗体，强力而平静，是艺术史名作。" },
+      { "name": "海耶兹《吻》", "location": "19 世纪厅", "why": "意大利浪漫主义象征，常与政治隐喻并读。" }
+    ],
+    "tips": ["与斯福尔扎城堡步行可达，可同日", "馆在布雷拉美术学院内，院子安静可歇", "官网有免费开放日（每月首个周日）"]
+  }
+}

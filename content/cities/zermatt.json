@@ -1,0 +1,32 @@
+{
+  "id": "city-zermatt",
+  "name": "采尔马特",
+  "localName": "Zermatt",
+  "country": "ch",
+  "location": { "lat": 46.0207, "lng": 7.7491 },
+  "timezone": "Europe/Zurich",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "采尔马特是禁止燃油车的步行车镇，从塔什（Täsch）停车场换电气摆渡火车进镇；齿轮火车与缆车通往马特洪峰与戈尔内格拉特。",
+      "tips": ["自驾只能到 Täsch 再换摆渡火车", "镇内靠步行与电瓶车"],
+      "source": "https://www.zermatt.ch/",
+      "verifiedAt": "2026-08-06"
+    },
+    {
+      "topic": "payment",
+      "summary": "瑞士物价高；镇内收卡普遍，缆车票建议官网提前购。",
+      "tips": [],
+      "source": "https://www.zermatt.ch/",
+      "verifiedAt": "2026-08-06"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Matterhorn Glacier Paradise 票",
+      "scope": "缆车至马特宏峰冰川天堂",
+      "benefits": ["登欧洲最高缆车站"],
+      "url": "https://www.matterhornparadise.ch/"
+    }
+  ]
+}

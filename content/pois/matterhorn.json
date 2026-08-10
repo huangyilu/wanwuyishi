@@ -1,0 +1,27 @@
+{
+  "id": "poi-matterhorn",
+  "type": "viewpoint",
+  "name": "马特洪峰",
+  "localName": "Matterhorn",
+  "city": "city-zermatt",
+  "country": "ch",
+  "location": { "lat": 45.9763, "lng": 7.6586 },
+  "tags": ["山峰", "地标", "金字塔"],
+  "popularity": 93,
+  "officialUrl": "https://www.zermatt.ch/",
+  "visit": { "durationMinutes": [180, 360], "durationNote": "含缆车/火车半日-一日", "bestTime": "清晨无云最清晰" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [{ "from": "01-01", "to": "12-31", "note": "镇内可常年远眺；观景缆车/火车依季节运营" }] },
+  "booking": { "required": false, "leadDays": 0 },
+  "facilities": { "toilet": "缆车站", "wifi": "镇内免费" },
+  "volatile": {
+    "price": { "value": "镇内免费远眺；观景缆车/火车另购（如马特宏峰冰川天堂约 85 瑞郎往返）", "source": "https://www.zermatt.ch/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "缆车约 08:30-17:30（依季节）", "source": "https://www.zermatt.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "经典金字塔峰形", "location": "镇北方向", "why": "阿尔卑斯最具辨识度的山形，日出『第一缕光』照亮峰顶最震撼。" },
+      { "name": "Riffelsee 倒影湖", "location": "戈尔内格拉特线", "why": "无风时湖面完美倒映马特洪峰，是经典明信片机位。" }
+    ],
+    "tips": ["镇内禁燃油车，空气极净清晨最清", "看日照金顶去 Gornergrat 或 Rothorn", "与采尔马特徒步线结合"]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "id": "poi-duomo-florence",
+  "type": "church",
+  "name": "圣母百花大教堂",
+  "localName": "Cattedrale di Santa Maria del Fiore",
+  "city": "city-florence",
+  "country": "it",
+  "location": { "lat": 43.7731, "lng": 11.2559 },
+  "tags": ["地标", "建筑", "观景", "宗教场所"],
+  "popularity": 93,
+  "wikidataId": "Q11621",
+  "officialUrl": "https://duomo.firenze.it/",
+  "visit": {
+    "durationMinutes": [60, 180],
+    "durationNote": "教堂本体 1 小时；登穹顶 + 钟楼 + 洗礼堂需 3 小时",
+    "bestTime": "登顶选一早，正午穹顶内闷热"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": ["2026-01-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 14,
+    "url": "https://duomo.firenze.it/en/tickets"
+  },
+  "facilities": {
+    "toilet": "教堂博物馆内",
+    "accessible": false
+  },
+  "volatile": {
+    "price": {
+      "value": "教堂本体免费；Brunelleschi Pass（含穹顶、钟楼、洗礼堂、博物馆）约 30 欧元",
+      "source": "https://duomo.firenze.it/en/tickets",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "教堂周一至周六 10:15-16:45，周日与宗教节日仅对礼拜开放；穹顶需按预约时段进入",
+      "source": "https://duomo.firenze.it/en/opening-hours",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "穹顶为限时段实名预约，旺季常提前两周售罄",
+      "source": "https://duomo.firenze.it/en/tickets",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "教堂本体入口在正立面北侧，穹顶入口在教堂外北侧的 Porta della Mandorla，两者不通用。",
+    "routes": [],
+    "highlights": [
+      {
+        "name": "布鲁内莱斯基穹顶",
+        "location": "463 级台阶，无电梯",
+        "why": "登顶途中会近距离经过瓦萨里的《最后的审判》壁画，这是从地面看不到的视角。"
+      },
+      {
+        "name": "乔托钟楼",
+        "location": "教堂南侧",
+        "why": "414 级台阶，视野里能看到穹顶本身，拍照效果优于登穹顶。"
+      },
+      {
+        "name": "洗礼堂天堂之门",
+        "location": "教堂正对面",
+        "why": "现存为复制品，原作在对面的主教座堂博物馆内。"
+      }
+    ],
+    "tips": [
+      "穹顶通道狭窄且单向，幽闭恐惧者慎入。",
+      "只能二选一时，钟楼比穹顶更容易约到且视野更好。",
+      "着装要求：遮肩遮膝，背心与短裤会被拦。"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "poi-lake-thun",
+  "type": "viewpoint",
+  "name": "图恩湖",
+  "localName": "Thunersee",
+  "city": "city-interlaken",
+  "country": "ch",
+  "location": { "lat": 46.69, "lng": 7.63 },
+  "tags": ["湖", "城堡", "游船"],
+  "popularity": 76,
+  "visit": { "durationMinutes": [120, 240], "durationNote": "含船游约半日", "bestTime": "上午光线柔和" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "price": { "value": "Interlaken 出发游船依 BLS 公布，联票可用", "source": "https://www.thunersee.ch/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "游船约 4-10 月每日运营", "source": "https://www.thunersee.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "图恩城堡（Schloss Thun）", "location": "北岸", "why": "湖畔中世纪城堡，登塔看湖城全景。" },
+      { "name": "湖湾小镇", "location": "沿岸", "why": "Spiez、Oberhofen 等湖畔古镇，城堡与葡萄园点缀。" }
+    ],
+    "tips": ["与布里恩茨湖分两天或一日联游", "上岸可访图恩老城", "持区域通票划算"]
+  }
+}

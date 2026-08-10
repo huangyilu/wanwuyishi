@@ -1,0 +1,97 @@
+{
+  "id": "poi-uffizi",
+  "type": "museum",
+  "name": "乌菲兹美术馆",
+  "localName": "Galleria degli Uffizi",
+  "city": "city-florence",
+  "country": "it",
+  "location": { "lat": 43.7678, "lng": 11.2553 },
+  "tags": ["世界级", "文艺复兴", "绘画"],
+  "popularity": 94,
+  "wikidataId": "Q51252",
+  "officialUrl": "https://www.uffizi.it/",
+  "visit": {
+    "durationMinutes": [150, 240],
+    "durationNote": "2.5-4 小时",
+    "bestTime": "开馆 08:15 首场，或闭馆前 2 小时"
+  },
+  "openness": {
+    "closedWeekdays": [1],
+    "closedDates": ["2026-01-01", "2026-05-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 10,
+    "url": "https://www.uffizi.it/en/tickets"
+  },
+  "facilities": {
+    "toilet": "馆内多处，免费",
+    "wifi": "免费",
+    "locker": "免费寄存，大包必存",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "旺季成人票 25 欧元，淡季 12 欧元；官网预约费 4 欧元",
+      "source": "https://www.uffizi.it/en/tickets",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "周二至周日 08:15-18:30（最后入场 17:30），周一闭馆",
+      "source": "https://www.uffizi.it/en/tickets",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "官网按时段预约，旺季建议提前 10 天；PassePartout 五日联票含乌菲兹、皮蒂宫与波波里花园",
+      "source": "https://www.uffizi.it/en/tickets",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "已预约票走 Gate 1（Porta dei Musei），现场购票走 Gate 2；取票口与入口不在同一处，先取票再排安检。",
+    "routes": [
+      {
+        "name": "文艺复兴主线 2.5 小时",
+        "durationMinutes": 150,
+        "stops": [
+          "二层 · 乔托与中世纪起点（A2 厅）",
+          "二层 · 波提切利厅（10-14 厅）",
+          "二层 · 达·芬奇厅（35 厅）",
+          "二层 · 八角形论坛厅（美第奇的维纳斯）",
+          "一层 · 米开朗基罗《圣家族》",
+          "一层 · 拉斐尔与提香《乌尔比诺的维纳斯》",
+          "咖啡厅露台（看旧宫钟楼）"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "波提切利《维纳斯的诞生》与《春》",
+        "location": "二层 · 10-14 厅",
+        "why": "两幅并列展出，是全馆人流最密集处，开馆首场可独享十分钟。"
+      },
+      {
+        "name": "达·芬奇《天使报喜》",
+        "location": "二层 · 35 厅",
+        "why": "达·芬奇最早的独立作品，透视处理刻意为侧向观看设计，站右侧看更准。"
+      },
+      {
+        "name": "提香《乌尔比诺的维纳斯》",
+        "location": "一层 · 提香厅",
+        "why": "直接影响了马奈的《奥林匹亚》，与奥赛的藏品互为呼应。"
+      },
+      {
+        "name": "瓦萨里走廊入口",
+        "location": "一层尽头",
+        "why": "连接旧宫与皮蒂宫的空中通道，需单独预约参观。"
+      }
+    ],
+    "collections": "按时间顺序单向布展：二层从中世纪到文艺复兴盛期，一层为 16 世纪以后的威尼斯画派与外国绘画。",
+    "tips": [
+      "顶层咖啡厅露台可俯瞰旧宫与老桥，是免费的观景台。",
+      "馆内动线很长，二层看完不要急着出馆，一层还有半场。",
+      "与学院美术馆（大卫像）安排在同一天会很累，建议分两个半天。"
+    ]
+  }
+}

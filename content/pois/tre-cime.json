@@ -1,0 +1,27 @@
+{
+  "id": "poi-tre-cime",
+  "type": "viewpoint",
+  "name": "三峰山",
+  "localName": "Tre Cime di Lavaredo",
+  "city": "city-dolomites",
+  "country": "it",
+  "location": { "lat": 46.6156, "lng": 12.3025 },
+  "tags": ["山峰", "徒步", "世界遗产"],
+  "popularity": 88,
+  "officialUrl": "https://www.trecime.info/",
+  "visit": { "durationMinutes": [180, 300], "durationNote": "含缆车+环线徒步半天", "bestTime": "清晨光打在峰壁、游客未到" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [{ "from": "06-01", "to": "10-15", "note": "夏季车限行、摆渡运营；冬季为滑雪区" }] },
+  "booking": { "required": false, "leadDays": 0 },
+  "facilities": { "toilet": "Rifugio Auronzo", "water": "山屋补给" },
+  "volatile": {
+    "price": { "value": "Auronzo 摆渡车/缆车往返约 20-30 欧；夏季私家车禁入，停 Misurina 换乘", "source": "https://www.trecime.info/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "摆渡车约 07:30-18:00（依季节）", "source": "https://www.trecime.info/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "三峰环线", "location": "Rifugio Auronzo → Lavaredo → Forcella Lavaredo", "why": "平易近人的 3-4 小时环线，正面看三座标志性峰壁。" },
+      { "name": "观景台（Drei Zinnen Blick）", "location": "Forcella 垭口", "why": "经典明信片角度，清晨侧光最佳。" }
+    ],
+    "tips": ["夏季车辆限行，早到 Misurina 占位", "穿徒步鞋，环线有碎石", "带风衣与饮水，山顶风大", "冬季改滑雪/雪鞋"]
+  }
+}

@@ -1,0 +1,515 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  background: var(--bg-sub);
+}
+
+/* 顶部：行程标题 / 日期 / 成员 / 体检摘要 ------------------------------- */
+
+.head {
+  flex: none;
+  padding: 10px 16px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.headRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.titleInput {
+  flex: 1;
+  min-width: 0;
+  padding: 2px 4px;
+  margin-left: -4px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  font-size: 15px;
+  font-weight: 600;
+}
+.titleInput:hover {
+  border-color: var(--line);
+}
+.titleInput:focus {
+  border-color: var(--brand);
+  outline: none;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.dateInput {
+  padding: 2px 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text-2);
+  font-size: 12px;
+  font-family: var(--font-num);
+}
+
+.members {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+}
+
+.member {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-size: 11px;
+}
+.memberGhost {
+  border-style: dashed;
+}
+
+/* 体检 ----------------------------------------------------------------- */
+
+.sanityBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  font-size: 12px;
+}
+.sanityBtn:hover {
+  background: var(--bg-hover);
+}
+.badgeErr,
+.badgeWarn,
+.badgeOk {
+  font-family: var(--font-num);
+  font-weight: 600;
+}
+.badgeErr {
+  color: var(--warn);
+}
+.badgeWarn {
+  color: var(--st-candidate);
+}
+.badgeOk {
+  color: var(--ok);
+}
+
+.issues {
+  margin: 12px 16px 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.issue {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  line-height: 1.5;
+}
+.issue:last-child {
+  border-bottom: none;
+}
+.issueError {
+  background: var(--warn-soft);
+}
+.issueIcon {
+  flex: none;
+  font-size: 12px;
+}
+.issueFix {
+  flex: none;
+  align-self: flex-start;
+}
+
+/* 天卡片 --------------------------------------------------------------- */
+
+.scroll {
+  flex: 1;
+  padding: 12px 16px 40px;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+/* 地图模式容器：撑满中栏，给 Leaflet 画布定位基准 */
+.mapArea {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+/* 时间线 / 地图 分段切换 */
+.seg {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  overflow: hidden;
+  flex: none;
+}
+.segBtn {
+  padding: 3px 12px;
+  border: none;
+  background: var(--bg);
+  color: var(--text-3);
+  font-size: 12px;
+}
+.segBtn:hover {
+  color: var(--text-1);
+}
+.segOn {
+  background: var(--brand);
+  color: var(--on-brand);
+}
+.segOn:hover {
+  color: var(--on-brand);
+}
+.scroll::-webkit-scrollbar {
+  width: 9px;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.day {
+  margin-top: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.day:first-child {
+  margin-top: 0;
+}
+.dayActive {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-soft);
+}
+.dayOver {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+
+.dayHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
+}
+
+.dayIdx {
+  flex: none;
+  min-width: 26px;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  color: var(--text-2);
+  font-family: var(--font-num);
+  font-size: 11px;
+  text-align: center;
+}
+
+.dayDate {
+  font-weight: 600;
+}
+.dayWeek {
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.citySelect {
+  padding: 2px 4px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-2);
+  font-size: 12px;
+}
+.citySelect:hover {
+  border-color: var(--line);
+}
+
+.dayStat {
+  margin-left: auto;
+  color: var(--text-3);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.dayWarn {
+  color: var(--warn);
+}
+
+.items {
+  padding: 4px;
+  min-height: 44px;
+}
+
+.dropHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin: 2px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+/* 条目 ----------------------------------------------------------------- */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: var(--radius);
+  background: transparent;
+  transition: background 0.1s;
+}
+.item:hover {
+  background: var(--bg-hover);
+}
+.itemDragging {
+  opacity: 0.35;
+}
+.itemSelected {
+  background: var(--brand-soft);
+}
+.itemDropped .itemName {
+  color: var(--text-3);
+  text-decoration: line-through;
+}
+
+.handle {
+  flex: none;
+  width: 14px;
+  color: var(--line-strong);
+  cursor: grab;
+  user-select: none;
+  text-align: center;
+}
+.handle:active {
+  cursor: grabbing;
+}
+
+.itemMain {
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.itemName {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.itemSub {
+  color: var(--text-3);
+  font-size: 11px;
+}
+
+.closedFlag {
+  color: var(--warn);
+  font-size: 11px;
+}
+
+/* 条目种类区分：交通带左侧高亮条，备注用斜体弱化 */
+.itemKind {
+  flex: none;
+  width: 18px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1;
+}
+.itemCustom {
+  background: var(--surface-2);
+}
+.itemTransport {
+  border-left: 3px solid var(--brand);
+  padding-left: 5px;
+}
+.itemNote {
+  border-left: 3px solid var(--line-strong);
+  padding-left: 5px;
+}
+.itemNote .itemName {
+  font-style: italic;
+  color: var(--text-2);
+}
+
+/* 天卡片 / 候选池里的快捷添加 */
+.addBtns {
+  display: inline-flex;
+  gap: 4px;
+}
+.addBtn {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  font-size: 12px;
+  line-height: 1;
+}
+.addBtn:hover {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+
+.statusDot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.statusSelect {
+  flex: none;
+  padding: 1px 2px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-2);
+  font-size: 11px;
+}
+.statusSelect:hover {
+  border-color: var(--line);
+}
+
+.votes {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: none;
+}
+.voteBtn {
+  padding: 0 4px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-3);
+  font-size: 12px;
+  line-height: 18px;
+}
+.voteBtn:hover {
+  background: var(--surface-2);
+  color: var(--text-1);
+}
+.voteOn {
+  color: var(--brand);
+  font-weight: 600;
+}
+.voteNum {
+  min-width: 12px;
+  font-family: var(--font-num);
+  font-size: 11px;
+  text-align: center;
+}
+
+.del {
+  flex: none;
+  padding: 0 4px;
+  border: none;
+  background: transparent;
+  color: var(--text-3);
+  visibility: hidden;
+}
+.item:hover .del {
+  visibility: visible;
+}
+.del:hover {
+  color: var(--warn);
+}
+
+/* 候选池与添加 --------------------------------------------------------- */
+
+.pool {
+  margin-top: 16px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: transparent;
+}
+.poolHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  color: var(--text-2);
+  font-size: 12px;
+}
+
+.addDay {
+  width: 100%;
+  margin-top: 12px;
+  padding: 8px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: transparent;
+  color: var(--text-3);
+  font-size: 12px;
+}
+.addDay:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--bg);
+}
+
+.emptyTrip {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-3);
+}
+
+.overlay {
+  padding: 6px 10px;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius);
+  background: var(--bg);
+  box-shadow: var(--shadow);
+  font-size: 13px;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-3);
+  font-size: 13px;
+}

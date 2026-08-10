@@ -1,0 +1,25 @@
+{
+  "id": "poi-san-marco",
+  "type": "landmark",
+  "name": "圣马可广场",
+  "localName": "Piazza San Marco",
+  "city": "city-venice",
+  "country": "it",
+  "location": { "lat": 45.4342, "lng": 12.3389 },
+  "tags": ["广场", "地标", "世界最美"],
+  "popularity": 92,
+  "visit": { "durationMinutes": [60, 120], "durationNote": "1-2 小时", "bestTime": "清晨人少、鸽子未散；避开涨潮 aqua alta" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "广场免费；钟楼与博物馆另售票", "source": "https://www.turismovenezia.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "全天开放；周边博物馆约 09:30-19:00", "source": "https://www.turismovenezia.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "圣马可钟楼（Campanile）", "location": "广场南侧", "why": "登顶俯瞰全城与潟湖，电梯可达。" },
+      { "name": "弗洛里安咖啡馆（Caffè Florian）", "location": "廊下", "why": "1720 年开业，欧洲最古老咖啡馆之一，一杯咖啡价格惊人但氛围无价。" },
+      { "name": "潮汐 aqua alta", "location": "广场地面", "why": "冬季涨潮时广场变水塘，留意官方预警并备鞋套。" }
+    ],
+    "tips": ["广场喂鸽已禁止，违者罚款", "廊下咖啡座有座位费，站着喝便宜", "清晨第一缕光最适合拍照"]
+  }
+}

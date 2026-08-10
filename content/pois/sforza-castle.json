@@ -1,0 +1,25 @@
+{
+  "id": "poi-sforza-castle",
+  "type": "museum",
+  "name": "斯福尔扎城堡",
+  "localName": "Castello Sforzesco",
+  "city": "city-milan",
+  "country": "it",
+  "location": { "lat": 45.4704, "lng": 9.1791 },
+  "tags": ["城堡", "博物馆", "文艺复兴"],
+  "popularity": 75,
+  "officialUrl": "https://www.milanocastello.it/",
+  "visit": { "durationMinutes": [90, 150], "durationNote": "1.5-2.5 小时", "bestTime": "上午逛庭院与博物馆" },
+  "openness": { "closedWeekdays": [1], "closedDates": ["2026-01-01", "2026-12-25", "2026-05-01"], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "城堡庭院与部分展厅免费；博物馆联票约 10 欧", "source": "https://www.milanocastello.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "周二至周日 09:00-17:30，周一闭馆", "source": "https://www.milanocastello.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "米开朗基罗未完成的《隆达尼尼圣殇》", "location": "城堡博物馆内", "why": "米氏去世前数日的绝笔，极具个人晚期风格。" },
+      { "name": "城堡庭院与火箭塔（Torre del Filarete）", "location": "入口中庭", "why": "文艺复兴要塞建筑，免费即可穿行。" }
+    ],
+    "tips": ["庭院免费，重点看付费博物馆", "背面是森皮奥内公园（Parco Sempione），可顺路散步", "与布雷拉、大教堂可串成半日线"]
+  }
+}

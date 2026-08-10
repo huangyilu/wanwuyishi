@@ -1,0 +1,32 @@
+{
+  "id": "city-dolomites",
+  "name": "多洛米蒂",
+  "localName": "Dolomiti",
+  "country": "it",
+  "location": { "lat": 46.47, "lng": 11.85 },
+  "timezone": "Europe/Rome",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "多洛米蒂景点分散，自驾最灵活；也可乘 SAD 公交与各大缆车（如 Cortina、Ortisei 缆车站）。冬季部分山路封闭需雪链。",
+      "tips": ["夏季三峰地区车辆限行，停在 Misurina 乘摆渡车", "山区加油站在小镇，油价比城市高"],
+      "source": "https://www.dolomiti.org/",
+      "verifiedAt": "2026-08-06"
+    },
+    {
+      "topic": "safety",
+      "summary": "山区天气多变，徒步需查天气预报、带防风衣与充足饮水；高海拔步道夏季也可能有残雪。",
+      "tips": ["出发前看 meteo 与缆车运营状态", "信号弱，离线下载地图"],
+      "source": "https://www.dolomiti.org/",
+      "verifiedAt": "2026-08-06"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Dolomiti Summer Card",
+      "scope": "部分缆车与公交",
+      "benefits": ["住参与酒店可享缆车折扣"],
+      "url": "https://www.dolomiti.org/"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "city-milan",
+  "name": "米兰",
+  "localName": "Milano",
+  "country": "it",
+  "location": { "lat": 45.4642, "lng": 9.19 },
+  "timezone": "Europe/Rome",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "米兰是意大利铁路枢纽，中央车站（Milano Centrale）连通罗马、威尼斯与瑞士；老城景点集中在 Duomo 周边，步行可达。地铁 M1/M3 经 Duomo。",
+      "tips": ["从马尔彭萨机场可乘 Malpensa Express 火车进城", "老城内 ZTL 限行，自驾慎入"],
+      "source": "https://www.turismo.milano.it/",
+      "verifiedAt": "2026-08-06"
+    },
+    {
+      "topic": "toilet",
+      "summary": "主要景点、地铁站与商场（如 Galleria、大教堂游客中心）设有公厕；咖啡馆消费可借用厕所。",
+      "tips": [],
+      "source": "https://www.turismo.milano.it/",
+      "verifiedAt": "2026-08-06"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "24h / 48h 城市通票",
+      "scope": "地铁、电车、公交",
+      "benefits": ["无限次搭乘 ATM 市内交通"],
+      "price": { "value": "24h 约 7 欧 / 48h 约 12.5 欧", "source": "https://www.atm.it/", "verifiedAt": "2026-08-06" },
+      "url": "https://www.atm.it/"
+    }
+  ]
+}

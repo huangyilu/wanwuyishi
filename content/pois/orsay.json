@@ -1,0 +1,95 @@
+{
+  "id": "poi-orsay",
+  "type": "museum",
+  "name": "奥赛博物馆",
+  "localName": "Musée d'Orsay",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.86, "lng": 2.3266 },
+  "tags": ["世界级", "印象派", "绘画"],
+  "popularity": 92,
+  "wikidataId": "Q23402",
+  "officialUrl": "https://www.musee-orsay.fr/",
+  "visit": {
+    "durationMinutes": [120, 180],
+    "durationNote": "2-3 小时",
+    "bestTime": "周四夜场（延长开放）人少；开馆首小时次之"
+  },
+  "openness": {
+    "closedWeekdays": [1],
+    "closedDates": ["2026-01-01", "2026-05-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 5,
+    "url": "https://www.musee-orsay.fr/en/visit/admission"
+  },
+  "facilities": {
+    "toilet": "馆内多处，免费",
+    "wifi": "免费",
+    "locker": "免费寄存",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "成人票 16 欧元；欧洲经济区 26 岁以下免费",
+      "source": "https://www.musee-orsay.fr/en/visit/admission",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "09:30-18:00，周一闭馆；周四延长至 21:45",
+      "source": "https://www.musee-orsay.fr/en/visit/admission",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "官网按时段预约，建议提前 5 天",
+      "source": "https://www.musee-orsay.fr/en/visit/admission",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "入口 A（面向塞纳河）为已购票通道，入口 C 为现场购票，走错要重排一次队。",
+    "routes": [
+      {
+        "name": "印象派主线 2 小时",
+        "durationMinutes": 120,
+        "stops": [
+          "0 层 · 中央雕塑通廊（先建立空间感）",
+          "0 层 · 马奈《草地上的午餐》《奥林匹亚》",
+          "5 层 · 印象派展厅（莫奈、雷诺阿、德加）",
+          "5 层 · 大钟观景窗（拍照点）",
+          "2 层 · 后印象派（梵高、高更、塞尚）"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "梵高《自画像》",
+        "location": "2 层 · 后印象派展厅",
+        "why": "馆藏梵高中最著名的一幅，笔触旋涡在原作前才看得出来。"
+      },
+      {
+        "name": "莫奈《鲁昂大教堂》系列",
+        "location": "5 层 · 印象派展厅",
+        "why": "同一题材不同光线的连作，必须并排看才成立。"
+      },
+      {
+        "name": "德加《舞蹈课》与小舞者雕塑",
+        "location": "5 层 · 德加专区",
+        "why": "绘画与蜡像并置，是理解德加的关键。"
+      },
+      {
+        "name": "大钟后的塞纳河视野",
+        "location": "5 层 · 钟面观景处",
+        "why": "火车站改建博物馆的原始钟面，全馆最好的取景框。"
+      }
+    ],
+    "collections": "1848-1914 年间的法国艺术：0 层为学院派与早期现实主义，2 层为后印象派与装饰艺术，5 层为印象派核心馆藏。",
+    "tips": [
+      "与卢浮宫同日安排会审美疲劳，建议分开两天。",
+      "5 层大钟处人最多，进馆先上 5 层可以避开团队。",
+      "馆内餐厅（原车站餐厅）本身是历史空间，值得看一眼。"
+    ]
+  }
+}

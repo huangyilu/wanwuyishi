@@ -1,0 +1,46 @@
+{
+  "id": "fr",
+  "name": "法国",
+  "localName": "France",
+  "currency": "EUR",
+  "languages": ["法语"],
+  "timezone": "Europe/Paris",
+  "plugTypes": ["C", "E"],
+  "emergencyNumbers": {
+    "通用紧急": "112",
+    "警察": "17",
+    "急救": "15"
+  },
+  "tipping": "餐费已含服务费，满意时留 5-10% 或凑整即可，非义务。",
+  "visa": {
+    "visaArea": "schengen",
+    "type": "申根短期旅游签证（C 类，90 天内停留不超过 90 天）",
+    "applyChannel": "法国驻华使领馆授权的法国签证申请中心（TLScontact）",
+    "materials": [
+      "有效期至少覆盖离境后 3 个月的护照",
+      "签证申请表与照片",
+      "覆盖全程的申根旅行医疗保险（保额不低于 3 万欧元）",
+      "往返机票预订单",
+      "全程住宿预订证明",
+      "行程单（日期 / 城市 / 交通 / 住宿）",
+      "在职证明与近 6 个月银行流水",
+      "户口本与身份证复印件"
+    ],
+    "fee": {
+      "value": "签证费 90 欧元 + 签证中心服务费（以官网公布为准）",
+      "source": "https://france-visas.gouv.fr/",
+      "verifiedAt": "2026-08-04"
+    },
+    "processingDays": {
+      "value": "使馆审理通常 15 个日历日，旺季可能延长至 45 天",
+      "source": "https://france-visas.gouv.fr/",
+      "verifiedAt": "2026-08-04"
+    },
+    "earliestApplyDays": 180,
+    "latestApplyDays": 21,
+    "notes": [
+      "申根签证向主要目的地国（停留最久的国家）递交；停留天数相同则向首个入境国递交。",
+      "本项目可从行程时间线自动统计各国停留晚数，见 domain/visa/destination-country.ts。"
+    ]
+  }
+}

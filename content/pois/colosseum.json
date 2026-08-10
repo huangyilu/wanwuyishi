@@ -1,0 +1,83 @@
+{
+  "id": "poi-colosseum",
+  "type": "landmark",
+  "name": "斗兽场",
+  "localName": "Colosseo",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.8902, "lng": 12.4922 },
+  "tags": ["世界级", "古罗马", "遗址"],
+  "popularity": 99,
+  "wikidataId": "Q10285",
+  "officialUrl": "https://colosseo.it/",
+  "visit": {
+    "durationMinutes": [90, 180],
+    "durationNote": "单斗兽场 1.5 小时；含古罗马广场与帕拉丁山需 3-4 小时",
+    "bestTime": "开门首场或闭门前 2 小时，正午暴晒无遮挡"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": ["2026-01-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 14,
+    "url": "https://ecm.coopculture.it/"
+  },
+  "facilities": {
+    "toilet": "入口附近与二层",
+    "water": "门口有 nasoni 直饮水",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "标准联票 18 欧元（含古罗马广场与帕拉丁山，24 小时内一次入场）；地下与竞技场层需加价专项票",
+      "source": "https://colosseo.it/en/visit/tickets/",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "09:00 开放，闭馆时间随季节变化（夏季约 19:15，冬季约 16:30）",
+      "source": "https://colosseo.it/en/visit/opening-hours/",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "官方唯一售票平台为 CoopCulture，实名制且票量紧张，建议提前 2 周",
+      "source": "https://ecm.coopculture.it/",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "已预约票走 Sperone Valadier 入口，现场排队在 Arco di Costantino 一侧；票为实名制，需带护照核验。",
+    "routes": [
+      {
+        "name": "古罗马半天线",
+        "durationMinutes": 210,
+        "stops": [
+          "斗兽场二层环廊",
+          "君士坦丁凯旋门",
+          "古罗马广场（从 Via Sacra 进入）",
+          "帕拉丁山观景台俯瞰广场全景"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "地下层（Hypogeum）",
+        "location": "竞技场地面之下",
+        "why": "角斗士与猛兽的升降通道，需要专项票，是全场最值得加钱的部分。"
+      },
+      {
+        "name": "二层环廊展陈",
+        "location": "二层",
+        "why": "有复原模型与出土文物，能把眼前的废墟还原成建筑。"
+      }
+    ],
+    "collections": "",
+    "tips": [
+      "联票 24 小时有效但古罗马广场只能进一次，不要分两次刷。",
+      "门口穿角斗士服装合影者会索要高额小费，不要合影。",
+      "夏季无遮荫，帽子与水必备，门口的 nasoni 可免费接水。"
+    ]
+  }
+}

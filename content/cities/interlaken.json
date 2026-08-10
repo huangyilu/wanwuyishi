@@ -1,0 +1,32 @@
+{
+  "id": "city-interlaken",
+  "name": "因特拉肯",
+  "localName": "Interlaken",
+  "country": "ch",
+  "location": { "lat": 46.6863, "lng": 7.8632 },
+  "timezone": "Europe/Zurich",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "因特拉肯位于布里恩茨湖与图恩湖之间，是少女峰地区门户；火车站 Interlaken Ost/West 连通齿轮火车（少女峰、哈德昆）与两湖游船。",
+      "tips": ["买 Jungfrau Travel Pass 省缆车火车钱", "镇内步行即可，景点靠火车/船"],
+      "source": "https://www.interlaken.ch/",
+      "verifiedAt": "2026-08-06"
+    },
+    {
+      "topic": "payment",
+      "summary": "瑞士物价高，建议买 Swiss Travel Pass；多数场所收卡，小摊收现金。",
+      "tips": ["带插座类型 C/J 转换头", "自来水可直接饮用，自带水瓶"],
+      "source": "https://www.interlaken.ch/",
+      "verifiedAt": "2026-08-06"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Jungfrau Travel Pass",
+      "scope": "少女峰地区火车、缆车、船",
+      "benefits": ["连续多日无限次区域交通"],
+      "url": "https://www.jungfrau.ch/"
+    }
+  ]
+}

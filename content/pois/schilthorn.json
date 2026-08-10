@@ -1,0 +1,27 @@
+{
+  "id": "poi-schilthorn",
+  "type": "viewpoint",
+  "name": "雪朗峰",
+  "localName": "Schilthorn - Piz Gloria",
+  "city": "city-interlaken",
+  "country": "ch",
+  "location": { "lat": 46.5598, "lng": 7.839 },
+  "tags": ["雪山", "360°", "007"],
+  "popularity": 82,
+  "officialUrl": "https://www.schilthorn.ch/",
+  "visit": { "durationMinutes": [240, 360], "durationNote": "往返约半日", "bestTime": "晴日能见度好" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [{ "from": "01-01", "to": "12-31", "note": "全年运营，大风可能停运" }] },
+  "booking": { "required": false, "leadDays": 0 },
+  "facilities": { "toilet": "旋转餐厅", "wifi": "免费" },
+  "volatile": {
+    "price": { "value": "Stechelberg→Mürren→Piz Gloria 缆车往返约 72 瑞郎", "source": "https://www.schilthorn.ch/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "缆车约 08:00-17:00（依季节）", "source": "https://www.schilthorn.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "Piz Gloria 旋转餐厅", "location": "2970m 山顶", "why": "360° 旋转餐厅，007《女王密令》取景地，环视伯尔尼高地群峰。" },
+      { "name": "007 步道（Thrill Walk）", "location": "Birg 站", "why": "悬空栈道紧贴崖壁，惊险观景。" }
+    ],
+    "tips": ["从 Stechelberg 乘缆车，经 Mürren 山村", "山顶风大带外套", "晴日能见度才好，去前查天"]
+  }
+}

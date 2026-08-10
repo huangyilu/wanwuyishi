@@ -1,0 +1,23 @@
+{
+  "id": "poi-bridge-of-sighs",
+  "type": "landmark",
+  "name": "叹息桥",
+  "localName": "Ponte dei Sospiri",
+  "city": "city-venice",
+  "country": "it",
+  "location": { "lat": 45.4336, "lng": 12.3416 },
+  "tags": ["桥", "地标", "爱情传说"],
+  "popularity": 80,
+  "visit": { "durationMinutes": [10, 20], "durationNote": "10-20 分钟", "bestTime": "白天看石桥与运河" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": { "value": "外部观赏免费；内部仅随总督宫联票进入", "source": "https://palazzoducale.visitmuve.it/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "全天可从外 viewing；内部随总督宫开放", "source": "https://palazzoducale.visitmuve.it/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "封闭石桥", "location": "总督宫与监狱之间", "why": "巴洛克白桥，传说囚犯过桥最后一瞥自由而叹息；恋人日落坐船经过拥吻则永恒相恋。" }
+    ],
+    "tips": ["最佳视角在总督宫对岸的码头或乘船经过", "别与圣马可广场的桥混淆", "傍晚光线最柔"]
+  }
+}
