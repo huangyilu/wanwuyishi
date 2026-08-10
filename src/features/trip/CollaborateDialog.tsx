@@ -13,7 +13,11 @@ import { useTripRepo } from '../../data';
 import s from './collaborate.module.css';
 
 function linkFor(token: string): string {
-  return `${window.location.origin}/#/trips?token=${token}`;
+  // 自动带上部署子路径（GitHub Pages 项目页为 /wanwuyishi/，本地为 /），
+  // 否则线上生成的链接会落在根域名导致 404。
+  const { origin, pathname } = window.location;
+  const base = pathname.endsWith('/') ? pathname : pathname + '/';
+  return `${origin}${base}#/trips?token=${token}`;
 }
 
 export function CollaborateDialog({ tripId, onClose }: { tripId: string; onClose: () => void }) {
