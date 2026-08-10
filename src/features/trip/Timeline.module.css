@@ -342,6 +342,24 @@
   color: var(--text-3);
   font-size: 11px;
 }
+.itemThumbs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+.itemThumb {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--line);
+  display: block;
+}
+.itemThumbMore {
+  font-size: 11px;
+  color: var(--text-3);
+}
 
 .closedFlag {
   color: var(--warn);
@@ -415,7 +433,7 @@
 .votes {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   flex: none;
 }
 .voteBtn {

@@ -99,7 +99,13 @@ export interface PackingItem {
   category: string;
   text: string;
   done: boolean;
-  /** 负责人（成员 id），null = 未指定（谁有空谁带） */
+  /**
+   * 归属成员 id：这条行李是谁的。
+   * - 有值：个人行李，只有该成员自己勾选 / 看到（在自己的视角里）
+   * - null：公共共享项，只需准备一份（如转换插头），由 assigneeId 指定谁带
+   */
+  ownerId: string | null;
+  /** 负责人（仅公共项有意义）：谁带这件公共物品；null = 未指定 */
   assigneeId: string | null;
   note: string | null;
 }
@@ -169,6 +175,12 @@ export interface TripItem {
   slotEnd: string | null;
   status: ItemStatus;
   note: string | null;
+  /**
+   * 图片附件的公开 URL 数组（仅云端档使用）。
+   * 文件存 Supabase Storage 的 trip-attachments bucket，这里只存可直链的 URL。
+   * 本地档（localStorage）不开放上传，但保留该字段以兼容从云端导出的快照。
+   */
+  images?: string[] | null;
   updatedAt: string;
 }
 

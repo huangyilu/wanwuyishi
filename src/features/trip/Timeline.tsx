@@ -16,6 +16,7 @@ import type {
   TripBundle,
   TripDay,
   TripItem,
+  TripMember,
 } from '../../data/types';
 import { addDays, dateRange, formatCn, todayStr, weekdayLabel } from '../../domain/date';
 import { isClosedOn } from '../../domain/trip/closure-check';
@@ -23,6 +24,8 @@ import { byRank } from '../../domain/trip/rank';
 import type { SanityIssue } from '../../domain/trip/sanity-check';
 import type { Poi } from '../../domain/world/schema';
 import { useWorkbench } from '../../store/workbench';
+import { AvatarStack, type VoteTone } from './MemberAvatar';
+import { useMyMember } from './useMyMember';
 import type { useTripMutations } from './queries';
 import s from './Timeline.module.css';
 
@@ -90,11 +93,19 @@ function ItemRow({
   });
   const { inspector, inspect } = useWorkbench();
 
-  const me = bundle.members.find((m) => m.role === 'owner') ?? bundle.members[0];
+  const me = useMyMember(bundle.members);
   const votes = bundle.votes.filter((v) => v.itemId === item.id);
   const score = votes.reduce((n, v) => n + v.value, 0);
   const myVote = me ? votes.find((v) => v.memberId === me.id)?.value ?? 0 : 0;
   const ticket = bundle.tickets.find((t) => t.itemId === item.id);
+
+  // 投票实名：把票映射回成员，想去的排前面，圈圈按人稳定配色
+  const voters = votes
+    .map((v) => ({ member: bundle.members.find((m) => m.id === v.memberId), value: v.value }))
+    .filter((x): x is { member: TripMember; value: 1 | -1 } => Boolean(x.member))
+    .sort((a, b) => b.value - a.value);
+  const voteToneOf = (m: TripMember): VoteTone =>
+    (voters.find((x) => x.member.id === m.id)?.value ?? 0) === 1 ? 'up' : 'down';
 
   const kind = item.kind ?? 'poi';
   const isCustom = kind !== 'poi';
@@ -163,6 +174,12 @@ function ItemRow({
           {closed.closed && <span className={s.closedFlag}>· 闭馆</span>}
         </div>
         {sub.length > 0 && <div className={s.itemSub}>{sub.join(' · ')}</div>}
+        {(item.images?.length ?? 0) > 0 && (
+          <div className={s.itemThumbs}>
+            <img className={s.itemThumb} src={item.images![0]} alt="附件" />
+            {item.images!.length > 1 && <span className={s.itemThumbMore}>+{item.images!.length - 1}</span>}
+          </div>
+        )}
       </div>
 
       {!isCustom && (
@@ -170,15 +187,31 @@ function ItemRow({
           <button
             className={`${s.voteBtn} ${myVote === 1 ? s.voteOn : ''}`}
             onClick={() => castVote(1)}
-            title="想去"
+            title={me ? `${me.displayName}：想去` : '想去'}
           >
             ▲
           </button>
-          <span className={`${s.voteNum} num`}>{score !== 0 ? score : ''}</span>
+          {voters.length > 0 && (
+            <AvatarStack
+              members={voters.map((v) => v.member)}
+              size={18}
+              max={4}
+              meId={me?.id ?? null}
+              toneOf={voteToneOf}
+              labelOf={(m) =>
+                `${m.displayName}${m.id === me?.id ? '（我）' : ''} · ${
+                  voteToneOf(m) === 'up' ? '想去' : '不太想'
+                }`
+              }
+            />
+          )}
+          <span className={`${s.voteNum} num`} title={`净分 ${score}`}>
+            {score !== 0 ? score : ''}
+          </span>
           <button
             className={`${s.voteBtn} ${myVote === -1 ? s.voteOn : ''}`}
             onClick={() => castVote(-1)}
-            title="不太想"
+            title={me ? `${me.displayName}：不太想` : '不太想'}
           >
             ▼
           </button>

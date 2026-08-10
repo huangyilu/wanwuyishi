@@ -44,7 +44,11 @@ function mapTrip(r: any): Trip {
     sourceTripId: r.source_trip_id ?? null,
     sourceLabel: r.source_label ?? null,
     status: r.status,
-    packing: (r.packing as PackingItem[]) ?? [],
+    packing: ((r.packing as PackingItem[]) ?? []).map((it) => ({
+      ...it,
+      ownerId: it.ownerId ?? null,
+      assigneeId: it.assigneeId ?? null,
+    })),
     updatedAt: r.updated_at,
   };
 }
@@ -86,6 +90,7 @@ function mapItem(r: any): TripItem {
     slotEnd: r.slot_end ? String(r.slot_end).slice(0, 5) : null,
     status: r.status,
     note: r.note ?? null,
+    images: (r.images as string[] | null) ?? [],
     updatedAt: r.updated_at,
   };
 }
@@ -291,6 +296,7 @@ export class SupabaseTripRepository implements TripRepository {
         transport_mode: kind === 'transport' ? (input.transportMode ?? 'train') : null,
         from_city_id: kind === 'transport' ? (input.fromCityId ?? null) : null,
         to_city_id: kind === 'transport' ? (input.toCityId ?? null) : null,
+        images: [],
         rank,
         status: input.status ?? 'candidate',
       })
@@ -310,6 +316,7 @@ export class SupabaseTripRepository implements TripRepository {
     if (patch.slotEnd !== undefined) row.slot_end = patch.slotEnd;
     if (patch.status !== undefined) row.status = patch.status;
     if (patch.note !== undefined) row.note = patch.note;
+    if (patch.images !== undefined) row.images = patch.images;
     if (patch.kind !== undefined) row.kind = patch.kind;
     if (patch.transportMode !== undefined) row.transport_mode = patch.transportMode ?? null;
     if (patch.fromCityId !== undefined) row.from_city_id = patch.fromCityId ?? null;

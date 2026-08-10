@@ -101,8 +101,16 @@ export class LocalTripRepository implements TripRepository {
     // 旧账单无 splitMode 时默认 'aa'（共同分摊），与历史行为一致
     return {
       ...bundle,
-      items: bundle.items.map((it) => ({ ...it, kind: it.kind ?? 'poi' })) as TripItem[],
+      items: bundle.items.map((it) => ({ ...it, kind: it.kind ?? 'poi', images: it.images ?? [] })) as TripItem[],
       expenses: bundle.expenses.map((e) => ({ ...e, splitMode: e.splitMode ?? 'aa' })) as typeof bundle.expenses,
+      trip: {
+        ...bundle.trip,
+        packing: (bundle.trip.packing ?? []).map((it) => ({
+          ...it,
+          ownerId: it.ownerId ?? null,
+          assigneeId: it.assigneeId ?? null,
+        })),
+      },
     };
   }
 
@@ -213,6 +221,7 @@ export class LocalTripRepository implements TripRepository {
         slotEnd: null,
         status: input.status ?? 'candidate',
         note: null,
+        images: [],
         updatedAt: now(),
       };
       b.items.push(item);

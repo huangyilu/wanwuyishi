@@ -7,8 +7,11 @@
  *
  * 所有改动走 mut.updateItem 乐观更新，松手即生效。
  */
+import { useState, type ChangeEvent } from 'react';
+import { useTripRepo } from '../../data';
 import type { CitySummary, ItemStatus, TransportMode, TripBundle, TripItem } from '../../data/types';
 import type { useTripMutations } from './queries';
+import { deleteAttachment, uploadAttachment } from './uploadAttachment';
 import s from './ItemEditor.module.css';
 
 type Mutations = ReturnType<typeof useTripMutations>;
@@ -43,6 +46,7 @@ export function ItemEditor({
   cities: CitySummary[];
 }) {
   const kind = item.kind ?? 'poi';
+  const isCloud = useTripRepo().kind === 'supabase';
 
   function patch(p: Partial<TripItem>) {
     mut.updateItem.mutate({ id: item.id, patch: p });
@@ -233,6 +237,82 @@ export function ItemEditor({
           </select>
         </div>
       )}
+
+      <ImageSection isCloud={isCloud} tripId={bundle.trip.id} item={item} patch={patch} />
+    </div>
+  );
+}
+
+/* ------------------------------ 图片附件 ------------------------------ */
+
+function ImageSection({
+  isCloud,
+  tripId,
+  item,
+  patch,
+}: {
+  isCloud: boolean;
+  tripId: string;
+  item: TripItem;
+  patch: (p: Partial<TripItem>) => void;
+}) {
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const images = item.images ?? [];
+
+  async function onPick(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file) return;
+    setBusy(true);
+    setErr(null);
+    try {
+      const url = await uploadAttachment(tripId, item.id, file);
+      patch({ images: [...images, url] });
+    } catch (ex) {
+      setErr(ex instanceof Error ? ex.message : '上传失败');
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function onRemove(url: string) {
+    setErr(null);
+    try {
+      await deleteAttachment(url);
+      patch({ images: images.filter((u) => u !== url) });
+    } catch (ex) {
+      setErr(ex instanceof Error ? ex.message : '删除失败');
+    }
+  }
+
+  if (!isCloud) {
+    return (
+      <div className={s.field}>
+        <label className={s.label}>图片</label>
+        <div className={s.cloudOnly}>登录云端后可上传图片（本地档容量太小，不支持存图）</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className={s.field}>
+      <label className={s.label}>图片{images.length > 0 ? `（${images.length}）` : ''}</label>
+      <div className={s.thumbGrid}>
+        {images.map((u) => (
+          <div key={u} className={s.thumb}>
+            <img src={u} alt="附件" />
+            <button className={s.thumbDel} onClick={() => onRemove(u)} title="删除">
+              ×
+            </button>
+          </div>
+        ))}
+        <label className={`${s.uploadBtn} ${busy ? s.uploadBusy : ''}`}>
+          {busy ? '上传中…' : '+ 上传'}
+          <input type="file" accept="image/*" hidden onChange={onPick} disabled={busy} />
+        </label>
+      </div>
+      {err && <div className={s.cloudErr}>{err}</div>}
     </div>
   );
 }
