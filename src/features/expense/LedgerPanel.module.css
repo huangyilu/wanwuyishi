@@ -330,10 +330,17 @@
 .splitToggleWrap {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: nowrap;
 }
-.splitToggleWrap > label {
+.splitLabelGroup {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+}
+.splitLabelGroup > label {
   margin-bottom: 0;
 }
 .seg {
@@ -363,6 +370,7 @@
 .segHint {
   font-size: 12px;
   color: var(--text-3);
+  white-space: nowrap;
 }
 
 /* 明细里的个人 / AA 标签（与类别 .tag 一致：胶囊圆角） */

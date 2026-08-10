@@ -256,7 +256,12 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
 
                 <div className={s.formRow}>
                   <div className={s.splitToggleWrap}>
-                    <label className={s.label}>归属</label>
+                    <div className={s.splitLabelGroup}>
+                      <label className={s.label}>归属</label>
+                      <span className={s.segHint}>
+                        {splitMode === 'personal' ? '这笔由付款人自己承担，不计入共同分摊' : '这笔由下方参与人共同分摊'}
+                      </span>
+                    </div>
                     <div className={s.seg}>
                       <button
                         type="button"
@@ -273,9 +278,6 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
                         个人
                       </button>
                     </div>
-                    <span className={s.segHint}>
-                      {splitMode === 'personal' ? '这笔由付款人自己承担，不计入共同分摊' : '这笔由下方参与人共同分摊'}
-                    </span>
                   </div>
                 </div>
 
@@ -298,9 +300,9 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
                       value={fxRate}
                       onChange={(e) => setFxRate(e.target.value.replace(/[^\d.]/g, ''))}
                     />
-                    <div className={s.hint}>汇率仅为参考，以实际为准；金额按整数分四舍五入。</div>
                   </div>
                 </div>
+                <div className={s.hint}>汇率仅为参考，以实际为准；金额按整数分四舍五入。</div>
 
                 <div>
                   <label className={s.label}>付款人</label>
