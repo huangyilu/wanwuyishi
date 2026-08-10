@@ -28,6 +28,7 @@ import { WorldNav } from '../world/WorldNav';
 import { usePoiMap, useWorldIndex } from '../world/queries';
 import { useTripBundle, useTripMutations } from './queries';
 import { ItemEditor } from './ItemEditor';
+import { VotePanel } from './VotePanel';
 import { Timeline } from './Timeline';
 import s from './Workbench.module.css';
 
@@ -166,6 +167,9 @@ export function Workbench({ tripId }: { tripId: string }) {
 
   const inspectedItem =
     inspector.type === 'item' ? bundle.items.find((i) => i.id === inspector.id) : undefined;
+  // 看导览卡时，若这个点已经在行程里，顺带把它的实名投票摊开在卡片上方
+  const inspectedPoiItem =
+    inspector.type === 'poi' ? bundle.items.find((i) => i.poiId === inspector.id) : undefined;
 
   return (
     <DndContext
@@ -201,6 +205,10 @@ export function Workbench({ tripId }: { tripId: string }) {
           </div>
 
           <div className={`${s.rightBody} scroll-y`}>
+            {inspectedPoiItem && (
+              <VotePanel item={inspectedPoiItem} bundle={bundle} mut={mut} />
+            )}
+
             {inspector.type === 'poi' && (
               <PoiGuideCard
                 poiId={inspector.id}
@@ -210,7 +218,7 @@ export function Workbench({ tripId }: { tripId: string }) {
             )}
 
             {inspectedItem && (
-              <ItemEditor item={inspectedItem} bundle={bundle} mut={mut} cities={index?.cities ?? []} />
+              <ItemEditor key={inspectedItem.id} item={inspectedItem} bundle={bundle} mut={mut} cities={index?.cities ?? []} />
             )}
 
             {inspector.type === 'none' && (
