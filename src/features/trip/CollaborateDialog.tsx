@@ -10,6 +10,7 @@
 import { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useTripRepo } from '../../data';
+import { useTripBundle } from './queries';
 import s from './collaborate.module.css';
 
 function linkFor(token: string): string {
@@ -35,6 +36,9 @@ export function CollaborateDialog({ tripId, onClose }: { tripId: string; onClose
     queryFn: () => repo.listInvites(tripId),
   });
 
+  const bundle = useTripBundle(tripId);
+  const members = bundle.data?.members ?? [];
+
   async function generate() {
     setBusy(true);
     setErr(null);
@@ -57,6 +61,23 @@ export function CollaborateDialog({ tripId, onClose }: { tripId: string; onClose
       await qc.invalidateQueries({ queryKey: ['invites', tripId] });
     } catch (e) {
       setErr((e as Error).message || '撤销失败');
+    }
+  }
+
+  async function removeMember(id: string) {
+    setErr(null);
+    try {
+      await repo.removeMember(id);
+      // 成员列表来自 trip bundle，失效后账本/时间线/打包一并刷新
+      await qc.invalidateQueries({ queryKey: ['trip', 'bundle', tripId] });
+    } catch (e) {
+      const msg = (e as Error).message || '移除失败';
+      // 若该成员是某笔账单的付款人，外键 RESTRICT 会拦截删除
+      if (/foreign key|expenses/i.test(msg)) {
+        setErr('该成员是某笔账单的付款人，无法移除，请先到账本把那笔账单的付款人改掉。');
+      } else {
+        setErr(msg);
+      }
     }
   }
 
@@ -125,6 +146,27 @@ export function CollaborateDialog({ tripId, onClose }: { tripId: string; onClose
               {busy ? '生成中…' : '生成邀请链接'}
             </button>
           </>
+        )}
+
+        {members.length > 0 && (
+          <div className={s.list}>
+            <div className={s.listTitle}>行程成员</div>
+            {members.map((m) => (
+              <div key={m.id} className={s.inv}>
+                <div className={s.invMain}>
+                  <div className={s.invToken}>{m.displayName}</div>
+                  <div className={s.invMeta}>
+                    {m.role === 'owner' ? '创建者' : m.userId ? '成员' : '已注销账号'}
+                  </div>
+                </div>
+                {m.role !== 'owner' && (
+                  <button className={`btn btn-sm btn-ghost ${s.btnSm}`} onClick={() => void removeMember(m.id)}>
+                    移除
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
         )}
 
         {err && <div className={s.err}>{err}</div>}
