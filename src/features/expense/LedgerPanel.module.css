@@ -8,6 +8,7 @@
   grid-template-columns: 380px minmax(0, 1fr) 320px;
   gap: 20px;
   align-items: start;
+  padding-top: 20px;
 }
 .colForm {
   min-width: 0;
