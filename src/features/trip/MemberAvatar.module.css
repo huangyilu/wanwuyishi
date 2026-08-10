@@ -1,0 +1,59 @@
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  box-shadow: 0 0 0 1.5px var(--bg);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0;
+  user-select: none;
+  cursor: default;
+  transition: transform 0.12s ease;
+}
+
+/* 想去：苔绿环 */
+.up {
+  border-color: var(--ok);
+}
+
+/* 不太想：暖红环 + 压低存在感 */
+.down {
+  border-color: var(--warn);
+  filter: saturate(0.55);
+  opacity: 0.78;
+}
+
+/* 我自己：外描边换品牌青，一眼分清哪个是我 */
+.me {
+  box-shadow: 0 0 0 1.5px var(--bg), 0 0 0 3px var(--brand-soft);
+}
+
+/* 幽灵成员（只有名字没有账号）：虚线边提示未绑定账号 */
+.ghost {
+  border-style: dashed;
+}
+
+.more {
+  background: var(--surface-2);
+  color: var(--text-2);
+  border-color: var(--line-strong);
+  font-family: var(--font-num);
+}
+
+.stack {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+
+/* 轻微重叠，人多也不撑爆行宽；hover 抬起看清 */
+.stack > .avatar + .avatar {
+  margin-left: -6px;
+}
+.stack > .avatar:hover {
+  transform: translateY(-1px);
+  z-index: 1;
+}

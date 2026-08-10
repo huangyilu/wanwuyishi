@@ -7,7 +7,7 @@ const base = {
   currencies: ['EUR', 'CHF'],
   poiTypes: ['museum'],
   tags: ['art'],
-  memberCount: 2,
+  ownerIds: ['m1', 'm2'],
 };
 
 describe('suggestPacking', () => {
@@ -36,9 +36,28 @@ describe('suggestPacking', () => {
     expect(out).toContain('水壶');
   });
 
-  it('多人行程给出分摊提示，单人则不给', () => {
-    expect(suggestPacking(base).some((o) => o.text.includes('共用物品分摊'))).toBe(true);
-    expect(suggestPacking({ ...base, memberCount: 1 }).some((o) => o.text.includes('共用物品分摊'))).toBe(false);
+  it('个人行李按成员数复制成每人一份', () => {
+    const passports = suggestPacking(base).filter((o) => o.text === '护照 / 身份证');
+    expect(passports.length).toBe(2);
+    expect(passports.every((p) => p.ownerId === 'm1' || p.ownerId === 'm2')).toBe(true);
+  });
+
+  it('公共项只生成一份且 ownerId 为 null', () => {
+    const out = suggestPacking(base);
+    const plug = out.filter((o) => o.text.includes('转换插头'));
+    const share = out.filter((o) => o.text.includes('共用物品分摊'));
+    expect(plug.length).toBe(1);
+    expect(plug[0]!.ownerId).toBeNull();
+    expect(share.length).toBe(1);
+    expect(share[0]!.ownerId).toBeNull();
+  });
+
+  it('单人（ownerIds 空）个人项归 null 且不复制，无分摊项', () => {
+    const out = suggestPacking({ ...base, ownerIds: [] });
+    const passports = out.filter((o) => o.text === '护照 / 身份证');
+    expect(passports.length).toBe(1);
+    expect(passports[0]!.ownerId).toBeNull();
+    expect(out.some((o) => o.text.includes('共用物品分摊'))).toBe(false);
   });
 
   it('天数最少按 1 计', () => {

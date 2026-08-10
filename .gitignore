@@ -14,3 +14,6 @@ public/data/
 
 # 项目本地记忆/工作区元数据（含内部讨论，不进公网仓库）
 .workbuddy/
+
+# Agent CLI（scripts/wwys-cli.ts）缓存的登录 session，含 access/refresh token
+.wwys-session.json

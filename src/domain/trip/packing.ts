@@ -18,6 +18,12 @@ export interface PackingSuggestion {
   category: PackCat;
   text: string;
   note?: string;
+  /**
+   * 归属成员 id：
+   * - 有值：个人行李，会按每个成员复制一份
+   * - null：公共共享项，只需准备一份
+   */
+  ownerId: string | null;
 }
 
 export interface PackingContext {
@@ -31,8 +37,9 @@ export interface PackingContext {
   poiTypes: string[];
   /** 已排 POI 的标签集合 */
   tags: string[];
-  /** 同行人数 */
-  memberCount: number;
+  /** 成员 id 列表：个人行李会按这个列表复制成每人一份；
+   *  空数组 = 匿名 / 单人模式，个人项归 null（兜底，不拆分） */
+  ownerIds: string[];
   /** 行程起始月份（1-12）；用于按月气候带推导衣物。缺省则退化为通用建议 */
   month?: number;
 }
@@ -80,58 +87,76 @@ export function suggestPacking(opts: PackingContext): PackingSuggestion[] {
   const M = '药品' as PackCat;
   const O = '其他' as PackCat;
 
-  /* 证件 / 票据 */
-  out.push({ category: D, text: '护照 / 身份证' });
-  out.push({ category: D, text: '签证 / 入境许可', note: opts.countries.length ? '出发前核对清单' : undefined });
-  out.push({ category: D, text: '机票 / 酒店确认单' });
-  out.push({ category: D, text: '旅行保险单' });
+  // 个人行李的 owner 列表：多人按成员复制，单人 / 匿名归 null（不拆分，兜底）
+  const owners = opts.ownerIds.length ? opts.ownerIds : [null];
+
+  /* ---- 个人基础项（按 owner 复制成每人一份） ---- */
+  const personal: Omit<PackingSuggestion, 'ownerId'>[] = [];
+
+  // 证件 / 票据
+  personal.push({ category: D, text: '护照 / 身份证' });
+  personal.push({ category: D, text: '签证 / 入境许可', note: opts.countries.length ? '出发前核对清单' : undefined });
+  personal.push({ category: D, text: '机票 / 酒店确认单' });
+  personal.push({ category: D, text: '旅行保险单' });
   if (opts.currencies.length) {
-    out.push({ category: D, text: `当地现金（${[...new Set(opts.currencies)].join('/')}）+ 信用卡` });
+    personal.push({ category: D, text: `当地现金（${[...new Set(opts.currencies)].join('/')}）+ 信用卡` });
   }
 
-  /* 电子 */
-  out.push({ category: E, text: '手机 + 充电器' });
-  out.push({ category: E, text: '充电宝' });
-  out.push({ category: E, text: '相机 / 存储卡' });
-  if (opts.countries.length) {
-    out.push({ category: E, text: '转换插头（按目的地插座类型准备）' });
-  }
+  // 个人电子
+  personal.push({ category: E, text: '手机 + 充电器' });
+  personal.push({ category: E, text: '充电宝' });
+  personal.push({ category: E, text: '相机 / 存储卡' });
 
-  /* 衣物（按天数 + 行程月份气候带推导） */
-  out.push({ category: C, text: `内衣 ×${d}` });
-  out.push({ category: C, text: `袜子 ×${d + 1}` });
-  out.push({ category: C, text: topsByBand(cli?.band, d + 1) });
-  out.push({ category: C, text: coatByBand(cli?.band) });
+  // 衣物（按天数 + 行程月份气候带推导）
+  personal.push({ category: C, text: `内衣 ×${d}` });
+  personal.push({ category: C, text: `袜子 ×${d + 1}` });
+  personal.push({ category: C, text: topsByBand(cli?.band, d + 1) });
+  personal.push({ category: C, text: coatByBand(cli?.band) });
   if (cli?.band === 'cold') {
-    out.push({ category: C, text: '保暖鞋 / 厚袜' });
+    personal.push({ category: C, text: '保暖鞋 / 厚袜' });
   }
   if (cli?.rain) {
-    out.push({ category: C, text: '折叠伞 / 防水鞋' });
+    personal.push({ category: C, text: '折叠伞 / 防水鞋' });
   }
-  out.push({ category: C, text: '舒适步行鞋' });
+  personal.push({ category: C, text: '舒适步行鞋' });
 
-  /* 洗漱 */
-  out.push({ category: W, text: '牙具 / 护肤小样' });
-  out.push({ category: W, text: '防晒霜' });
+  // 洗漱
+  personal.push({ category: W, text: '牙具 / 护肤小样' });
+  personal.push({ category: W, text: '防晒霜' });
 
-  /* 药品 */
-  out.push({ category: M, text: '常用药 + 肠胃药' });
-  out.push({ category: M, text: '创可贴' });
+  // 药品
+  personal.push({ category: M, text: '常用药 + 肠胃药' });
+  personal.push({ category: M, text: '创可贴' });
 
-  /* 活动相关（依据 POI 类型 / 标签） */
+  // 活动相关（依据 POI 类型 / 标签）
   const t = new Set([...opts.poiTypes, ...opts.tags]);
   if (t.has('beach') || t.has('swim') || t.has('海岛') || t.has('lake')) {
-    out.push({ category: C, text: '泳衣' });
-    out.push({ category: O, text: '沙滩巾' });
+    personal.push({ category: C, text: '泳衣' });
+    personal.push({ category: O, text: '沙滩巾' });
   }
   if (t.has('hike') || t.has('mountain') || t.has('trail') || t.has('徒步') || t.has('alps')) {
-    out.push({ category: C, text: '徒步鞋' });
-    out.push({ category: O, text: '水壶' });
+    personal.push({ category: C, text: '徒步鞋' });
+    personal.push({ category: O, text: '水壶' });
   }
 
-  /* 多人协作 */
-  if (opts.memberCount > 1) {
-    out.push({ category: O, text: `共用物品分摊（${opts.memberCount} 人）`, note: '在每条上指定负责人' });
+  // 按 owner 复制：每个成员都有自己的一份个人行李
+  for (const o of personal) {
+    for (const ownerId of owners) {
+      out.push({ ...o, ownerId });
+    }
+  }
+
+  /* ---- 公共共享项（只一份，ownerId = null） ---- */
+  if (opts.countries.length) {
+    out.push({ category: E, text: '转换插头（按目的地插座类型准备）', ownerId: null });
+  }
+  if (owners.length > 1) {
+    out.push({
+      category: O,
+      text: `共用物品分摊（${owners.length} 人）`,
+      note: '只备一份，在右侧指定谁带',
+      ownerId: null,
+    });
   }
 
   return out;

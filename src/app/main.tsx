@@ -5,6 +5,7 @@ import { RouterProvider } from 'react-router-dom';
 import { RepositoryProvider } from '../data';
 import { AuthQuerySync } from '../features/auth/AuthQuerySync';
 import { ToastProvider } from '../ui/toast';
+import { DevAgentation } from './DevAgentation';
 import '../ui/base.css';
 import { router } from './router';
 
@@ -28,6 +29,7 @@ createRoot(root).render(
         <ToastProvider>
           <AuthQuerySync />
           <RouterProvider router={router} />
+          <DevAgentation />
         </ToastProvider>
       </RepositoryProvider>
     </QueryClientProvider>

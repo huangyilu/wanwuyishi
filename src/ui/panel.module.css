@@ -57,12 +57,15 @@
   margin-left: auto;
 }
 
-/* 内容区：可滚动，统一内距 */
+/* 内容区：可滚动，统一内距。上内距设为 0，让内部 sticky 头栏
+   （如打包顶栏）能以 top:0 干净贴住滚动区顶部、不露缝隙；
+   左右与下方保留 20px 内距。 */
 .body {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  padding: 20px;
+  padding: 0 20px 20px;
+  background: var(--surface-1);
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
 }

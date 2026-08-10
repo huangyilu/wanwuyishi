@@ -2,19 +2,24 @@
  * 打包助手（参考 TripProf 的 Packing Assistant）。
  *
  * 离线优先：清单存在 Trip.packing（随行程读写，不依赖任何后端）。
- * 智能生成依据行程天数 / 目的地货币 / POI 类型标签 / 同行人数给建议草稿；
+ * 智能生成依据行程天数 / 目的地货币 / POI 类型标签 / 同行成员给建议草稿；
  * 天气无法联网获取（零成本约束），衣物只按天数给通用数量，不臆测气候。
  *
- * 两端共用（PC 工作台与移动随身册都切到这个标签），单列布局。
+ * 行李按「人」组织：个人行李每人一份（ownerId = 成员），公共物品只一份
+ * （ownerId = null，由 assigneeId 指定谁带）。两端共用（PC 工作台与移动
+ * 随身册都切到这个标签）；PC 端按人双列卡片铺满宽屏，窄屏回落单列。
  */
 import { useMemo, useState } from 'react';
-import type { PackingItem } from '../../data/types';
+import type { PackingItem, TripMember } from '../../data/types';
 import { useTripBundle, useTripMutations } from './queries';
 import { useWorldIndex } from '../world/queries';
 import { PACK_CATS, suggestPacking } from '../../domain/trip/packing';
 import { climateFor } from '../../domain/trip/climate';
+import { useMyMember } from './useMyMember';
 import s from './PackingPanel.module.css';
 import panel from '../../ui/panel.module.css';
+
+const SHARED = '__shared';
 
 function uid(): string {
   const r =
@@ -24,6 +29,13 @@ function uid(): string {
   return `pk-${r}`;
 }
 
+interface Section {
+  key: string;
+  title: string;
+  isShared: boolean;
+  items: PackingItem[];
+}
+
 export function PackingPanel({ tripId }: { tripId: string }) {
   const { data: bundle, isLoading } = useTripBundle(tripId);
   const { data: index } = useWorldIndex();
@@ -31,9 +43,15 @@ export function PackingPanel({ tripId }: { tripId: string }) {
 
   const [draftText, setDraftText] = useState('');
   const [draftCat, setDraftCat] = useState<string>(PACK_CATS[0]);
+  /** 新增项的归属：某成员 id 或 '公共' */
+  const [draftOwner, setDraftOwner] = useState<string>('me');
+  /** 视角：全部（按人分区）/ 我的 */
+  const [view, setView] = useState<'all' | 'mine'>('mine');
 
   const items = bundle?.trip.packing ?? [];
   const members = bundle?.members ?? [];
+  const me = useMyMember(members);
+  const meId = me?.id ?? null;
 
   /** 智能生成的上下文：从行程与世界库索引推导 */
   const ctx = useMemo(() => {
@@ -66,7 +84,8 @@ export function PackingPanel({ tripId }: { tripId: string }) {
       currencies: [...currencies],
       poiTypes: [...poiTypes],
       tags: [...tags],
-      memberCount: bundle.members.length,
+      // 个人行李按成员拆分；空数组时生成函数兜底为单人（ownerId=null）
+      ownerIds: bundle.members.map((m: TripMember) => m.id),
       month,
     };
   }, [bundle, index]);
@@ -89,12 +108,25 @@ export function PackingPanel({ tripId }: { tripId: string }) {
   function removeItem(id: string) {
     setList(items.filter((i) => i.id !== id));
   }
-  function addItem(text: string, cat: string) {
+  function resolveOwner(sel: string): string | null {
+    if (sel === SHARED) return null;
+    if (sel === 'me') return meId;
+    return sel;
+  }
+  function addItem(text: string, cat: string, ownerSel: string) {
     const t = text.trim();
     if (!t) return;
     setList([
       ...items,
-      { id: uid(), category: cat, text: t, done: false, assigneeId: null, note: null },
+      {
+        id: uid(),
+        category: cat,
+        text: t,
+        done: false,
+        ownerId: resolveOwner(ownerSel),
+        assigneeId: null,
+        note: null,
+      },
     ]);
     setDraftText('');
   }
@@ -107,16 +139,36 @@ export function PackingPanel({ tripId }: { tripId: string }) {
         category: sg.category,
         text: sg.text,
         done: false,
+        ownerId: sg.ownerId,
         assigneeId: null,
         note: sg.note ?? null,
       })),
     );
   }
 
+  /** 分区：全部=按人 + 公共；我的=我 + 公共 */
+  const sections: Section[] = useMemo(() => {
+    const shared = items.filter((i) => i.ownerId === null);
+    if (view === 'mine') {
+      const mine = items.filter((i) => i.ownerId === meId);
+      const out: Section[] = [];
+      if (mine.length)
+        out.push({ key: '__mine', title: me ? `${me.displayName}（我）` : '我的', isShared: false, items: mine });
+      if (shared.length) out.push({ key: SHARED, title: '公共物品', isShared: true, items: shared });
+      return out;
+    }
+    const out: Section[] = members.map((m) => ({
+      key: m.id,
+      title: m.id === meId ? `${m.displayName}（我）` : m.displayName,
+      isShared: false,
+      items: items.filter((i) => i.ownerId === m.id),
+    }));
+    if (shared.length) out.push({ key: SHARED, title: '公共物品', isShared: true, items: shared });
+    return out;
+  }, [items, members, view, meId, me]);
+
   const doneCount = items.filter((i) => i.done).length;
   const progress = items.length ? Math.round((doneCount / items.length) * 100) : 0;
-
-  const byCat = PACK_CATS.filter((cat) => items.some((i) => i.category === cat));
 
   return (
     <div className={panel.page}>
@@ -124,108 +176,160 @@ export function PackingPanel({ tripId }: { tripId: string }) {
         <div className={panel.head}>
           <div>
             <div className={panel.title}>打包清单</div>
-            <div className={panel.sub}>离线清单 · 随行程保存，行前逐项勾选</div>
+            <div className={panel.sub}>按人分清单 · 公共物只备一份，离线保存</div>
           </div>
-          <button className={`${panel.headAction} btn btn-primary btn-sm`} onClick={generate} disabled={!ctx}>
+          <div className={s.viewSwitch}>
+            <button
+              className={`${s.viewBtn} ${view === 'mine' ? s.viewOn : ''}`}
+              onClick={() => setView('mine')}
+            >
+              我的
+            </button>
+            <button
+              className={`${s.viewBtn} ${view === 'all' ? s.viewOn : ''}`}
+              onClick={() => setView('all')}
+            >
+              全部
+            </button>
+          </div>
+          <button className="btn btn-primary btn-sm" onClick={generate} disabled={!ctx}>
             智能生成
           </button>
         </div>
 
         <div className={panel.body}>
-        <div className={s.topBar}>
-          <div className={s.addRow}>
-            <input
-              className={s.text}
-              placeholder="添加一项，如「充电线」"
-              value={draftText}
-              onChange={(e) => setDraftText(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') addItem(draftText, draftCat);
-              }}
-            />
-            <select className={s.assignee} value={draftCat} onChange={(e) => setDraftCat(e.target.value)}>
-              {PACK_CATS.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-            <button className="btn btn-sm" onClick={() => addItem(draftText, draftCat)}>
-              添加
-            </button>
-          </div>
-
-          <div className={s.progress}>
-            <div className={s.bar}>
-              <div className={s.barFill} style={{ width: `${progress}%` }} />
+          <div className={s.topBar}>
+            <div className={s.addRow}>
+              <input
+                className={s.text}
+                placeholder="添加一项，如「充电线」"
+                value={draftText}
+                onChange={(e) => setDraftText(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') addItem(draftText, draftCat, draftOwner);
+                }}
+              />
+              <select
+                className={s.assignee}
+                value={draftCat}
+                onChange={(e) => setDraftCat(e.target.value)}
+                title="分类"
+              >
+                {PACK_CATS.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+              <select
+                className={s.assignee}
+                value={draftOwner}
+                onChange={(e) => setDraftOwner(e.target.value)}
+                title="归属"
+              >
+                <option value="me">我</option>
+                {members
+                  .filter((m) => m.id !== meId)
+                  .map((m) => (
+                    <option key={m.id} value={m.id}>
+                      {m.displayName}
+                    </option>
+                  ))}
+                <option value={SHARED}>公共</option>
+              </select>
+              <button className="btn btn-sm" onClick={() => addItem(draftText, draftCat, draftOwner)}>
+                添加
+              </button>
             </div>
-            <span className={s.progressText}>
-              {doneCount}/{items.length} 已装（{progress}%）
-            </span>
+
+            <div className={s.progress}>
+              <div className={s.bar}>
+                <div className={s.barFill} style={{ width: `${progress}%` }} />
+              </div>
+              <span className={s.progressText}>
+                {doneCount}/{items.length} 已装（{progress}%）
+              </span>
+            </div>
+
+            <div className={s.note}>
+              {climateLabel ? (
+                <>
+                  气候参考（按行程月份推导，非实时）：<b>{climateLabel}</b>。衣物据此 + 天数给建议；活动项依据你排的景点类型自动推导。生成会覆盖当前清单。
+                </>
+              ) : (
+                <>
+                  未设出发日期，衣物按天数给通用数量；在行程里填好出发日可启用按月气候推导。活动项依据你排的景点类型自动推导。生成会覆盖当前清单。
+                </>
+              )}
+            </div>
           </div>
 
-          <div className={s.note}>
-        {climateLabel ? (
-          <>
-            气候参考（按行程月份推导，非实时）：<b>{climateLabel}</b>。衣物据此 + 天数给建议；活动项依据你排的景点类型自动推导。生成会覆盖当前清单。
-          </>
-        ) : (
-          <>
-            未设出发日期，衣物按天数给通用数量；在行程里填好出发日可启用按月气候推导。活动项依据你排的景点类型自动推导。生成会覆盖当前清单。
-          </>
-        )}
-          </div>
-        </div>
+          {sections.length === 0 && (
+            <div className={panel.empty}>还没有清单。点右上「智能生成」，或在顶部输入框添加一项。</div>
+          )}
 
-      <div className={s.catGrid}>
-        {byCat.length === 0 && (
-          <div className={panel.empty}>还没有清单。点右上「智能生成」，或在顶部输入框添加一项。</div>
-        )}
-
-        {byCat.map((cat) => (
-          <div key={cat} className={s.cat}>
-            <div className={s.catHead}>{cat}</div>
-            {items
-              .filter((i) => i.category === cat)
-              .map((it) => (
-                <div key={it.id} className={`${s.row} ${it.done ? s.rowDone : ''}`}>
-                  <input
-                    type="checkbox"
-                    className={s.check}
-                    checked={it.done}
-                    onChange={() => patchItem(it.id, { done: !it.done })}
-                  />
-                  <input
-                    className={s.text}
-                    defaultValue={it.text}
-                    onBlur={(e) => {
-                      const v = e.target.value.trim();
-                      if (v && v !== it.text) patchItem(it.id, { text: v });
-                      else if (!v) e.target.value = it.text;
-                    }}
-                  />
-                  <select
-                    className={s.assignee}
-                    value={it.assigneeId ?? ''}
-                    title="负责人"
-                    onChange={(e) => patchItem(it.id, { assigneeId: e.target.value || null })}
-                  >
-                    <option value="">未指定</option>
-                    {members.map((m) => (
-                      <option key={m.id} value={m.id}>
-                        {m.displayName}
-                      </option>
-                    ))}
-                  </select>
-                  <button className={s.del} onClick={() => removeItem(it.id)} title="删除">
-                    ×
-                  </button>
+          <div className={s.personGrid}>
+            {sections.map((sec) => {
+              const cats = PACK_CATS.filter((c) => sec.items.some((i) => i.category === c));
+              const dN = sec.items.filter((i) => i.done).length;
+              return (
+                <div key={sec.key} className={s.personBlock}>
+                  <div className={s.blockHead}>
+                    <span className={sec.isShared ? s.blockShared : ''}>{sec.title}</span>
+                    <span className={s.blockProg}>
+                      {dN}/{sec.items.length}
+                    </span>
+                  </div>
+                  {sec.items.length === 0 && <div className={s.blockEmpty}>空空如也</div>}
+                  {cats.map((cat) => (
+                    <div key={cat} className={s.cat}>
+                      <div className={s.catHead}>{cat}</div>
+                      {sec.items
+                        .filter((i) => i.category === cat)
+                        .map((it) => (
+                          <div key={it.id} className={`${s.row} ${it.done ? s.rowDone : ''}`}>
+                            <input
+                              type="checkbox"
+                              className={s.check}
+                              checked={it.done}
+                              onChange={() => patchItem(it.id, { done: !it.done })}
+                            />
+                            <input
+                              className={s.text}
+                              defaultValue={it.text}
+                              onBlur={(e) => {
+                                const v = e.target.value.trim();
+                                if (v && v !== it.text) patchItem(it.id, { text: v });
+                                else if (!v) e.target.value = it.text;
+                              }}
+                            />
+                            {/* 公共项显示「谁带」，个人项隐藏（自己的东西自己负责） */}
+                            {it.ownerId === null && (
+                              <select
+                                className={s.assignee}
+                                value={it.assigneeId ?? ''}
+                                title="谁带"
+                                onChange={(e) => patchItem(it.id, { assigneeId: e.target.value || null })}
+                              >
+                                <option value="">未指定</option>
+                                {members.map((m) => (
+                                  <option key={m.id} value={m.id}>
+                                    {m.displayName}
+                                  </option>
+                                ))}
+                              </select>
+                            )}
+                            <button className={s.del} onClick={() => removeItem(it.id)} title="删除">
+                              ×
+                            </button>
+                          </div>
+                        ))}
+                    </div>
+                  ))}
                 </div>
-              ))}
+              );
+            })}
           </div>
-        ))}
-
-      </div>
         </div>
       </div>
     </div>

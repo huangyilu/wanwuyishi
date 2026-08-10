@@ -1,7 +1,7 @@
 .tabs {
   display: flex;
   gap: 4px;
-  padding: 10px 16px 0;
+  padding: 0 16px 0;
   border-bottom: 1px solid var(--border);
   background: var(--surface-1);
 }
@@ -9,7 +9,7 @@
   appearance: none;
   border: none;
   background: none;
-  padding: 8px 16px;
+  padding: 10px 16px;
   font-size: 14px;
   color: var(--text-2);
   cursor: pointer;
@@ -37,11 +37,11 @@
 
 @media (max-width: 640px) {
   .tabs {
-    padding: 8px 12px 0;
+    padding: 0 12px 0;
     overflow-x: auto;
   }
   .tab {
-    padding: 8px 12px;
+    padding: 10px 12px;
     white-space: nowrap;
   }
 }
