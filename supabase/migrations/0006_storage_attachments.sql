@@ -12,15 +12,34 @@
 --             and tm.user_id = auth.uid())
 
 -- 1) 建 bucket（公开读；单文件上限 5MB，仅放行图片类型）
-insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values (
-  'trip-attachments',
-  'trip-attachments',
-  true,
-  5242880,
-  '{image/png,image/jpeg,image/webp,image/gif}'
-)
-on conflict (id) do nothing;
+-- 动态探测 storage.buckets 是否支持 file_size_limit / allowed_mime_types 列，
+-- 仅写入存在的列，兼容不同 Supabase 版本的 schema（老版本无这两列会报 column 错）。
+do $$
+declare
+  v_has_size boolean;
+  v_has_mime boolean;
+  v_sql      text;
+begin
+  select exists (
+    select 1 from information_schema.columns
+    where table_schema = 'storage' and table_name = 'buckets' and column_name = 'file_size_limit'
+  ) into v_has_size;
+  select exists (
+    select 1 from information_schema.columns
+    where table_schema = 'storage' and table_name = 'buckets' and column_name = 'allowed_mime_types'
+  ) into v_has_mime;
+
+  if not exists (select 1 from storage.buckets where id = 'trip-attachments') then
+    v_sql := 'insert into storage.buckets (id, name, public';
+    if v_has_size then v_sql := v_sql || ', file_size_limit'; end if;
+    if v_has_mime then v_sql := v_sql || ', allowed_mime_types'; end if;
+    v_sql := v_sql || ') values (''trip-attachments'', ''trip-attachments'', true';
+    if v_has_size then v_sql := v_sql || ', 5242880'; end if;
+    if v_has_mime then v_sql := v_sql || ', ''{image/png,image/jpeg,image/webp,image/gif}'''; end if;
+    v_sql := v_sql || ')';
+    execute v_sql;
+  end if;
+end $$;
 
 -- 2) 公开读：任何人都可读取附件（行程共享内容，本就可见）
 drop policy if exists "attachments_select" on storage.objects;
