@@ -1,0 +1,79 @@
+{
+  "id": "poi-palais-papes",
+  "type": "museum",
+  "name": "教皇宫",
+  "localName": "Palais des Papes",
+  "city": "city-avignon",
+  "country": "fr",
+  "location": { "lat": 43.9518, "lng": 4.8089 },
+  "tags": ["历史", "博物馆", "哥特"],
+  "popularity": 82,
+  "officialUrl": "https://palais-des-papes.com/",
+  "visit": {
+    "durationMinutes": [120, 180],
+    "durationNote": "2-3 小时（教皇宫殿 + 广场 + 附属礼拜堂）",
+    "bestTime": "开馆即入避开旅行团；七月戏剧节期间人流极大"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": {
+    "required": true,
+    "leadDays": 1,
+    "url": "https://palais-des-papes.com/"
+  },
+  "facilities": {
+    "toilet": "宫内有多处公共厕所",
+    "wifi": "游客中心与广场有免费 Wi-Fi",
+    "locker": "入口附近可寄存大件",
+    "water": "饮水点分布在庭院",
+    "accessible": true
+  },
+  "volatile": {
+    "price": { "value": "全票约 12 欧；与断桥联票更划算", "source": "https://palais-des-papes.com/", "verifiedAt": "2026-08-12" },
+    "hours": { "value": "约 09:00-19:00（夏季，冬季缩短）", "source": "https://palais-des-papes.com/", "verifiedAt": "2026-08-12" },
+    "booking": { "value": "官网或现场购票，旺季建议提前 1 天预约时段", "source": "https://palais-des-papes.com/", "verifiedAt": "2026-08-12" }
+  },
+  "guide": {
+    "entrances": "主入口在教皇宫广场北侧的门票中心，持预约票走快速通道；庭院与钟楼可自由参观。",
+    "routes": [
+      {
+        "name": "首次经典 2 小时",
+        "durationMinutes": 120,
+        "stops": [
+          "卫士庭院（Cour d'Honneur）与巨人阶梯",
+          "枢机主教礼拜堂（Chapelle Saint-Jean）",
+          "教皇私人套房（Grand Tinel 宴会厅）",
+          "克莱门特六世套房壁画厅",
+          "北面城垛观景台俯瞰罗讷河"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "枢机主教礼拜堂壁画",
+        "location": "一层 · 圣约翰礼拜堂（Chapelle Saint-Jean）",
+        "why": "马泰奥·乔瓦内蒂的湿壁画，蓝金配色是哥特宫廷艺术的巅峰。"
+      },
+      {
+        "name": " Grand Tinel 宴会厅长桌",
+        "location": "一层 · 教皇私人套房区",
+        "why": "曾摆下数十人长桌的宴会厅，天花板木构保存完好，可想见教廷盛宴。"
+      },
+      {
+        "name": "城垛观景台",
+        "location": "顶层 · 北侧城垛",
+        "why": "俯瞰阿维尼翁老城与罗讷河，断桥尽收眼底，是拍照最佳点。"
+      }
+    ],
+    "collections": "14 世纪教皇行宫，含礼拜堂壁画、挂毯、宗教器物与建筑本身；现为博物馆兼戏剧节主场地。",
+    "tips": [
+      "门票中心可租语音导览（含中文）。",
+      "庭院免费开放，仅入宫内需票。",
+      "七月戏剧节期间部分厅堂用作演出，动线会变，跟着指示走。"
+    ]
+  },
+  "image": {
+    "url": "https://commons.wikimedia.org/wiki/File:Palais_des_Papes_Avignon.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 4.0"
+  }
+}

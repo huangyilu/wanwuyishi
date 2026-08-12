@@ -1,0 +1,34 @@
+{
+  "id": "poi-notre-dame-garde",
+  "type": "church",
+  "name": "守护圣母圣殿",
+  "localName": "Notre-Dame de la Garde",
+  "city": "city-marseille",
+  "country": "fr",
+  "location": { "lat": 43.2839, "lng": 5.3716 },
+  "tags": ["教堂", "观景", "地标"],
+  "popularity": 80,
+  "officialUrl": "https://www.marseille-tourisme.com/",
+  "visit": {
+    "durationMinutes": [60, 120],
+    "durationNote": "1-2 小时（登顶 + 教堂 + 全城与海港观景）",
+    "bestTime": "晴日全天可观景，日落前光线最佳"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "facilities": {
+    "toilet": "教堂底层有公共厕所",
+    "wifi": "山顶广场有免费 Wi-Fi",
+    "water": "饮水点较少",
+    "accessible": true
+  },
+  "volatile": {
+    "price": { "value": "入教堂与露台免费", "source": "https://www.marseille-tourisme.com/", "verifiedAt": "2026-08-12" },
+    "hours": { "value": "教堂约 07:00-19:00；露台至 18:30", "source": "https://www.marseille-tourisme.com/", "verifiedAt": "2026-08-12" },
+    "booking": { "value": "无需预约", "source": "https://www.marseille-tourisme.com/", "verifiedAt": "2026-08-12" }
+  },
+  "image": {
+    "url": "https://commons.wikimedia.org/wiki/File:Notre-Dame_de_la_Garde_Marseille.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 4.0"
+  }
+}

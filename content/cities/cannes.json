@@ -1,0 +1,46 @@
+{
+  "id": "city-cannes",
+  "name": "戛纳",
+  "localName": "Cannes",
+  "country": "fr",
+  "location": { "lat": 43.5528, "lng": 7.0174 },
+  "timezone": "Europe/Paris",
+  "survival": [
+    {
+      "topic": "toilet",
+      "summary": "克鲁瓦塞特海滨公共厕所夏季开放；老城与节庆宫周边咖啡馆消费可用洗手间。",
+      "tips": ["影节期间公厕排队明显，建议错峰", "海滩为私营沙滩，需消费入场才可用设施"],
+      "source": "https://www.cannes.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "wifi",
+      "summary": "戛纳节庆宫、旅游局与部分海滨广场提供免费 Wi-Fi；欧盟 eSIM 覆盖稳定。",
+      "tips": ["游艇港周边信号被遮挡，导航提前缓存", "节庆期人流密集，网络拥堵"],
+      "source": "https://www.cannes.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "transport",
+      "summary": "Palm Bus 公交网络覆盖市区与勒苏凯老城；尼斯方向坐 Lignes d'Azur 城际巴士约 1 小时；火车站 Gare de Cannes 通区域列车。",
+      "tips": ["老城坡陡，公交 1/2 路到 Le Suquet 省力", "去圣玛格丽特岛（伊夫堡同属）从旧港坐船"],
+      "source": "https://www.cannes.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "safety",
+      "summary": "总体安全，老城夜间僻静巷道少走；海滨扒窃在节庆期高发。",
+      "tips": ["随身包前背，避开陌生搭讪", "海滩晒太阳时财物不离身"],
+      "source": "https://www.cannes.com/",
+      "verifiedAt": "2026-08-12"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Sud Azur Pass",
+      "scope": "滨海阿尔卑斯省公交与电车（含戛纳至尼斯/昂蒂布城际巴士）",
+      "benefits": ["1/3/7 日可选"],
+      "url": "https://www.lignesdazur.com/"
+    }
+  ]
+}

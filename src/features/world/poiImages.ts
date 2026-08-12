@@ -278,6 +278,61 @@ export const POI_IMAGES: Record<string, PoiImage> = {
     license: 'CC BY-SA 4.0',
     page: 'https://commons.wikimedia.org/wiki/File:Gornergrat_20130701_211902.jpg',
   },
+  // ---- 南法新增（图需 scripts/fetch-south-france-images.sh 下载） ----
+  'poi-promenade-anglais': {
+    src: 'img/pois/poi-promenade-anglais.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Promenade_des_Anglais_Nice.jpg',
+  },
+  'poi-castle-hill-nice': {
+    src: 'img/pois/poi-castle-hill-nice.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Nice_Castle_Hill_view.jpg',
+  },
+  'poi-palais-festivals': {
+    src: 'img/pois/poi-palais-festivals.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Palais_des_festivals_Cannes.jpg',
+  },
+  'poi-le-suquet': {
+    src: 'img/pois/poi-le-suquet.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Le_Suquet_Cannes.jpg',
+  },
+  'poi-notre-dame-garde': {
+    src: 'img/pois/poi-notre-dame-garde.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Notre-Dame_de_la_Garde_Marseille.jpg',
+  },
+  'poi-chateau-if': {
+    src: 'img/pois/poi-chateau-if.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_d%27If.jpg',
+  },
+  'poi-palais-papes': {
+    src: 'img/pois/poi-palais-papes.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Palais_des_Papes_Avignon.jpg',
+  },
+  'poi-pont-avignon': {
+    src: 'img/pois/poi-pont-avignon.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Pont_Saint-B%C3%A9nez_Avignon.jpg',
+  },
+  'poi-maeght': {
+    src: 'img/pois/poi-maeght.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Fondation_Maeght.jpg',
+  },
 };
 
 export function poiImage(poiId: string): PoiImage | undefined {

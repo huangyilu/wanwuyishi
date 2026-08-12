@@ -86,6 +86,37 @@ export const CITY_IMAGES: Record<string, CityImage> = {
     license: 'CC BY-SA 2.0',
     page: 'https://commons.wikimedia.org/wiki/File:Zermatt_Panorama.jpg',
   },
+  // ---- 南法新增（图需 scripts/fetch-south-france-images.sh 下载） ----
+  'city-nice': {
+    src: 'img/cities/city-nice.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Nice_panorama.jpg',
+  },
+  'city-cannes': {
+    src: 'img/cities/city-cannes.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Cannes_Panorama.jpg',
+  },
+  'city-marseille': {
+    src: 'img/cities/city-marseille.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Marseille_Panorama.jpg',
+  },
+  'city-avignon': {
+    src: 'img/cities/city-avignon.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Avignon_Panorama.jpg',
+  },
+  'city-saint-paul': {
+    src: 'img/cities/city-saint-paul.jpg',
+    author: 'Wikimedia Commons',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Saint-Paul-de-Vence.jpg',
+  },
 };
 
 export function cityImage(cityId: string): CityImage | undefined {

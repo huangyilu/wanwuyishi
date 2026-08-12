@@ -1,0 +1,40 @@
+{
+  "id": "poi-chateau-if",
+  "type": "landmark",
+  "name": "伊夫堡",
+  "localName": "Château d'If",
+  "city": "city-marseille",
+  "country": "fr",
+  "location": { "lat": 43.2767, "lng": 5.3214 },
+  "tags": ["城堡", "文学", "岛屿"],
+  "popularity": 72,
+  "officialUrl": "https://www.marseille-tourisme.com/",
+  "visit": {
+    "durationMinutes": [90, 150],
+    "durationNote": "1.5-2.5 小时（含老港往返船）",
+    "bestTime": "上午去避开午间暴晒，注意末班船时间"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [
+    { "from": "11-02", "to": "03-31", "note": "冬季可能缩短开放或风大停航，行前查航次" }
+  ] },
+  "booking": {
+    "required": false,
+    "leadDays": 0,
+    "url": "https://www.marseille-tourisme.com/"
+  },
+  "facilities": {
+    "toilet": "岛上与码头有公厕",
+    "wifi": "岛上信号弱，无稳定 Wi-Fi",
+    "accessible": false
+  },
+  "volatile": {
+    "price": { "value": "城堡门票约 6 欧 + 老港往返船票约 16 欧", "source": "https://www.marseille-tourisme.com/", "verifiedAt": "2026-08-12" },
+    "hours": { "value": "约 09:30-18:15（夏季，冬季缩短）", "source": "https://www.marseille-tourisme.com/", "verifiedAt": "2026-08-12" },
+    "booking": { "value": "从老港乘船前往，旺季建议提前购买船票", "source": "https://www.marseille-tourisme.com/", "verifiedAt": "2026-08-12" }
+  },
+  "image": {
+    "url": "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_d'If.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 4.0"
+  }
+}

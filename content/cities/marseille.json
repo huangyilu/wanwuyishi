@@ -1,0 +1,46 @@
+{
+  "id": "city-marseille",
+  "name": "马赛",
+  "localName": "Marseille",
+  "country": "fr",
+  "location": { "lat": 43.2965, "lng": 5.3698 },
+  "timezone": "Europe/Paris",
+  "survival": [
+    {
+      "topic": "toilet",
+      "summary": "老港周边公厕集中在旅游局与地铁站；卡朗格峡湾徒步沿线无设施，需自带。",
+      "tips": ["地铁 M1/M2 主要站点有公共厕所", "去峡湾前在市区解决，途中无补给"],
+      "source": "https://www.marseille-tourisme.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "wifi",
+      "summary": "老港、圣夏尔火车站与主流博物馆有免费 Wi-Fi；欧盟 eSIM 在城区稳定，峡湾信号弱。",
+      "tips": ["卡朗格徒步务必离线下载地图", "地铁内信号一般"],
+      "source": "https://www.marseille-tourisme.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "transport",
+      "summary": "地铁 M1/M2 与公交网覆盖主城；去伊夫堡与 Frioul 岛从老港坐船；去卡朗格走公交 21 路到 Callelongue。",
+      "tips": ["City Pass 含交通 + 伊夫堡船票 + 多家博物馆，多日游划算", "老港到伊夫堡船约 20 分钟，注意末班"],
+      "source": "https://www.rtm.fr/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "safety",
+      "summary": "老港北侧的街区（如部分北郊）治安偏弱，白天也需警惕；老城与旅游区总体安全。",
+      "tips": ["天黑后避免独自深入非旅游街区", " guarding 圣母圣殿山顶视野好但台阶多，穿防滑鞋"],
+      "source": "https://www.marseille-tourisme.com/",
+      "verifiedAt": "2026-08-12"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Marseille City Pass",
+      "scope": "交通 + 伊夫堡/Frioul 船票 + 主要博物馆 + 随上随下观光巴士",
+      "benefits": ["1/2/3 日可选", "含前往伊夫堡的船"],
+      "url": "https://www.marseille-tourisme.com/"
+    }
+  ]
+}

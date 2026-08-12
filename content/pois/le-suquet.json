@@ -1,0 +1,33 @@
+{
+  "id": "poi-le-suquet",
+  "type": "viewpoint",
+  "name": "勒苏凯老城",
+  "localName": "Le Suquet",
+  "city": "city-cannes",
+  "country": "fr",
+  "location": { "lat": 43.5525, "lng": 6.9997 },
+  "tags": ["老城", "观景", "美食"],
+  "popularity": 58,
+  "officialUrl": "https://www.cannes.com/",
+  "visit": {
+    "durationMinutes": [60, 120],
+    "durationNote": "1-2 小时（老城石阶漫步 + 山顶教堂观景）",
+    "bestTime": "上午或傍晚光线柔和，正午石阶暴晒"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "facilities": {
+    "toilet": "老城广场周边有公厕",
+    "wifi": "餐馆与广场有免费 Wi-Fi",
+    "accessible": false
+  },
+  "volatile": {
+    "price": { "value": "免费开放（老城公共区域）", "source": "https://www.cannes.com/", "verifiedAt": "2026-08-12" },
+    "hours": { "value": "全天开放", "source": "https://www.cannes.com/", "verifiedAt": "2026-08-12" },
+    "booking": { "value": "无需预约", "source": "https://www.cannes.com/", "verifiedAt": "2026-08-12" }
+  },
+  "image": {
+    "url": "https://commons.wikimedia.org/wiki/File:Le_Suquet_Cannes.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 4.0"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "id": "city-avignon",
+  "name": "阿维尼翁",
+  "localName": "Avignon",
+  "country": "fr",
+  "location": { "lat": 43.9493, "lng": 4.8055 },
+  "timezone": "Europe/Paris",
+  "survival": [
+    {
+      "topic": "toilet",
+      "summary": "教皇宫广场与旅游局设有公共厕所；老城巷内咖啡馆消费可用洗手间。",
+      "tips": ["节日期间（7 月）公厕排队明显", "城墙内步行区厕所比城外方便"],
+      "source": "https://www.avignon-tourisme.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "wifi",
+      "summary": "旅游局、主要广场与教皇宫游客中心提供免费 Wi-Fi；欧盟 eSIM 在城墙内稳定。",
+      "tips": ["老桥（断桥）岸边信号好，适合导航", "夏季集市人多，网络拥堵"],
+      "source": "https://www.avignon-tourisme.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "transport",
+      "summary": "城墙内步行可达主要景点；区域列车 TER 通阿尔勒与尼姆；从巴黎乘 TGV 约 2.5 小时。",
+      "tips": ["教皇宫与断桥相距 10 分钟步行，无需公交", "去阿尔勒看梵高遗迹坐 TER 约 20 分钟"],
+      "source": "https://www.avignon-tourisme.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "safety",
+      "summary": "城墙内旅游区总体安全，傍晚老桥周边有小偷出没；7 月戏剧节人流量极大。",
+      "tips": ["随身包前背，避开拥挤演出散场", "夜间老城照明一般，结伴而行"],
+      "source": "https://www.avignon-tourisme.com/",
+      "verifiedAt": "2026-08-12"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Pass Avignon",
+      "scope": "教皇宫 + 断桥 + 小宫博物馆等组合票",
+      "benefits": ["联票比单买便宜", "部分含语音导览"],
+      "url": "https://www.avignon-tourisme.com/"
+    }
+  ]
+}

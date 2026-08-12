@@ -1,0 +1,46 @@
+{
+  "id": "city-nice",
+  "name": "尼斯",
+  "localName": "Nice",
+  "country": "fr",
+  "location": { "lat": 43.7102, "lng": 7.262 },
+  "timezone": "Europe/Paris",
+  "survival": [
+    {
+      "topic": "toilet",
+      "summary": "海滩与老城公厕较少，多数咖啡馆消费可用洗手间；火车站（Gare de Nice-Ville）与主要公交枢纽有公共厕所。",
+      "tips": ["海边公共厕所夏季排队，建议进咖啡馆消费使用", "海滩为碎石滩（galets），无更衣设施"],
+      "source": "https://www.nice.fr/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "wifi",
+      "summary": "出发前购买欧洲 eSIM 最稳；尼斯机场、主要图书馆与部分市政广场有免费 Wi-Fi。",
+      "tips": ["有轨电车与公交站内信号一般，导航提前离线缓存", "海滩沿线无稳定公共 Wi-Fi"],
+      "source": "https://www.nice.fr/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "transport",
+      "summary": "有轨电车 L1/L2/L3 串联机场、火车站、海角与老城；Ligne d'Azur 公交覆盖周边山镇。单程票电子票通用。",
+      "tips": ["机场到市区坐 Tram L2 约 30 分钟，比出租车便宜", "蔚蓝海岸区域用 Sud Azur 通票划算"],
+      "source": "https://www.lignesdazur.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "safety",
+      "summary": "总体安全，但海滩、有轨电车内扒窃与假签名募捐时有发生；海边日晒强需补水防晒。",
+      "tips": ["随身包前背，电车扶梯口是高发位", "夏季正午避免长时间暴晒，带足饮水"],
+      "source": "https://www.nice.fr/",
+      "verifiedAt": "2026-08-12"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Sud Azur Pass",
+      "scope": "滨海阿尔卑斯省公交与有轨电车（含 Nice、Cannes、Antibes 间城际巴士）",
+      "benefits": ["1/3/7 日可选", "覆盖机场快线"],
+      "url": "https://www.lignesdazur.com/"
+    }
+  ]
+}

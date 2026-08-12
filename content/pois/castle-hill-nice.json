@@ -1,0 +1,34 @@
+{
+  "id": "poi-castle-hill-nice",
+  "type": "viewpoint",
+  "name": "城堡山",
+  "localName": "Colline du Château",
+  "city": "city-nice",
+  "country": "fr",
+  "location": { "lat": 43.6927, "lng": 7.2756 },
+  "tags": ["观景", "公园", "瀑布"],
+  "popularity": 70,
+  "officialUrl": "https://www.nice.fr/",
+  "visit": {
+    "durationMinutes": [60, 120],
+    "durationNote": "1-2 小时（登顶 + 观景台 + 人造瀑布）",
+    "bestTime": "傍晚看天使湾落日最佳，夏季午后遮荫少带足水"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "facilities": {
+    "toilet": "山顶与电梯口有公共厕所",
+    "wifi": "山顶广场有免费 Wi-Fi",
+    "water": "饮水点较少",
+    "accessible": true
+  },
+  "volatile": {
+    "price": { "value": "免费开放（可乘升降梯或步行台阶登顶）", "source": "https://www.nice.fr/", "verifiedAt": "2026-08-12" },
+    "hours": { "value": "公园约 08:00-20:00（夏季延长）", "source": "https://www.nice.fr/", "verifiedAt": "2026-08-12" },
+    "booking": { "value": "无需预约", "source": "https://www.nice.fr/", "verifiedAt": "2026-08-12" }
+  },
+  "image": {
+    "url": "https://commons.wikimedia.org/wiki/File:Nice_Castle_Hill_view.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 4.0"
+  }
+}

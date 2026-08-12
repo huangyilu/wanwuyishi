@@ -1,0 +1,33 @@
+{
+  "id": "poi-palais-festivals",
+  "type": "landmark",
+  "name": "影节宫",
+  "localName": "Palais des Festivals et des Congrès",
+  "city": "city-cannes",
+  "country": "fr",
+  "location": { "lat": 43.5504, "lng": 7.0206 },
+  "tags": ["电影", "地标", "节庆"],
+  "popularity": 68,
+  "officialUrl": "https://www.festival-cannes.com/",
+  "visit": {
+    "durationMinutes": [30, 60],
+    "durationNote": "30-60 分钟（红毯台阶拍照 + 外观）",
+    "bestTime": "非节庆期人少可入内看展厅；五月节庆期仅外观参观"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "facilities": {
+    "toilet": "宫内与广场周边有公厕",
+    "wifi": "宫内与海滨广场有免费 Wi-Fi",
+    "accessible": true
+  },
+  "volatile": {
+    "price": { "value": "外观与红毯台阶免费；内部展览另行购票", "source": "https://www.festival-cannes.com/", "verifiedAt": "2026-08-12" },
+    "hours": { "value": "广场全天开放；内部展厅约 10:00-18:00", "source": "https://www.festival-cannes.com/", "verifiedAt": "2026-08-12" },
+    "booking": { "value": "外观无需预约；内部展览现场购票", "source": "https://www.festival-cannes.com/", "verifiedAt": "2026-08-12" }
+  },
+  "image": {
+    "url": "https://commons.wikimedia.org/wiki/File:Palais_des_festivals_Cannes.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 4.0"
+  }
+}

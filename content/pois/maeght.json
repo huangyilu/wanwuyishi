@@ -1,0 +1,83 @@
+{
+  "id": "poi-maeght",
+  "type": "museum",
+  "name": "梅格基金会",
+  "localName": "Fondation Maeght",
+  "city": "city-saint-paul",
+  "country": "fr",
+  "location": { "lat": 43.6925, "lng": 7.1208 },
+  "tags": ["现代艺术", "博物馆", "雕塑花园"],
+  "popularity": 82,
+  "officialUrl": "https://www.fondationmaeght.org/",
+  "visit": {
+    "durationMinutes": [120, 180],
+    "durationNote": "2-3 小时（馆藏 + 露天雕塑花园）",
+    "bestTime": "上午光线适合庭院拍照；避开周末午后人流"
+  },
+  "openness": { "closedWeekdays": [1], "closedDates": [], "seasonal": [] },
+  "booking": {
+    "required": false,
+    "leadDays": 0,
+    "url": "https://www.fondationmaeght.org/"
+  },
+  "facilities": {
+    "toilet": "馆内与庭院有公共厕所",
+    "wifi": "馆内与咖啡馆有免费 Wi-Fi",
+    "water": "饮水点较少",
+    "accessible": true
+  },
+  "volatile": {
+    "price": { "value": "全票约 16 欧", "source": "https://www.fondationmaeght.org/", "verifiedAt": "2026-08-12" },
+    "hours": { "value": "约 10:00-18:00（冬季至 17:00）", "source": "https://www.fondationmaeght.org/", "verifiedAt": "2026-08-12" },
+    "booking": { "value": "可现场购票，旺季建议官网预约", "source": "https://www.fondationmaeght.org/", "verifiedAt": "2026-08-12" }
+  },
+  "guide": {
+    "entrances": "主入口在山村停车场步行约 5 分钟处，购票后左侧为常设展厅、右侧通雕塑庭院。",
+    "routes": [
+      {
+        "name": "首次经典 2 小时",
+        "durationMinutes": 120,
+        "stops": [
+          "一层米罗常设厅",
+          "考尔德活动雕塑中庭",
+          "夏加尔玻璃窗展厅",
+          "布拉克的拼贴与版画室",
+          "户外庭院：考尔德稳定器、米罗迷宫、贾科梅蒂步道"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "米罗常设厅",
+        "location": "一层 · 米罗展厅",
+        "why": "集中的米罗绘画与陶板，色彩与符号体系一目了然，是入门最佳展区。"
+      },
+      {
+        "name": "考尔德活动雕塑",
+        "location": "中庭 · 玻璃天窗下",
+        "why": "随风缓慢转动的红蓝活动雕塑，是基金会最被记住的画面之一。"
+      },
+      {
+        "name": "夏加尔玻璃窗",
+        "location": "二层 · 夏加尔展厅",
+        "why": "整面彩窗把圣经故事译成蓝色光，阴天也饱满。"
+      },
+      {
+        "name": "庭院雕塑群",
+        "location": "户外 · 松林庭院",
+        "why": "米罗迷宫、考尔德稳定器、贾科梅蒂瘦长人像散布林间，是基金会区别于普通美术馆的核心。"
+      }
+    ],
+    "collections": "20 世纪现代艺术重镇，藏米罗、考尔德、夏加尔、布拉克、贾科梅蒂等；建筑由 Josep Lluís Sert 设计，庭院即展陈。",
+    "tips": [
+      "语音导览含中文，强烈建议租。",
+      "庭院石子路湿滑，穿防滑鞋。",
+      "山下圣保罗德旺斯村可顺路逛画廊与石板巷。"
+    ]
+  },
+  "image": {
+    "url": "https://commons.wikimedia.org/wiki/File:Fondation_Maeght.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 4.0"
+  }
+}

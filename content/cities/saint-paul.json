@@ -1,0 +1,39 @@
+{
+  "id": "city-saint-paul",
+  "name": "圣保罗德旺斯",
+  "localName": "Saint-Paul-de-Vence",
+  "country": "fr",
+  "location": { "lat": 43.6927, "lng": 7.1206 },
+  "timezone": "Europe/Paris",
+  "survival": [
+    {
+      "topic": "toilet",
+      "summary": "山村入口游客中心与停车场附近有公共厕所；村内餐馆消费可用洗手间。",
+      "tips": ["村口停车场厕所最可靠，村内少", "旺季排队明显，建议到村口解决"],
+      "source": "https://www.saint-paul-de-venice.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "wifi",
+      "summary": "游客中心与主要餐馆有免费 Wi-Fi；山村石墙遮挡，部分巷内信号弱。",
+      "tips": ["导航提前离线缓存，山村易迷路", "梅格基金会馆内有信号"],
+      "source": "https://www.saint-paul-de-venice.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "transport",
+      "summary": "无火车站，需从尼斯或戛纳坐公交（Lignes d'Azur 400 路）或自驾；村口有停车场但旺季紧张。",
+      "tips": ["从尼斯坐 400 路约 1 小时，盘山路风景好", "自驾停在村外停车场，村内步行为主"],
+      "source": "https://www.lignesdazur.com/",
+      "verifiedAt": "2026-08-12"
+    },
+    {
+      "topic": "safety",
+      "summary": "山村治安良好，游客密集但扒窃少；石板路湿滑，注意脚下。",
+      "tips": ["穿防滑鞋，巷内台阶多", "停车勿留贵重物品在车里"],
+      "source": "https://www.saint-paul-de-venice.com/",
+      "verifiedAt": "2026-08-12"
+    }
+  ],
+  "transitPasses": []
+}

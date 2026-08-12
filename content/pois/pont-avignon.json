@@ -1,0 +1,33 @@
+{
+  "id": "poi-pont-avignon",
+  "type": "landmark",
+  "name": "圣贝内泽桥",
+  "localName": "Pont Saint-Bénézet",
+  "city": "city-avignon",
+  "country": "fr",
+  "location": { "lat": 43.9554, "lng": 4.8069 },
+  "tags": ["桥梁", "历史", "地标"],
+  "popularity": 66,
+  "officialUrl": "https://www.avignon-tourisme.com/",
+  "visit": {
+    "durationMinutes": [30, 60],
+    "durationNote": "30-60 分钟（桥上漫步 + 语音讲解）",
+    "bestTime": "清晨或傍晚光线柔和，桥身逆光少"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "facilities": {
+    "toilet": "入口游客中心有公厕",
+    "wifi": "入口广场有免费 Wi-Fi",
+    "accessible": true
+  },
+  "volatile": {
+    "price": { "value": "约 5 欧（与教皇宫联票更划算）", "source": "https://www.avignon-tourisme.com/", "verifiedAt": "2026-08-12" },
+    "hours": { "value": "约 09:00-19:00（夏季，冬季缩短）", "source": "https://www.avignon-tourisme.com/", "verifiedAt": "2026-08-12" },
+    "booking": { "value": "可现场购票，联票更省", "source": "https://www.avignon-tourisme.com/", "verifiedAt": "2026-08-12" }
+  },
+  "image": {
+    "url": "https://commons.wikimedia.org/wiki/File:Pont_Saint-Bénézet_Avignon.jpg",
+    "credit": "Wikimedia Commons",
+    "license": "CC BY-SA 4.0"
+  }
+}
