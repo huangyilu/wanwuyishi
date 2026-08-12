@@ -15,10 +15,14 @@ function PoiRow({
   poi,
   onInspect,
   onAdd,
+  added,
+  cityName,
 }: {
   poi: PoiSummary;
   onInspect: (id: string) => void;
   onAdd: (id: string) => void;
+  added: boolean;
+  cityName?: string;
 }) {
   const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
     id: `world:${poi.id}`,
@@ -30,7 +34,7 @@ function PoiRow({
   return (
     <div
       ref={setNodeRef}
-      className={`${s.poi} ${isDragging ? s.poiDragging : ''}`}
+      className={`${s.poi} ${added ? s.poiAdded : ''} ${isDragging ? s.poiDragging : ''}`}
       {...listeners}
       {...attributes}
       onClick={() => onInspect(poi.id)}
@@ -41,23 +45,27 @@ function PoiRow({
         <div className={s.poiName}>
           {poi.hasGuide && <span className={s.guideDot} title="有深度导览" />}
           {poi.name}
+          {added && <span className={s.addedBadge}>已加</span>}
         </div>
         <div className={s.poiSub}>
           {formatDuration(poi.durationMinutes)}
           {closed.length > 0 && ` · 周${closed.join('')}闭馆`}
           {poi.bookingLeadDays !== null && ` · 提前 ${poi.bookingLeadDays} 天订`}
         </div>
+        {cityName && <div className={s.poiCityTag}>{cityName}</div>}
       </div>
-      <button
-        className={s.addBtn}
-        title="加入当前选中的那天"
-        onClick={(e) => {
-          e.stopPropagation();
-          onAdd(poi.id);
-        }}
-      >
-        +
-      </button>
+      {!added && (
+        <button
+          className={s.addBtn}
+          title="加入当前选中的那天"
+          onClick={(e) => {
+            e.stopPropagation();
+            onAdd(poi.id);
+          }}
+        >
+          +
+        </button>
+      )}
     </div>
   );
 }
@@ -65,9 +73,11 @@ function PoiRow({
 export function WorldNav({
   onAddPoi,
   onInspectPoi,
+  addedPoiIds,
 }: {
   onAddPoi: (poiId: string) => void;
   onInspectPoi: (poiId: string) => void;
+  addedPoiIds?: Set<string>;
 }) {
   const { data: index } = useWorldIndex();
   const { cityFilter, setCityFilter, keyword, setKeyword, excludeTags, toggleExcludeTag } =
@@ -87,8 +97,12 @@ export function WorldNav({
     }));
   }, [index]);
 
-  // 国家层：可折叠的层级节点，默认收起（形成清晰的国家 ▸ 城市 ▸ POI 三级树）
+  // 国家层：可折叠的层级节点。默认全部展开，城市直接可见，少一层点击才到景点。
   const [openCountries, setOpenCountries] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    if (index) setOpenCountries(new Set(index.countries.map((c) => c.id)));
+  }, [index]);
 
   // 选中某城市筛选时，自动展开它所属的国家，避免城市藏在折叠里点不到
   useEffect(() => {
@@ -99,14 +113,24 @@ export function WorldNav({
     }
   }, [cityFilter, index, openCountries]);
 
-  function toggleCountry(id: string) {
-    setOpenCountries((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
-    });
-  }
+  const cityNameById = useMemo(
+    () => Object.fromEntries((index?.cities ?? []).map((c) => [c.id, c.name])),
+    [index],
+  );
+
+  const allOpen = index ? openCountries.size === index.countries.length : false;
+  const toggleAll = () =>
+    setOpenCountries(
+      index ? (allOpen ? new Set() : new Set(index.countries.map((c) => c.id))) : new Set(),
+    );
+
+  // 已加入行程的点：点「+」改为打开导览卡（避免重复添加），同时卡片显示「已加」角标
+  const handleAdd = (id: string) => {
+    if (addedPoiIds?.has(id)) onInspectPoi(id);
+    else onAddPoi(id);
+  };
+
+  const isAdded = (id: string) => addedPoiIds?.has(id) ?? false;
 
   return (
     <div className={s.wrap}>
@@ -122,6 +146,13 @@ export function WorldNav({
           onChange={(e) => setKeyword(e.target.value)}
         />
         <div className={s.filters}>
+          <button
+            className={`${s.allToggle} ${allOpen ? s.allToggleOn : ''}`}
+            onClick={toggleAll}
+            title={allOpen ? '收起全部国家' : '展开全部国家'}
+          >
+            {allOpen ? '收起全部' : '展开全部'}
+          </button>
           {QUICK_EXCLUDES.map((t) => (
             <button
               key={t}
@@ -141,60 +172,85 @@ export function WorldNav({
       </div>
 
       <div className={`${s.tree} scroll-y`}>
-        {grouped.map(({ country, cities }) => {
-          const open = openCountries.has(country.id);
-          const poiTotal = cities.reduce((n, c) => n + c.poiCount, 0);
-          return (
-            <div key={country.id}>
-              <button
-                className={s.countryBtn}
-                onClick={() => toggleCountry(country.id)}
-                title={open ? '收起城市' : '展开城市'}
-              >
-                <span className={s.arrow}>{open ? '▾' : '▸'}</span>
-                <span className={s.countryName}>
-                  {country.name} · {country.localName}
-                </span>
-                <span className={s.count}>{poiTotal}</span>
-              </button>
-              {open &&
-                cities.map((city) => (
-                  <div key={city.id}>
-                    <button
-                      className={`${s.city} ${cityFilter === city.id ? s.cityOn : ''}`}
-                      onClick={() => setCityFilter(cityFilter === city.id ? null : city.id)}
-                    >
-                      <span>{city.name}</span>
-                      <span className={s.count}>{city.poiCount}</span>
-                    </button>
-                    {cityFilter === city.id && (
-                      <div className={s.poiList}>
-                        {(pois ?? [])
-                          .filter((p) => p.city === city.id)
-                          .map((p) => (
-                            <PoiRow key={p.id} poi={p} onInspect={onInspectPoi} onAdd={onAddPoi} />
-                          ))}
-                        {(pois ?? []).filter((p) => p.city === city.id).length === 0 && (
-                          <div className={s.empty}>当前筛选下没有点位</div>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ))}
-            </div>
-          );
-        })}
-
-        {/* 搜索时跨城市平铺，避免要先猜在哪个城市 */}
-        {keyword && (
+        {/* 搜索时跨城市平铺，并标注每个点所属城市，避免先猜在哪个国家/城市 */}
+        {keyword ? (
           <div className={s.poiList}>
-            <div className={s.country}>搜索结果</div>
+            <div className={s.sectionLabel}>搜索结果 · {pois?.length ?? 0}</div>
             {(pois ?? []).map((p) => (
-              <PoiRow key={p.id} poi={p} onInspect={onInspectPoi} onAdd={onAddPoi} />
+              <PoiRow
+                key={p.id}
+                poi={p}
+                onInspect={onInspectPoi}
+                onAdd={handleAdd}
+                added={isAdded(p.id)}
+                cityName={cityNameById[p.city]}
+              />
             ))}
+            {(pois ?? []).length === 0 && <div className={s.empty}>没有匹配的景点</div>}
           </div>
+        ) : (
+          grouped.map(({ country, cities }) => {
+            const open = openCountries.has(country.id);
+            const poiTotal = cities.reduce((n, c) => n + c.poiCount, 0);
+            return (
+              <div key={country.id} className={s.countryBlock}>
+                <button
+                  className={s.countryBtn}
+                  onClick={() => toggleCountry(openCountries, setOpenCountries, country.id)}
+                  title={open ? '收起城市' : '展开城市'}
+                >
+                  <span className={s.arrow}>{open ? '▾' : '▸'}</span>
+                  <span className={s.countryName}>
+                    {country.name} · {country.localName}
+                  </span>
+                  <span className={s.count}>{poiTotal}</span>
+                </button>
+                {open &&
+                  cities.map((city) => (
+                    <div key={city.id}>
+                      <button
+                        className={`${s.city} ${cityFilter === city.id ? s.cityOn : ''}`}
+                        onClick={() => setCityFilter(cityFilter === city.id ? null : city.id)}
+                      >
+                        <span>{city.name}</span>
+                        <span className={s.count}>{city.poiCount}</span>
+                      </button>
+                      {cityFilter === city.id && (
+                        <div className={s.poiList}>
+                          {(pois ?? [])
+                            .filter((p) => p.city === city.id)
+                            .map((p) => (
+                              <PoiRow
+                                key={p.id}
+                                poi={p}
+                                onInspect={onInspectPoi}
+                                onAdd={handleAdd}
+                                added={isAdded(p.id)}
+                              />
+                            ))}
+                          {(pois ?? []).filter((p) => p.city === city.id).length === 0 && (
+                            <div className={s.empty}>当前筛选下没有点位</div>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+              </div>
+            );
+          })
         )}
       </div>
     </div>
   );
+}
+
+function toggleCountry(
+  current: Set<string>,
+  set: (next: Set<string>) => void,
+  id: string,
+) {
+  const next = new Set(current);
+  if (next.has(id)) next.delete(id);
+  else next.add(id);
+  set(next);
 }

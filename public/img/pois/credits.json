@@ -253,56 +253,56 @@
   },
   "poi-promenade-anglais": {
     "src": "img/pois/poi-promenade-anglais.jpg",
-    "author": "Wikimedia Commons",
+    "author": "Uhooep",
     "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Promenade_des_Anglais_Nice.jpg"
+    "page": "https://commons.wikimedia.org/wiki/File:Promenade%20des%20Anglais%20%28Nice%29%2C%20France.jpg"
   },
   "poi-castle-hill-nice": {
     "src": "img/pois/poi-castle-hill-nice.jpg",
-    "author": "Wikimedia Commons",
+    "author": "Choinowski",
     "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Nice_Castle_Hill_view.jpg"
+    "page": "https://commons.wikimedia.org/wiki/File:Nice%20France%20as%20seen%20From%20Colline%20du%20Ch%C3%A2teau.jpg"
   },
   "poi-palais-festivals": {
     "src": "img/pois/poi-palais-festivals.jpg",
-    "author": "Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Palais_des_festivals_Cannes.jpg"
+    "author": "Timantha102938",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Cannes%20Palais%20des%20Festivals%20et%20des%20Congr%C3%A8s.jpg"
   },
   "poi-le-suquet": {
     "src": "img/pois/poi-le-suquet.jpg",
-    "author": "Wikimedia Commons",
+    "author": "Spike",
     "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Le_Suquet_Cannes.jpg"
+    "page": "https://commons.wikimedia.org/wiki/File:Cannes%20from%20Suquet%20Tower%2002.jpg"
   },
   "poi-notre-dame-garde": {
     "src": "img/pois/poi-notre-dame-garde.jpg",
-    "author": "Wikimedia Commons",
+    "author": "kallerna",
     "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Notre-Dame_de_la_Garde_Marseille.jpg"
+    "page": "https://commons.wikimedia.org/wiki/File:Notre-Dame%20de%20la%20Garde%20Marseille%202024.jpg"
   },
   "poi-chateau-if": {
     "src": "img/pois/poi-chateau-if.jpg",
-    "author": "Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau_d%27If.jpg"
+    "author": "?",
+    "license": "Public domain",
+    "page": "https://commons.wikimedia.org/wiki/File:Ch%C3%A2teau%20d%27If.jpg"
   },
   "poi-palais-papes": {
     "src": "img/pois/poi-palais-papes.jpg",
-    "author": "Wikimedia Commons",
+    "author": "LonelyBanjo",
     "license": "CC BY-SA 4.0",
     "page": "https://commons.wikimedia.org/wiki/File:Palais_des_Papes_Avignon.jpg"
   },
   "poi-pont-avignon": {
     "src": "img/pois/poi-pont-avignon.jpg",
-    "author": "Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Pont_Saint-B%C3%A9nez_Avignon.jpg"
+    "author": "Acediscovery",
+    "license": "CC BY 4.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Pont-Saint-B%C3%A9n%C3%A9zet-Avignon-2012.jpg"
   },
   "poi-maeght": {
     "src": "img/pois/poi-maeght.jpg",
-    "author": "Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Fondation_Maeght.jpg"
+    "author": "David Broad",
+    "license": "CC BY 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Foundation%20Maeght%20museum%20near%20Saint-Paul-de-Vence%20-%20panoramio%20%282%29.jpg"
   }
 }

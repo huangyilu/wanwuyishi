@@ -73,32 +73,32 @@
   },
   "city-nice": {
     "src": "img/cities/city-nice.jpg",
-    "author": "Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Nice_panorama.jpg"
+    "author": "?",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Nice%20%28FR-06000%29%20Promenade%20des%20anglais.jpg"
   },
   "city-cannes": {
     "src": "img/cities/city-cannes.jpg",
-    "author": "Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Cannes_Panorama.jpg"
+    "author": "Charles from Port Chester, New York",
+    "license": "CC BY 2.0",
+    "page": "https://commons.wikimedia.org/wiki/File:Waterfront%20residential%20buildings%20on%20Boulevard%20de%20la%20Croisette%2C%20Cannes%2C%20France%20%2853968531025%29.jpg"
   },
   "city-marseille": {
     "src": "img/cities/city-marseille.jpg",
-    "author": "Wikimedia Commons",
+    "author": "Celuici",
     "license": "CC BY-SA 4.0",
-    "page": "https://commons.wikimedia.org/wiki/File:Marseille_Panorama.jpg"
+    "page": "https://commons.wikimedia.org/wiki/File:Marseille%20panorama%20from%20Palais%20du%20Pharo.jpg"
   },
   "city-avignon": {
     "src": "img/cities/city-avignon.jpg",
-    "author": "Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
+    "author": "Ingo Mehling",
+    "license": "CC BY-SA 3.0",
     "page": "https://commons.wikimedia.org/wiki/File:Avignon_Panorama.jpg"
   },
   "city-saint-paul": {
     "src": "img/cities/city-saint-paul.jpg",
-    "author": "Wikimedia Commons",
-    "license": "CC BY-SA 4.0",
+    "author": "Miguel Virkkunen Carvalho from Lahti, Finland",
+    "license": "CC BY 2.0",
     "page": "https://commons.wikimedia.org/wiki/File:Saint-Paul-de-Vence.jpg"
   }
 }

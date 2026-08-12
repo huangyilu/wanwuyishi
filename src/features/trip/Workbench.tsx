@@ -51,6 +51,11 @@ export function Workbench({ tripId }: { tripId: string }) {
     () => Array.from(new Set((bundle?.items ?? []).map((i) => i.poiId).filter((x): x is string => Boolean(x)))),
     [bundle?.items],
   );
+  // 已经加进行程的 POI：传给左栏世界列表，做「已加」标记，避免重复添加
+  const addedPoiIds = useMemo(
+    () => new Set((bundle?.items ?? []).map((i) => i.poiId).filter((x): x is string => Boolean(x))),
+    [bundle?.items],
+  );
   const { data: poiMapRaw } = usePoiMap(poiIds);
   const poiMap: Record<string, Poi> = poiMapRaw ?? {};
 
@@ -181,7 +186,11 @@ export function Workbench({ tripId }: { tripId: string }) {
     >
       <div className={s.grid}>
         <div className={s.left}>
-          <WorldNav onAddPoi={(id) => addPoi(id)} onInspectPoi={(id) => inspect({ type: 'poi', id })} />
+          <WorldNav
+            onAddPoi={(id) => addPoi(id)}
+            onInspectPoi={(id) => inspect({ type: 'poi', id })}
+            addedPoiIds={addedPoiIds}
+          />
         </div>
 
         <div className={s.center}>
