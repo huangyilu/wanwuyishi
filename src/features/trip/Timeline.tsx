@@ -23,6 +23,7 @@ import { isClosedOn } from '../../domain/trip/closure-check';
 import { byRank } from '../../domain/trip/rank';
 import type { SanityIssue } from '../../domain/trip/sanity-check';
 import type { Poi } from '../../domain/world/schema';
+import { formatDuration } from '../../domain/world/duration';
 import { useWorkbench } from '../../store/workbench';
 import { AvatarStack, type VoteTone } from './MemberAvatar';
 import { useMyMember } from './useMyMember';
@@ -118,7 +119,7 @@ function ItemRow({
   if (kind === 'poi') {
     if (poi)
       sub.push(
-        `${Math.round((poi.visit.durationMinutes[0] / 60) * 10) / 10}-${Math.round((poi.visit.durationMinutes[1] / 60) * 10) / 10} 小时`,
+        `${formatDuration(poi.visit.durationMinutes)}`,
       );
     if (item.slotStart)
       sub.push(item.slotEnd ? `${item.slotStart.slice(0, 5)}–${item.slotEnd.slice(0, 5)}` : item.slotStart.slice(0, 5));

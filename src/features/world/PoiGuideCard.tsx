@@ -1,4 +1,5 @@
 import { weekdayLabel } from '../../domain/date';
+import { formatDuration } from '../../domain/world/duration';
 import { freshnessOf, oldestVerification } from '../../domain/world/staleness';
 import type { Poi } from '../../domain/world/schema';
 import { usePoi } from './queries';
@@ -91,8 +92,7 @@ export function PoiGuideCardView({
       <div className={s.meta}>
         <div className={s.metaKey}>建议时长</div>
         <div>
-          {poi.visit.durationNote ??
-            `${poi.visit.durationMinutes[0]}-${poi.visit.durationMinutes[1]} 分钟`}
+          {poi.visit.durationNote ?? formatDuration(poi.visit.durationMinutes)}
         </div>
         <div className={s.metaKey}>闭馆日</div>
         <div>

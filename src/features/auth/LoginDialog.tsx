@@ -4,7 +4,7 @@
  * 把登录表单从顶栏里挪出来做成独立弹窗：样式可控、双端通用（PC 顶栏 / 移动端底栏都只留一个「登录」按钮）。
  * 支持：邮箱+密码登录、邮箱+密码注册（含「注册/登录」切换）、匿名快速体验、邮箱魔法链接。
  */
-import { useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import {
   signInAnonymously,
   signInWithOtp,
@@ -22,6 +22,17 @@ export function LoginDialog({ onClose }: { onClose: () => void }) {
   const [err, setErr] = useState<string | null>(null);
   const [ok, setOk] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+
+  // 支持 Esc 关闭弹窗
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') onClose();
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  const titleId = useId();
 
   async function run(fn: () => Promise<void>, okMsg?: string) {
     setBusy(true);
@@ -72,15 +83,26 @@ export function LoginDialog({ onClose }: { onClose: () => void }) {
 
   return (
     <div className={s.overlay} onClick={onClose}>
-      <div className={s.card} role="dialog" aria-modal="true" onClick={(e) => e.stopPropagation()}>
+      <div
+        className={s.card}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        onClick={(e) => e.stopPropagation()}
+      >
         <button className={s.close} onClick={onClose} aria-label="关闭">
           ×
         </button>
-        <h2 className={s.title}>{mode === 'signin' ? '登录云端' : '创建账号'}</h2>
+        <h2 className={s.title} id={titleId}>
+          {mode === 'signin' ? '登录云端' : '创建账号'}
+        </h2>
         <p className={s.sub}>登录后行程与账本在所有设备同步</p>
 
-        <label className={s.label}>邮箱</label>
+        <label className={s.label} htmlFor="login-email">
+          邮箱
+        </label>
         <input
+          id="login-email"
           className="field"
           type="email"
           placeholder="you@mail.com"
@@ -90,8 +112,11 @@ export function LoginDialog({ onClose }: { onClose: () => void }) {
           onKeyDown={(e) => e.key === 'Enter' && (mode === 'signin' ? loginPw() : register())}
         />
 
-        <label className={s.label}>密码</label>
+        <label className={s.label} htmlFor="login-password">
+          密码
+        </label>
         <input
+          id="login-password"
           className="field"
           type="password"
           placeholder={mode === 'signup' ? `至少 ${PW_MIN} 位` : '密码'}

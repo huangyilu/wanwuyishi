@@ -8,6 +8,7 @@ import { useMemo, useState } from 'react';
 import { formatCn, todayStr, weekdayLabel } from '../../domain/date';
 import { isClosedOn } from '../../domain/trip/closure-check';
 import { byRank } from '../../domain/trip/rank';
+import { formatDuration } from '../../domain/world/duration';
 import type { ItemStatus, TransportMode } from '../../data/types';
 import { PoiGuideCard } from '../world/PoiGuideCard';
 import { usePoiMap, useWorldIndex } from '../world/queries';
@@ -113,7 +114,7 @@ export function MobileTrip({ tripId }: { tripId: string }) {
           const title = poi?.name ?? it.customTitle ?? (isTransport ? '交通转场' : '备注');
 
           const meta: string[] = [];
-          if (poi) meta.push(`${Math.round((poi.visit.durationMinutes[0] / 60) * 10) / 10} 小时起`);
+          if (poi) meta.push(`${formatDuration(poi.visit.durationMinutes)}起`);
           if (it.slotStart) meta.push(it.slotStart.slice(0, 5));
           if (ticket?.booked) meta.push('票已订');
           else if (poi?.booking?.required) meta.push('未订票');

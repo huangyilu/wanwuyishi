@@ -121,8 +121,8 @@
 
 .mTabs {
   flex: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: space-around;
   border-top: 1px solid var(--line);
   background: var(--bg);
   padding-bottom: env(safe-area-inset-bottom);

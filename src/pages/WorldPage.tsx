@@ -10,6 +10,7 @@ import { useViewMode } from '../hooks/useViewMode';
 import { PoiGuideCardView } from '../features/world/PoiGuideCard';
 import { usePoi, usePois, useWorldIndex } from '../features/world/queries';
 import { cityImage } from '../features/world/cityImages';
+import { formatDuration } from '../domain/world/duration';
 import s from './WorldPage.module.css';
 
 const WEEK = ['日', '一', '二', '三', '四', '五', '六'];
@@ -202,7 +203,7 @@ export function WorldPage() {
                 {p.name}
               </div>
               <div className={s.cardMeta}>
-                {Math.round(p.durationMinutes[0] / 60)}-{Math.round(p.durationMinutes[1] / 60)} 小时
+                {formatDuration(p.durationMinutes)}
                 {p.closedWeekdays.length > 0 &&
                   ` · 周${p.closedWeekdays.map((d) => WEEK[d]).join('')}闭馆`}
               </div>
@@ -266,7 +267,7 @@ export function WorldPage() {
                 {p.name}
               </span>
               <span className={s.railMeta}>
-                {Math.round(p.durationMinutes[0] / 60)}-{Math.round(p.durationMinutes[1] / 60)} 小时
+                {formatDuration(p.durationMinutes)}
                 {p.closedWeekdays.length > 0 &&
                   ` · 周${p.closedWeekdays.map((d) => WEEK[d]).join('')}闭馆`}
               </span>
@@ -298,7 +299,7 @@ export function WorldPage() {
                 </div>
                 <div className={s.cardLocal}>{p.localName}</div>
                 <div className={s.cardMeta}>
-                  {Math.round(p.durationMinutes[0] / 60)}-{Math.round(p.durationMinutes[1] / 60)} 小时
+                  {formatDuration(p.durationMinutes)}
                   {p.closedWeekdays.length > 0 &&
                     ` · 周${p.closedWeekdays.map((d) => WEEK[d]).join('')}闭馆`}
                   {p.bookingLeadDays !== null && ` · 提前 ${p.bookingLeadDays} 天订`}

@@ -13,25 +13,25 @@ export interface CityImage {
 
 export const CITY_IMAGES: Record<string, CityImage> = {
   'city-paris': {
-    src: '/img/cities/city-paris.jpg',
+    src: 'img/cities/city-paris.jpg',
     author: 'Renée Kools',
     license: 'CC BY 4.0',
     page: 'https://commons.wikimedia.org/wiki/File:Paris_skyline_from_Montmartre_2026-01-03.jpg',
   },
   'city-rome': {
-    src: '/img/cities/city-rome.jpg',
+    src: 'img/cities/city-rome.jpg',
     author: 'Sonse',
     license: 'CC BY 2.0',
     page: 'https://commons.wikimedia.org/wiki/File:Skyline_of_Rome_from_Castel_Sant%27Angelo_(45704460365).jpg',
   },
   'city-florence': {
-    src: '/img/cities/city-florence.jpg',
+    src: 'img/cities/city-florence.jpg',
     author: 'Bely Medved',
     license: 'CC BY-SA 2.0',
     page: 'https://commons.wikimedia.org/wiki/File:Panorama_of_the_Florence_skyline_at_sunset.jpg',
   },
   'city-lucerne': {
-    src: '/img/cities/city-lucerne.jpg',
+    src: 'img/cities/city-lucerne.jpg',
     author: 'Norbert Nagel',
     license: 'CC BY-SA 3.0',
     page: 'https://commons.wikimedia.org/wiki/File:Landscape_Panorama_at_Hergiswil_near_Willisau_-_Lucerne_-_Switzerland_-_01.jpg',
@@ -39,49 +39,49 @@ export const CITY_IMAGES: Record<string, CityImage> = {
 
   // ---- 新增 ----
   'city-milan': {
-    src: '/img/cities/city-milan.jpg',
+    src: 'img/cities/city-milan.jpg',
     author: 'Daniel Case',
     license: 'CC BY-SA 3.0',
     page: 'https://commons.wikimedia.org/wiki/File:Full_Milan_skyline_from_Duomo_roof.jpg',
   },
   'city-venice': {
-    src: '/img/cities/city-venice.jpg',
+    src: 'img/cities/city-venice.jpg',
     author: 'Benh LIEU SONG',
     license: 'Public domain',
     page: 'https://commons.wikimedia.org/wiki/File:Piazzetta_San_Marco_Venice_BLS.jpg',
   },
   'city-naples': {
-    src: '/img/cities/city-naples.jpg',
+    src: 'img/cities/city-naples.jpg',
     author: 'PaestumPaestum',
     license: 'CC BY-SA 4.0',
     page: 'https://commons.wikimedia.org/wiki/File:Vesuvio_e_nave_a_Napoli.jpg',
   },
   'city-pompeii': {
-    src: '/img/cities/city-pompeii.jpg',
+    src: 'img/cities/city-pompeii.jpg',
     author: 'Commonists',
     license: 'CC BY-SA 4.0',
     page: 'https://commons.wikimedia.org/wiki/File:Stones_on_Via_di_Castricio_(Pompeii).jpg',
   },
   'city-capri': {
-    src: '/img/cities/city-capri.jpg',
+    src: 'img/cities/city-capri.jpg',
     author: 'Wolfgang Moroder',
     license: 'CC BY-SA 3.0',
     page: 'https://commons.wikimedia.org/wiki/File:Costa_settentrionale_Marina_Grande_Capri.jpg',
   },
   'city-dolomites': {
-    src: '/img/cities/city-dolomites.jpg',
+    src: 'img/cities/city-dolomites.jpg',
     author: 'Wolfgang Moroder',
     license: 'CC BY-SA 3.0',
     page: 'https://commons.wikimedia.org/wiki/File:Saslonch_y_Sela_da_Mont_S%C3%ABuc.jpg',
   },
   'city-interlaken': {
-    src: '/img/cities/city-interlaken.jpg',
+    src: 'img/cities/city-interlaken.jpg',
     author: 'Ank Kumar',
     license: 'CC BY-SA 4.0',
     page: 'https://commons.wikimedia.org/wiki/File:River_Aare_in_Interlaken,_Switzerland_(Ank_Kumar)_02.jpg',
   },
   'city-zermatt': {
-    src: '/img/cities/city-zermatt.jpg',
+    src: 'img/cities/city-zermatt.jpg',
     author: 'flamouroux',
     license: 'CC BY-SA 2.0',
     page: 'https://commons.wikimedia.org/wiki/File:Zermatt_Panorama.jpg',

@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import type { PoiSummary } from '../../data/types';
 import { useWorkbench } from '../../store/workbench';
 import { usePois, useWorldIndex } from './queries';
+import { formatDuration } from '../../domain/world/duration';
 import s from './WorldNav.module.css';
 
 const WEEK = ['日', '一', '二', '三', '四', '五', '六'];
@@ -42,7 +43,7 @@ function PoiRow({
           {poi.name}
         </div>
         <div className={s.poiSub}>
-          {Math.round(poi.durationMinutes[0] / 60)}-{Math.round(poi.durationMinutes[1] / 60)} 小时
+          {formatDuration(poi.durationMinutes)}
           {closed.length > 0 && ` · 周${closed.join('')}闭馆`}
           {poi.bookingLeadDays !== null && ` · 提前 ${poi.bookingLeadDays} 天订`}
         </div>

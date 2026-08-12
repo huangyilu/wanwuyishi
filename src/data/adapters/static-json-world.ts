@@ -98,7 +98,8 @@ export class StaticJsonWorldRepository implements WorldRepository {
   }
 
   async listPois(q: PoiQuery = {}): Promise<PoiSummary[]> {
-    const { pois } = await this.getIndex();
+    const index = await this.getIndex();
+    const { pois } = index;
     const kw = q.keyword?.trim().toLowerCase();
     let out = pois;
 
@@ -109,11 +110,14 @@ export class StaticJsonWorldRepository implements WorldRepository {
       out = out.filter((p) => !q.excludeTags!.some((t) => p.tags.includes(t)));
     }
     if (kw) {
+      const city = new Map(index.cities.map((c) => [c.id, c]));
       out = out.filter(
         (p) =>
           p.name.toLowerCase().includes(kw) ||
           p.localName.toLowerCase().includes(kw) ||
-          p.tags.some((t) => t.toLowerCase().includes(kw)),
+          p.tags.some((t) => t.toLowerCase().includes(kw)) ||
+          city.get(p.city)?.name.toLowerCase().includes(kw) ||
+          city.get(p.city)?.localName.toLowerCase().includes(kw),
       );
     }
 
