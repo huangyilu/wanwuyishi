@@ -188,3 +188,79 @@
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+/* 今天 tab 空档：出发倒计时 + 准备提醒 ------------------------------------ */
+.todayHero {
+  margin: 0 12px 4px;
+  padding: 16px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(160deg, var(--brand-soft), var(--bg));
+  border: 1px solid var(--line);
+}
+
+.todayHeroTop {
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--line-strong);
+}
+
+.todayHeroLabel {
+  font-size: 12px;
+  color: var(--text-3);
+  letter-spacing: 2px;
+}
+
+.todayHeroBig {
+  margin-top: 4px;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: var(--font-num);
+  color: var(--brand);
+  line-height: 1.15;
+}
+
+.todayHeroSub {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.prepList {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.prepTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+}
+
+.prepItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: var(--radius);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.prepWarn {
+  border-color: color-mix(in srgb, var(--st-warn) 45%, var(--line));
+  background: color-mix(in srgb, var(--st-warn) 10%, var(--bg));
+}
+
+.prepIcon {
+  flex: none;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.prepText {
+  min-width: 0;
+}

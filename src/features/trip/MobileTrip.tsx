@@ -5,6 +5,7 @@
  * 一屏就是当天的顺序、闭馆提醒和每个点的深导览入口。
  */
 import { useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { formatCn, todayStr, weekdayLabel } from '../../domain/date';
 import { isClosedOn } from '../../domain/trip/closure-check';
 import { byRank } from '../../domain/trip/rank';
@@ -13,6 +14,7 @@ import type { ItemStatus, TransportMode } from '../../data/types';
 import { PoiGuideCard } from '../world/PoiGuideCard';
 import { usePoiMap, useWorldIndex } from '../world/queries';
 import { useTripBundle } from './queries';
+import { MobileToday } from './MobileToday';
 import s from './MobileTrip.module.css';
 
 const STATUS_COLOR: Record<ItemStatus, string> = {
@@ -45,6 +47,9 @@ export function MobileTrip({ tripId }: { tripId: string }) {
   const { data: poiMap } = usePoiMap(poiIds);
   const { data: index } = useWorldIndex();
   const cities = index?.cities ?? [];
+  const countries = index?.countries ?? [];
+  const [params] = useSearchParams();
+  const todayMode = params.get('view') === 'today';
   const [openPoi, setOpenPoi] = useState<string | null>(null);
 
   const cityName = (id?: string | null): string =>
@@ -93,6 +98,10 @@ export function MobileTrip({ tripId }: { tripId: string }) {
           ))}
         </div>
       </div>
+
+      {todayMode && (
+        <MobileToday bundle={bundle} poiMap={poiMap} cities={cities} countries={countries} />
+      )}
 
       <div className={`${s.body} scroll-y`}>
         {closedList.length > 0 && (

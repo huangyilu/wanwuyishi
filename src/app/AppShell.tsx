@@ -80,7 +80,7 @@ function MobileShell() {
       </main>
       <nav className={s.mTabs}>
         {tripId && (
-          <NavLink to={`/trip/${tripId}`} className={mTabCls} end>
+          <NavLink to={`/trip/${tripId}?view=today`} className={mTabCls} end>
             <span className={s.mTabIcon}>📍</span>
             今天
           </NavLink>
