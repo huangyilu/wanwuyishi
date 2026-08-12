@@ -570,7 +570,7 @@ export function Timeline({
           <div className={s.emptyTrip}>
             先在上面选好起止日期，或者直接点下面的「添加一天」，
             <br />
-            然后把左边世界库里的点拖进来。
+            然后把左边世界里的点拖进来。
           </div>
         )}
 

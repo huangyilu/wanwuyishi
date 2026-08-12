@@ -41,7 +41,7 @@ function DesktopShell() {
             我的行程
           </NavLink>
           <NavLink to="/world" className={navCls}>
-            世界库
+            世界
           </NavLink>
         </nav>
         <div className={s.right}>
@@ -91,7 +91,7 @@ function MobileShell() {
         </NavLink>
         <NavLink to="/world" className={mTabCls}>
           <span className={s.mTabIcon}>🌍</span>
-          世界库
+          世界
         </NavLink>
       </nav>
     </div>

@@ -112,7 +112,7 @@ export function WorldNav({
     <div className={s.wrap}>
       <div className={s.head}>
         <div className={s.title}>
-          <span>世界库</span>
+          <span>世界</span>
           <span className={s.count}>{pois?.length ?? 0} 个点</span>
         </div>
         <input
