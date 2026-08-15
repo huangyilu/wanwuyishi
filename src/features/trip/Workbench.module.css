@@ -64,16 +64,31 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  height: 34px;
+  height: 38px;
   padding: 0 12px;
-  border-bottom: 1px solid var(--line);
-  color: var(--text-3);
-  font-size: 12px;
+  border-bottom: 1px dashed var(--line-strong);
+  background: var(--surface-1);
+}
+.rightHeadMark {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--brand);
+  transform: rotate(45deg);
+  flex: none;
+}
+.rightHeadTitle {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-1);
 }
 
 .rightBody {
   flex: 1;
   min-height: 0;
+  padding: 10px;
 }
 
 .placeholder {
@@ -81,6 +96,10 @@
   color: var(--text-3);
   font-size: 12px;
   line-height: 1.8;
+}
+.phArt {
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .placeholder h3 {
