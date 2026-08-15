@@ -5,11 +5,14 @@
  * PC 上也不会下移动壳，这是"双端不是响应式"在打包层面的兑现。
  * 账本（LedgerPanel）是单列组件，两端共用同一份。
  */
-import { Suspense, lazy, useState } from 'react';
+import { Suspense, lazy, useMemo, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useViewMode } from '../hooks/useViewMode';
 import { isSupabaseConfigured, useSession } from '../data/supabase-client';
 import { useTripBundle } from '../features/trip/queries';
+import { usePoiMap, useWorldIndex } from '../features/world/queries';
+import { tripToMarkdown } from '../domain/trip/export-md';
+import { downloadTextFile, safeFileName } from '../utils/download';
 import { CollaborateDialog } from '../features/trip/CollaborateDialog';
 import s from './TripPage.module.css';
 
@@ -44,6 +47,27 @@ export function TripPage() {
   const isOwner = Boolean(tripId && user?.id && bundle?.trip.ownerId === user.id);
   const canCollaborate = isSupabaseConfigured && isOwner;
 
+  // 导出行程单所需的世界库查表：把 POI / 城市 id 翻成可读名字
+  const poiIds = useMemo(
+    () =>
+      Array.from(
+        new Set((bundle?.items ?? []).map((i) => i.poiId).filter((x): x is string => Boolean(x))),
+      ),
+    [bundle],
+  );
+  const { data: poiMap } = usePoiMap(poiIds);
+  const { data: index } = useWorldIndex();
+
+  function handleExportMd() {
+    if (!bundle) return;
+    const md = tripToMarkdown(bundle, {
+      poiMap: poiMap ?? {},
+      cities: index?.cities ?? [],
+      countries: index?.countries ?? [],
+    });
+    downloadTextFile(`${safeFileName(bundle.trip.title)}_行程单.md`, md);
+  }
+
   if (!tripId) return <Navigate to="/trips" replace />;
 
   return (
@@ -63,6 +87,15 @@ export function TripPage() {
             邀请协作
           </button>
         )}
+        <button
+          className="btn btn-sm"
+          style={{ marginLeft: 'auto' }}
+          disabled={!bundle}
+          onClick={handleExportMd}
+          title="导出 Markdown 行程单（每日排期 / 交通 / 备注）"
+        >
+          ⬇ 导出 md
+        </button>
       </div>
       <div className={s.body}>
         <Suspense fallback={<Loading />}>
