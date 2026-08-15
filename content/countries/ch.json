@@ -1,7 +1,7 @@
 {
   "id": "ch",
   "name": "瑞士",
-  "localName": "Schweiz / Suisse / Svizzera",
+  "localName": "Switzerland",
   "currency": "CHF",
   "languages": ["德语", "法语", "意大利语", "罗曼什语"],
   "timezone": "Europe/Zurich",
