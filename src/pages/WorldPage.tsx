@@ -233,10 +233,17 @@ export function WorldPage() {
             <div key={country.id}>
               <button className={s.countryBtn} onClick={() => toggleCountry(country.id)}>
                 <span className={s.arrow}>{open ? '▾' : '▸'}</span>
-                <span className={s.countryName}>
-                  {country.name} · {country.localName}
+                <span className={s.countryNameGroup}>
+                  <span className={s.countryName}>{country.name}</span>
+                  {country.localName && (
+                    <span className={s.countryAlias} title="当地语言名称">
+                      {country.localName}
+                    </span>
+                  )}
                 </span>
-                <span className={s.count}>{poiTotal}</span>
+                <span className={s.count}>
+                  {cits.length} 城 · {poiTotal}
+                </span>
               </button>
               {open && cits.map((c) => renderCityCard(c))}
             </div>

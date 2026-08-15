@@ -54,32 +54,71 @@
   font-size: 11px;
 }
 
+/* 国家 = 可折叠的 section 头：主色 + 衬线 + 实线分隔 + 品牌菱形，明显比城市重 */
 .countryBtn {
   display: flex;
   align-items: center;
   gap: 6px;
   width: 100%;
-  padding: 8px 8px 4px;
+  padding: 11px 8px 9px;
+  margin-top: 6px;
   border: none;
+  border-top: 1px solid var(--line-strong);
   background: transparent;
   text-align: left;
-  color: var(--text-3);
-  font-size: 11px;
-  letter-spacing: 0.04em;
+  color: var(--text-1);
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 0.06em;
   cursor: pointer;
 }
+.countryBtn:first-of-type {
+  border-top: none;
+  margin-top: 0;
+}
 .countryBtn:hover {
-  color: var(--text-2);
+  color: var(--text-1);
+}
+.countryBtn::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--brand);
+  transform: rotate(45deg);
+  flex: none;
+}
+.countryNameGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  flex: 1;
+  min-width: 0;
 }
 .countryName {
-  flex: 1;
-  font-weight: 600;
+  font-weight: 700;
+  white-space: nowrap;
 }
-.arrow {
-  width: 9px;
-  flex: none;
-  font-size: 9px;
+/* 当地语言名降级为小灰别名，不再与中文名并列抢视觉 */
+.countryAlias {
   color: var(--text-3);
+  font-size: 10px;
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 折叠箭头放大、加清晰色，悬停变品牌色，让"可展开"一眼可见 */
+.arrow {
+  width: 14px;
+  flex: none;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--text-2);
+  transition: color 0.12s;
+}
+.countryBtn:hover .arrow {
+  color: var(--brand);
 }
 
 .cityBtn {
