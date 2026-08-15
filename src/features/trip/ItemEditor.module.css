@@ -23,6 +23,11 @@
   flex: 1;
   min-width: 0;
 }
+/* 行内城市下拉：跟随内容宽度，不再撑满整行 */
+.row .field select {
+  width: auto;
+  max-width: 100%;
+}
 
 .label {
   font-size: 12px;
@@ -46,8 +51,8 @@
   outline: none;
 }
 .textarea {
-  min-height: 72px;
-  resize: vertical;
+  min-height: 92px;
+  resize: none;
   line-height: 1.5;
 }
 

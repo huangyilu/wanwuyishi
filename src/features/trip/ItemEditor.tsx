@@ -7,7 +7,7 @@
  *
  * 所有改动走 mut.updateItem 乐观更新，松手即生效。
  */
-import { useState, type ChangeEvent } from 'react';
+import { useState, useEffect, useRef, type ChangeEvent, type FocusEvent } from 'react';
 import { useTripRepo } from '../../data';
 import type { CitySummary, ItemStatus, TransportMode, TripBundle, TripItem } from '../../data/types';
 import type { useTripMutations } from './queries';
@@ -86,7 +86,7 @@ export function ItemEditor({
 
           <div className={s.field}>
             <label className={s.label}>共享备注</label>
-            <textarea
+            <AutoTextarea
               className={s.textarea}
               defaultValue={item.note ?? ''}
               placeholder="备注：已买门票 / 预约号 / 注意事项…"
@@ -109,7 +109,7 @@ export function ItemEditor({
           </div>
           <div className={s.field}>
             <label className={s.label}>内容</label>
-            <textarea
+            <AutoTextarea
               className={s.textarea}
               defaultValue={item.note ?? ''}
               placeholder="写点什么把这天串起来…"
@@ -211,7 +211,7 @@ export function ItemEditor({
 
           <div className={s.field}>
             <label className={s.label}>备注</label>
-            <textarea
+            <AutoTextarea
               className={s.textarea}
               defaultValue={item.note ?? ''}
               placeholder="航班号 / 车次 / 行李寄存 / 接机…"
@@ -240,6 +240,43 @@ export function ItemEditor({
 
       <ImageSection isCloud={isCloud} tripId={bundle.trip.id} item={item} patch={patch} />
     </div>
+  );
+}
+
+/* ------------------------- 自适应高度 textarea ------------------------- */
+function AutoTextarea({
+  className,
+  defaultValue,
+  placeholder,
+  onBlur,
+  rows = 4,
+}: {
+  className?: string;
+  defaultValue: string;
+  placeholder?: string;
+  onBlur: (e: FocusEvent<HTMLTextAreaElement>) => void;
+  rows?: number;
+}) {
+  const ref = useRef<HTMLTextAreaElement>(null);
+  const grow = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = `${el.scrollHeight}px`;
+  };
+  useEffect(() => {
+    grow();
+  }, [defaultValue]);
+  return (
+    <textarea
+      ref={ref}
+      className={className}
+      defaultValue={defaultValue}
+      placeholder={placeholder}
+      rows={rows}
+      onInput={grow}
+      onBlur={onBlur}
+    />
   );
 }
 
