@@ -71,6 +71,10 @@
   padding: 4px 0 24px;
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
+  /* 探险手帐：树区铺一层极淡网格点，像一张地图册内页 */
+  background-color: var(--bg);
+  background-image: radial-gradient(var(--tex-dot) 1px, transparent 1px);
+  background-size: 16px 16px;
 }
 .tree::-webkit-scrollbar {
   width: 9px;
@@ -96,18 +100,28 @@
 .countryBtn {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   width: 100%;
-  padding: 9px 12px 7px;
-  margin-top: 6px;
+  padding: 12px 12px 10px;
+  margin-top: 12px;
   border: none;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid var(--line-strong);
   background: var(--surface-2);
   text-align: left;
-  color: var(--text-2);
-  font-size: 12px;
-  letter-spacing: 0.04em;
+  color: var(--text-1);
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  letter-spacing: 0.08em;
   cursor: pointer;
+}
+.countryBtn::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--brand);
+  transform: rotate(45deg);
+  flex: none;
 }
 .countryBtn:hover {
   color: var(--text-1);
@@ -129,20 +143,25 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 5px 12px;
+  padding: 6px 12px 6px 26px;
   border: none;
+  border-left: 2px solid transparent;
   background: transparent;
   text-align: left;
   color: var(--text-1);
   font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
 }
 .city:hover {
   background: var(--bg-hover);
+  border-left-color: var(--brand);
 }
 .cityOn {
   background: var(--brand-soft);
   color: var(--brand-ink);
-  font-weight: 600;
+  font-weight: 700;
+  border-left-color: var(--brand);
 }
 
 .count {
@@ -161,15 +180,19 @@
   padding: 6px 8px;
   margin-bottom: 2px;
   border: 1px solid var(--line);
+  border-left: 3px solid var(--line-strong);
   border-radius: var(--radius);
   background: var(--surface-2);
   cursor: grab;
   touch-action: none;
-  transition: border-color 0.12s, background 0.12s, transform 0.04s;
+  transition: border-color 0.12s, background 0.12s, transform 0.12s, box-shadow 0.12s;
 }
 .poi:hover {
   border-color: var(--line-strong);
+  border-left-color: var(--brand);
   background: var(--bg-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 .poi:active {
   transform: scale(0.99);
@@ -181,10 +204,12 @@
 /* 已加入行程：绿色态 + 角标，一眼区分出还没加的点 */
 .poiAdded {
   border-color: var(--ok-border);
+  border-left-color: var(--ok);
   background: var(--ok-soft);
 }
 .poiAdded:hover {
   border-color: var(--ok);
+  border-left-color: var(--ok);
   background: var(--ok-soft);
 }
 
