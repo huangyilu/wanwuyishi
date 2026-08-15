@@ -14,8 +14,10 @@
 import { createClient, type Session, type SupabaseClient, type User } from '@supabase/supabase-js';
 import { useEffect, useState } from 'react';
 
-const URL = import.meta.env.VITE_SUPABASE_URL as string | undefined;
-const ANON = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
+export const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string | undefined;
+export const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined;
+const URL = SUPABASE_URL;
+const ANON = SUPABASE_ANON_KEY;
 
 export const isSupabaseConfigured = Boolean(URL) && Boolean(ANON);
 

@@ -9,7 +9,14 @@
  *   后者持有 DEEPSEEK_API_KEY（secret，绝不下发浏览器），并默认校验 JWT（仅登录用户可用）。
  */
 import { useRef, useState } from 'react';
-import { isSupabaseConfigured, supabase, useSession } from '../../data/supabase-client';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import {
+  isSupabaseConfigured,
+  supabase,
+  SUPABASE_ANON_KEY,
+  SUPABASE_URL,
+  useSession,
+} from '../../data/supabase-client';
 import { useTripBundle, useTripMutations } from './queries';
 import { useWorldIndex } from '../world/queries';
 import { todayStr } from '../../domain/date';
@@ -120,22 +127,41 @@ function uid(): string {
   return crypto.randomUUID();
 }
 
-// Supabase JS 在非 2xx 时只给笼统的 "Edge Function returned a non-2xx status code"，
-// 真实原因（401/500 的具体 message）藏在 error.context(Response) 里，这里提取出来。
-async function describeInvokeError(err: unknown): Promise<string> {
-  const e = err as { message?: string; context?: Response };
-  let detail = e?.message || String(err);
-  const ctx = e?.context;
-  if (ctx && typeof ctx.json === 'function') {
+// 直接 fetch 调 Edge Function，绕开 supabase-js 把真实错误吞成
+// "Edge Function returned a non-2xx status code" 的包裹，拿到状态码 + 原始响应体。
+async function callChatProxy(sb: SupabaseClient, body: unknown): Promise<unknown> {
+  if (!SUPABASE_URL) throw new Error('Supabase 未配置（缺 VITE_SUPABASE_URL）');
+  const { data: sd } = await sb.auth.getSession();
+  const token = sd.session?.access_token;
+  if (!token) throw new Error('未登录：缺少用户令牌，请先在右上角登录云端账号');
+
+  const res = await fetch(`${SUPABASE_URL}/functions/v1/chat-proxy`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+      apikey: SUPABASE_ANON_KEY ?? '',
+    },
+    body: JSON.stringify(body),
+  });
+
+  const text = await res.text();
+  if (!res.ok) {
+    let msg = `函数返回 ${res.status}`;
     try {
-      const j = await ctx.json();
-      if (j?.error) detail = typeof j.error === 'string' ? j.error : JSON.stringify(j.error);
-      else if (j?.message) detail = String(j.message);
+      const j = JSON.parse(text);
+      if (j?.error) msg = `${res.status}: ${typeof j.error === 'string' ? j.error : JSON.stringify(j.error)}`;
+      else if (j?.message) msg = `${res.status}: ${j.message}`;
     } catch {
-      /* 解析失败就保留原 message */
+      if (text) msg = `${res.status}: ${text.slice(0, 300)}`;
     }
+    throw new Error(msg);
   }
-  return detail;
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error(`函数返回非 JSON：${text.slice(0, 300)}`);
+  }
 }
 
 function cityName(index: WorldIndex | undefined, id?: string | null): string {
@@ -387,10 +413,11 @@ ${members}
     try {
       for (let guard = 0; guard < 6; guard++) {
         const sys: ChatMsg = { role: 'system', content: buildSystem(bundle, index) };
-        const { data, error: invErr } = await supabase.functions.invoke('chat-proxy', {
-          body: { messages: [sys, ...working], tools: TOOLS, model: 'deepseek-chat' },
-        });
-        if (invErr) throw new Error(await describeInvokeError(invErr));
+        const data = (await callChatProxy(supabase, {
+          messages: [sys, ...working],
+          tools: TOOLS,
+          model: 'deepseek-chat',
+        })) as { choices?: { message: ChatMsg }[] };
         const msg: ChatMsg | undefined = data?.choices?.[0]?.message;
         if (!msg) break;
 
