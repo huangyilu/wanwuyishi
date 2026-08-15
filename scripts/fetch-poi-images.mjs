@@ -25,6 +25,13 @@ const POIS = [
   { id: 'poi-mount-pilatus', q: ['Mount Pilatus Switzerland', 'Pilatus mountain'] },
   { id: 'poi-chapel-bridge', q: ['Kapellbrücke Lucerne', 'Chapel Bridge Luzern'] },
   { id: 'poi-sainte-chapelle', q: ['Sainte-Chapelle Paris', 'Sainte Chapelle interior'] },
+
+  // ---- 罗马补充（2026-08-15 新增 POI，待配图） ----
+  { id: 'poi-foro-romano-palatino', q: ['Roman Forum Rome', 'Foro Romano Roma', 'Palatine Hill Rome'] },
+  { id: 'poi-piazza-venezia-vittoriano', q: ['Piazza Venezia Rome', 'Altare della Patria Rome', 'Victor Emmanuel II Monument'] },
+  { id: 'poi-trevi-fountain', q: ['Trevi Fountain Rome', 'Fontana di Trevi'] },
+  { id: 'poi-mouth-of-truth', q: ['Mouth of Truth Rome', 'Bocca della Verita'] },
+  { id: 'poi-trastevere', q: ['Trastevere Rome', 'Santa Maria in Trastevere'] },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
