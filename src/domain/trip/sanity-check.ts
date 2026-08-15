@@ -1,6 +1,8 @@
 /**
  * 行程合理性体检 —— 地图预览之外的第二道"别踩坑"防线。
  *
+ * 只纳入 status === 'confirmed' 的行程项（候选/心愿单/已放弃/已游览均不计入）。
+ *
  * 四类检查：
  *   closure   闭馆撞车（复用 closure-check）
  *   overpack  一天排太满（游览时长 + 步行转场时间 > 可用时长）
@@ -90,8 +92,10 @@ export function sanityCheck(
   const tripDates = days.map((d) => d.date);
 
   // 1. 闭馆
+  // 只体检「确定」的行程项；候选/心愿单/已放弃/已游览都不计入。
   const scheduled = days.flatMap((d) =>
     d.items
+      .filter((it) => it.status === 'confirmed')
       .map((it) => (it.poiId ? poiIndex[it.poiId] : undefined))
       .filter((p): p is CheckPoi => Boolean(p))
       .map((poi) => ({ date: d.date, poi })),
@@ -102,6 +106,7 @@ export function sanityCheck(
 
   for (const day of days) {
     const pois = day.items
+      .filter((it) => it.status === 'confirmed')
       .map((it) => (it.poiId ? poiIndex[it.poiId] : undefined))
       .filter((p): p is CheckPoi => Boolean(p));
     if (pois.length === 0) continue;
@@ -147,7 +152,7 @@ export function sanityCheck(
       for (const item of day.items) {
         const poi = item.poiId ? poiIndex[item.poiId] : undefined;
         if (!poi?.booking?.required || item.hasTicket) continue;
-        if (item.status === 'dropped' || item.status === 'wishlist') continue;
+        if (item.status !== 'confirmed') continue;
         const daysLeft = diffDays(today, day.date);
         const lead = poi.booking.leadDays;
         if (daysLeft < 0) continue;

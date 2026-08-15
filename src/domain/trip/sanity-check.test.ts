@@ -86,4 +86,12 @@ describe('sanityCheck', () => {
     );
     expect(issues.some((i) => i.kind === 'zigzag')).toBe(true);
   });
+
+  it('候选状态的项不计入体检（只认 confirmed）', () => {
+    const index = { p1: poi('p1', { durationMinutes: [150, 240] }) };
+    // 同一天塞一个候选的"大馆"，若是确定项会触发排太满，但候选应被忽略
+    const candidate = { id: 'i2', poiId: 'p1', status: 'candidate' as const, hasTicket: false };
+    const issues = sanityCheck([{ date: '2026-09-20', items: [candidate] }], index);
+    expect(issues).toEqual([]);
+  });
 });
