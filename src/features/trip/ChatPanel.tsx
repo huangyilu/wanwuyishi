@@ -25,6 +25,7 @@ import type {
   Expense,
   ItemKind,
   ItemStatus,
+  PackingItem,
   TransportMode,
   TripBundle,
   TripItem,
@@ -110,6 +111,30 @@ const TOOLS: unknown[] = [
           note: { type: 'string' },
         },
         required: ['category', 'title', 'amountCents', 'currency', 'splitMode'],
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'add_packing_item',
+      description:
+        '往行程的打包清单加一项行李/物品。category 选分类；ownerName 填成员即其个人行李，不填则为公共共享项（如转换插头只需准备一份）。',
+      parameters: {
+        type: 'object',
+        properties: {
+          category: {
+            type: 'string',
+            enum: ['证件/票据', '衣物', '洗漱', '电子', '药品', '其他'],
+          },
+          text: { type: 'string', description: '物品名称，如 转换插头 / 护照 / 防晒霜' },
+          ownerName: {
+            type: 'string',
+            description: '归属成员名字；填了就是该成员个人行李，不填则是公共项',
+          },
+          note: { type: 'string', description: '备注，可选' },
+        },
+        required: ['category', 'text'],
       },
     },
   },
@@ -334,6 +359,31 @@ export function ChatPanel({ tripId }: { tripId: string }) {
     };
   }
 
+  async function doAddPacking(args: Record<string, unknown>): Promise<ToolResult> {
+    const text = args.text as string;
+    if (!text) return { ok: false, summary: '打包项缺少 text（物品名称）' };
+    const category = (args.category as string) || '其他';
+    const note = (args.note as string) ?? null;
+    let ownerId: string | null = null;
+    if (args.ownerName) ownerId = resolveMember(args.ownerName as string) ?? null;
+
+    const existing: PackingItem[] = bundle?.trip?.packing ?? [];
+    const item: PackingItem = {
+      id: uid(),
+      category,
+      text,
+      done: false,
+      ownerId,
+      assigneeId: null,
+      note,
+    };
+    await mut.setPacking.mutateAsync([...existing, item]);
+    const who = ownerId
+      ? `（${bundle?.members.find((m) => m.id === ownerId)?.displayName ?? '某人'}）`
+      : '（公共）';
+    return { ok: true, summary: `✓ 打包清单新增：${category}·${text}${who}` };
+  }
+
   async function runTool(tc: ToolCall, dayCache: Map<string, string>): Promise<ToolResult> {
     let args: Record<string, unknown> = {};
     try {
@@ -344,6 +394,7 @@ export function ChatPanel({ tripId }: { tripId: string }) {
     try {
       if (tc.function.name === 'add_trip_item') return await doAddItem(args, dayCache);
       if (tc.function.name === 'add_expense') return await doAddExpense(args, dayCache);
+      if (tc.function.name === 'add_packing_item') return await doAddPacking(args);
       return { ok: false, summary: `未知工具：${tc.function.name}` };
     } catch (e) {
       return { ok: false, summary: `执行失败：${e instanceof Error ? e.message : String(e)}` };
@@ -385,11 +436,15 @@ ${days}
 # 成员（payerMemberId 用 id；"我/自己"=队长）
 ${members}
 
+# 打包清单
+也可以调用 add_packing_item 往清单加行李。category 用上面枚举；ownerName 填成员即其个人行李，不填为公共项（如转换插头只需备一份）。
+
 # 解析规则
 - 日期写法 9.23 / 9月23日 / 9/23 → 转 ISO（如 2026-09-23），按行程起止年份补全年份；超出范围先问用户。
 - transportMode：高铁/动车/火车→train；飞机/航班→flight；大巴/巴士→bus；船/轮渡→ferry；自驾/租车→car；步行→walk；其他→other。
 - currency：欧/欧元→EUR，瑞郎→CHF，美元→USD，人民币→CNY。
 - splitMode：AA/均摊→aa；个人/自付→personal。
+- 加打包项：转换插头/充电器等多为公共项（ownerName 不填）；护照/个人药品等填 ownerName。
 - 加景点：优先用 poiId；只有世界库没有时才用 poiName 当自定义景点。
 - 交通：必须填 transportMode 与 from/to 城市 id；customTitle 不填会自动生成"方式 起→终"。
 - 每完成一批操作，用一句中文告诉用户你加了什么、在哪天。不要罗列原始 JSON。`;
@@ -476,6 +531,7 @@ ${members}
             用大白话告诉我想建什么，例如：
             <br />· 「9.23 罗马坐高铁去佛罗伦萨，下午逛斗兽场」
             <br />· 「记一笔：高铁票 45 欧我付的，AA」
+            <br />· 「打包清单加个转换插头，电子类」
           </div>
         )}
         {disp.map((m) => (
