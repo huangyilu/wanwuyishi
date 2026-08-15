@@ -43,6 +43,8 @@ export function TripPage() {
   const [mode] = useViewMode();
   const [tab, setTab] = useState<'timeline' | 'ledger' | 'packing'>('timeline');
   const [invite, setInvite] = useState(false);
+  const [showPreview, setShowPreview] = useState(false);
+  const [copied, setCopied] = useState(false);
   const { user } = useSession();
   const { data: bundle } = useTripBundle(tripId);
   const isOwner = Boolean(tripId && user?.id && bundle?.trip.ownerId === user.id);
@@ -59,14 +61,31 @@ export function TripPage() {
   const { data: poiMap } = usePoiMap(poiIds);
   const { data: index } = useWorldIndex();
 
-  function handleExportMd() {
-    if (!bundle) return;
-    const md = tripToMarkdown(bundle, {
+  function buildMd(): string | null {
+    if (!bundle) return null;
+    return tripToMarkdown(bundle, {
       poiMap: poiMap ?? {},
       cities: index?.cities ?? [],
       countries: index?.countries ?? [],
     });
+  }
+
+  function handleExportMd() {
+    const md = buildMd();
+    if (!md || !bundle) return;
     downloadTextFile(`${safeFileName(bundle.trip.title)}_行程单.md`, md);
+  }
+
+  async function copyMd() {
+    const md = buildMd();
+    if (!md) return;
+    try {
+      await navigator.clipboard.writeText(md);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      /* 剪贴板不可用时忽略 */
+    }
   }
 
   if (!tripId) return <Navigate to="/trips" replace />;
@@ -88,15 +107,24 @@ export function TripPage() {
             邀请协作
           </button>
         )}
-        <button
-          className="btn btn-sm"
-          style={{ marginLeft: 'auto' }}
-          disabled={!bundle}
-          onClick={handleExportMd}
-          title="导出 Markdown 行程单（每日排期 / 交通 / 备注）"
-        >
-          ⬇ 导出 md
-        </button>
+        <span className={s.mdGroup}>
+          <button
+            className={s.mdBtn}
+            disabled={!bundle}
+            onClick={() => setShowPreview(true)}
+            title="预览 Markdown 行程单"
+          >
+            预览 md
+          </button>
+          <button
+            className={`${s.mdBtn} ${s.mdBtnPrimary}`}
+            disabled={!bundle}
+            onClick={handleExportMd}
+            title="下载 Markdown 行程单（每日排期 / 交通 / 备注）"
+          >
+            下载 md
+          </button>
+        </span>
       </div>
       <div className={s.body}>
         <Suspense fallback={<Loading />}>
@@ -112,6 +140,33 @@ export function TripPage() {
         </Suspense>
       </div>
       {invite && <CollaborateDialog tripId={tripId} onClose={() => setInvite(false)} />}
+
+      {showPreview && (
+        <div className={s.overlay} onClick={() => setShowPreview(false)}>
+          <div
+            className={s.previewCard}
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className={s.previewHead}>
+              <span className={s.previewTitle}>行程单预览（Markdown）</span>
+              <button className={s.close} onClick={() => setShowPreview(false)} aria-label="关闭">
+                ×
+              </button>
+            </div>
+            <pre className={s.previewBody}>{buildMd() ?? '（行程为空）'}</pre>
+            <div className={s.previewFoot}>
+              <button className="btn btn-ghost btn-sm" onClick={() => void copyMd()} disabled={!bundle}>
+                {copied ? '已复制' : '复制'}
+              </button>
+              <button className="btn btn-sm" onClick={handleExportMd} disabled={!bundle}>
+                下载 .md
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* AI 行程助手：跨时间线/账本/打包 三个标签始终悬浮右侧 */}
       <ChatPanel tripId={tripId} />

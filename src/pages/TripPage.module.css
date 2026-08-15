@@ -1,30 +1,160 @@
 .tabs {
   display: flex;
-  gap: 4px;
-  padding: 0 16px 0;
-  border-bottom: 1px solid var(--border);
+  gap: 6px;
+  padding: 8px 16px 0;
+  border-bottom: 1px dashed var(--line-strong);
   background: var(--surface-1);
 }
 .tab {
   appearance: none;
   border: none;
   background: none;
-  padding: 10px 16px;
+  padding: 8px 16px 10px;
+  font-family: var(--font-display);
   font-size: 14px;
+  letter-spacing: 0.02em;
   color: var(--text-2);
   cursor: pointer;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 11px 11px 0 0;
+  transition: background 0.15s, color 0.15s;
+}
+.tab::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--text-3);
+  transform: rotate(45deg);
+  flex: none;
+  transition: background 0.15s;
+}
+.tab:hover {
+  color: var(--text-1);
+  background: var(--bg-hover);
 }
 .tabOn {
   color: var(--brand-ink);
-  border-bottom-color: var(--brand);
-  font-weight: 600;
+  background: var(--brand-soft);
+  font-weight: 700;
+}
+.tabOn::before {
+  background: var(--brand);
 }
 .inviteBtn {
   margin-left: auto;
-  margin-bottom: -1px;
   align-self: center;
+}
+
+/* —— 导出 md：紧凑双按钮（预览 / 下载） —— */
+.mdGroup {
+  margin-left: auto;
+  align-self: center;
+  display: inline-flex;
+  gap: 6px;
+}
+.mdBtn {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: var(--surface-1);
+  color: var(--text-2);
+  padding: 5px 11px;
+  border-radius: var(--radius-sm);
+  font: 500 12px/1 var(--font-sans);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.mdBtn:hover:not(:disabled) {
+  background: var(--bg-hover);
+  color: var(--text-1);
+  border-color: var(--line-strong);
+}
+.mdBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.mdBtnPrimary {
+  border-color: var(--brand);
+  color: var(--brand-ink);
+  background: var(--brand-soft);
+}
+.mdBtnPrimary:hover:not(:disabled) {
+  background: var(--brand);
+  color: var(--on-brand);
+  border-color: var(--brand);
+}
+
+/* —— 行程单预览弹窗 —— */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(20, 24, 22, 0.42);
+  backdrop-filter: blur(2px);
+}
+.previewCard {
+  width: min(720px, 100%);
+  max-height: 86vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+.previewHead {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-2);
+}
+.previewTitle {
+  font: 500 14px/1 var(--font-display);
+  color: var(--brand-ink);
+}
+.close {
+  margin-left: auto;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-2);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+.close:hover {
+  background: var(--bg-hover);
+  color: var(--text-1);
+}
+.previewBody {
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 16px 18px;
+  overflow: auto;
+  background: var(--bg-sub);
+  color: var(--text-1);
+  font: 400 12.5px/1.7 var(--font-num);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.previewFoot {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--line);
+  background: var(--surface-1);
 }
 .body {
   flex: 1;
