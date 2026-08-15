@@ -196,20 +196,50 @@
   background-clip: padding-box;
 }
 
+/* 行程路线轨：把所有「驿站」（天）串成一条虚线旅程 */
+.days {
+  position: relative;
+  padding-left: 44px;
+}
+.days::before {
+  content: '';
+  position: absolute;
+  left: 16px;
+  top: 12px;
+  bottom: 16px;
+  width: 3px;
+  border-radius: 3px;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    var(--route) 0 6px,
+    transparent 6px 13px
+  );
+}
+
 .day {
+  position: relative;
   margin-top: 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--surface-1);
   box-shadow: var(--shadow-sm);
-  overflow: hidden;
+  overflow: visible;
+  transition: border-color 0.12s, box-shadow 0.14s, transform 0.14s;
 }
 .day:first-child {
   margin-top: 0;
 }
+.day:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
 .dayActive {
   border-color: var(--brand);
-  box-shadow: 0 0 0 3px var(--brand-soft);
+  outline: 3px solid var(--brand-soft);
+  outline-offset: 0;
+}
+.dayActive:hover {
+  box-shadow: 0 0 0 3px var(--brand-soft), var(--shadow);
 }
 .dayOver {
   border-color: var(--brand);
@@ -222,20 +252,55 @@
   gap: 8px;
   padding: 9px 12px;
   border-bottom: 1px solid var(--line);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   cursor: pointer;
   background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
 }
 
+/* 驿站节点：圆形打卡章，落在路线轨上（不被卡片裁切，故 .day overflow 改 visible） */
 .dayIdx {
-  flex: none;
-  min-width: 26px;
-  padding: 1px 6px;
-  border-radius: var(--radius-sm);
-  background: var(--surface-2);
-  color: var(--text-2);
+  position: absolute;
+  left: -39px;
+  top: 9px;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  border: 2px solid var(--brand);
+  color: var(--brand-ink);
   font-family: var(--font-num);
+  font-weight: 700;
+  font-size: 12px;
+  box-shadow: 0 1px 3px rgba(20, 40, 30, 0.14);
+  transition: background 0.14s, color 0.14s, box-shadow 0.14s;
+}
+.dayActive .dayIdx {
+  background: var(--brand);
+  color: var(--on-brand);
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px var(--brand-soft);
+}
+.dayOver .dayIdx {
+  background: var(--brand-soft);
+}
+
+/* 此日已定：手帐印章 */
+.dayStamp {
+  flex: none;
+  padding: 0 7px;
+  border: 1.5px solid var(--st-confirmed);
+  border-radius: 4px;
+  color: var(--st-confirmed);
+  font-family: var(--font-display);
   font-size: 11px;
-  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  transform: rotate(var(--stamp-rot));
+  opacity: 0.9;
 }
 
 .dayDate {
@@ -399,14 +464,15 @@
   flex: none;
   width: 22px;
   height: 22px;
-  border: 1px solid var(--line);
+  border: none;
   border-radius: var(--radius-sm);
-  background: var(--bg);
+  background: transparent;
   font-size: 12px;
   line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease;
 }
 .addBtn:hover {
-  border-color: var(--brand);
   background: var(--brand-soft);
 }
 
@@ -509,9 +575,21 @@
 }
 
 .emptyTrip {
-  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 20px 24px;
   text-align: center;
   color: var(--text-3);
+}
+.emptyArt {
+  filter: drop-shadow(0 4px 10px rgba(20, 40, 30, 0.08));
+}
+.emptyText {
+  max-width: 240px;
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 .overlay {
