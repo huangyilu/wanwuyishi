@@ -1,0 +1,26 @@
+{
+  "id": "poi-lago-di-braies",
+  "type": "viewpoint",
+  "name": "布莱埃斯湖",
+  "localName": "Lago di Braies (Pragser Wildsee)",
+  "city": "city-dolomites",
+  "country": "it",
+  "location": { "lat": 46.6933, "lng": 12.0746 },
+  "tags": ["湖", "划船", "徒步", "摄影"],
+  "popularity": 90,
+  "visit": { "durationMinutes": [120, 210], "durationNote": "环湖与划船约 2-3 小时", "bestTime": "清晨人少、湖面如镜" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "price": { "value": "湖畔步道免费；传统木划船租赁约 €30/小时", "source": "https://www.dolomiti.org/", "verifiedAt": "2026-08-15" },
+    "access": { "value": "旺季私家车限行，须停外缘换乘摆渡车或早到", "source": "https://www.dolomiti.org/", "verifiedAt": "2026-08-15" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "翡翠色湖面与木划船", "location": "湖畔码头", "why": "群峰环抱的狭长冰川湖，租一艘传统木船划向湖心是多洛米蒂经典画面。" },
+      { "name": "环湖步道", "location": "湖东侧步道", "why": "约 1 小时平缓环湖，南侧回望酒店与倒影最佳。" },
+      { "name": "湖畔历史酒店", "location": "北岸", "why": "建于湖边的老牌酒店，也是多条登山步道的起点。" }
+    ],
+    "tips": ["清晨或傍晚人最少、光线最柔", "旺季停车极紧张，建议早到或乘摆渡", "与三峰山、密苏里纳湖可串成东线一日"]
+  }
+}

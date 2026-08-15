@@ -35,6 +35,8 @@ const POIS = [
 
   // ---- 多洛米蒂补充（2026-08-15 新增 POI，待配图） ----
   { id: 'poi-ortisei', q: ['Ortisei St Ulrich Groden', 'Ortisei town Val Gardena'] },
+  { id: 'poi-alpe-di-siusi', q: ['Alpe di Siusi Seiser Alm meadow', 'Seiser Alm Dolomites'] },
+  { id: 'poi-lago-di-braies', q: ['Lago di Braies Pragser Wildsee', 'Pragser Wildsee Dolomites'] },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

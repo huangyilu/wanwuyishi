@@ -1,0 +1,26 @@
+{
+  "id": "poi-alpe-di-siusi",
+  "type": "other",
+  "name": "休斯高原",
+  "localName": "Alpe di Siusi (Seiser Alm)",
+  "city": "city-dolomites",
+  "country": "it",
+  "location": { "lat": 46.5376, "lng": 11.5456 },
+  "tags": ["草甸", "徒步", "缆车", "观景"],
+  "popularity": 82,
+  "visit": { "durationMinutes": [180, 360], "durationNote": "草甸徒步与缆车半日至一日", "bestTime": "夏季绿意最盛、野花满坡" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "access": { "value": "从奥蒂塞伊或 Compaccio 乘缆车/巴士进入；高原内部机动车限行，须步行或骑行", "source": "https://www.dolomiti.org/", "verifiedAt": "2026-08-15" },
+    "hours": { "value": "缆车约 09:00–17:30（随季节调整）", "source": "https://www.dolomiti.org/", "verifiedAt": "2026-08-15" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "欧洲最大高山草甸", "location": "高原中央步道", "why": "连绵草坡铺展于 Sciliar 峰脚下，是南蒂罗尔最具标志性的开阔景观。" },
+      { "name": "牧场小屋 Almhütten", "location": "各徒步环线", "why": "沿途传统木屋供应南蒂罗尔菜与奶酪，可歇脚补给。" },
+      { "name": "远眺 Sciliar 与 Sassolungo", "location": "西/南缘观景点", "why": "草甸尽头直抵锯齿状山峰，与塞切达、奥蒂塞伊同属一片山区，可串联安排。" }
+    ],
+    "tips": ["与奥蒂塞伊、刀锋山(塞切达)同区域，建议串联一日", "内部仅可步行/骑行，穿舒适徒步鞋", "夏季野花最盛、冬季可越野滑雪"]
+  }
+}
