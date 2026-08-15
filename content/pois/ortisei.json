@@ -1,0 +1,34 @@
+{
+  "id": "poi-ortisei",
+  "type": "other",
+  "name": "奥蒂塞伊",
+  "localName": "Ortisei (Urtijëi / St. Ulrich)",
+  "city": "city-dolomites",
+  "country": "it",
+  "location": { "lat": 46.5753, "lng": 11.6739 },
+  "tags": ["小镇", "瓦尔加迪纳", "缆车", "木雕"],
+  "popularity": 74,
+  "visit": {
+    "durationMinutes": [120, 300],
+    "durationNote": "上午逛小镇与木雕工坊，午后乘缆车上 Seceda 或 Alpe di Siusi 徒步",
+    "bestTime": "夏季清晨或秋季，避开正午旅游团"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "price": { "value": "小镇免费漫步；乘缆车上 Seceda / Alpe di Siusi 另购票", "source": "https://www.dolomiti.org/", "verifiedAt": "2026-08-06" },
+    "hours": { "value": "小镇全天可逛；缆车约 08:30–17:30（旺季每日，淡季隔日或检修）", "source": "https://www.dolomiti.org/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "圣乌尔里希教堂", "location": "镇中心广场", "why": "新哥特式尖塔与木雕祭坛，是小镇地标。" },
+      { "name": "木雕工坊", "location": "主街 Via Rezia", "why": "瓦尔加迪纳木雕工艺闻名，沿街可见匠人与店铺。" },
+      { "name": "缆车站", "location": "镇北 Funivia Seceda", "why": "登 Seceda 刀刃山脊的起点，与 poi-seceda 衔接。" }
+    ],
+    "tips": [
+      "是 Val Gardena 三镇中最大的一站，食宿与补给最全",
+      "缆车票建议提前在官网或酒店购，旺季排队久",
+      "可结合 Seceda、Alpe di Siusi 做一日环线"
+    ]
+  }
+}

@@ -32,6 +32,9 @@ const POIS = [
   { id: 'poi-trevi-fountain', q: ['Trevi Fountain Rome', 'Fontana di Trevi'] },
   { id: 'poi-mouth-of-truth', q: ['Mouth of Truth Rome', 'Bocca della Verita'] },
   { id: 'poi-trastevere', q: ['Trastevere Rome', 'Santa Maria in Trastevere'] },
+
+  // ---- 多洛米蒂补充（2026-08-15 新增 POI，待配图） ----
+  { id: 'poi-ortisei', q: ['Ortisei St Ulrich Groden', 'Ortisei town Val Gardena'] },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
