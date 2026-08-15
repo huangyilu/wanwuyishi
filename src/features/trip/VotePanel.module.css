@@ -90,20 +90,21 @@
 .people {
   display: flex;
   flex-wrap: wrap;
+  flex: 1;
+  min-width: 0;
   gap: 6px 10px;
 }
 .person {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 5px;
+  min-width: 0;
 }
 .name {
   font-size: 12px;
   color: var(--text-1);
-  max-width: 96px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .meTag {
   margin-left: 4px;
