@@ -65,4 +65,13 @@
   --header-h: 50px;
   --left-w: 288px;
   --right-w: 384px;
+
+  /* —— 创意层：手帐 / 地图质感（探险笔记本调性，全部 token 驱动） —— */
+  --tex-dot: rgba(74, 127, 124, 0.055);     /* 纸面网格点，极淡 */
+  --route: var(--line-strong);              /* 行程路线轨（虚线） */
+  --route-brand: var(--brand);              /* 选中节点的路线轨 */
+  --stamp-rot: -7deg;                        /* 印章默认倾斜，手写盖章感 */
+  --brand-grad: linear-gradient(135deg, var(--brand), var(--brand-hover));
+  --gold: #c98a3a;                           /* 暖金点缀，与候选色呼应 */
+  --gold-soft: rgba(201, 138, 58, 0.14);
 }

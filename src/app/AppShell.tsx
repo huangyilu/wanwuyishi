@@ -32,7 +32,13 @@ function DesktopShell() {
     <div className={s.shell}>
       <header className={s.header}>
         <NavLink to="/" className={s.brand}>
-          <span className={s.brandDot} />
+          <svg className={s.brandMark} viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="var(--brand)" strokeWidth="1.5" />
+            <path d="M12 3.5 L14.2 12 L12 20.5 L9.8 12 Z" fill="var(--brand)" />
+            <path d="M12 3.5 L12 20.5 L9.8 12 Z" fill="var(--brand-hover)" opacity="0.55" />
+            <circle cx="12" cy="12" r="1.7" fill="var(--bg)" />
+            <circle cx="12" cy="12" r="1.7" fill="none" stroke="var(--brand)" strokeWidth="1" />
+          </svg>
           玩无一失
           <span className={s.slogan}>把攻略做到万无一失</span>
         </NavLink>

@@ -12,9 +12,8 @@
   gap: 14px;
   height: var(--header-h);
   padding: 0 16px;
-  border-bottom: 1px solid var(--line);
-  /* 探险质感：顶栏下方一条极淡的暖橙描边，像盖了枚印 */
-  box-shadow: 0 1px 0 rgba(255, 138, 76, 0.16);
+  /* 笔记本穿孔感：顶栏底部一条虚线分隔，像手帐纸的裁切线 */
+  border-bottom: 1px dashed var(--line-strong);
   background: var(--bg);
 }
 
@@ -31,12 +30,11 @@
 .brand:hover {
   text-decoration: none;
 }
-.brandDot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--brand);
-  box-shadow: 0 0 0 3px var(--brand-soft);
+.brandMark {
+  width: 21px;
+  height: 21px;
+  flex: none;
+  filter: drop-shadow(0 1px 1px rgba(20, 40, 30, 0.18));
 }
 .slogan {
   color: var(--text-3);

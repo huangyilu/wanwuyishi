@@ -58,7 +58,7 @@ export function ItemEditor({
   return (
     <div className={s.panel}>
       <div className={s.title}>
-        {kind === 'transport' ? '🚄 交通转场' : kind === 'note' ? '📝 备注' : '条目'}
+        {kind === 'transport' ? '🚄 交通' : kind === 'note' ? '📝 备注' : '条目'}
       </div>
 
       {kind === 'poi' && (

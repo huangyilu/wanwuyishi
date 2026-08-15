@@ -17,3 +17,7 @@ public/data/
 
 # Agent CLI（scripts/wwys-cli.ts）缓存的登录 session，含 access/refresh token
 .wwys-session.json
+
+# 构建缓存（TypeScript / Vite 临时产物，非源码）
+*.tsbuildinfo
+vite.config.ts.timestamp-*.mjs

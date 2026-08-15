@@ -1,5 +1,21 @@
 .card {
+  position: relative;
   padding: 14px 16px 32px;
+}
+
+/* 探险手帐：顶图像被一条斜贴的「和纸胶带」固定在笔记页上 */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 78px;
+  height: 18px;
+  transform: translateX(-50%) rotate(-2.5deg);
+  background: var(--gold-soft);
+  border: 1px solid rgba(201, 138, 58, 0.32);
+  z-index: 2;
+  pointer-events: none;
 }
 
 /* 顶部配图横幅（出血到卡片两侧） */
@@ -122,19 +138,22 @@
 .sectionTitle {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  color: var(--text-2);
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-1);
 }
 
-.sectionTitle::after {
+.sectionTitle::before {
   content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--line);
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--brand);
+  transform: rotate(45deg);
+  flex: none;
 }
 
 .volatile {

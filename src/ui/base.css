@@ -19,7 +19,11 @@ body {
   font-size: 13px;
   line-height: 1.55;
   color: var(--text-1);
-  background: var(--bg-sub);
+  /* 纸面网格点：把画布变成一张淡淡的方格手帐纸，纯 CSS、零成本 */
+  background-color: var(--bg-sub);
+  background-image: radial-gradient(var(--tex-dot) 1.2px, transparent 1.3px);
+  background-size: 22px 22px;
+  background-position: -11px -11px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -95,9 +99,12 @@ textarea {
 }
 .btn:hover {
   background: var(--bg-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 .btn:active {
-  transform: translateY(1px);
+  transform: translateY(0);
+  box-shadow: none;
 }
 .btn:disabled {
   opacity: 0.45;

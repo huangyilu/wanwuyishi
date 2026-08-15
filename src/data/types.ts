@@ -87,7 +87,7 @@ export type ExpenseCategory = 'ticket' | 'transport' | 'food' | 'stay' | 'shoppi
 /** 一笔账的归属：'aa' = 需要大家分摊；'personal' = 个人自付，不计入 AA 结算 */
 export type ExpenseSplitMode = 'aa' | 'personal';
 
-/** 时间线条目的种类：景点 / 交通转场 / 纯备注。交通与备注让转场日也能串进时间线。 */
+/** 时间线条目的种类：景点 / 交通 / 纯备注。交通与备注让转场日也能串进时间线。 */
 export type ItemKind = 'poi' | 'transport' | 'note';
 /** 与 supabase 迁移里的 transport_mode 枚举一致 */
 export type TransportMode = 'train' | 'flight' | 'bus' | 'ferry' | 'car' | 'walk' | 'other';

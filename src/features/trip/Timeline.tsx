@@ -25,6 +25,7 @@ import type { SanityIssue } from '../../domain/trip/sanity-check';
 import type { Poi } from '../../domain/world/schema';
 import { formatDuration } from '../../domain/world/duration';
 import { useWorkbench } from '../../store/workbench';
+import { EmptyArt } from '../../ui/illustrations';
 import { AvatarStack, type VoteTone } from './MemberAvatar';
 import { useMyMember } from './useMyMember';
 import type { useTripMutations } from './queries';
@@ -113,7 +114,7 @@ function ItemRow({
   const closed = poi && date ? isClosedOn(poi.openness, date) : { closed: false };
   const selected = inspector.type === 'item' && inspector.id === item.id;
 
-  const title = poi?.name ?? item.customTitle ?? (kind === 'transport' ? '交通转场' : '备注');
+  const title = poi?.name ?? item.customTitle ?? (kind === 'transport' ? '交通' : '备注');
 
   const sub: string[] = [];
   if (kind === 'poi') {
@@ -279,13 +280,15 @@ function DayCard({
   }, 0);
   const transportCount = items.filter((i) => (i.kind ?? 'poi') === 'transport').length;
   const hasError = issues.some((i) => i.level === 'error');
+  const allConfirmed = items.length > 0 && items.every((i) => i.status === 'confirmed');
 
   return (
     <div className={`${s.day} ${active ? s.dayActive : ''} ${isOver ? s.dayOver : ''}`}>
       <div className={s.dayHead} onClick={() => setSelectedDate(active ? null : day.date)}>
-        <span className={s.dayIdx}>D{index + 1}</span>
+        <span className={s.dayIdx}>{index + 1}</span>
         <span className={s.dayDate}>{formatCn(day.date)}</span>
         <span className={s.dayWeek}>{weekdayLabel(day.date)}</span>
+        {allConfirmed && <span className={s.dayStamp}>已定</span>}
         <select
           className={s.citySelect}
           value={day.cityId ?? ''}
@@ -307,7 +310,7 @@ function DayCard({
           {hasError && ' · 有冲突'}
         </span>
         <span className={s.addBtns}>
-          <button className={s.addBtn} title="加一段交通转场" onClick={(e) => { e.stopPropagation(); onAddCustom('transport'); }}>
+          <button className={s.addBtn} title="加一段交通" onClick={(e) => { e.stopPropagation(); onAddCustom('transport'); }}>
             🚄
           </button>
           <button className={s.addBtn} title="加一条备注" onClick={(e) => { e.stopPropagation(); onAddCustom('note'); }}>
@@ -340,7 +343,7 @@ function DayCard({
             />
           ))}
         </SortableContext>
-        {items.length === 0 && <div className={s.dropHint}>把左侧的点拖到这里，或点 🚄 加一段交通转场</div>}
+        {items.length === 0 && <div className={s.dropHint}>把左侧的点拖到这里，或点 🚄 加一段交通</div>}
       </div>
     </div>
   );
@@ -375,7 +378,7 @@ function PoolCard({
         <span className="muted">还没定哪天去的点，先攒在这里</span>
         <span className={s.dayStat}>{items.length > 0 && `${items.length} 个`}</span>
         <span className={s.addBtns}>
-          <button className={s.addBtn} title="加一段交通转场" onClick={() => onAddCustom('transport')}>
+          <button className={s.addBtn} title="加一段交通" onClick={() => onAddCustom('transport')}>
             🚄
           </button>
           <button className={s.addBtn} title="加一条备注" onClick={() => onAddCustom('note')}>
@@ -568,13 +571,16 @@ export function Timeline({
 
         {days.length === 0 && bundle.items.length === 0 && (
           <div className={s.emptyTrip}>
-            先在上面选好起止日期，或者直接点下面的「添加一天」，
-            <br />
-            然后把左边世界里的点拖进来。
+            <EmptyArt kind="route" size={104} className={s.emptyArt} />
+            <p className={s.emptyText}>
+              先在上面选好起止日期，或者直接点下面的「添加一天」，
+              <br />
+              然后把左边世界里的点拖进来。
+            </p>
           </div>
         )}
 
-        <div style={{ marginTop: issues.length > 0 && showSanity ? 12 : 0 }}>
+        <div className={s.days}>
           {days.map((day, i) => (
             <DayCard
               key={day.id}

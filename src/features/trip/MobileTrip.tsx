@@ -120,7 +120,7 @@ export function MobileTrip({ tripId }: { tripId: string }) {
           const isTransport = kind === 'transport';
           const isNote = kind === 'note';
           const icon = isTransport ? TRANSPORT_ICON[it.transportMode ?? 'other'] : isNote ? '📝' : null;
-          const title = poi?.name ?? it.customTitle ?? (isTransport ? '交通转场' : '备注');
+          const title = poi?.name ?? it.customTitle ?? (isTransport ? '交通' : '备注');
 
           const meta: string[] = [];
           if (poi) meta.push(`${formatDuration(poi.visit.durationMinutes)}起`);

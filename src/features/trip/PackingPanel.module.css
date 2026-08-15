@@ -2,42 +2,87 @@
    ui/panel.module.css 与账本共用，保证切换标签视觉一致。
    保留打包自身特色：进度条、分类清单流、hover 显删除、勾选手感。 */
 
-/* 顶部固定栏：添加 + 进度 + 气候参考 三等分并排；滚动时常驻。
-   关键：共享 .body 的 padding-top 已设为 0，所以本栏以 top:0 即可
-   干净贴住滚动区顶部、不露缝隙（不再需要 -20px 抵消旧的上内距）。
-   左右不出血、与下方清单同宽；滚动区底色 surface-1 兜底，内容
-   不会从缝里溢上来。 */
+/* 顶部工具栏：添加 + 进度 + 气候参考。可收起——收起后只剩顶部一行
+   （进度 + 展开按钮），释放下方清单的浏览空间。滚动时常驻贴顶。 */
 .topBar {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-  gap: 16px;
-  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   position: sticky;
   top: 0;
   z-index: 5;
   margin: 0 0 4px;
-  padding: 12px 0 12px;
-  background: var(--surface-1);
-}
-/* 三栏统一卡片底，区分彼此 */
-.topBar > * {
-  min-width: 0;
+  padding: 12px 14px;
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 10px 12px;
 }
-.topBar > .progress,
-.topBar > .note,
-.topBar > .addRow {
-  margin: 0;
+/* 工具栏头：两行布局。
+   上行 topRow：输入框 + 进度条 各占一半宽，右侧收起按钮；
+   下行 topRow2：分类 / 归属 / 添加按钮，位于输入框正下方。窄屏自动换行。 */
+.topHead {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.topRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-right: 30px;
+}
+.topRow .text {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.topRow .progress {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-bottom: 0;
+}
+.topRow2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.collapseBtn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1;
+  padding: 2px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: var(--font-ui);
+}
+.collapseBtn:hover {
+  color: var(--text-1);
+  border-color: var(--line);
 }
 @media (max-width: 640px) {
   .topBar {
-    grid-template-columns: 1fr;
-    gap: 12px;
-    top: 0;
-    padding: 10px 0 12px;
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .topRow {
+    flex-wrap: wrap;
+  }
+  .topRow .text {
+    flex: 1 1 100%;
+  }
+  .topRow .progress {
+    flex: 1 1 100%;
+  }
+  .topRow2 {
+    flex-wrap: wrap;
+  }
+  .topRow2 .assignee,
+  .topRow2 .btn {
+    flex: 1 1 auto;
   }
 }
 
@@ -68,16 +113,24 @@
   white-space: nowrap;
 }
 
-/* 气候参考：嵌套底卡，与账本概览同语汇 */
-.note {
-  margin: 0 0 14px;
-  padding: 10px 12px;
-  border-radius: var(--radius);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
+/* 气候参考：置于「打包清单」标题右侧，占头部中间弹性宽度，标题行常驻可见 */
+.climateNote {
+  flex: 1 1 auto;
+  min-width: 0;
+  align-self: center;
   color: var(--text-2);
   font-size: 12px;
-  line-height: 1.6;
+  line-height: 1.5;
+}
+.climateNote b {
+  color: var(--text-1);
+  font-weight: 600;
+}
+@media (max-width: 720px) {
+  .climateNote {
+    flex: 1 1 100%;
+    order: 3;
+  }
 }
 
 /* 分类头：与共享 .sectionHead 统一品牌菱形标记 */
@@ -133,7 +186,7 @@
   padding: 3px 8px;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
-  background: transparent;
+  background: #fff;
   color: var(--text-1);
   font-size: 13px;
 }
@@ -143,7 +196,7 @@
 .text:focus {
   border-color: var(--brand);
   outline: none;
-  background: var(--bg);
+  background: #fff;
 }
 
 .assignee {
@@ -175,30 +228,6 @@
   color: var(--warn);
 }
 
-/* 添加行：输入框独占第一行，类型 / 归属 / 添加按钮换到第二行 */
-.addRow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
-.addRow > .text {
-  flex: 1 1 100%;
-}
-.addRow > .assignee,
-.addRow > .btn {
-  flex: 0 1 auto;
-}
-.topBar > .addRow {
-  margin-top: 0;
-  padding-top: 10px;
-  border-top: none;
-}
-.addRow .text {
-  border-color: var(--border);
-  background: var(--bg);
-}
-
 /* 视角切换（我的 / 全部）：分段控件 */
 .viewSwitch {
   display: inline-flex;
@@ -207,6 +236,33 @@
   border-radius: 999px;
   padding: 2px;
   flex: none;
+}
+
+/* 头部右侧工具组：视角切换 + 智能生成归为一组并推到右上，
+   中间分隔线区分「视图过滤」与「操作」两个维度，消除割裂感 */
+.headTools {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+}
+.toolDivider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  flex: none;
+}
+@media (max-width: 640px) {
+  .headTools {
+    margin-left: 0;
+    flex-basis: 100%;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  .toolDivider {
+    height: 18px;
+  }
 }
 .viewBtn {
   border: none;

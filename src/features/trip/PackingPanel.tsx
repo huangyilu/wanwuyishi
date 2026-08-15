@@ -47,6 +47,8 @@ export function PackingPanel({ tripId }: { tripId: string }) {
   const [draftOwner, setDraftOwner] = useState<string>('me');
   /** 视角：全部（按人分区）/ 我的 */
   const [view, setView] = useState<'all' | 'mine'>('mine');
+  /** 顶部工具栏（添加 / 进度 / 气候参考）是否收起，收起后释放下方清单空间 */
+  const [collapsed, setCollapsed] = useState(false);
 
   const items = bundle?.trip.packing ?? [];
   const members = bundle?.members ?? [];
@@ -178,90 +180,117 @@ export function PackingPanel({ tripId }: { tripId: string }) {
             <div className={panel.title}>打包清单</div>
             <div className={panel.sub}>按人分清单 · 公共物只备一份，离线保存</div>
           </div>
-          <div className={s.viewSwitch}>
-            <button
-              className={`${s.viewBtn} ${view === 'mine' ? s.viewOn : ''}`}
-              onClick={() => setView('mine')}
-            >
-              我的
-            </button>
-            <button
-              className={`${s.viewBtn} ${view === 'all' ? s.viewOn : ''}`}
-              onClick={() => setView('all')}
-            >
-              全部
+          <div className={s.headTools}>
+            <div className={s.viewSwitch}>
+              <button
+                className={`${s.viewBtn} ${view === 'mine' ? s.viewOn : ''}`}
+                onClick={() => setView('mine')}
+              >
+                我的
+              </button>
+              <button
+                className={`${s.viewBtn} ${view === 'all' ? s.viewOn : ''}`}
+                onClick={() => setView('all')}
+              >
+                全部
+              </button>
+            </div>
+            <span className={s.toolDivider} aria-hidden="true" />
+            <button className="btn btn-primary btn-sm" onClick={generate} disabled={!ctx}>
+              智能生成
             </button>
           </div>
-          <button className="btn btn-primary btn-sm" onClick={generate} disabled={!ctx}>
-            智能生成
-          </button>
+          <div className={s.climateNote}>
+            {climateLabel ? (
+              <>
+                气候参考（按行程月份推导，非实时）：<b>{climateLabel}</b>
+              </>
+            ) : (
+              <>未设出发日期，衣物按天数给通用数量</>
+            )}
+          </div>
         </div>
 
         <div className={panel.body}>
-          <div className={s.topBar}>
-            <div className={s.addRow}>
-              <input
-                className={s.text}
-                placeholder="添加一项，如「充电线」"
-                value={draftText}
-                onChange={(e) => setDraftText(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') addItem(draftText, draftCat, draftOwner);
-                }}
-              />
-              <select
-                className={s.assignee}
-                value={draftCat}
-                onChange={(e) => setDraftCat(e.target.value)}
-                title="分类"
-              >
-                {PACK_CATS.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-              <select
-                className={s.assignee}
-                value={draftOwner}
-                onChange={(e) => setDraftOwner(e.target.value)}
-                title="归属"
-              >
-                <option value="me">我</option>
-                {members
-                  .filter((m) => m.id !== meId)
-                  .map((m) => (
-                    <option key={m.id} value={m.id}>
-                      {m.displayName}
-                    </option>
-                  ))}
-                <option value={SHARED}>公共</option>
-              </select>
-              <button className="btn btn-sm" onClick={() => addItem(draftText, draftCat, draftOwner)}>
-                添加
-              </button>
-            </div>
-
-            <div className={s.progress}>
-              <div className={s.bar}>
-                <div className={s.barFill} style={{ width: `${progress}%` }} />
-              </div>
-              <span className={s.progressText}>
-                {doneCount}/{items.length} 已装（{progress}%）
-              </span>
-            </div>
-
-            <div className={s.note}>
-              {climateLabel ? (
+          <div className={`${s.topBar} ${collapsed ? s.collapsed : ''}`}>
+            <div className={s.topHead}>
+              {!collapsed ? (
                 <>
-                  气候参考（按行程月份推导，非实时）：<b>{climateLabel}</b>。衣物据此 + 天数给建议；活动项依据你排的景点类型自动推导。生成会覆盖当前清单。
+                  <div className={s.topRow}>
+                    <input
+                      className={s.text}
+                      placeholder="添加一项，如「充电线」"
+                      value={draftText}
+                      onChange={(e) => setDraftText(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') addItem(draftText, draftCat, draftOwner);
+                      }}
+                    />
+                    <div className={s.progress}>
+                      <div className={s.bar}>
+                        <div className={s.barFill} style={{ width: `${progress}%` }} />
+                      </div>
+                      <span className={s.progressText}>
+                        {doneCount}/{items.length} 已装（{progress}%）
+                      </span>
+                    </div>
+                  </div>
+                  <div className={s.topRow2}>
+                    <select
+                      className={s.assignee}
+                      value={draftCat}
+                      onChange={(e) => setDraftCat(e.target.value)}
+                      title="分类"
+                    >
+                      {PACK_CATS.map((c) => (
+                        <option key={c} value={c}>
+                          {c}
+                        </option>
+                      ))}
+                    </select>
+                    <select
+                      className={s.assignee}
+                      value={draftOwner}
+                      onChange={(e) => setDraftOwner(e.target.value)}
+                      title="归属"
+                    >
+                      <option value="me">我</option>
+                      {members
+                        .filter((m) => m.id !== meId)
+                        .map((m) => (
+                          <option key={m.id} value={m.id}>
+                            {m.displayName}
+                          </option>
+                        ))}
+                      <option value={SHARED}>公共</option>
+                    </select>
+                    <button className="btn btn-sm" onClick={() => addItem(draftText, draftCat, draftOwner)}>
+                      添加
+                    </button>
+                  </div>
                 </>
               ) : (
-                <>
-                  未设出发日期，衣物按天数给通用数量；在行程里填好出发日可启用按月气候推导。活动项依据你排的景点类型自动推导。生成会覆盖当前清单。
-                </>
+                <div className={s.topRow}>
+                  <div className={s.progress}>
+                    <div className={s.bar}>
+                      <div className={s.barFill} style={{ width: `${progress}%` }} />
+                    </div>
+                    <span className={s.progressText}>
+                      {doneCount}/{items.length} 已装（{progress}%）
+                    </span>
+                  </div>
+                </div>
               )}
             </div>
+            <button
+              className={s.collapseBtn}
+              onClick={() => setCollapsed((c) => !c)}
+              aria-expanded={!collapsed}
+              aria-label={collapsed ? '展开工具栏' : '收起工具栏'}
+              title={collapsed ? '展开工具栏' : '收起工具栏'}
+            >
+              {collapsed ? '▾' : '▴'}
+            </button>
           </div>
 
           {sections.length === 0 && (

@@ -1,6 +1,6 @@
 .page {
   height: 100%;
-  padding: 28px 20px 60px;
+  padding: 36px 20px 64px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
@@ -20,25 +20,121 @@
   margin: 0 auto;
 }
 
+/* —— 英雄区：探险开场 —— */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+.heroText {
+  flex: 1;
+  min-width: 0;
+}
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--brand);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+}
+.diamond {
+  width: 8px;
+  height: 8px;
+  border-radius: 1.5px;
+  background: var(--brand);
+  transform: rotate(45deg);
+  box-shadow: 0 0 0 3px var(--brand-soft);
+}
 .h1 {
-  font-size: 20px;
+  margin: 8px 0 0;
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  background: linear-gradient(118deg, var(--brand) 0%, #6fae9f 48%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
-
 .lead {
-  margin: 6px 0 20px;
-  color: var(--text-3);
-  font-size: 13px;
+  margin: 12px 0 0;
+  max-width: 460px;
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.75;
 }
 
+.heroArt {
+  flex: none;
+  width: 132px;
+  height: 132px;
+  display: grid;
+  place-items: center;
+}
+.compass {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 6px 14px rgba(20, 40, 30, 0.1));
+}
+.ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ww-spin 26s linear infinite;
+}
+.compassLetter {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--text-2);
+}
+
+/* —— 发起新旅程卡片 —— */
+.creatorCard {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 14px;
+  padding: 20px 18px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  box-shadow: var(--shadow-sm);
+  animation: ww-fadeUp 0.5s ease backwards;
+}
+.tape {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 104px;
+  height: 22px;
+  transform: translateX(-50%) rotate(-2deg);
+  background: rgba(185, 133, 42, 0.26);
+  border: 1px dashed rgba(185, 133, 42, 0.55);
+  border-radius: 2px;
+}
+.creatorHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text-1);
+}
+.creatorMark {
+  color: var(--brand);
+  font-size: 14px;
+}
 .creator {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--bg);
 }
 
 .titleField {
@@ -56,9 +152,10 @@
 }
 
 .tips {
-  margin: 8px 2px 0;
+  margin: 10px 2px 0;
   color: var(--text-3);
   font-size: 12px;
+  line-height: 1.6;
 }
 
 .joinRow {
@@ -77,28 +174,46 @@
   margin-left: auto;
 }
 
+/* —— 行程列表：登机牌式卡片 —— */
 .list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-top: 22px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--bg);
-  overflow: hidden;
 }
 
-.row {
+.card {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 14px;
-  border-bottom: 1px solid var(--line);
+  padding: 14px 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--surface-1);
+  box-shadow: var(--shadow-sm);
   color: var(--text-1);
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  animation: ww-fadeUp 0.5s ease backwards;
 }
-.row:last-child {
-  border-bottom: none;
-}
-.row:hover {
-  background: var(--bg-hover);
+.card:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-soft);
+  box-shadow: 0 6px 18px rgba(20, 40, 30, 0.1);
   text-decoration: none;
+}
+.cardStub {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--brand-soft);
+  transition: background 0.15s;
+}
+.card:hover .cardStub {
+  background: var(--brand);
 }
 
 .rowMain {
@@ -112,17 +227,60 @@
 }
 
 .rowSub {
-  margin-top: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 3px;
   color: var(--text-3);
   font-size: 12px;
 }
-
-.status {
+.dayBadge {
   padding: 1px 7px;
   border-radius: 999px;
-  background: var(--surface-2);
+  background: var(--brand-soft);
+  color: var(--brand);
+  font-family: var(--font-num);
+  font-size: 11px;
+}
+.dot {
+  color: var(--line-strong);
+}
+
+/* 状态印章 */
+.stamp {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 6px;
   color: var(--text-2);
   font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transform: rotate(-7deg);
+}
+.stampPlan {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+.stampOn {
+  border-color: var(--gold);
+  color: #8a5a12;
+  background: rgba(185, 133, 42, 0.12);
+}
+.stampDone {
+  border-color: var(--ok-border);
+  color: var(--ok);
+  background: var(--ok-soft);
+}
+.stampArch {
+  border-color: var(--line-strong);
+  color: var(--text-3);
+  background: var(--surface-2);
 }
 
 .del {
@@ -132,7 +290,7 @@
   color: var(--text-3);
   visibility: hidden;
 }
-.row:hover .del {
+.card:hover .del {
   visibility: visible;
 }
 .del:hover {
@@ -140,8 +298,59 @@
 }
 
 .empty {
-  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 52px 16px 32px;
   text-align: center;
   color: var(--text-3);
   font-size: 13px;
+}
+.emptyArt {
+  filter: drop-shadow(0 6px 14px rgba(20, 40, 30, 0.1));
+}
+.emptyText {
+  max-width: 260px;
+  line-height: 1.7;
+}
+
+@keyframes ww-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ww-fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+  .heroArt {
+    align-self: flex-end;
+    width: 96px;
+    height: 96px;
+    margin-top: -10px;
+  }
+  .h1 {
+    font-size: 30px;
+  }
+  .card {
+    padding: 12px 13px;
+  }
+  .rowSub {
+    gap: 4px;
+  }
 }
