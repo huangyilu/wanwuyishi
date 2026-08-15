@@ -1,0 +1,60 @@
+{
+  "id": "poi-trevi-fountain",
+  "type": "landmark",
+  "name": "特雷维喷泉",
+  "localName": "Fontana di Trevi",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.9009, "lng": 12.4833 },
+  "tags": ["地标", "巴洛克", "喷泉", "许愿"],
+  "popularity": 95,
+  "wikidataId": "Q158508",
+  "officialUrl": "https://www.turismoroma.it/",
+  "visit": {
+    "durationMinutes": [30, 60],
+    "durationNote": "投币许愿 + 拍照约 15-30 分钟",
+    "bestTime": "清晨或夜晚灯光下人少，体验最佳"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": [],
+    "seasonal": []
+  },
+  "booking": {
+    "required": false,
+    "leadDays": 0
+  },
+  "facilities": {
+    "toilet": "周边咖啡馆（需消费）",
+    "water": "附近 nasoni 直饮水"
+  },
+  "volatile": {
+    "price": {
+      "value": "免费开放（公共喷泉）",
+      "source": "https://www.turismoroma.it/",
+      "verifiedAt": "2026-08-15"
+    },
+    "hours": {
+      "value": "全天开放，夜间有灯光照明",
+      "source": "https://www.turismoroma.it/",
+      "verifiedAt": "2026-08-15"
+    }
+  },
+  "guide": {
+    "entrances": "位于小巷尽头，从 Via del Tritone 或 Via delle Muratte 步行抵达，地势略低需下行。",
+    "routes": [],
+    "highlights": [
+      {
+        "name": "海神尼普顿雕像",
+        "location": "喷泉中央",
+        "why": "贝尼尼父子作品，巴洛克雕塑巅峰，海马拉车群像极具动感。"
+      }
+    ],
+    "collections": "",
+    "tips": [
+      "背对喷泉右手投币过左肩，传说可保重返罗马；投两枚许愿再访、三枚姻缘。",
+      "白天人极多且拥挤，清晨或 21 点后几乎包场。",
+      "严禁戏水与踩入水池，罚款高昂且会被驱离。"
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "poi-foro-romano-palatino",
+  "type": "landmark",
+  "name": "古罗马广场与帕拉蒂尼山",
+  "localName": "Foro Romano e Palatino",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.8925, "lng": 12.4853 },
+  "tags": ["世界级", "古罗马", "遗址", "联票"],
+  "popularity": 94,
+  "wikidataId": "Q133314",
+  "officialUrl": "https://colosseo.it/",
+  "visit": {
+    "durationMinutes": [120, 240],
+    "durationNote": "与斗兽场共用联票，建议留半天连走",
+    "bestTime": "清晨或傍晚，正午无遮荫且人多"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": ["2026-01-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": false,
+    "leadDays": 0,
+    "url": "https://colosseo.it/"
+  },
+  "facilities": {
+    "toilet": "遗址区入口附近",
+    "water": "门口 nasoni 免费直饮水",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "与斗兽场共用联票 18 欧（24 小时内含斗兽场 + 古罗马广场 + 帕拉蒂尼山各一次入场）",
+      "source": "https://colosseo.it/en/visit/tickets/",
+      "verifiedAt": "2026-08-15"
+    },
+    "hours": {
+      "value": "09:00 开放，闭馆随季节变化（夏季约 19:00，冬季约 16:30）",
+      "source": "https://colosseo.it/en/visit/opening-hours/",
+      "verifiedAt": "2026-08-15"
+    },
+    "booking": {
+      "value": "需持斗兽场联票进入，建议提前 2 周在 CoopCulture 一并预约",
+      "source": "https://ecm.coopculture.it/",
+      "verifiedAt": "2026-08-15"
+    }
+  },
+  "guide": {
+    "entrances": "从斗兽场旁或 Via dei Fori Imperiali 一侧的 Largo della Salara Vecchia 入口进入；持联票扫码。",
+    "routes": [
+      {
+        "name": "广场—帕拉蒂尼半日线",
+        "durationMinutes": 180,
+        "stops": [
+          "提图斯凯旋门",
+          "维斯塔神庙",
+          "元老院 Curia",
+          "帕拉蒂尼山观景台俯瞰广场全景",
+          "农神神庙遗迹"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "帕拉蒂尼山观景台",
+        "location": "帕拉蒂尼山北缘",
+        "why": "全罗马最经典的废墟俯瞰视角，斗兽场与广场尽收眼底，比在广场平视更出片。"
+      },
+      {
+        "name": "元老院 Curia",
+        "location": "广场北侧",
+        "why": "少数未被改建、保存完好的罗马共和时期建筑，内部保存状态极佳。"
+      }
+    ],
+    "collections": "",
+    "tips": [
+      "联票 24 小时但每处仅一次入场，建议上午斗兽场、下午广场+山，不要分两次刷。",
+      "穿舒适鞋，碎石路多且无遮荫，夏季帽子与水必备。",
+      "可登帕拉蒂尼山俯瞰，是古罗马遗址群最完整的取景位。"
+    ]
+  }
+}

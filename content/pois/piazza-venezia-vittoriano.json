@@ -1,0 +1,72 @@
+{
+  "id": "poi-piazza-venezia-vittoriano",
+  "type": "landmark",
+  "name": "威尼斯广场与维托里亚诺纪念堂",
+  "localName": "Piazza Venezia e Vittoriano",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.8959, "lng": 12.4824 },
+  "tags": ["广场", "地标", "全景", "登顶"],
+  "popularity": 82,
+  "wikidataId": "Q1429913",
+  "officialUrl": "https://www.turismoroma.it/",
+  "visit": {
+    "durationMinutes": [60, 120],
+    "durationNote": "登顶约 1 小时（含排队）",
+    "bestTime": "日落前登顶，金色光影下白色大理石极出片"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": ["2026-01-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": false,
+    "leadDays": 0,
+    "url": "https://www.turismoroma.it/"
+  },
+  "facilities": {
+    "toilet": "纪念堂内部",
+    "water": "广场周边 nasoni"
+  },
+  "volatile": {
+    "price": {
+      "value": "纪念堂主体免费开放；登顶观景电梯票约 10 欧",
+      "source": "https://www.turismoroma.it/",
+      "verifiedAt": "2026-08-15"
+    },
+    "hours": {
+      "value": "每日约 09:30-19:30，登顶电梯提前结束（约 18:30 停售）",
+      "source": "https://www.turismoroma.it/",
+      "verifiedAt": "2026-08-15"
+    }
+  },
+  "guide": {
+    "entrances": "纪念堂底层中央大台阶进入；登顶电梯在右侧，单独购票。",
+    "routes": [
+      {
+        "name": "广场—纪念堂—登顶",
+        "durationMinutes": 90,
+        "stops": [
+          "威尼斯广场环岛",
+          "维托里亚诺巨型台阶",
+          "中央埃马努埃莱二世骑马雕像",
+          "登顶观景台"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "登顶观景台",
+        "location": "纪念堂顶层",
+        "why": "罗马市中心最高的观景台之一，可环视古罗马遗址群与整座城市天际线。"
+      }
+    ],
+    "collections": "",
+    "tips": [
+      "登顶电梯常排队，傍晚前到可避开旅行团高峰。",
+      "白色大理石在夕阳下极出片，是经典机位。",
+      "威尼斯广场是多条公交与步行的枢纽，适合作为老城动线中转点。"
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "poi-trastevere",
+  "type": "other",
+  "name": "特拉斯提弗列",
+  "localName": "Trastevere",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.8893, "lng": 12.4692 },
+  "tags": ["街区", "晚餐", "漫步", "夜生活"],
+  "popularity": 85,
+  "wikidataId": "Q183734",
+  "officialUrl": "https://www.turismoroma.it/",
+  "visit": {
+    "durationMinutes": [120, 240],
+    "durationNote": "傍晚漫步 + 晚餐约 2-4 小时",
+    "bestTime": "傍晚至夜间，氛围与灯光最佳"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": [],
+    "seasonal": []
+  },
+  "booking": {
+    "required": false,
+    "leadDays": 0
+  },
+  "facilities": {
+    "toilet": "餐厅与酒吧",
+    "water": "广场 nasoni"
+  },
+  "volatile": {
+    "price": {
+      "value": "免费开放街区，消费按餐厅定价",
+      "source": "https://www.turismoroma.it/",
+      "verifiedAt": "2026-08-15"
+    },
+    "hours": {
+      "value": "全天开放，餐厅与酒吧傍晚至深夜最热闹",
+      "source": "https://www.turismoroma.it/",
+      "verifiedAt": "2026-08-15"
+    }
+  },
+  "guide": {
+    "entrances": "从市中心过台伯河（Ponte Sisto 步行桥或 Isola Tiberina 小岛）即达。",
+    "routes": [
+      {
+        "name": "特拉斯提弗列漫步",
+        "durationMinutes": 120,
+        "stops": [
+          "Santa Maria in Trastevere 教堂",
+          "Viale di Trastevere 主街",
+          "隐秘小巷与涂鸦墙",
+          "河畔夜景"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "Santa Maria in Trastevere",
+        "location": "广场北侧",
+        "why": "罗马最古老教堂之一，内部金色马赛克在灯光下熠熠生辉。"
+      }
+    ],
+    "collections": "",
+    "tips": [
+      "晚餐建议提前预约，热门店现场排队很久。",
+      "主街之外的小巷更有味道，涂鸦墙与文艺小店密集。",
+      "夜间氛围最佳，但人多处注意随身物品。"
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "poi-mouth-of-truth",
+  "type": "landmark",
+  "name": "真理之口",
+  "localName": "Bocca della Verità",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.8883, "lng": 12.4812 },
+  "tags": ["趣味", "中世纪", "教堂", "罗马假日"],
+  "popularity": 78,
+  "wikidataId": "Q356922",
+  "officialUrl": "https://www.turismoroma.it/",
+  "visit": {
+    "durationMinutes": [15, 30],
+    "durationNote": "排队拍照约 15-30 分钟",
+    "bestTime": "开馆即到可避免长队"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": ["2026-01-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": false,
+    "leadDays": 0
+  },
+  "facilities": {
+    "toilet": "教堂内",
+    "water": "教堂外 nasoni"
+  },
+  "volatile": {
+    "price": {
+      "value": "免费（位于 Santa Maria in Cosmedin 教堂门廊，自愿小额捐赠）",
+      "source": "https://www.turismoroma.it/",
+      "verifiedAt": "2026-08-15"
+    },
+    "hours": {
+      "value": "随教堂开放，约 09:30-17:50",
+      "source": "https://www.turismoroma.it/",
+      "verifiedAt": "2026-08-15"
+    }
+  },
+  "guide": {
+    "entrances": "在 Santa Maria in Cosmedin 教堂门廊左侧，单独排队，工作人员协助拍照。",
+    "routes": [],
+    "highlights": [
+      {
+        "name": "大理石面具",
+        "location": "教堂门廊",
+        "why": "传说说谎者把手伸入口中会被咬断，因《罗马假日》赫本经典桥段闻名全球。"
+      }
+    ],
+    "collections": "",
+    "tips": [
+      "旺季排队可达 1 小时，早到最省时。",
+      "可复刻《罗马假日》同款拍照姿势，工作人员会配合。",
+      "顺道进教堂看中世纪壁画与古门廊，无需另购票。"
+    ]
+  }
+}
