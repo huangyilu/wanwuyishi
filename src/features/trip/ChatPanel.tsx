@@ -120,6 +120,24 @@ function uid(): string {
   return crypto.randomUUID();
 }
 
+// Supabase JS 在非 2xx 时只给笼统的 "Edge Function returned a non-2xx status code"，
+// 真实原因（401/500 的具体 message）藏在 error.context(Response) 里，这里提取出来。
+async function describeInvokeError(err: unknown): Promise<string> {
+  const e = err as { message?: string; context?: Response };
+  let detail = e?.message || String(err);
+  const ctx = e?.context;
+  if (ctx && typeof ctx.json === 'function') {
+    try {
+      const j = await ctx.json();
+      if (j?.error) detail = typeof j.error === 'string' ? j.error : JSON.stringify(j.error);
+      else if (j?.message) detail = String(j.message);
+    } catch {
+      /* 解析失败就保留原 message */
+    }
+  }
+  return detail;
+}
+
 function cityName(index: WorldIndex | undefined, id?: string | null): string {
   if (!id) return '';
   return index?.cities.find((c) => c.id === id)?.name ?? id;
@@ -372,7 +390,7 @@ ${members}
         const { data, error: invErr } = await supabase.functions.invoke('chat-proxy', {
           body: { messages: [sys, ...working], tools: TOOLS, model: 'deepseek-chat' },
         });
-        if (invErr) throw new Error(invErr.message || String(invErr));
+        if (invErr) throw new Error(await describeInvokeError(invErr));
         const msg: ChatMsg | undefined = data?.choices?.[0]?.message;
         if (!msg) break;
 
