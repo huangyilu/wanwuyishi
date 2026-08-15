@@ -39,6 +39,7 @@ const POIS = [
   { id: 'poi-lago-di-braies', q: ['Lago di Braies Pragser Wildsee', 'Pragser Wildsee Dolomites'] },
   { id: 'poi-grindelwald', q: ['Grindelwald village Eiger', 'Grindelwald First Bachalpsee'] },
   { id: 'poi-spiez', q: ['Spiez castle Thun lake', 'Spiez village Bern'] },
+  { id: 'poi-first', q: ['Grindelwald First Cliff Walk', 'Bachalpsee First Grindelwald'] },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

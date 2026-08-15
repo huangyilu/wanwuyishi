@@ -1,0 +1,26 @@
+{
+  "id": "poi-first",
+  "type": "viewpoint",
+  "name": "菲斯特",
+  "localName": "First",
+  "city": "city-interlaken",
+  "country": "ch",
+  "location": { "lat": 46.6586, "lng": 8.0084 },
+  "tags": ["观景台", "悬崖步道", "缆车", "徒步"],
+  "popularity": 82,
+  "visit": { "durationMinutes": [180, 360], "durationNote": "含悬崖步道与 Bachalpsee 环湖约半日", "bestTime": "清晨云少、湖面倒影最清" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "缆车约全年运营（冬季滑雪、夏季徒步），山顶设施随季节", "source": "https://www.jungfrau.ch/", "verifiedAt": "2026-08-06" },
+    "transport": { "value": "从格林德瓦(Grindelwald)乘缆车约 25 分钟直达山顶站", "source": "https://www.jungfrau.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "First 悬崖步道 (Cliff Walk)", "location": "山顶站外侧", "why": "悬空金属步道贴着崖壁伸出，脚下即冰川深谷，俯瞰格林德瓦与艾格峰北壁，惊险出片。" },
+      { "name": "Bachalpsee 倒影湖", "location": "山顶徒步 1 小时可达", "why": "高山湖静如镜，倒映 Schreckhorn 雪峰，是多洛米蒂之外瑞士最经典明信片机位之一。" },
+      { "name": "冰川与群峰全景", "location": "观景平台", "why": "正对艾格峰、僧侣峰、少女峰三峰线，天气好时可见阿莱奇冰川。" }
+    ],
+    "tips": ["与格林德瓦小镇同日串联（缆车上行）", "胆大者可玩旱地雪橇 / First Flyer 飞索", "Bachalpsee 环湖约 1 小时，海拔高注意保暖"]
+  }
+}
