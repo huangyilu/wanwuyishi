@@ -26,6 +26,7 @@ import { useWorkbench } from '../../store/workbench';
 import { PoiGuideCard } from '../world/PoiGuideCard';
 import { WorldNav } from '../world/WorldNav';
 import { usePoiMap, useWorldIndex } from '../world/queries';
+import { EmptyArt } from '../../ui/illustrations';
 import { useTripBundle, useTripMutations } from './queries';
 import { ItemEditor } from './ItemEditor';
 import { VotePanel } from './VotePanel';
@@ -176,6 +177,12 @@ export function Workbench({ tripId }: { tripId: string }) {
   const inspectedPoiItem =
     inspector.type === 'poi' ? bundle.items.find((i) => i.poiId === inspector.id) : undefined;
 
+  // 右栏头随选择走：看景点→导览卡 / 看条目→编辑 / 都没选→行程速览
+  const detailLabel =
+    inspector.type === 'poi' ? '景点导览'
+    : inspector.type === 'item' ? '条目编辑'
+    : '行程速览';
+
   return (
     <DndContext
       sensors={sensors}
@@ -205,7 +212,8 @@ export function Workbench({ tripId }: { tripId: string }) {
 
         <div className={s.right}>
           <div className={s.rightHead}>
-            <span>详情</span>
+            <span className={s.rightHeadMark} aria-hidden />
+            <span className={s.rightHeadTitle}>{detailLabel}</span>
             {inspector.type !== 'none' && (
               <button className="btn btn-ghost btn-sm" style={{ marginLeft: 'auto' }} onClick={closeInspector}>
                 关闭
@@ -232,6 +240,9 @@ export function Workbench({ tripId }: { tripId: string }) {
 
             {inspector.type === 'none' && (
               <div className={s.placeholder}>
+                <div className={s.phArt}>
+                  <EmptyArt kind="compass" size={84} />
+                </div>
                 <h3>{bundle.trip.title}</h3>
                 <div className={s.kv}>
                   <span className={s.kvKey}>天数</span>

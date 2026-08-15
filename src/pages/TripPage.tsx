@@ -14,6 +14,7 @@ import { usePoiMap, useWorldIndex } from '../features/world/queries';
 import { tripToMarkdown } from '../domain/trip/export-md';
 import { downloadTextFile, safeFileName } from '../utils/download';
 import { CollaborateDialog } from '../features/trip/CollaborateDialog';
+import { ChatPanel } from '../features/trip/ChatPanel';
 import s from './TripPage.module.css';
 
 const Workbench = lazy(() =>
@@ -111,6 +112,9 @@ export function TripPage() {
         </Suspense>
       </div>
       {invite && <CollaborateDialog tripId={tripId} onClose={() => setInvite(false)} />}
+
+      {/* AI 行程助手：跨时间线/账本/打包 三个标签始终悬浮右侧 */}
+      <ChatPanel tripId={tripId} />
     </div>
   );
 }
