@@ -1,0 +1,88 @@
+{
+  "id": "poi-arts-forains",
+  "type": "museum",
+  "name": "游艺艺术博物馆",
+  "localName": "Musée des Arts Forains",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8336, "lng": 2.3872 },
+  "tags": ["游乐园", "旋转木马", "亲子", "特色博物馆"],
+  "popularity": 68,
+  "officialUrl": "https://artsforains.com/",
+  "visit": {
+    "durationMinutes": [90, 150],
+    "durationNote": "1.5-2.5 小时（含导览参观）",
+    "bestTime": "周末下午场常有现场手风琴/表演；平日散客场人少可细看"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": ["2026-01-01", "2026-12-25"],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 1,
+    "url": "https://artsforains.com/visiter/reservation/"
+  },
+  "facilities": {
+    "toilet": "馆内免费",
+    "wifi": "免费",
+    "locker": "无专门寄存，前台可暂放小件",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "成人票约 16 欧元；官网预约制，含导览讲解",
+      "source": "https://artsforains.com/visiter/tarifs/",
+      "verifiedAt": "2026-08-04"
+    },
+    "hours": {
+      "value": "仅限预约参观时段（通常周三至周日，平日散客场 / 周末加场）",
+      "source": "https://artsforains.com/visiter/horaires/",
+      "verifiedAt": "2026-08-04"
+    },
+    "booking": {
+      "value": "必须官网预约时段，散客与团体均需；临时到访很可能进不去",
+      "source": "https://artsforains.com/visiter/reservation/",
+      "verifiedAt": "2026-08-04"
+    }
+  },
+  "guide": {
+    "entrances": "位于 Bercy Village 仓储建筑群内（102 Rue de Pavillons），从 Cour Saint-Émilion 步行约 5 分钟；入口在 Pavillons de Bercy 庭院，认准蓝色招牌。",
+    "routes": [
+      {
+        "name": "经典导览 2 小时",
+        "durationMinutes": 120,
+        "stops": [
+          "剧场收藏厅（百年旋转木马与游乐机械）",
+          "-Musée des Art Forains 主厅（可互动的旋转木马）",
+          "Théâtre Optique 光学剧场（早期影像装置）",
+          "Venise 展厅（嘉年华与市集复原场景）"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "百年旋转木马（可骑乘）",
+        "location": "主厅 · 中央",
+        "why": "19-20 世纪初的真品木马，导览中会通电转动，是馆内最梦幻的一幕。"
+      },
+      {
+        "name": "Théâtre Optique 光学剧场",
+        "location": "光学剧场厅",
+        "why": "爱迪生/卢米埃尔之前的光影装置，演示早期『动画』如何诞生。"
+      },
+      {
+        "name": "嘉年华复原场景",
+        "location": "Venise 展厅",
+        "why": "完整复刻 19 世纪巴黎市集与游乐场气氛，拍照出片率高。"
+      }
+    ],
+    "collections": "全球重要的游艺艺术收藏：旋转木马、摩天轮残件、游乐机械、光学玩具与早期电影装置，跨越 1850-1950。",
+    "tips": [
+      "必须预约，临时到访大概率吃闭门羹，先订时段再安排交通。",
+      "导览全程讲解且部分设施可亲手玩，带娃家庭尤其合适。",
+      "同在 Bercy Village，可顺逛仓储改建的商业街区与绿地。"
+    ]
+  }
+}

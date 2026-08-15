@@ -48,6 +48,7 @@ const POIS = [
   { id: 'poi-champs-elysees', q: ['Champs Elysees avenue Paris', 'Champs Elysees Arc de Triomphe'] },
   { id: 'poi-les-invalides', q: ['Les Invalides Paris dome', 'Hotel des Invalides Napoleon tomb'] },
   { id: 'poi-place-de-la-concorde', q: ['Place de la Concorde Paris obelisk', 'Concorde fountain Paris'] },
+  { id: 'poi-arts-forains', q: ['Musee des Arts Forains Paris carousel', 'Arts Forains Bercy Paris'] },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
