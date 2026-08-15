@@ -507,16 +507,16 @@ ${members}
 
   if (!open) {
     return (
-      <button className={s.fab} onClick={() => setOpen(true)} title="对话建行程" aria-label="对话建行程">
-        对话建行程
+      <button className={s.fab} onClick={() => setOpen(true)} title="AI 行程助手" aria-label="AI 行程助手">
+        AI 行程助手
       </button>
     );
   }
 
   return (
-    <div className={s.drawer} role="dialog" aria-label="对话建行程">
+    <div className={s.drawer} role="dialog" aria-label="AI 行程助手">
       <div className={s.header}>
-        <span className={s.title}>对话建行程</span>
+        <span className={s.title}>AI 行程助手</span>
         <button className={s.close} onClick={() => setOpen(false)} aria-label="关闭">
           ×
         </button>
@@ -524,7 +524,7 @@ ${members}
 
       <div className={s.body} ref={scrollRef}>
         {!ready && (
-          <div className={s.warn}>请先在右上角登录云端账号，才能使用对话建行程（需调用 AI）。</div>
+          <div className={s.warn}>请先在右上角登录云端账号，才能使用 AI 行程助手（需调用 AI）。</div>
         )}
         {ready && disp.length === 0 && (
           <div className={s.hint}>
