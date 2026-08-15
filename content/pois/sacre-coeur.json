@@ -1,0 +1,25 @@
+{
+  "id": "poi-sacre-coeur",
+  "type": "church",
+  "name": "圣心堂",
+  "localName": "Basilique du Sacré-Cœur",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8867, "lng": 2.3431 },
+  "tags": ["教堂", "蒙马特", "高地", "全景"],
+  "popularity": 80,
+  "visit": { "durationMinutes": [60, 120], "durationNote": "含蒙马特高地漫步约半日", "bestTime": "日落前登顶台阶看全城金光" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "约 06:00-22:30（内部），穹顶时段有限", "source": "https://www.sacre-coeur-montmartre.com/", "verifiedAt": "2026-08-04" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "白色穹顶与金箔马赛克", "location": "教堂内部", "why": "罗马-拜占庭风格，通体白石材，内部《基督圣像》马赛克长 480 平米。" },
+      { "name": "蒙马特高地台阶", "location": "教堂前广场", "why": "登 300 级台阶俯瞰巴黎全景，是城市最经典的明信片机位之一。" },
+      { "name": "画家广场 (Place du Tertre)", "location": "教堂北侧", "why": "昔日艺术家聚落，仍有街头画师与咖啡馆，保留波西米亚气息。" }
+    ],
+    "tips": ["穹顶需另购票并爬楼梯", "周边扒手多（蒙马特高发），背包前背", "山下缆车 Funiculaire 省力", "教堂内保持安静、禁止拍照区域遵守"]
+  }
+}

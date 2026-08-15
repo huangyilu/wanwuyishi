@@ -1,0 +1,26 @@
+{
+  "id": "poi-arc-de-triomphe",
+  "type": "landmark",
+  "name": "凯旋门",
+  "localName": "Arc de Triomphe",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8738, "lng": 2.2950 },
+  "tags": ["地标", "登顶", "香榭丽舍"],
+  "popularity": 90,
+  "visit": { "durationMinutes": [60, 120], "durationNote": "登顶约 1 小时含排队", "bestTime": "黄昏登顶看香榭丽舍华灯初上" },
+  "openness": { "closedWeekdays": [], "closedDates": ["2026-01-01", "2026-05-01", "2026-12-25"], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "约 10:00-23:00（夏季延长），1/1、5/1、12/25 闭", "source": "https://www.paris-arc-de-triomphe.fr/", "verifiedAt": "2026-08-04" },
+    "price": { "value": "登顶成人约 16 欧，26 岁以下欧盟居民免费", "source": "https://www.paris-arc-de-triomphe.fr/", "verifiedAt": "2026-08-04" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "拱顶观景台", "location": "凯旋门顶部", "why": "俯瞰 12 条放射状大道以凯旋门为中心散开，香榭丽舍一直延伸到方尖碑与卢浮宫。" },
+      { "name": "无名战士墓", "location": "拱门下", "why": "一战阵亡者长眠处，每晚 18:30 点燃长明火。" },
+      { "name": "浮雕《马赛曲》", "location": "拱门右翼", "why": "吕德创作的著名高浮雕，自由女神振臂引领民众，法国浪漫主义雕塑代表。" }
+    ],
+    "tips": ["从地下通道进入，切勿横穿车流环岛", "持 Paris Museum Pass 免票", "登顶楼梯 284 级（无电梯）"]
+  }
+}

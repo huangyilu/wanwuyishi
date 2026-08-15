@@ -40,6 +40,14 @@ const POIS = [
   { id: 'poi-grindelwald', q: ['Grindelwald village Eiger', 'Grindelwald First Bachalpsee'] },
   { id: 'poi-spiez', q: ['Spiez castle Thun lake', 'Spiez village Bern'] },
   { id: 'poi-first', q: ['Grindelwald First Cliff Walk', 'Bachalpsee First Grindelwald'] },
+  { id: 'poi-versailles', q: ['Palace of Versailles exterior', 'Chateau de Versailles garden'] },
+  { id: 'poi-arc-de-triomphe', q: ['Arc de Triomphe Paris', 'Arc de Triomphe rooftop'] },
+  { id: 'poi-notre-dame-paris', q: ['Notre Dame de Paris cathedral', 'Notre Dame Paris facade'] },
+  { id: 'poi-sacre-coeur', q: ['Sacre Coeur basilica Montmartre', 'Sacre Coeur Paris view'] },
+  { id: 'poi-seine', q: ['Seine river Paris at night', 'Bateaux Mouches Seine'] },
+  { id: 'poi-champs-elysees', q: ['Champs Elysees avenue Paris', 'Champs Elysees Arc de Triomphe'] },
+  { id: 'poi-les-invalides', q: ['Les Invalides Paris dome', 'Hotel des Invalides Napoleon tomb'] },
+  { id: 'poi-place-de-la-concorde', q: ['Place de la Concorde Paris obelisk', 'Concorde fountain Paris'] },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

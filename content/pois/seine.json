@@ -1,0 +1,26 @@
+{
+  "id": "poi-seine",
+  "type": "viewpoint",
+  "name": "塞纳河",
+  "localName": "Seine",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8606, "lng": 2.3370 },
+  "tags": ["河", "游船", "漫步", "夜景"],
+  "popularity": 85,
+  "visit": { "durationMinutes": [60, 180], "durationNote": "河畔漫步或 1 小时游船", "bestTime": "黄昏游船看两岸灯光" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "河岸全天开放；游船 Bateaux-Mouches 约每日 10:00-22:00 定时发船", "source": "https://www.paris.fr/", "verifiedAt": "2026-08-04" },
+    "price": { "value": "步行免费；游船票约 15-20 欧/人", "source": "https://www.paris.fr/", "verifiedAt": "2026-08-04" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "塞纳河游船", "location": "沿岸码头（埃菲尔至圣母院段）", "why": "从水面看巴黎地标一线排开，夜游灯光秀最经典。" },
+      { "name": "旧书摊与艺术桥", "location": "西岱岛两侧", "why": "两岸 bouquinistes 旧书摊是世界遗产景观的一部分。" },
+      { "name": "河岸公园漫步", "location": "左岸 Quai", "why": "Parc Rives de Seine 是步行友好的亲水带，可野餐、轮滑。" }
+    ],
+    "tips": ["游船码头多在 Pont de l'Alma / 埃菲尔脚下", "河畔傍晚人多有扒手，背包前背", "可结合自行车沿专用道骑行"]
+  }
+}

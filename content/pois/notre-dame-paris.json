@@ -1,0 +1,26 @@
+{
+  "id": "poi-notre-dame-paris",
+  "type": "church",
+  "name": "巴黎圣母院",
+  "localName": "Cathédrale Notre-Dame de Paris",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8530, "lng": 2.3499 },
+  "tags": ["教堂", "哥特", "西岱岛", "世界遗产"],
+  "popularity": 92,
+  "visit": { "durationMinutes": [60, 120], "durationNote": "内部参观约 1 小时，登塔另计", "bestTime": "上午光线斜照西立面玫瑰窗" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "约 09:00-19:00（周日至 18:00），弥撒时段限制参观区", "source": "https://www.notredamedeparis.fr/", "verifiedAt": "2026-08-04" },
+    "transport": { "value": "西岱岛，地铁 Cité (4 号线) 或 Saint-Michel (RER B/C) 步行可达", "source": "https://www.paris.fr/", "verifiedAt": "2026-08-04" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "西立面与三玫瑰窗", "location": "正门", "why": "哥特盛期对称杰作，三座 Portal 雕刻《最后的审判》《圣母生平》，中玫瑰窗直径 9.6 米。" },
+      { "name": "中殿与唱诗班席", "location": "内部", "why": "高耸肋拱与彩色玻璃营造垂直升腾感，修复后重现金碧。" },
+      { "name": "塔楼与石兽", "location": "南北双塔", "why": "登塔可近观 galerie des chimères 石兽与城市全景（视开放情况）" }
+    ],
+    "tips": ["免费入内但需安检排队，官网可预约时段免排", "西岱岛周边铁塔、花市一并结合", "尊重弥撒时段，保持安静"]
+  }
+}

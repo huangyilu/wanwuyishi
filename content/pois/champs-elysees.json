@@ -1,0 +1,25 @@
+{
+  "id": "poi-champs-elysees",
+  "type": "other",
+  "name": "香榭丽舍",
+  "localName": "Avenue des Champs-Élysées",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8698, "lng": 2.3078 },
+  "tags": ["大道", "购物", "咖啡", "阅兵"],
+  "popularity": 70,
+  "visit": { "durationMinutes": [60, 180], "durationNote": "漫步 + 咖啡约 1-2 小时", "bestTime": "傍晚华灯与凯旋门呼应" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "店铺约 10:00-20:00；阅兵与跨年时段封路", "source": "https://www.paris.fr/", "verifiedAt": "2026-08-04" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "大道与凯旋门轴线", "location": "全段", "why": "从协和广场到凯旋门约 2 公里直线，是巴黎最著名的城市轴线。" },
+      { "name": "大皇宫与小皇宫", "location": "大道起点", "why": "1900 年世博玻璃穹顶建筑，常办展览。" },
+      { "name": "露天咖啡与品牌店", "location": "西段", "why": "奢侈品旗舰与咖啡馆林立，体验法式街头生活。" }
+    ],
+    "tips": ["东段更安静、西段更商业", "7/14 国庆、跨年有封路与阅兵", "沿街餐饮偏贵，可转巷内小店"]
+  }
+}

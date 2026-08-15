@@ -1,0 +1,27 @@
+{
+  "id": "poi-versailles",
+  "type": "landmark",
+  "name": "凡尔赛宫",
+  "localName": "Château de Versailles",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8049, "lng": 2.1204 },
+  "tags": ["宫殿", "花园", "世界级", "历史"],
+  "popularity": 95,
+  "visit": { "durationMinutes": [240, 480], "durationNote": "宫殿 + 花园半日以上，含特里亚农宫需一整天", "bestTime": "工作日清晨开门即入，避开周末与暑期高峰" },
+  "openness": { "closedWeekdays": [1], "closedDates": ["2026-01-01", "2026-12-25"], "seasonal": [] },
+  "booking": { "required": true, "leadDays": 3, "url": "https://en.chateauversailles.fr/" },
+  "volatile": {
+    "hours": { "value": "宫殿约 09:00-18:30（旺季延长），周一闭馆；花园每天开放", "source": "https://en.chateauversailles.fr/", "verifiedAt": "2026-08-04" },
+    "price": { "value": "通票约 32 欧（含宫殿+花园+特里亚农），花园单独免费（音乐喷泉日除外）", "source": "https://en.chateauversailles.fr/", "verifiedAt": "2026-08-04" },
+    "transport": { "value": "从 Paris 乘 RER C 到 Versailles Château Rive Gauche 站，步行约 10 分钟", "source": "https://en.chateauversailles.fr/", "verifiedAt": "2026-08-04" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "镜厅 (Galerie des Glaces)", "location": "主宫一层", "why": "17 面落地镜对应 17 扇窗，是大革命前法国王权的象征，也是《凡尔赛条约》签署地。" },
+      { "name": "皇家花园与喷泉", "location": "宫殿南侧", "why": "勒诺特式对称花园，周末与旺季有音乐喷泉秀，沿大运河漫步极开阔。" },
+      { "name": "特里亚农宫", "location": "花园深处", "why": "路易十五的私密行宫，玫瑰色大理石小宫殿，人少清幽。" }
+    ],
+    "tips": ["持 Paris Museum Pass 可免排队但需预约时段", "从 RER C 站走有顶廊，雨天不淋", "花园极大，穿舒适鞋，可租小电动车", "旺季务必提前官网买 timed ticket"]
+  }
+}

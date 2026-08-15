@@ -1,0 +1,26 @@
+{
+  "id": "poi-les-invalides",
+  "type": "landmark",
+  "name": "荣军院",
+  "localName": "Les Invalides",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8553, "lng": 2.3125 },
+  "tags": ["历史", "拿破仑墓", "军事博物馆", "金顶"],
+  "popularity": 75,
+  "visit": { "durationMinutes": [120, 240], "durationNote": "含军事博物馆约半日", "bestTime": "上午光线照金顶" },
+  "openness": { "closedWeekdays": [], "closedDates": ["2026-01-01", "2026-05-01", "2026-12-25"], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "约 10:00-18:00（夏季延长），1/1、5/1、12/25 闭", "source": "https://www.musee-armee.fr/", "verifiedAt": "2026-08-04" },
+    "price": { "value": "成人约 15 欧（含拿破仑墓与军事博物馆）", "source": "https://www.musee-armee.fr/", "verifiedAt": "2026-08-04" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "拿破仑一世墓", "location": "圆顶教堂地下", "why": "红色斑岩巨棺置于六层棺椁中，金顶教堂光照庄严。" },
+      { "name": "军事博物馆", "location": "荣军院两翼", "why": "法国最大军事史馆，从中世纪甲胄到二战文物。" },
+      { "name": "金顶圆顶教堂", "location": "建筑中轴", "why": "镀金穹顶是巴黎天际线标志，阳光下璀璨。" }
+    ],
+    "tips": ["持 Paris Museum Pass 免排队", "与埃菲尔、塞纳河同线可步行串联", "馆内不允许自拍杆"]
+  }
+}

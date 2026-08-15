@@ -1,0 +1,25 @@
+{
+  "id": "poi-place-de-la-concorde",
+  "type": "landmark",
+  "name": "协和广场",
+  "localName": "Place de la Concorde",
+  "city": "city-paris",
+  "country": "fr",
+  "location": { "lat": 48.8651, "lng": 2.3212 },
+  "tags": ["广场", "方尖碑", "城市轴线"],
+  "popularity": 65,
+  "visit": { "durationMinutes": [30, 60], "durationNote": "停留拍照约半小时", "bestTime": "白天地标轴线最清晰" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "全天开放公共广场", "source": "https://www.paris.fr/", "verifiedAt": "2026-08-04" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "卢克索方尖碑", "location": "广场中央", "why": "3300 年埃及古碑，高 23 米，1836 年由埃及赠予法国。" },
+      { "name": "巴黎城市轴线", "location": "广场东西向", "why": "东望杜乐丽花园与卢浮宫，西望香榭丽舍与凯旋门，一条线串起巴黎心脏。" },
+      { "name": "喷泉与雕像", "location": "广场四角", "why": "八座女像代表法国大城市，两座海事喷泉对称。" }
+    ],
+    "tips": ["车流极密，过马路走地下通道", "与杜乐丽花园、塞纳河一并散步", "国庆阅兵与跨年庆祝核心区"]
+  }
+}
