@@ -1,0 +1,26 @@
+{
+  "id": "poi-grindelwald",
+  "type": "other",
+  "name": "格林德瓦",
+  "localName": "Grindelwald",
+  "city": "city-interlaken",
+  "country": "ch",
+  "location": { "lat": 46.6243, "lng": 7.9782 },
+  "tags": ["小镇", "雪山", "缆车", "徒步"],
+  "popularity": 88,
+  "visit": { "durationMinutes": [240, 480], "durationNote": "含 First 悬崖步道或梦幻山坡半日以上", "bestTime": "清晨山影清晰、午后易云" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "缆车与齿轮火车约全年运营，冬季滑雪、夏季徒步", "source": "https://www.jungfrau.ch/", "verifiedAt": "2026-08-06" },
+    "transport": { "value": "从 Interlaken Ost 乘齿轮火车约 35 分钟直达", "source": "https://www.jungfrau.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "梦幻山坡与 Bachalpsee", "location": "First 方向", "why": "缓坡草甸正对艾格峰、僧侣峰、少女峰，Bachalpsee 湖面倒映雪峰，是经典明信片机位。" },
+      { "name": "First 悬崖步道", "location": "First 山顶站", "why": "悬空步道与悬崖吊桥俯瞰冰川谷，胆大者可玩旱地雪橇。" },
+      { "name": "艾格峰北壁观景", "location": "镇东侧", "why": "格林德瓦是仰望艾格峰(Eiger)陡峭北壁的最佳基地， train 站至各观景台缆车衔接紧密。" }
+    ],
+    "tips": ["持 Jungfrau Travel Pass 区域交通打折", "First 与 梦幻山坡可同线一日", "小镇住宿紧俏，旺季早订"]
+  }
+}

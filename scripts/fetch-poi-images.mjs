@@ -37,6 +37,8 @@ const POIS = [
   { id: 'poi-ortisei', q: ['Ortisei St Ulrich Groden', 'Ortisei town Val Gardena'] },
   { id: 'poi-alpe-di-siusi', q: ['Alpe di Siusi Seiser Alm meadow', 'Seiser Alm Dolomites'] },
   { id: 'poi-lago-di-braies', q: ['Lago di Braies Pragser Wildsee', 'Pragser Wildsee Dolomites'] },
+  { id: 'poi-grindelwald', q: ['Grindelwald village Eiger', 'Grindelwald First Bachalpsee'] },
+  { id: 'poi-spiez', q: ['Spiez castle Thun lake', 'Spiez village Bern'] },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

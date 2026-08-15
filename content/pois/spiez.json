@@ -1,0 +1,26 @@
+{
+  "id": "poi-spiez",
+  "type": "other",
+  "name": "施皮茨",
+  "localName": "Spiez",
+  "city": "city-interlaken",
+  "country": "ch",
+  "location": { "lat": 46.6903, "lng": 7.6833 },
+  "tags": ["小镇", "湖畔", "城堡", "葡萄园"],
+  "popularity": 72,
+  "visit": { "durationMinutes": [120, 240], "durationNote": "含城堡与湖畔漫步半日", "bestTime": "午后阳光照湖、夏季葡萄园绿" },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "booking": { "required": false, "leadDays": 0 },
+  "volatile": {
+    "hours": { "value": "湖畔全年可游，城堡约每日 10:00–17:00（冬季缩时）", "source": "https://www.spiez.ch/", "verifiedAt": "2026-08-06" },
+    "transport": { "value": "从 Interlaken West 乘火车约 30 分钟，或图恩湖游船停靠", "source": "https://www.spiez.ch/", "verifiedAt": "2026-08-06" }
+  },
+  "guide": {
+    "highlights": [
+      { "name": "施皮茨城堡", "location": "湖畔山丘", "why": "12 世纪湖畔城堡与花园，登塔俯瞰图恩湖与群山，是小镇地标。" },
+      { "name": "图恩湖湖畔", "location": "湖岸步道", "why": "平静蓝湖配远山，木栈道与泳滩适合漫步、野餐，与布里恩茨湖齐名。" },
+      { "name": "阶梯葡萄园", "location": "城堡南侧坡地", "why": "沿坡梯田葡萄园延伸到湖边，秋季采摘季别有风味。" }
+    ],
+    "tips": ["可与图恩湖游船串联一日", "城堡花园票含登塔", "小镇安静，适合作为因特拉肯的慢节奏替代"]
+  }
+}
