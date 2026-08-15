@@ -15,7 +15,7 @@ import {
   type DragStartEvent,
 } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react';
 import { useRepositories } from '../../data';
 import type { TripItem } from '../../data/types';
 import { todayStr } from '../../domain/date';
@@ -47,6 +47,53 @@ export function Workbench({ tripId }: { tripId: string }) {
   const { trip: tripRepo } = useRepositories();
   const { selectedDate, inspector, inspect, closeInspector } = useWorkbench();
   const [dragging, setDragging] = useState<{ label: string } | null>(null);
+
+  // 三栏手动调宽：左/右两道分隔条。宽度用 --left-w / --right-w 变量驱动，
+  // 拖拽时写入 inline style（优先级高于媒体查询），分隔条位置用同一变量自动跟随。
+  const gridRef = useRef<HTMLDivElement>(null);
+  const dragRef = useRef<{ side: 'left' | 'right'; startX: number; startLeft: number; startRight: number } | null>(null);
+  const [cols, setCols] = useState<{ left: number; right: number } | null>(null);
+  const [dragSide, setDragSide] = useState<null | 'left' | 'right'>(null);
+
+  const COL_MIN = { left: 180, right: 240 };
+  const COL_MAX = { left: 520, right: 720 };
+
+  function startResize(side: 'left' | 'right', e: ReactPointerEvent<HTMLDivElement>) {
+    const grid = gridRef.current;
+    if (!grid) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const tracks = getComputedStyle(grid).gridTemplateColumns.split(' ').map(parseFloat);
+    dragRef.current = {
+      side,
+      startX: e.clientX,
+      startLeft: tracks[0] || 288,
+      startRight: tracks[2] || 360,
+    };
+    setDragSide(side);
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  }
+
+  function moveResize(e: ReactPointerEvent<HTMLDivElement>) {
+    const d = dragRef.current;
+    if (!d) return;
+    const dx = e.clientX - d.startX;
+    const left = Math.min(COL_MAX.left, Math.max(COL_MIN.left, d.side === 'left' ? d.startLeft + dx : d.startLeft));
+    const right = Math.min(COL_MAX.right, Math.max(COL_MIN.right, d.side === 'right' ? d.startRight - dx : d.startRight));
+    setCols({ left, right });
+  }
+
+  function endResize(e: ReactPointerEvent<HTMLDivElement>) {
+    if (!dragRef.current) return;
+    try {
+      (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      /* 已释放 */
+    }
+    dragRef.current = null;
+    setDragSide(null);
+  }
+
 
   const poiIds = useMemo(
     () => Array.from(new Set((bundle?.items ?? []).map((i) => i.poiId).filter((x): x is string => Boolean(x)))),
@@ -191,7 +238,15 @@ export function Workbench({ tripId }: { tripId: string }) {
       onDragEnd={onDragEnd}
       onDragCancel={() => setDragging(null)}
     >
-      <div className={s.grid}>
+      <div
+        className={`${s.grid}${dragSide ? ` ${s.resizing}` : ''}`}
+        ref={gridRef}
+        style={
+          cols
+            ? ({ '--left-w': `${cols.left}px`, '--right-w': `${cols.right}px` } as CSSProperties)
+            : undefined
+        }
+      >
         <div className={s.left}>
           <WorldNav
             onAddPoi={(id) => addPoi(id)}
@@ -199,6 +254,17 @@ export function Workbench({ tripId }: { tripId: string }) {
             addedPoiIds={addedPoiIds}
           />
         </div>
+
+        <div
+          className={`${s.resizer} ${s.resizerLeft}`}
+          role="separator"
+          aria-orientation="vertical"
+          aria-label="拖动调整左栏宽度"
+          onPointerDown={(e) => startResize('left', e)}
+          onPointerMove={moveResize}
+          onPointerUp={endResize}
+          onPointerCancel={endResize}
+        />
 
         <div className={s.center}>
           <Timeline
@@ -209,6 +275,17 @@ export function Workbench({ tripId }: { tripId: string }) {
             mut={mut}
           />
         </div>
+
+        <div
+          className={`${s.resizer} ${s.resizerRight}`}
+          role="separator"
+          aria-orientation="vertical"
+          aria-label="拖动调整右栏宽度"
+          onPointerDown={(e) => startResize('right', e)}
+          onPointerMove={moveResize}
+          onPointerUp={endResize}
+          onPointerCancel={endResize}
+        />
 
         <div className={s.right}>
           <div className={s.rightHead}>
