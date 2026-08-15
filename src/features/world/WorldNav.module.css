@@ -127,15 +127,38 @@
   color: var(--text-1);
   background: var(--bg-hover);
 }
-.countryName {
+.countryNameGroup {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
   flex: 1;
-  font-weight: 700;
+  min-width: 0;
 }
-.arrow {
-  width: 9px;
-  flex: none;
-  font-size: 9px;
+.countryName {
+  font-weight: 700;
+  white-space: nowrap;
+}
+/* 当地语言名降级为次要别名：小灰字 + 省略号，不再与中文名抢视觉 */
+.countryAlias {
   color: var(--text-3);
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 折叠箭头放大、加清晰色，并随悬停变品牌色，让"可展开"一眼可见 */
+.arrow {
+  width: 14px;
+  flex: none;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--text-2);
+  transition: color 0.12s;
+}
+.countryBtn:hover .arrow {
+  color: var(--brand);
 }
 
 .city {

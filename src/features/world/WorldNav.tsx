@@ -199,11 +199,20 @@ export function WorldNav({
                   onClick={() => toggleCountry(openCountries, setOpenCountries, country.id)}
                   title={open ? '收起城市' : '展开城市'}
                 >
-                  <span className={s.arrow}>{open ? '▾' : '▸'}</span>
-                  <span className={s.countryName}>
-                    {country.name} · {country.localName}
+                  <span className={s.arrow} aria-hidden>
+                    {open ? '▾' : '▸'}
                   </span>
-                  <span className={s.count}>{poiTotal}</span>
+                  <span className={s.countryNameGroup}>
+                    <span className={s.countryName}>{country.name}</span>
+                    {country.localName && (
+                      <span className={s.countryAlias} title="当地语言名称">
+                        {country.localName}
+                      </span>
+                    )}
+                  </span>
+                  <span className={s.count}>
+                    {cities.length} 城 · {poiTotal}
+                  </span>
                 </button>
                 {open &&
                   cities.map((city) => (
