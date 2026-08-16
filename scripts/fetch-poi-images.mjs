@@ -32,6 +32,8 @@ const POIS = [
   { id: 'poi-trevi-fountain', q: ['Trevi Fountain Rome', 'Fontana di Trevi'] },
   { id: 'poi-mouth-of-truth', q: ['Mouth of Truth Rome', 'Bocca della Verita'] },
   { id: 'poi-trastevere', q: ['Trastevere Rome', 'Santa Maria in Trastevere'] },
+  { id: 'poi-sistine-chapel', q: ['Sistine Chapel interior ceiling', 'Cappella Sistina Vatican'] },
+  { id: 'poi-st-peters-basilica', q: ['St Peter Basilica facade Vatican', 'Basilica di San Pietro dome'] },
 
   // ---- 多洛米蒂补充（2026-08-15 新增 POI，待配图） ----
   { id: 'poi-ortisei', q: ['Ortisei St Ulrich Groden', 'Ortisei town Val Gardena'] },

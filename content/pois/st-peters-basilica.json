@@ -1,0 +1,84 @@
+{
+  "id": "poi-st-peters-basilica",
+  "type": "church",
+  "name": "圣彼得大教堂",
+  "localName": "Basilica di San Pietro",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.90222, "lng": 12.45333 },
+  "tags": ["世界级", "梵蒂冈", "教堂", "文艺复兴", "米开朗基罗", "贝尼尼"],
+  "popularity": 96,
+  "wikidataId": "Q12512",
+  "officialUrl": "https://www.vatican.va/various/basiliche/san_pietro/index_it.htm",
+  "visit": {
+    "durationMinutes": [90, 180],
+    "durationNote": "大教堂免费进入，含看 Pietà、华盖、地下墓窟约 1.5 小时；登穹顶另加约 1 小时",
+    "bestTime": "清晨开门即入人最少；周三上午有教皇公开接见，广场会管制"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": [],
+    "seasonal": []
+  },
+  "booking": {
+    "required": false,
+    "leadDays": 0,
+    "url": "https://www.vatican.va/various/basiliche/san_pietro/index_it.htm"
+  },
+  "facilities": {
+    "toilet": "教堂内与广场周边",
+    "water": "广场饮水点",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "大教堂免费进入；登穹顶电梯票约 10 欧、徒步（约 320 级台阶）约 8 欧，价格随官方调整",
+      "source": "https://www.vatican.va/various/basiliche/san_pietro/index_it.htm",
+      "verifiedAt": "2026-08-16"
+    },
+    "hours": {
+      "value": "大教堂每日约 07:00–19:00（冬季略短），弥撒与特殊礼仪期间部分区域关闭",
+      "source": "https://www.vatican.va/various/basiliche/san_pietro/index_it.htm",
+      "verifiedAt": "2026-08-16"
+    },
+    "booking": {
+      "value": "进入免费、无需预约；登穹顶在教堂内右侧购票，旺季建议早到以免排队",
+      "source": "https://www.vatican.va/various/basiliche/san_pietro/index_it.htm",
+      "verifiedAt": "2026-08-16"
+    }
+  },
+  "guide": {
+    "entrances": "从圣彼得广场（Piazza San Pietro）中央安检进入大教堂；登顶（穹顶）从教堂内右侧购票通道上。",
+    "routes": [
+      {
+        "name": "教堂 + 穹顶线",
+        "durationMinutes": 120,
+        "stops": ["入口青铜华盖（贝尼尼）", "圣彼得宝座", "米开朗基罗《圣母怜子》", "登顶电梯 + 台阶俯瞰广场"]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "《圣母怜子》Pietà",
+        "location": "右翼第一个小堂",
+        "why": "米开朗基罗 24 岁所作、唯一署名的雕塑，被视为文艺复兴雕塑巅峰。"
+      },
+      {
+        "name": "圣彼得青铜华盖",
+        "location": "中央祭坛上方",
+        "why": "贝尼尼耗时 9 年打造的青铜华盖，高约 30 米，标记圣彼得墓的位置。"
+      },
+      {
+        "name": "穹顶俯瞰",
+        "location": "登顶（电梯 + 约 320 级台阶）",
+        "why": "可俯瞰整个圣彼得广场与罗马城，是梵蒂冈最佳取景位。"
+      }
+    ],
+    "collections": "",
+    "tips": [
+      "免费进入大教堂，但登顶（穹顶）需另购票。",
+      "正装要求：肩与膝需遮盖。",
+      "可从教堂下行参观地下墓窟（Grotte）的历代教皇墓。",
+      "与梵博 / 西斯廷同天安排需大半天，建议上午教堂、下午梵博。"
+    ]
+  }
+}

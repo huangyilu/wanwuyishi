@@ -1,0 +1,79 @@
+{
+  "id": "poi-sistine-chapel",
+  "type": "church",
+  "name": "西斯廷教堂",
+  "localName": "Cappella Sistina",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.90306, "lng": 12.45444 },
+  "tags": ["世界级", "梵蒂冈", "文艺复兴", "壁画", "米开朗基罗"],
+  "popularity": 97,
+  "wikidataId": "Q2943",
+  "officialUrl": "https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/cappella-sistina.html",
+  "visit": {
+    "durationMinutes": [60, 150],
+    "durationNote": "须先进入梵蒂冈博物馆，通常作为梵博参观动线的压轴；建议预留 1–2.5 小时细看穹顶与《最后的审判》",
+    "bestTime": "上午开门即入、避开中午旅行团高峰"
+  },
+  "openness": {
+    "closedWeekdays": [0],
+    "closedDates": [],
+    "seasonal": []
+  },
+  "booking": {
+    "required": true,
+    "leadDays": 7,
+    "url": "https://www.museivaticani.va/"
+  },
+  "facilities": {
+    "toilet": "梵蒂冈博物馆内",
+    "water": "博物馆与广场饮水点",
+    "accessible": true
+  },
+  "volatile": {
+    "price": {
+      "value": "梵蒂冈博物馆全票约 20 欧（含西斯廷教堂），在线预约另含约 5 欧预约费",
+      "source": "https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/cappella-sistina.html",
+      "verifiedAt": "2026-08-16"
+    },
+    "hours": {
+      "value": "梵蒂冈博物馆周一—周六 08:30–18:30（最后入场 16:30），周日闭馆（每月最后一个周日免费开放）",
+      "source": "https://www.museivaticani.va/content/museivaticani/en/collezioni/musei/cappella-sistina.html",
+      "verifiedAt": "2026-08-16"
+    },
+    "booking": {
+      "value": "须持梵蒂冈博物馆门票进入，强烈建议官网提前预约时段，否则现场排队极长",
+      "source": "https://www.museivaticani.va/",
+      "verifiedAt": "2026-08-16"
+    }
+  },
+  "guide": {
+    "entrances": "从梵蒂冈博物馆主入口（Viale Vaticano）进馆，沿固定参观动线走到尽头即西斯廷教堂；持在线预约票走专用通道更快。",
+    "routes": [
+      {
+        "name": "梵博精华线",
+        "durationMinutes": 150,
+        "stops": ["松果庭院", "拉斐尔房间", "地图廊", "波吉亚寓所", "西斯廷教堂"]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "《创世记》穹顶",
+        "location": "教堂天顶",
+        "why": "米开朗基罗 1508–1512 年所作九幅《创世记》场景，中央《创造亚当》是全人类最知名的画面之一。"
+      },
+      {
+        "name": "《最后的审判》",
+        "location": "祭坛正面墙壁",
+        "why": "米开朗基罗晚年（1536–1541）巨幅壁画，描绘末日审判，人物众多、气势撼人。"
+      }
+    ],
+    "collections": "",
+    "tips": [
+      "必须着装得体（肩与膝需遮盖），否则可能被拒入。",
+      "馆内禁止拍照与大声喧哗，静心欣赏。",
+      "建议上午一开门就进，先直奔西斯廷避开人流。",
+      "梵博联票不含圣彼得大教堂，需另行安排半天。"
+    ]
+  }
+}
