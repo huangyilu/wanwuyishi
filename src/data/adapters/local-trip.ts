@@ -205,7 +205,7 @@ export class LocalTripRepository implements TripRepository {
       // 交通 / 备注没有 poiId，必须有 customTitle 才能过约束（poi_id 或 custom_title 至少一个）
       const customTitle =
         input.customTitle ??
-        (kind === 'transport' ? '交通' : kind === 'note' ? '备注' : null);
+        (kind === 'transport' ? '交通' : kind === 'note' ? '备注' : kind === 'accommodation' ? '住宿' : null);
       const item: TripItem = {
         id: uid('item'),
         tripId: input.tripId,

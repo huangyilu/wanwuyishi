@@ -53,12 +53,13 @@ export function ItemEditor({
   }
 
   const day = item.dayId ? bundle.days.find((d) => d.id === item.dayId) : undefined;
-  const canSetDayCity = kind === 'transport' && item.toCityId && day && day.cityId !== item.toCityId;
+  const canSetDayCity =
+    (kind === 'transport' || kind === 'accommodation') && item.toCityId && day && day.cityId !== item.toCityId;
 
   return (
     <div className={s.panel}>
       <div className={s.title}>
-        {kind === 'transport' ? '🚄 交通' : kind === 'note' ? '📝 备注' : '条目'}
+        {kind === 'transport' ? '🚄 交通' : kind === 'accommodation' ? '🏨 住宿' : kind === 'note' ? '📝 备注' : '条目'}
       </div>
 
       {kind === 'poi' && (
@@ -215,6 +216,67 @@ export function ItemEditor({
               className={s.textarea}
               defaultValue={item.note ?? ''}
               placeholder="航班号 / 车次 / 行李寄存 / 接机…"
+              onBlur={(e) => patch({ note: e.target.value || null })}
+            />
+          </div>
+        </>
+      )}
+
+      {kind === 'accommodation' && (
+        <>
+          <div className={s.field}>
+            <label className={s.label}>酒店 / 住宿名称</label>
+            <input
+              className={s.input}
+              defaultValue={item.customTitle ?? ''}
+              placeholder="例如：希尔顿 / Airbnb 巴黎歌剧院公寓"
+              onBlur={(e) => patch({ customTitle: e.target.value.trim() || null })}
+            />
+          </div>
+
+          <div className={s.field}>
+            <label className={s.label}>所在城市</label>
+            <select
+              className={s.input}
+              value={item.toCityId ?? ''}
+              onChange={(e) => patch({ toCityId: e.target.value || null })}
+            >
+              <option value="">—</option>
+              {cities.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className={s.row}>
+            <div className={s.field}>
+              <label className={s.label}>入住时间</label>
+              <input
+                className={s.input}
+                type="time"
+                value={item.slotStart ?? ''}
+                onChange={(e) => patch({ slotStart: e.target.value || null })}
+              />
+            </div>
+            <div className={s.field}>
+              <label className={s.label}>退房时间</label>
+              <input
+                className={s.input}
+                type="time"
+                value={item.slotEnd ?? ''}
+                onChange={(e) => patch({ slotEnd: e.target.value || null })}
+              />
+            </div>
+          </div>
+
+          <div className={s.field}>
+            <label className={s.label}>预订信息</label>
+            <AutoTextarea
+              className={s.textarea}
+              defaultValue={item.note ?? ''}
+              placeholder="预订确认号 / 详细地址 / 入住人…"
               onBlur={(e) => patch({ note: e.target.value || null })}
             />
           </div>

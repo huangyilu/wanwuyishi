@@ -61,12 +61,12 @@ const TOOLS: unknown[] = [
     function: {
       name: 'add_trip_item',
       description:
-        '在指定日期添加一条行程条目（景点 POI / 交通 / 备注）。日期不存在会自动建当天。',
+        '在指定日期添加一条行程条目（景点 POI / 交通 / 住宿 / 备注）。日期不存在会自动建当天。',
       parameters: {
         type: 'object',
         properties: {
           date: { type: 'string', description: 'ISO 日期，如 2026-09-23' },
-          kind: { type: 'string', enum: ['poi', 'transport', 'note'] },
+          kind: { type: 'string', enum: ['poi', 'transport', 'note', 'accommodation'] },
           poiId: { type: 'string', description: '景点 id，如 poi-colosseum；kind=poi 时优先用' },
           poiName: { type: 'string', description: '景点中文名兜底，匹配不到世界库时当自定义景点' },
           cityId: { type: 'string', description: '当天所在城市 id（建新天时设置），如 city-rome' },
@@ -277,7 +277,7 @@ export function ChatPanel({ tripId }: { tripId: string }) {
     const input: Omit<AddItemInput, 'tripId'> = {
       dayId,
       kind: kind as ItemKind,
-      status: (kind === 'transport' ? 'confirmed' : 'candidate') as ItemStatus,
+      status: (kind === 'transport' || kind === 'accommodation' ? 'confirmed' : 'candidate') as ItemStatus,
     };
 
     if (kind === 'poi') {
@@ -290,6 +290,9 @@ export function ChatPanel({ tripId }: { tripId: string }) {
       input.transportMode = (args.transportMode as TransportMode) ?? 'other';
       input.fromCityId = (args.fromCityId as string) ?? null;
       input.toCityId = (args.toCityId as string) ?? null;
+    } else if (kind === 'accommodation') {
+      input.customTitle = (args.customTitle as string) ?? (args.note as string) ?? '住宿';
+      input.toCityId = (args.toCityId as string) ?? (args.cityId as string) ?? null;
     } else {
       input.customTitle = (args.customTitle as string) ?? (args.note as string) ?? '备注';
     }
@@ -300,7 +303,7 @@ export function ChatPanel({ tripId }: { tripId: string }) {
     const patch: Partial<TripItem> = {};
     if (args.startTime) patch.slotStart = args.startTime as string;
     if (args.endTime) patch.slotEnd = args.endTime as string;
-    if (args.note && kind === 'note') patch.note = args.note as string;
+    if (args.note && (kind === 'note' || kind === 'accommodation')) patch.note = args.note as string;
     if (patch.slotStart || patch.slotEnd || patch.note) {
       await mut.updateItem.mutateAsync({ id: created.id, patch });
     }

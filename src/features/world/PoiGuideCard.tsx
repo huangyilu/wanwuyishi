@@ -1,5 +1,7 @@
 import { weekdayLabel } from '../../domain/date';
 import { formatDuration } from '../../domain/world/duration';
+import { Lightbox, type LightboxImage } from '../../components/ClickableImage';
+import { useState } from 'react';
 import { freshnessOf, oldestVerification } from '../../domain/world/staleness';
 import type { Poi } from '../../domain/world/schema';
 import { usePoi } from './queries';
@@ -45,10 +47,18 @@ export function PoiGuideCardView({
   const fresh = oldestVerification([poi.volatile.price, poi.volatile.hours, poi.volatile.booking]);
   const closed = poi.openness.closedWeekdays.map((d) => WEEK[d]).filter(Boolean);
   const img = poiImage(poi.id);
+  const [pv, setPv] = useState<LightboxImage | null>(null);
 
   return (
-    <div className={s.card}>
-      <div className={s.hero}>
+    <>
+      <div className={s.card}>
+      <div
+        className={s.hero}
+        onClick={() =>
+          img &&
+          setPv({ src: img.src, caption: poi.name, credit: img.author, license: img.license, page: img.page })
+        }
+      >
         {img?.src && <img className={s.heroImg} src={img.src} alt={poi.name} loading="lazy" />}
         <div className={s.heroShade} />
         <div className={s.heroText}>
@@ -61,13 +71,20 @@ export function PoiGuideCardView({
               target="_blank"
               rel="noopener noreferrer"
               title={`作者：${img.author} · 许可：${img.license}`}
+              onClick={(e) => e.stopPropagation()}
             >
               © {img.author} / {img.license}
             </a>
           )}
         </div>
         {poi.officialUrl && (
-          <a className={`btn btn-sm ${s.heroLink}`} href={poi.officialUrl} target="_blank" rel="noreferrer">
+          <a
+            className={`btn btn-sm ${s.heroLink}`}
+            href={poi.officialUrl}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+          >
             官网 ↗
           </a>
         )}
@@ -233,6 +250,8 @@ export function PoiGuideCardView({
         </section>
       )}
     </div>
+    {pv && <Lightbox images={[pv]} start={0} onClose={() => setPv(null)} />}
+    </>
   );
 }
 

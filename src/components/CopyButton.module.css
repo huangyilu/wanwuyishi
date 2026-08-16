@@ -1,0 +1,24 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid var(--line, #d8d3c6);
+  background: #fff;
+  color: var(--brand, #4a7f7c);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.btn:hover {
+  background: var(--bg-sub, #f0ede4);
+}
+.copied {
+  color: var(--st-confirmed, #2f9462);
+  border-color: var(--st-confirmed, #2f9462);
+  background: #fff;
+}

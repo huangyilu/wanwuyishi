@@ -9,6 +9,8 @@ import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { lazy, Suspense, useMemo, useState } from 'react';
+import { ClickableImage } from '../../components/ClickableImage';
+import { CopyButton } from '../../components/CopyButton';
 import type {
   CitySummary,
   ItemStatus,
@@ -114,7 +116,7 @@ function ItemRow({
   const closed = poi && date ? isClosedOn(poi.openness, date) : { closed: false };
   const selected = inspector.type === 'item' && inspector.id === item.id;
 
-  const title = poi?.name ?? item.customTitle ?? (kind === 'transport' ? '交通' : '备注');
+  const title = poi?.name ?? item.customTitle ?? (kind === 'transport' ? '交通' : kind === 'accommodation' ? '住宿' : '备注');
 
   const sub: string[] = [];
   if (kind === 'poi') {
@@ -134,11 +136,24 @@ function ItemRow({
     if (item.slotStart)
       sub.push(item.slotEnd ? `${item.slotStart.slice(0, 5)}–${item.slotEnd.slice(0, 5)}` : item.slotStart.slice(0, 5));
     if (item.note) sub.push(item.note);
+  } else if (kind === 'accommodation') {
+    const city = cityName(cities, item.toCityId);
+    if (city) sub.push(city);
+    if (item.slotStart)
+      sub.push(item.slotEnd ? `入住 ${item.slotStart.slice(0, 5)} – 退房 ${item.slotEnd.slice(0, 5)}` : `入住 ${item.slotStart.slice(0, 5)}`);
+    // note（地址/预订号）单独成行，配一键复制
   } else if (item.note) {
     sub.push(item.note);
   }
 
-  const icon = kind === 'transport' ? TRANSPORT_ICON[item.transportMode ?? 'other'] : kind === 'note' ? '📝' : null;
+  const icon =
+    kind === 'transport'
+      ? TRANSPORT_ICON[item.transportMode ?? 'other']
+      : kind === 'note'
+        ? '📝'
+        : kind === 'accommodation'
+          ? '🏨'
+          : null;
 
   function castVote(value: 1 | -1) {
     if (!me) return;
@@ -156,6 +171,7 @@ function ItemRow({
         item.status === 'dropped' ? s.itemDropped : '',
         isCustom ? s.itemCustom : '',
         kind === 'transport' ? s.itemTransport : '',
+        kind === 'accommodation' ? s.itemAccommodation : '',
         kind === 'note' ? s.itemNote : '',
       ].join(' ')}
     >
@@ -176,10 +192,24 @@ function ItemRow({
           {closed.closed && <span className={s.closedFlag}>· 闭馆</span>}
         </div>
         {sub.length > 0 && <div className={s.itemSub}>{sub.join(' · ')}</div>}
+        {kind === 'accommodation' && item.note && (
+          <div className={s.itemAddr}>
+            <span className={s.itemAddrText}>{item.note}</span>
+            <CopyButton text={item.note} label="复制地址" />
+          </div>
+        )}
         {(item.images?.length ?? 0) > 0 && (
           <div className={s.itemThumbs}>
-            <img className={s.itemThumb} src={item.images![0]} alt="附件" />
-            {item.images!.length > 1 && <span className={s.itemThumbMore}>+{item.images!.length - 1}</span>}
+            {item.images!.map((u, i) => (
+              <ClickableImage
+                key={i}
+                className={s.itemThumb}
+                src={u}
+                alt="行程图片"
+                caption={title}
+                gallery={item.images!.map((src) => ({ src, caption: title }))}
+              />
+            ))}
           </div>
         )}
       </div>
@@ -265,7 +295,7 @@ function DayCard({
   issues: SanityIssue[];
   bundle: TripBundle;
   mut: Mutations;
-  onAddCustom: (kind: 'transport' | 'note') => void;
+  onAddCustom: (kind: 'transport' | 'note' | 'accommodation') => void;
 }) {
   const { isOver, setNodeRef } = useDroppable({
     id: dayDropId(day.id),
@@ -313,6 +343,9 @@ function DayCard({
           <button className={s.addBtn} title="加一段交通" onClick={(e) => { e.stopPropagation(); onAddCustom('transport'); }}>
             🚄
           </button>
+          <button className={s.addBtn} title="加一处住宿" onClick={(e) => { e.stopPropagation(); onAddCustom('accommodation'); }}>
+            🏨
+          </button>
           <button className={s.addBtn} title="加一条备注" onClick={(e) => { e.stopPropagation(); onAddCustom('note'); }}>
             📝
           </button>
@@ -343,7 +376,7 @@ function DayCard({
             />
           ))}
         </SortableContext>
-        {items.length === 0 && <div className={s.dropHint}>把左侧的点拖到这里，或点 🚄 加一段交通</div>}
+        {items.length === 0 && <div className={s.dropHint}>把左侧的点拖到这里，或点 🚄 加交通 / 🏨 加住宿</div>}
       </div>
     </div>
   );
@@ -364,7 +397,7 @@ function PoolCard({
   bundle: TripBundle;
   mut: Mutations;
   cities: CitySummary[];
-  onAddCustom: (kind: 'transport' | 'note') => void;
+  onAddCustom: (kind: 'transport' | 'note' | 'accommodation') => void;
 }) {
   const { isOver, setNodeRef } = useDroppable({
     id: POOL_DROP_ID,
@@ -380,6 +413,9 @@ function PoolCard({
         <span className={s.addBtns}>
           <button className={s.addBtn} title="加一段交通" onClick={() => onAddCustom('transport')}>
             🚄
+          </button>
+          <button className={s.addBtn} title="加一处住宿" onClick={() => onAddCustom('accommodation')}>
+            🏨
           </button>
           <button className={s.addBtn} title="加一条备注" onClick={() => onAddCustom('note')}>
             📝
@@ -426,7 +462,7 @@ export function Timeline({
   const [view, setView] = useState<'timeline' | 'map'>('timeline');
 
   /** 加一段交通 / 一条备注：先建条目并自动打开右栏编辑面板 */
-  async function addCustom(kind: 'transport' | 'note', dayId: string | null) {
+  async function addCustom(kind: 'transport' | 'note' | 'accommodation', dayId: string | null) {
     const created = await mut.addItem.mutateAsync({
       dayId,
       kind,

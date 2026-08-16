@@ -141,11 +141,25 @@
   font-style: italic;
   color: var(--text-2);
 }
+.cardStay {
+  border-left: 3px solid var(--gold);
+}
+.cardStay .cardName {
+  color: var(--gold);
+}
 
 .cardMeta {
   margin-top: 3px;
   color: var(--text-3);
   font-size: 12px;
+}
+
+.cardAddr {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
 }
 
 .statusDot {

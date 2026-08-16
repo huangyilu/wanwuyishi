@@ -456,6 +456,25 @@
   font-style: italic;
   color: var(--text-2);
 }
+.itemAccommodation {
+  border-left: 3px solid var(--gold);
+  padding-left: 5px;
+}
+.itemAccommodation .itemName {
+  color: var(--gold);
+}
+.itemAddr {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+.itemAddrText {
+  color: var(--text-2);
+  font-size: 11px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
 
 /* 天卡片 / 候选池里的快捷添加 */
 .addBtns {

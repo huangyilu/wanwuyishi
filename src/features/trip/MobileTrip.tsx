@@ -15,6 +15,7 @@ import { PoiGuideCard } from '../world/PoiGuideCard';
 import { usePoiMap, useWorldIndex } from '../world/queries';
 import { useTripBundle } from './queries';
 import { MobileToday } from './MobileToday';
+import { CopyButton } from '../../components/CopyButton';
 import s from './MobileTrip.module.css';
 
 const STATUS_COLOR: Record<ItemStatus, string> = {
@@ -119,8 +120,9 @@ export function MobileTrip({ tripId }: { tripId: string }) {
           const kind = it.kind ?? 'poi';
           const isTransport = kind === 'transport';
           const isNote = kind === 'note';
-          const icon = isTransport ? TRANSPORT_ICON[it.transportMode ?? 'other'] : isNote ? '📝' : null;
-          const title = poi?.name ?? it.customTitle ?? (isTransport ? '交通' : '备注');
+          const isStay = kind === 'accommodation';
+          const icon = isTransport ? TRANSPORT_ICON[it.transportMode ?? 'other'] : isNote ? '📝' : isStay ? '🏨' : null;
+          const title = poi?.name ?? it.customTitle ?? (isTransport ? '交通' : isStay ? '住宿' : '备注');
 
           const meta: string[] = [];
           if (poi) meta.push(`${formatDuration(poi.visit.durationMinutes)}起`);
@@ -133,12 +135,17 @@ export function MobileTrip({ tripId }: { tripId: string }) {
             if (it.slotEnd) meta.push(`${it.slotStart?.slice(0, 5)}–${it.slotEnd.slice(0, 5)}`);
             else if (it.slotStart) meta.push(it.slotStart.slice(0, 5));
           }
+          if (isStay) {
+            const city = cityName(it.toCityId);
+            if (city) meta.push(city);
+            if (it.slotStart)
+              meta.push(it.slotEnd ? `${it.slotStart.slice(0, 5)}入住–${it.slotEnd.slice(0, 5)}退房` : `${it.slotStart.slice(0, 5)}入住`);
+          }
           return (
             <button
               key={it.id}
-              className={`${s.card} ${isTransport ? s.cardTransport : ''} ${isNote ? s.cardNote : ''}`}
+              className={`${s.card} ${isTransport ? s.cardTransport : ''} ${isStay ? s.cardStay : ''} ${isNote ? s.cardNote : ''}`}
               onClick={() => poi && setOpenPoi(poi.id)}
-              disabled={!poi}
             >
               <span className={s.seq}>{i + 1}</span>
               <span className={s.cardMain}>
@@ -148,6 +155,12 @@ export function MobileTrip({ tripId }: { tripId: string }) {
                 </span>
                 {meta.length > 0 && <span className={s.cardMeta}>{meta.join(' · ')}</span>}
                 {isNote && it.note && <span className={s.cardMeta}>{it.note}</span>}
+                {isStay && it.note && (
+                  <span className={s.cardAddr}>
+                    <span className={s.cardMeta}>{it.note}</span>
+                    <CopyButton text={it.note} label="复制地址" asSpan />
+                  </span>
+                )}
                 {isTransport && it.note && <span className={s.cardMeta}>{it.note}</span>}
               </span>
               <span className={s.statusDot} style={{ background: STATUS_COLOR[it.status] }} />

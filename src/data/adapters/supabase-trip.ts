@@ -276,7 +276,7 @@ export class SupabaseTripRepository implements TripRepository {
     // 与 LocalTripRepository 保持一致：未显式给标题时按类型兜底。
     const customTitle =
       input.customTitle ??
-      (kind === 'transport' ? '交通' : kind === 'note' ? '备注' : null);
+      (kind === 'transport' ? '交通' : kind === 'note' ? '备注' : kind === 'accommodation' ? '住宿' : null);
     const siblings = await this.c
       .from('trip_items')
       .select('rank')

@@ -86,6 +86,16 @@ function renderItem(it: TripItem, poiMap: Record<string, Poi>, cities: CitySumma
     return `- 📝 ${it.note || '（空备注）'}`;
   }
 
+  if (kind === 'accommodation') {
+    const city = cityLabel(cities, it.toCityId);
+    let line = `- 🏨 ${it.customTitle || '住宿'}`;
+    if (city) line += ` · ${city}`;
+    if (time) line += ` · ${time}`;
+    line += ` · ${status}`;
+    if (it.note) line += `\n  - 预订：${it.note}`;
+    return line;
+  }
+
   // poi / 自定义标题
   const poi = it.poiId ? poiMap[it.poiId] : undefined;
   const name = it.customTitle || poiLabel(poi);

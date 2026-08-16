@@ -26,6 +26,7 @@
   overflow: hidden;
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   background: var(--bg-sub);
+  cursor: zoom-in;
 }
 
 .heroImg {

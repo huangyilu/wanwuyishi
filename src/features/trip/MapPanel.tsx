@@ -23,6 +23,7 @@ import type { Poi } from '../../domain/world/schema';
 import { formatCn } from '../../domain/date';
 import { byRank, rankForInsert } from '../../domain/trip/rank';
 import { poiImage } from '../world/poiImages';
+import { ClickableImage } from '../../components/ClickableImage';
 import { useWorkbench } from '../../store/workbench';
 import type { useTripMutations } from './queries';
 import s from './MapPanel.module.css';
@@ -401,7 +402,17 @@ export function MapPanel({
           <button className={s.cardClose} onClick={() => setSelected(null)} title="关闭">
             ×
           </button>
-          {img?.src && <img className={s.cardImg} src={img.src} alt={selPoi.name} loading="lazy" />}
+          {img?.src && (
+            <ClickableImage
+              className={s.cardImg}
+              src={img.src}
+              alt={selPoi.name}
+              caption={selPoi.name}
+              credit={img.author}
+              license={img.license}
+              page={img.page}
+            />
+          )}
           <div className={s.cardBody}>
             <div className={s.cardName}>{selPoi.name}</div>
             <div className={s.cardMeta}>
