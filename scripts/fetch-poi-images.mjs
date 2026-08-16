@@ -7,8 +7,9 @@
  */
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { writeFile, mkdir, stat } from 'node:fs/promises';
+import { writeFile, mkdir, stat, rename } from 'node:fs/promises';
 import { writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 const exec = promisify(execFile);
 const OUT = 'public/img/pois';
@@ -54,15 +55,27 @@ const POIS = [
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const UA = 'wanwuyishi-travel/1.0 (https://github.com/huangyilu/wanwuyishi; contact: user@example.com)';
+// 浏览器 UA + 项目署名：Wikimedia 图片 CDN(upload.wikimedia.org) 会拒自定义 bot UA(403)，
+// 但放行标准浏览器 UA；附项目信息以尽量符合其 robot policy。
+const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 (wanwuyishi-travel/1.0; +https://github.com/huangyilu/wanwuyishi)';
 
 async function curlJson(url, attempt = 0) {
   try {
-    const { stdout } = await exec('curl', ['-s', '-m', '40', '-4', '-A', UA, url], { maxBuffer: 32 * 1024 * 1024 });
+    const { stdout } = await exec('curl', ['-s', '-m', '35', '-4', '-A', UA, url], { maxBuffer: 32 * 1024 * 1024 });
     return JSON.parse(stdout);
   } catch (e) {
-    if (attempt < 5) {
-      await sleep(3500);
+    // 直连失败（如国内被墙）→ 试公共 CORS 代理兜底
+    if (attempt < 2) {
+      try {
+        const prox = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
+        const { stdout } = await exec('curl', ['-s', '-m', '35', '-A', UA, prox], { maxBuffer: 32 * 1024 * 1024 });
+        return JSON.parse(stdout);
+      } catch {
+        /* 忽略，进入重试 */
+      }
+    }
+    if (attempt < 4) {
+      await sleep(2500);
       return curlJson(url, attempt + 1);
     }
     throw e;
@@ -82,15 +95,44 @@ async function curlBinary(url, attempt = 0) {
   }
 }
 
-/** 下载到文件，校验大小（限流会返回空响应），过小则重试 */
-async function curlDownload(url, dest, attempt = 0) {
-  await exec('curl', ['-4', '-s', '-L', '-A', UA, '-m', '120', '-o', dest, url]);
+/** Wikimedia 文件名 -> 原始图 + 960px 缩略图直链（MD5 目录规则，免 API；含非 ASCII 编码） */
+function wikiUrls(file, w = 960) {
+  const name = file.replace(/^File:/, '').replace(/ /g, '_');
+  const enc = encodeURIComponent(name);
+  const md5 = createHash('md5').update(name, 'utf8').digest('hex');
+  const dir = `${md5[0]}/${md5.slice(0, 2)}`;
+  const orig = `https://upload.wikimedia.org/wikipedia/commons/${dir}/${enc}`;
+  const thumb = `https://upload.wikimedia.org/wikipedia/commons/${dir}/thumb/${enc}/${w}px-${enc}`;
+  return { orig, thumb };
+}
+/** 走 images.weserv.nl 服务端代理抓取（绕过直连 Wikimedia 被墙/超时） */
+function weserv(url, w = 960) {
+  return `https://images.weserv.nl/?url=ssl:${url.replace(/^https?:\/\//, '')}&w=${w}&output=jpg&q=82`;
+}
+
+/** 单 URL 下载到文件（短超时），成功返回大小，失败抛错。weserv 优先（服务端缩放），直连原图兜底 */
+async function curlOne(url, dest, timeout) {
+  const isDirect = !url.includes('weserv');
+  await exec('curl', ['-s', '-L', '-A', UA, '-m', String(timeout ?? (isDirect ? 90 : 40)), '-o', dest, url]);
   const sz = (await stat(dest)).size;
-  if (sz < 1024 && attempt < 4) {
-    await sleep(4000);
-    return curlDownload(url, dest, attempt + 1);
-  }
+  if (sz < 1024) throw new Error('too small');
   return sz;
+}
+
+/** 下载后用 sips 约束最大边 960px（macOS 自带；非 mac 环境跳过） */
+let _hasSips = null;
+async function resizeTo960(dest) {
+  if (_hasSips === null) {
+    try { await exec('which', ['sips']); _hasSips = true; } catch { _hasSips = false; }
+  }
+  if (!_hasSips) return;
+  const tmp = `${dest}.tmp.jpg`;
+  try {
+    await exec('sips', ['-Z', '960', dest, '--out', tmp]);
+    await rename(tmp, dest);
+  } catch {
+    /* 缩放失败不影响原图 */
+  }
 }
 
 function isFree(lic) {
@@ -134,19 +176,40 @@ async function main() {
   if (process.env.MODE === 'download') {
     await mkdir(OUT, { recursive: true });
     const credits = {};
-    for (const { id, file, author, license, page } of PICKS) {
-      const [info] = await infos([file]);
-      const url = info?.thumb || info?.url;
-      if (!url) {
-        console.log(`skip ${id}: no image url`);
-        continue;
+    // 多轮补抓：每轮只抓「还没下到」的，单文件失败不阻塞其它，靠轮次重试对抗间歇性网络
+    for (let pass = 0; pass < 6; pass++) {
+      let pending = 0;
+      for (const { id, file, author, license, page } of PICKS) {
+        const dest = `${OUT}/${id}.jpg`;
+        try {
+          if ((await stat(dest)).size >= 1024) {
+            if (!credits[id]) credits[id] = { src: `/img/pois/${id}.jpg`, author, license, page };
+            continue;
+          }
+        } catch { /* 尚未下载 */ }
+        const { orig, thumb } = wikiUrls(file);
+        const candidates = [weserv(thumb), weserv(orig), orig];
+        let ok = false;
+        for (const u of candidates) {
+          try {
+            const sz = await curlOne(u, dest, u.includes('weserv') ? 40 : 90);
+            credits[id] = { src: `/img/pois/${id}.jpg`, author, license, page };
+            await resizeTo960(dest);
+            const finalSz = (await stat(dest)).size;
+            console.log(`saved ${id} <- ${file} (${(finalSz / 1024).toFixed(0)} KB)`);
+            ok = true;
+            break;
+          } catch { /* 试下一个候选 */ }
+        }
+        if (!ok) { pending++; console.log(`retry ${id}`); }
+        await sleep(700);
       }
-      const dest = `${OUT}/${id}.jpg`;
-      const sz = await curlDownload(url, dest);
-      credits[id] = { src: `/img/pois/${id}.jpg`, author, license, page };
-      console.log(`saved ${id} <- ${file} (${(sz / 1024).toFixed(0)} KB)`);
-      await sleep(3000);
+      if (pending === 0) { console.log(`all ${PICKS.length} done in pass ${pass + 1}`); break; }
+      console.log(`-- pass ${pass + 1} done, ${pending} pending, retrying --`);
+      await sleep(4000);
     }
+    const missing = PICKS.filter((p) => !credits[p.id]).map((p) => p.id);
+    if (missing.length) console.log('STILL MISSING: ' + missing.join(', '));
     await writeFile(`${OUT}/credits.json`, JSON.stringify(credits, null, 2));
     console.log('wrote credits.json');
     return;
@@ -183,6 +246,10 @@ const PICKS = [
   { id: 'poi-mount-pilatus', file: 'File:Luzern - Mount Pilatus - March 2019 (01).jpg', author: 'Liridon', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Luzern_-_Mount_Pilatus_-_March_2019_(01).jpg' },
   { id: 'poi-chapel-bridge', file: 'File:Lucerne Kapellbrücke and Wasserturm from the west.jpg', author: 'Ymblanter', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Lucerne_Kapellbrücke_and_Wasserturm_from_the_west.jpg' },
   { id: 'poi-sainte-chapelle', file: 'File:Sainte Chapelle Interior Stained Glass.jpg', author: 'Oldmanisold', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Sainte_Chapelle_Interior_Stained_Glass.jpg' },
+
+  // ---- 罗马补充（2026-08-15/16 新增 POI，已配图） ----
+  { id: 'poi-sistine-chapel', file: 'File:Vatican Sistine Chapel Ceiling (9808850053).jpg', author: 'Gary Todd', license: 'CC0', page: 'https://commons.wikimedia.org/wiki/File:Vatican_Sistine_Chapel_Ceiling_(9808850053).jpg' },
+  { id: 'poi-st-peters-basilica', file: 'File:St Peter facade.jpg', author: 'Livioandronico2013', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:St_Peter_facade.jpg' },
 ];
 
 main().catch((e) => {

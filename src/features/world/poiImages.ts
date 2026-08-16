@@ -81,6 +81,20 @@ export const POI_IMAGES: Record<string, PoiImage> = {
     page: 'https://commons.wikimedia.org/wiki/File:Sainte_Chapelle_Interior_Stained_Glass.jpg',
   },
 
+  // ---- 罗马补充（2026-08-16 新增配图） ----
+  'poi-sistine-chapel': {
+    src: 'img/pois/poi-sistine-chapel.jpg',
+    author: 'Gary Todd',
+    license: 'CC0',
+    page: 'https://commons.wikimedia.org/wiki/File:Vatican_Sistine_Chapel_Ceiling_(9808850053).jpg',
+  },
+  'poi-st-peters-basilica': {
+    src: 'img/pois/poi-st-peters-basilica.jpg',
+    author: 'Livioandronico2013',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:St_Peter_facade.jpg',
+  },
+
   // ---- 佛罗伦萨补充 ----
   'poi-accademia': {
     src: 'img/pois/poi-accademia.jpg',
