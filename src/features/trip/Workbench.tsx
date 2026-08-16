@@ -18,7 +18,7 @@ import { arrayMove } from '@dnd-kit/sortable';
 import { useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent } from 'react';
 import { useRepositories } from '../../data';
 import type { TripItem } from '../../data/types';
-import { todayStr } from '../../domain/date';
+import { formatCn, todayStr, weekdayLabel } from '../../domain/date';
 import { byRank, rankBetween, rankForInsert } from '../../domain/trip/rank';
 import { sanityCheck, type CheckDay, type CheckPoi } from '../../domain/trip/sanity-check';
 import type { Poi } from '../../domain/world/schema';
@@ -40,12 +40,18 @@ interface DragData {
   dayId?: string | null;
 }
 
+/** 城市 id → 中文名（找不到时回退 id 本身） */
+function cityName(cities: { id: string; name: string }[], id?: string | null): string {
+  if (!id) return '';
+  return cities.find((c) => c.id === id)?.name ?? id;
+}
+
 export function Workbench({ tripId }: { tripId: string }) {
   const { data: bundle, isLoading } = useTripBundle(tripId);
   const { data: index } = useWorldIndex();
   const mut = useTripMutations(tripId);
   const { trip: tripRepo } = useRepositories();
-  const { selectedDate, inspector, inspect, closeInspector } = useWorkbench();
+  const { selectedDate, setSelectedDate, inspector, inspect, closeInspector } = useWorkbench();
   const [dragging, setDragging] = useState<{ label: string } | null>(null);
 
   // 三栏手动调宽：左/右两道分隔条。宽度用 --left-w / --right-w 变量驱动，
@@ -350,6 +356,44 @@ export function Workbench({ tripId }: { tripId: string }) {
                     <li>选中某一天后，左栏的「+」就直接加进那天</li>
                   </ul>
                 </div>
+
+                {bundle.days.length > 0 && (
+                  <div className={s.dailyPlan}>
+                    <div className={s.dpHead}>每天行程</div>
+                    <ul className={s.dpList}>
+                      {[...bundle.days]
+                        .sort((a, b) => (a.date < b.date ? -1 : 1))
+                        .map((d) => {
+                          const dayItems = bundle.items.filter((i) => i.dayId === d.id);
+                          const poiN = dayItems.filter((i) => (i.kind ?? 'poi') === 'poi').length;
+                          const transN = dayItems.filter((i) => (i.kind ?? 'poi') === 'transport').length;
+                          const city = cityName(index?.cities ?? [], d.cityId);
+                          const active = selectedDate === d.date;
+                          return (
+                            <li
+                              key={d.id}
+                              className={`${s.dpRow}${active ? ` ${s.dpRowActive}` : ''}`}
+                              onClick={() => setSelectedDate(active ? null : d.date)}
+                              title={active ? '取消选中这一天' : '选中这一天'}
+                            >
+                              <span className={s.dpDate}>
+                                {formatCn(d.date)}
+                                <span className={s.dpWeek}>{weekdayLabel(d.date)}</span>
+                              </span>
+                              <span className={`${s.dpCity}${city ? '' : ` ${s.dpCityEmpty}`}`}>
+                                {city || '未选城市'}
+                              </span>
+                              <span className={s.dpMeta}>
+                                {poiN > 0 && `${poiN} 点`}
+                                {poiN > 0 && transN > 0 && ' · '}
+                                {transN > 0 && `${transN} 段交通`}
+                              </span>
+                            </li>
+                          );
+                        })}
+                    </ul>
+                  </div>
+                )}
               </div>
             )}
           </div>

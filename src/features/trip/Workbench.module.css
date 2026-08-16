@@ -189,6 +189,78 @@
   margin: 6px 0 0;
 }
 
+/* ----------------------------- 每天行程（城市级速览） ----------------------------- */
+.dailyPlan {
+  margin-top: 14px;
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+}
+.dpHead {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.dpList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.dpRow {
+  display: grid;
+  grid-template-columns: 74px 1fr auto;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.dpRow:hover {
+  background: var(--surface-2);
+}
+.dpRowActive {
+  background: var(--brand-soft);
+}
+.dpDate {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-1);
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.dpWeek {
+  margin-left: 4px;
+  color: var(--text-3);
+  font-weight: 400;
+  font-size: 10px;
+}
+.dpCity {
+  min-width: 0;
+  color: var(--text-1);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dpCityEmpty {
+  color: var(--text-3);
+  font-style: italic;
+}
+.dpMeta {
+  color: var(--text-3);
+  font-size: 11px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
 .itemPanel {
   padding: 14px 16px;
 }

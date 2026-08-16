@@ -276,6 +276,38 @@ function ItemRow({
 
 /* -------------------------------- 一天 --------------------------------- */
 
+/** 两个时间字符串（"HH:MM" 或 "HH:MM:SS"）的分钟差，跨天自动 +24h */
+function diffMinutes(start: string, end: string): number {
+  const toMin = (s: string) => {
+    const parts = s.split(':').map((x) => Number(x) || 0);
+    const h = parts[0] ?? 0;
+    const m = parts[1] ?? 0;
+    return h * 60 + m;
+  };
+  let d = toMin(end) - toMin(start);
+  if (d < 0) d += 24 * 60;
+  return d;
+}
+
+/**
+ * 单个条目的计划占用时长（分钟）。
+ * - 有显式时段（slotStart~slotEnd）且未跨天 → 用真实时段（任何 kind 都算，POI 参观 / 交通在途都算占用）
+ * - 跨天的时段（隔夜住宿 / 夜车）不算进白天占用
+ * - 无时段的 POI → 回退世界库参观时长
+ * - 备注 / 无时段交通 / 无时段住宿 → 0
+ */
+function plannedMinutes(it: TripItem, poiMap: Record<string, Poi>): number {
+  if (it.slotStart && it.slotEnd) {
+    const d = diffMinutes(it.slotStart, it.slotEnd);
+    return d > 0 && d <= 12 * 60 ? d : 0;
+  }
+  if ((it.kind ?? 'poi') === 'poi') {
+    const p = it.poiId ? poiMap[it.poiId] : undefined;
+    return p ? p.visit.durationMinutes[0] : 0;
+  }
+  return 0;
+}
+
 function DayCard({
   day,
   index,
@@ -304,10 +336,10 @@ function DayCard({
   const { selectedDate, setSelectedDate } = useWorkbench();
 
   const active = selectedDate === day.date;
-  const minutes = items.reduce((n, it) => {
-    const p = it.poiId ? poiMap[it.poiId] : undefined;
-    return n + (p ? p.visit.durationMinutes[0] : 0);
-  }, 0);
+  // 「个点」只数 POI 景点，备注/交通/住宿不计入
+  const poiCount = items.filter((i) => (i.kind ?? 'poi') === 'poi').length;
+  // 计划时长：优先用条目的真实时段，否则回退 POI 参观时长
+  const minutes = items.reduce((n, it) => n + plannedMinutes(it, poiMap), 0);
   const transportCount = items.filter((i) => (i.kind ?? 'poi') === 'transport').length;
   const hasError = issues.some((i) => i.level === 'error');
   const allConfirmed = items.length > 0 && items.every((i) => i.status === 'confirmed');
@@ -335,8 +367,13 @@ function DayCard({
           ))}
         </select>
         <span className={`${s.dayStat} ${hasError ? s.dayWarn : ''}`}>
-          {items.length > 0 &&
-            `${items.length} 个点 · 约 ${(minutes / 60).toFixed(1)}h${transportCount > 0 ? ` · ${transportCount} 段交通` : ''}`}
+          {items.length > 0 && [
+            poiCount > 0 ? `${poiCount} 个点` : null,
+            minutes > 0 ? `约 ${(minutes / 60).toFixed(1)}h` : null,
+            transportCount > 0 ? `${transportCount} 段交通` : null,
+          ]
+            .filter(Boolean)
+            .join(' · ')}
           {hasError && ' · 有冲突'}
         </span>
         <span className={s.addBtns}>
