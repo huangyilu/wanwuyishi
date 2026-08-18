@@ -35,6 +35,7 @@ const POIS = [
   { id: 'poi-trastevere', q: ['Trastevere Rome', 'Santa Maria in Trastevere'] },
   { id: 'poi-sistine-chapel', q: ['Sistine Chapel interior ceiling', 'Cappella Sistina Vatican'] },
   { id: 'poi-st-peters-basilica', q: ['St Peter Basilica facade Vatican', 'Basilica di San Pietro dome'] },
+  { id: 'poi-accademia-san-luca', q: ['Galleria Accademia di San Luca Rome', 'Palazzo Carpegna Rome'] },
 
   // ---- 多洛米蒂补充（2026-08-15 新增 POI，待配图） ----
   { id: 'poi-ortisei', q: ['Ortisei St Ulrich Groden', 'Ortisei town Val Gardena'] },

@@ -1,0 +1,39 @@
+{
+  "id": "poi-accademia-san-luca",
+  "type": "museum",
+  "name": "学院美术馆（圣路加国家学院）",
+  "localName": "Galleria dell'Accademia Nazionale di San Luca",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.901669, "lng": 12.4836149 },
+  "tags": ["小众", "艺术", "美术馆", "圣路加学院", "免费", "巴洛克"],
+  "popularity": 72,
+  "wikidataId": "Q338523",
+  "officialUrl": "https://accademiasanluca.it/galleria",
+  "visit": {
+    "durationMinutes": [60, 90],
+    "durationNote": "藏于巴洛克宫殿 Palazzo Carpegna（博罗米尼参与改建），展品规模不大，细看约 1 小时，适合作为特雷维喷泉一带的顺路小众补给。",
+    "bestTime": "工作日上午，避开周末学院活动"
+  },
+  "openness": {
+    "closedWeekdays": [0],
+    "closedDates": [],
+    "seasonal": []
+  },
+  "booking": {
+    "required": false,
+    "leadDays": 0
+  },
+  "volatile": {
+    "price": {
+      "value": "免费入场（Free entry）",
+      "source": "https://www.turismoroma.it/es/node/209",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "周一至周六 10:00–19:00，周日闭馆",
+      "source": "https://www.turismoroma.it/es/node/209",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}
