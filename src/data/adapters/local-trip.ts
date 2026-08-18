@@ -221,6 +221,7 @@ export class LocalTripRepository implements TripRepository {
         slotEnd: null,
         status: input.status ?? 'candidate',
         note: null,
+        address: null,
         images: [],
         updatedAt: now(),
       };

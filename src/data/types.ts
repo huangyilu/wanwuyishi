@@ -175,6 +175,8 @@ export interface TripItem {
   slotEnd: string | null;
   status: ItemStatus;
   note: string | null;
+  /** kind==='accommodation' 时有效：酒店/住宿详细地址，支持单独复制 */
+  address: string | null;
   /**
    * 图片附件的公开 URL 数组（仅云端档使用）。
    * 文件存 Supabase Storage 的 trip-attachments bucket，这里只存可直链的 URL。

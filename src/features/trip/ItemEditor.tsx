@@ -12,6 +12,7 @@ import { useTripRepo } from '../../data';
 import type { CitySummary, ItemStatus, TransportMode, TripBundle, TripItem } from '../../data/types';
 import type { useTripMutations } from './queries';
 import { deleteAttachment, uploadAttachment } from './uploadAttachment';
+import { CopyButton } from '../../components/CopyButton';
 import s from './ItemEditor.module.css';
 
 type Mutations = ReturnType<typeof useTripMutations>;
@@ -272,11 +273,16 @@ export function ItemEditor({
           </div>
 
           <div className={s.field}>
+            <label className={s.label}>地址</label>
+            <AddressField value={item.address} onSave={(v) => patch({ address: v })} />
+          </div>
+
+          <div className={s.field}>
             <label className={s.label}>预订信息</label>
             <AutoTextarea
               className={s.textarea}
               defaultValue={item.note ?? ''}
-              placeholder="预订确认号 / 详细地址 / 入住人…"
+              placeholder="预订确认号 / 入住人 / 注意事项…"
               onBlur={(e) => patch({ note: e.target.value || null })}
             />
           </div>
@@ -301,6 +307,32 @@ export function ItemEditor({
       )}
 
       <ImageSection isCloud={isCloud} tripId={bundle.trip.id} item={item} patch={patch} />
+    </div>
+  );
+}
+
+/* ------------------------------ 住宿地址（可单独复制） ------------------------------ */
+
+function AddressField({
+  value,
+  onSave,
+}: {
+  value: string | null;
+  onSave: (v: string | null) => void;
+}) {
+  const [val, setVal] = useState(value ?? '');
+  useEffect(() => setVal(value ?? ''), [value]);
+  return (
+    <div className={s.copyRow}>
+      <textarea
+        className={s.textarea}
+        rows={3}
+        value={val}
+        placeholder="酒店详细地址 / 街道门牌 / 楼层房间…"
+        onChange={(e) => setVal(e.target.value)}
+        onBlur={() => onSave(val.trim() || null)}
+      />
+      <CopyButton text={val} label="复制地址" className={s.copyBtn} />
     </div>
   );
 }

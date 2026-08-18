@@ -5,6 +5,7 @@ import type {
   CreateTripInput,
   Expense,
   PackingItem,
+  Ticket,
   Trip,
   TripBundle,
   TripDay,
@@ -184,6 +185,36 @@ export function useTripMutations(tripId: string) {
     onSettled: settle,
   });
 
+  const upsertTicket = useMutation({
+    mutationFn: (input: Omit<Ticket, 'id'> & { id?: string }) => repo.upsertTicket(input),
+    onMutate: (input) =>
+      optimistic((b) => {
+        const idx = b.tickets.findIndex((t) => t.id === input.id);
+        const next: Ticket = {
+          ...input,
+          id: input.id ?? `tmp-${Date.now()}`,
+          tripId,
+          itemId: input.itemId ?? null,
+        };
+        if (idx >= 0) b.tickets[idx] = next;
+        else b.tickets.push(next);
+        return b;
+      }),
+    onError: (_e, _v, ctx) => rollback(ctx),
+    onSettled: settle,
+  });
+
+  const removeTicket = useMutation({
+    mutationFn: (id: string) => repo.removeTicket(id),
+    onMutate: (id) =>
+      optimistic((b) => {
+        b.tickets = b.tickets.filter((t) => t.id !== id);
+        return b;
+      }),
+    onError: (_e, _v, ctx) => rollback(ctx),
+    onSettled: settle,
+  });
+
   return {
     addDay,
     updateDay,
@@ -198,5 +229,7 @@ export function useTripMutations(tripId: string) {
     setPacking,
     upsertExpense,
     removeExpense,
+    upsertTicket,
+    removeTicket,
   };
 }

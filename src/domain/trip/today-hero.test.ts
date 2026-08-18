@@ -44,6 +44,7 @@ const item = (id: string, poiId: string | null, kind: 'poi' | 'transport' | 'not
   slotEnd: null,
   status: 'confirmed',
   note: null,
+  address: null,
   updatedAt: '',
 });
 

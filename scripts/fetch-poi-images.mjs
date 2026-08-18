@@ -204,7 +204,7 @@ async function main() {
           }
         } catch { /* 尚未下载 */ }
         const { orig, thumb } = wikiUrls(file);
-        const candidates = [weserv(thumb), weserv(orig), orig];
+        const candidates = [orig];
         let ok = false;
         for (const u of candidates) {
           try {
@@ -266,6 +266,21 @@ const PICKS = [
   // ---- 罗马补充（2026-08-15/16 新增 POI，已配图） ----
   { id: 'poi-sistine-chapel', file: 'File:Vatican Sistine Chapel Ceiling (9808850053).jpg', author: 'Gary Todd', license: 'CC0', page: 'https://commons.wikimedia.org/wiki/File:Vatican_Sistine_Chapel_Ceiling_(9808850053).jpg' },
   { id: 'poi-st-peters-basilica', file: 'File:St Peter facade.jpg', author: 'Livioandronico2013', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:St_Peter_facade.jpg' },
+
+  // ---- 埃及补充（2026-08-18 新增 POI，已配图） ----
+  { id: 'poi-giza-pyramids', file: 'File:All Gizah Pyramids.jpg', author: 'Ricardo Liberato', license: 'CC BY-SA 2.0', page: 'https://commons.wikimedia.org/wiki/File:All_Gizah_Pyramids.jpg' },
+  { id: 'poi-great-sphinx', file: 'File:Great Sphinx of Giza (2).jpg', author: 'Hamerani', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Great_Sphinx_of_Giza_(2).jpg' },
+  { id: 'poi-egyptian-museum', file: 'File:Egyptian Museum in Cairo in May 2015.JPG', author: 'MusikAnimal', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Egyptian_Museum_in_Cairo_in_May_2015.JPG' },
+  { id: 'poi-khan-el-khalili', file: 'File:Khan el-Khalili 2019.jpg', author: 'Mohammed Moussa', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Khan_el-Khalili_2019.jpg' },
+  { id: 'poi-cairo-citadel', file: 'File:Mohamed Ali Mosque at the Citadel - Cairo.JPG', author: 'Mariam Mohamed Kamal', license: 'CC BY-SA 3.0', page: 'https://commons.wikimedia.org/wiki/File:Mohamed_Ali_Mosque_at_the_Citadel_-_Cairo.JPG' },
+  { id: 'poi-karnak', file: 'File:Templo de Karnak, Luxor, Egipto, 2022-04-03, DD 160.jpg', author: 'Diego Delso', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Templo_de_Karnak,_Luxor,_Egipto,_2022-04-03,_DD_160.jpg' },
+  { id: 'poi-valley-of-kings', file: 'File:Luxor Valley of the Kings R01.jpg', author: 'Marc Ryckaert', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Luxor_Valley_of_the_Kings_R01.jpg' },
+  { id: 'poi-luxor-temple', file: 'File:Templo de Luxor, Luxor, Egipto, 2022-04-01, DD 40.jpg', author: 'Diego Delso', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Templo_de_Luxor,_Luxor,_Egipto,_2022-04-01,_DD_40.jpg' },
+  { id: 'poi-abu-simbel', file: 'File:Templo de Ramsés II, Abu Simbel, Egipto, 2022-04-02, DD 92-94 HDR.jpg', author: 'Diego Delso', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Templo_de_Rams%C3%A9s_II,_Abu_Simbel,_Egipto,_2022-04-02,_DD_92-94_HDR.jpg' },
+  { id: 'poi-philae', file: 'File:PHILAE TEMPLE.jpg', author: 'Hesham Farouk Ragab', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:PHILAE_TEMPLE.jpg' },
+  { id: 'poi-library-alexandria', file: 'File:Bibliotiqa Alexandria 9 edited.jpg', author: 'Mono Abo-Abda / Radomianin', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:Bibliotiqa_Alexandria_9_edited.jpg' },
+  { id: 'poi-pompeys-pillar', file: "File:Pompey's Pillar, Alexandria 2016.jpg", author: 'Aya Mahmoud Naguib Ibrahim', license: 'CC BY-SA 4.0', page: "https://commons.wikimedia.org/wiki/File:Pompey's_Pillar,_Alexandria_2016.jpg" },
+  { id: 'poi-qaitbay-citadel', file: 'File:Qaitbay citadel in Alexandria 02.jpg', author: 'Aimty17', license: 'CC0', page: 'https://commons.wikimedia.org/wiki/File:Qaitbay_citadel_in_Alexandria_02.jpg' },
 ];
 
 main().catch((e) => {

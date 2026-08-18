@@ -71,6 +71,21 @@
   background: var(--bg-hover);
 }
 
+/* 地址输入框 + 单独复制按钮 同行 */
+.copyRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+.copyRow .textarea {
+  flex: 1;
+  min-height: 64px;
+}
+.copyBtn {
+  flex: none;
+  margin-bottom: 2px;
+}
+
 /* —— 图片附件 —— */
 .thumbGrid {
   display: flex;

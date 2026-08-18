@@ -126,7 +126,7 @@ function ItemRow({
       );
     if (item.slotStart)
       sub.push(item.slotEnd ? `${item.slotStart.slice(0, 5)}–${item.slotEnd.slice(0, 5)}` : item.slotStart.slice(0, 5));
-    if (poi?.booking?.required) sub.push(ticket?.booked ? '已订票' : `需提前 ${poi.booking.leadDays} 天订`);
+    if (poi?.booking?.required && !ticket?.booked) sub.push(`需提前 ${poi.booking.leadDays} 天订`);
     if (item.note) sub.push(item.note);
   } else if (kind === 'transport') {
     const route = [cityName(cities, item.fromCityId), cityName(cities, item.toCityId)]
@@ -190,12 +190,24 @@ function ItemRow({
         <div className={s.itemName}>
           {title}
           {closed.closed && <span className={s.closedFlag}>· 闭馆</span>}
+          {ticket?.booked && (
+            <span className={s.ticketBadge}>✓ 已订票{ticket.timeSlot ? ` · 🕑 ${ticket.timeSlot}` : ''}</span>
+          )}
         </div>
         {sub.length > 0 && <div className={s.itemSub}>{sub.join(' · ')}</div>}
-        {kind === 'accommodation' && item.note && (
+        {kind === 'accommodation' && (item.address || item.note) && (
           <div className={s.itemAddr}>
-            <span className={s.itemAddrText}>{item.note}</span>
-            <CopyButton text={item.note} label="复制地址" />
+            {item.address && (
+              <div className={s.itemAddrLine}>
+                <span className={s.itemAddrText}>{item.address}</span>
+                <CopyButton text={item.address} label="复制地址" />
+              </div>
+            )}
+            {item.note && (
+              <div className={s.itemAddrLine}>
+                <span className={s.itemAddrText}>{item.note}</span>
+              </div>
+            )}
           </div>
         )}
         {(item.images?.length ?? 0) > 0 && (

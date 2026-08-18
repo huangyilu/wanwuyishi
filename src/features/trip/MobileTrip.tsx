@@ -52,6 +52,7 @@ export function MobileTrip({ tripId }: { tripId: string }) {
   const [params] = useSearchParams();
   const todayMode = params.get('view') === 'today';
   const [openPoi, setOpenPoi] = useState<string | null>(null);
+  const [openItemId, setOpenItemId] = useState<string | null>(null);
 
   const cityName = (id?: string | null): string =>
     id ? cities.find((c) => c.id === id)?.name ?? '' : '';
@@ -127,8 +128,7 @@ export function MobileTrip({ tripId }: { tripId: string }) {
           const meta: string[] = [];
           if (poi) meta.push(`${formatDuration(poi.visit.durationMinutes)}起`);
           if (it.slotStart) meta.push(it.slotStart.slice(0, 5));
-          if (ticket?.booked) meta.push('票已订');
-          else if (poi?.booking?.required) meta.push('未订票');
+          if (!ticket?.booked && poi?.booking?.required) meta.push('未订票');
           if (isTransport) {
             const route = [cityName(it.fromCityId), cityName(it.toCityId)].filter(Boolean).join(' → ');
             if (route) meta.push(route);
@@ -145,20 +145,33 @@ export function MobileTrip({ tripId }: { tripId: string }) {
             <button
               key={it.id}
               className={`${s.card} ${isTransport ? s.cardTransport : ''} ${isStay ? s.cardStay : ''} ${isNote ? s.cardNote : ''}`}
-              onClick={() => poi && setOpenPoi(poi.id)}
+              onClick={() => {
+                if (poi) {
+                  setOpenPoi(poi.id);
+                  setOpenItemId(it.id);
+                }
+              }}
             >
               <span className={s.seq}>{i + 1}</span>
               <span className={s.cardMain}>
                 <span className={s.cardName}>
                   {icon && <span className={s.cardIcon}>{icon}</span>}
                   {title}
+                  {ticket?.booked && (
+                    <span className={s.cardBadge}>✓ 已订票{ticket.timeSlot ? ` · 🕑 ${ticket.timeSlot}` : ''}</span>
+                  )}
                 </span>
                 {meta.length > 0 && <span className={s.cardMeta}>{meta.join(' · ')}</span>}
                 {isNote && it.note && <span className={s.cardMeta}>{it.note}</span>}
-                {isStay && it.note && (
+                {isStay && (it.address || it.note) && (
                   <span className={s.cardAddr}>
-                    <span className={s.cardMeta}>{it.note}</span>
-                    <CopyButton text={it.note} label="复制地址" asSpan />
+                    {it.address && (
+                      <>
+                        <span className={s.cardMeta}>{it.address}</span>
+                        <CopyButton text={it.address} label="复制地址" asSpan />
+                      </>
+                    )}
+                    {it.note && <span className={s.cardMeta}>{it.note}</span>}
                   </span>
                 )}
                 {isTransport && it.note && <span className={s.cardMeta}>{it.note}</span>}
@@ -177,7 +190,13 @@ export function MobileTrip({ tripId }: { tripId: string }) {
             </button>
           </div>
           <div className={`${s.sheetBody} scroll-y`}>
-            <PoiGuideCard poiId={openPoi} scheduledDate={current?.date ?? null} />
+            <PoiGuideCard
+              poiId={openPoi}
+              scheduledDate={current?.date ?? null}
+              tripId={tripId}
+              itemId={openItemId}
+              ticket={openItemId ? bundle.tickets.find((t) => t.itemId === openItemId) ?? null : null}
+            />
           </div>
         </div>
       )}

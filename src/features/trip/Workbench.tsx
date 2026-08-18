@@ -314,6 +314,11 @@ export function Workbench({ tripId }: { tripId: string }) {
                 poiId={inspector.id}
                 onAddToTrip={(id) => addPoi(id)}
                 scheduledDate={selectedDate}
+                tripId={bundle.trip.id}
+                itemId={inspectedPoiItem?.id ?? null}
+                ticket={
+                  inspectedPoiItem ? bundle.tickets.find((t) => t.itemId === inspectedPoiItem.id) ?? null : null
+                }
               />
             )}
 

@@ -154,6 +154,21 @@
   font-size: 12px;
 }
 
+/* 已订门票的入场时间：行中随身册里最该一眼扫到的时刻 */
+.cardBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 6px;
+  padding: 1px 9px;
+  border-radius: 999px;
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  font-family: var(--font-num);
+  font-size: 11px;
+  font-weight: 600;
+}
+
 .cardAddr {
   display: flex;
   align-items: center;

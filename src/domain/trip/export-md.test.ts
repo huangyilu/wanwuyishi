@@ -33,6 +33,7 @@ function item(p: Partial<TripItem>): TripItem {
     slotEnd: p.slotEnd ?? null,
     status: p.status ?? 'wishlist',
     note: p.note ?? null,
+    address: p.address ?? null,
     images: null,
     updatedAt: '',
     ...('transportMode' in p ? { transportMode: p.transportMode } : {}),

@@ -4,8 +4,10 @@ import { Lightbox, type LightboxImage } from '../../components/ClickableImage';
 import { useState } from 'react';
 import { freshnessOf, oldestVerification } from '../../domain/world/staleness';
 import type { Poi } from '../../domain/world/schema';
+import type { Ticket } from '../../data/types';
 import { usePoi } from './queries';
 import { poiImage } from './poiImages';
+import { TicketEditor } from '../trip/TicketEditor';
 import s from './PoiGuideCard.module.css';
 
 const WEEK = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
@@ -260,10 +262,17 @@ export function PoiGuideCard({
   poiId,
   onAddToTrip,
   scheduledDate,
+  tripId,
+  itemId,
+  ticket,
 }: {
   poiId: string;
   onAddToTrip?: (poiId: string) => void;
   scheduledDate?: string | null;
+  /** 若当前景点已加入行程，传进行程条目 id 即可在导览卡内编辑订票 */
+  tripId?: string;
+  itemId?: string | null;
+  ticket?: Ticket | null;
 }) {
   const { data: poi, isLoading } = usePoi(poiId);
 
@@ -285,6 +294,15 @@ export function PoiGuideCard({
         {...(onAddToTrip ? { onAddToTrip } : {})}
         addLabel={scheduledDate ? `加入 ${scheduledDate}` : '加入行程'}
       />
+      {tripId && itemId && (
+        <TicketEditor
+          key={itemId}
+          tripId={tripId}
+          itemId={itemId}
+          poiName={poi.name}
+          ticket={ticket ?? null}
+        />
+      )}
     </>
   );
 }

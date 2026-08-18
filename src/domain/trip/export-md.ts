@@ -92,6 +92,7 @@ function renderItem(it: TripItem, poiMap: Record<string, Poi>, cities: CitySumma
     if (city) line += ` · ${city}`;
     if (time) line += ` · ${time}`;
     line += ` · ${status}`;
+    if (it.address) line += `\n  - 地址：${it.address}`;
     if (it.note) line += `\n  - 预订：${it.note}`;
     return line;
   }
