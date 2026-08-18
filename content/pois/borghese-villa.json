@@ -1,0 +1,68 @@
+{
+  "id": "poi-borghese-villa",
+  "type": "park",
+  "name": "博尔盖塞别墅公园",
+  "localName": "Villa Borghese",
+  "city": "city-rome",
+  "country": "it",
+  "location": { "lat": 41.9142, "lng": 12.4825 },
+  "tags": ["世界级", "园林", "雕塑", "湖景"],
+  "popularity": 82,
+  "wikidataId": "Q678313",
+  "visit": {
+    "durationMinutes": [60, 180],
+    "durationNote": "1-3 小时（散步）；含博尔盖塞美术馆需另加 2 小时",
+    "bestTime": "清晨或傍晚，避开正午暴晒"
+  },
+  "openness": {
+    "closedWeekdays": [],
+    "closedDates": [],
+    "seasonal": []
+  },
+  "facilities": {
+    "toilet": "公园内多处公共洗手间",
+    "water": "多处饮水喷泉",
+    "accessible": true
+  },
+  "volatile": {},
+  "guide": {
+    "entrances": "多个入口，最常用的是 Piazzale del Museo Borghese（美术馆前）和 Porta Pinciana（从宾西亚诺区步行进入）。",
+    "routes": [
+      {
+        "name": "湖景+美术馆精华线 2 小时",
+        "durationMinutes": 120,
+        "stops": [
+          "Porta Pinciana 入口",
+          "莎士比亚环球剧场（ replicas of Globe Theatre）",
+          "博尔盖塞美术馆（外观，入内需另购票）",
+          "阿斯克勒庇俄斯神庙湖（Tempio di Esculapio）",
+          "戴安娜喷泉",
+          "Silone 广场观景台远眺人民广场"
+        ]
+      }
+    ],
+    "highlights": [
+      {
+        "name": "阿斯克勒庇俄斯神庙湖",
+        "location": "公园中心湖区",
+        "why": "新古典主义小神庙倒映湖中，可租小船绕湖一圈，是公园最经典的取景地。"
+      },
+      {
+        "name": "博尔盖塞美术馆",
+        "location": "公园北部 Villa Borghese Pinciana 建筑内",
+        "why": "藏有贝尼尼《普鲁托与普洛塞庇娜》《阿波罗与达芙妮》及卡拉瓦乔《大卫与歌利亚》等镇馆之宝。"
+      },
+      {
+        "name": "博尔盖塞角斗士",
+        "location": "美术馆底层展厅",
+        "why": "古希腊大理石雕塑原作，与《观景殿的阿波罗》齐名的古典杰作。"
+      }
+    ],
+    "tips": [
+      "公园本身免费开放，全天可入。",
+      "美术馆必须提前预约（限定时段），现场不售票。",
+      "租船约 8 欧元/30 分钟，码头在湖东侧。",
+      "从公园北端的平乔山台（Pincio）可俯瞰人民广场，日落时分最佳。"
+    ]
+  }
+}

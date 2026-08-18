@@ -81,7 +81,14 @@ export const POI_IMAGES: Record<string, PoiImage> = {
     page: 'https://commons.wikimedia.org/wiki/File:Sainte_Chapelle_Interior_Stained_Glass.jpg',
   },
 
-  // ---- 罗马补充（2026-08-16 新增配图） ----
+  // ---- 罗马补充（2026-08-18 新增配图） ----
+  'poi-borghese-villa': {
+    src: 'img/pois/poi-borghese-villa.jpg',
+    author: 'Sailko',
+    license: 'CC BY-SA 3.0',
+    page: 'https://commons.wikimedia.org/wiki/File:VillaBorgheseGiardino.JPG',
+  },
+
   'poi-sistine-chapel': {
     src: 'img/pois/poi-sistine-chapel.jpg',
     author: 'Gary Todd',

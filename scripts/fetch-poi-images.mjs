@@ -54,6 +54,9 @@ const POIS = [
   { id: 'poi-place-de-la-concorde', q: ['Place de la Concorde Paris obelisk', 'Concorde fountain Paris'] },
   { id: 'poi-arts-forains', q: ['Musee des Arts Forains Paris carousel', 'Arts Forains Bercy Paris'] },
 
+  // ---- 罗马补充（2026-08-18 新增 POI，待配图） ----
+  { id: 'poi-borghese-villa', q: ['Villa Borghese park Rome garden', 'Villa Borghese lake temple Rome'] },
+
   // ---- 埃及补充（2026-08-18 新增 POI，待配图） ----
   { id: 'poi-giza-pyramids', q: ['Giza pyramid complex', 'Pyramids of Giza Khufu'] },
   { id: 'poi-great-sphinx', q: ['Great Sphinx of Giza', 'Sphinx Giza'] },
@@ -266,6 +269,9 @@ const PICKS = [
   // ---- 罗马补充（2026-08-15/16 新增 POI，已配图） ----
   { id: 'poi-sistine-chapel', file: 'File:Vatican Sistine Chapel Ceiling (9808850053).jpg', author: 'Gary Todd', license: 'CC0', page: 'https://commons.wikimedia.org/wiki/File:Vatican_Sistine_Chapel_Ceiling_(9808850053).jpg' },
   { id: 'poi-st-peters-basilica', file: 'File:St Peter facade.jpg', author: 'Livioandronico2013', license: 'CC BY-SA 4.0', page: 'https://commons.wikimedia.org/wiki/File:St_Peter_facade.jpg' },
+
+  // ---- 罗马补充（2026-08-18 新增 POI，已配图） ----
+  { id: 'poi-borghese-villa', file: 'File:VillaBorgheseGiardino.JPG', author: 'Sailko', license: 'CC BY-SA 3.0', page: 'https://commons.wikimedia.org/wiki/File:VillaBorgheseGiardino.JPG' },
 
   // ---- 埃及补充（2026-08-18 新增 POI，已配图） ----
   { id: 'poi-giza-pyramids', file: 'File:All Gizah Pyramids.jpg', author: 'Ricardo Liberato', license: 'CC BY-SA 2.0', page: 'https://commons.wikimedia.org/wiki/File:All_Gizah_Pyramids.jpg' },

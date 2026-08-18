@@ -77,6 +77,12 @@
     "license": "CC BY-SA 4.0",
     "page": "https://commons.wikimedia.org/wiki/File:St_Peter_facade.jpg"
   },
+  "poi-borghese-villa": {
+    "src": "/img/pois/poi-borghese-villa.jpg",
+    "author": "Sailko",
+    "license": "CC BY-SA 3.0",
+    "page": "https://commons.wikimedia.org/wiki/File:VillaBorgheseGiardino.JPG"
+  },
   "poi-giza-pyramids": {
     "src": "/img/pois/poi-giza-pyramids.jpg",
     "author": "Ricardo Liberato",
