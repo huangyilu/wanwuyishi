@@ -1,0 +1,43 @@
+{
+  "id": "eg",
+  "name": "埃及",
+  "localName": "مصر",
+  "currency": "EGP",
+  "languages": ["阿拉伯语", "英语"],
+  "timezone": "Africa/Cairo",
+  "plugTypes": ["C", "F"],
+  "emergencyNumbers": {
+    "通用紧急": "122",
+    "旅游警察": "126",
+    "急救": "123",
+    "消防": "180"
+  },
+  "tipping": "服务业小费普遍；餐厅账单常不含服务费，可留约 10%；导游、司机、行李员也习惯给小额埃及镑小费。",
+  "visa": {
+    "type": "埃及电子签证（e-Visa，单次/多次）或落地签",
+    "applyChannel": "埃及官方电子签网站 visa2egypt.gov.eg，或经埃及驻华使领馆；部分国际机场提供落地签",
+    "materials": [
+      "有效期至少 6 个月的护照",
+      "电子签在线申请表与护照页扫描件",
+      "行程单与往返机票预订单",
+      "住宿预订证明",
+      "足量资金证明（信用卡 / 现金）"
+    ],
+    "fee": {
+      "value": "电子旅游签单次约 25 美元（以使馆 / 官网公示为准）",
+      "source": "https://www.visa2egypt.gov.eg/",
+      "verifiedAt": "2026-08-18"
+    },
+    "processingDays": {
+      "value": "电子签通常 1–7 个工作日审批；落地签机场当场办理",
+      "source": "https://www.visa2egypt.gov.eg/",
+      "verifiedAt": "2026-08-18"
+    },
+    "earliestApplyDays": 90,
+    "latestApplyDays": 7,
+    "notes": [
+      "中国公民需提前办妥签证，出发前务必以官网最新政策为准重新核实",
+      "落地签政策时有调整，建议优先办理电子签更稳妥"
+    ]
+  }
+}

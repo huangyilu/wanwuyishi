@@ -1,0 +1,30 @@
+{
+  "id": "poi-pompeys-pillar",
+  "type": "landmark",
+  "name": "庞贝柱",
+  "localName": "عمود السوري",
+  "city": "city-alexandria",
+  "country": "eg",
+  "location": { "lat": 31.1989, "lng": 29.8953 },
+  "tags": ["罗马遗迹", "遗址"],
+  "popularity": 65,
+  "wikidataId": "Q209871",
+  "visit": {
+    "durationMinutes": [45, 90],
+    "durationNote": "罗马时期红色阿斯旺花岗岩巨柱，旁有塞拉皮斯神庙遗址",
+    "bestTime": "上午"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "外国游客约 150 埃及镑（与附近遗址联票）（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 8:00–17:00",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

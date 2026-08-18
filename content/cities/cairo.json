@@ -1,0 +1,39 @@
+{
+  "id": "city-cairo",
+  "name": "开罗",
+  "localName": "القاهرة",
+  "country": "eg",
+  "location": { "lat": 30.0444, "lng": 31.2357 },
+  "timezone": "Africa/Cairo",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "开罗地铁 1/2/3 号线覆盖部分城区；市中心与景点间打车用 Uber / Careem 比路边出租更透明。",
+      "tips": ["早晚高峰极堵，预留充足时间", "尼罗河渡轮可避开路面拥堵"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    {
+      "topic": "payment",
+      "summary": "现金（埃及镑 EGP）仍是主流，小摊与市场只收现金；大型商场 / 酒店可刷卡。",
+      "tips": ["随身备小额零钱", "ATM 取现注意手续费，优先银行网点"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    {
+      "topic": "safety",
+      "summary": "景点周边拉客与「免费向导」较多，礼貌拒绝即可；保管好证件与财物。",
+      "tips": ["避免单独夜间去偏僻区", "拍照前确认是否允许（军事 / 文物区常禁拍）"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  ],
+  "transitPasses": [
+    {
+      "name": "Cairo Pass",
+      "scope": "部分文博景点与公共交通",
+      "benefits": ["多景点联票优惠", "部分免排队"],
+      "url": "https://www.egypt.travel/"
+    }
+  ]
+}

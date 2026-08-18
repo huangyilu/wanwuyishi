@@ -1,0 +1,54 @@
+{
+  "id": "poi-egyptian-museum",
+  "type": "museum",
+  "name": "埃及博物馆（开罗）",
+  "localName": "المتحف المصري",
+  "city": "city-cairo",
+  "country": "eg",
+  "location": { "lat": 30.0478, "lng": 31.2357 },
+  "tags": ["世界级", "博物馆", "古埃及"],
+  "popularity": 95,
+  "wikidataId": "Q83735",
+  "visit": {
+    "durationMinutes": [150, 300],
+    "durationNote": "图坦卡蒙珍宝、王室木乃伊厅；吉萨大埃及博物馆（GEM）启用后部分藏品迁移",
+    "bestTime": "上午人少"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "外国游客约 550 埃及镑（约 11 美元）；木乃伊厅另购约 300 镑（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 9:00–17:00",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  },
+  "guide": {
+    "entrances": "Tahrir 广场（解放广场）主入口",
+    "highlights": [
+      {
+        "name": "图坦卡蒙黄金面具与珍宝厅",
+        "location": "一层（Ground Floor）图坦卡蒙展廊",
+        "why": "镇馆之宝，纯金面具与随葬品"
+      },
+      {
+        "name": "王室木乃伊厅",
+        "location": "二层木乃伊厅（需另购票）",
+        "why": "拉美西斯二世等法老木乃伊"
+      },
+      {
+        "name": "纳尔迈调色板",
+        "location": "二层早期王朝展厅",
+        "why": "最早统一上下埃及的实证"
+      }
+    ],
+    "tips": [
+      "新馆 GEM 启用后部分重器会迁移，出发前确认展出位置",
+      "禁止闪光与三脚架"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "poi-valley-of-kings",
+  "type": "landmark",
+  "name": "帝王谷",
+  "localName": "وادي الملوك",
+  "city": "city-luxor",
+  "country": "eg",
+  "location": { "lat": 25.7448, "lng": 32.6010 },
+  "tags": ["世界级", "陵墓", "古埃及"],
+  "popularity": 90,
+  "wikidataId": "Q122038",
+  "visit": {
+    "durationMinutes": [150, 240],
+    "durationNote": "图坦卡蒙等法老陵墓，基础票含 3 座墓室，另购票看重点墓（如 KV62 图坦卡蒙、KV17 塞提一世）",
+    "bestTime": "清晨（开园即入，避开热与团）"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "基础票约 600 埃及镑（含 3 座普通墓）；图坦卡蒙墓另约 300 镑、塞提一世墓另约 1000 镑（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 6:00–17:00",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

@@ -53,6 +53,21 @@ const POIS = [
   { id: 'poi-les-invalides', q: ['Les Invalides Paris dome', 'Hotel des Invalides Napoleon tomb'] },
   { id: 'poi-place-de-la-concorde', q: ['Place de la Concorde Paris obelisk', 'Concorde fountain Paris'] },
   { id: 'poi-arts-forains', q: ['Musee des Arts Forains Paris carousel', 'Arts Forains Bercy Paris'] },
+
+  // ---- 埃及补充（2026-08-18 新增 POI，待配图） ----
+  { id: 'poi-giza-pyramids', q: ['Giza pyramid complex', 'Pyramids of Giza Khufu'] },
+  { id: 'poi-great-sphinx', q: ['Great Sphinx of Giza', 'Sphinx Giza'] },
+  { id: 'poi-egyptian-museum', q: ['Egyptian Museum Cairo facade', 'Egyptian Museum Tahrir Cairo'] },
+  { id: 'poi-khan-el-khalili', q: ['Khan el-Khalili bazaar Cairo', 'Al-Hussein Mosque Cairo'] },
+  { id: 'poi-cairo-citadel', q: ['Cairo Citadel Mohamed Ali Mosque', 'Citadel of Cairo'] },
+  { id: 'poi-karnak', q: ['Karnak Temple Luxor columns', 'Great Hypostyle Hall Karnak'] },
+  { id: 'poi-valley-of-kings', q: ['Valley of the Kings tomb Luxor', 'KV tomb entrance'] },
+  { id: 'poi-luxor-temple', q: ['Luxor Temple obelisk', 'Luxor Temple night'] },
+  { id: 'poi-abu-simbel', q: ['Abu Simbel temples Ramses', 'Abu Simbel colossi'] },
+  { id: 'poi-philae', q: ['Philae Temple Aswan', 'Temple of Isis Philae'] },
+  { id: 'poi-library-alexandria', q: ['Bibliotheca Alexandrina exterior', 'Library of Alexandria'] },
+  { id: 'poi-pompeys-pillar', q: ['Pompey\'s Pillar Alexandria', 'Pompey Pillar Alexandria'] },
+  { id: 'poi-qaitbay-citadel', q: ['Citadel of Qaitbay Alexandria', 'Qaitbay fortress'] },
 ];
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

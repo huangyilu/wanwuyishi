@@ -1,0 +1,25 @@
+{
+  "id": "city-giza",
+  "name": "吉萨",
+  "localName": "الجيزة",
+  "country": "eg",
+  "location": { "lat": 29.9870, "lng": 31.2109 },
+  "timezone": "Africa/Cairo",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "吉萨金字塔群距开罗市中心约 30 分钟车程，可从开罗打车 / Uber，或乘地铁 2 号线至 Giza 站再换当地小巴。",
+      "tips": ["清晨出发避开烈日与人流", "景区内骑骆驼 / 马车需先谈定价格"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    {
+      "topic": "safety",
+      "summary": "景区周边兜售与「向导」揽客普遍，官方入口购票最稳妥。",
+      "tips": ["只在正规售票处买票", "骆驼 / 马车交易务必先议价再上"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  ],
+  "transitPasses": []
+}

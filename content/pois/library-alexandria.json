@@ -1,0 +1,30 @@
+{
+  "id": "poi-library-alexandria",
+  "type": "landmark",
+  "name": "亚历山大图书馆",
+  "localName": "مكتبة الإسكندرية",
+  "city": "city-alexandria",
+  "country": "eg",
+  "location": { "lat": 31.2089, "lng": 29.9151 },
+  "tags": ["图书馆", "现代地标", "文化"],
+  "popularity": 75,
+  "wikidataId": "Q62261",
+  "visit": {
+    "durationMinutes": [90, 150],
+    "durationNote": "现代重建的巨型图书馆与文化中心，含古文物馆与手稿馆",
+    "bestTime": "白天"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "主阅览厅参观免费； antiquities / manuscripts 展馆联票约 70 埃及镑（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 9:00–19:00（周五半日）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "id": "poi-philae",
+  "type": "landmark",
+  "name": "菲莱神庙",
+  "localName": "فيلة",
+  "city": "city-aswan",
+  "country": "eg",
+  "location": { "lat": 24.0244, "lng": 32.8843 },
+  "tags": ["神庙", "岛上", "古埃及"],
+  "popularity": 80,
+  "wikidataId": "Q167058",
+  "visit": {
+    "durationMinutes": [90, 150],
+    "durationNote": "建在阿吉勒基亚岛上的伊西斯神庙，需乘船抵达；保存极好",
+    "bestTime": "上午"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "外国游客约 300 埃及镑（约 6 美元，含上岛船费）（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 7:00–17:00",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

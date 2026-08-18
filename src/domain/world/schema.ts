@@ -257,6 +257,7 @@ const BBOX: Record<string, [number, number, number, number]> = {
   fr: [41.3, 51.1, -5.2, 9.6],
   it: [35.4, 47.1, 6.6, 18.6],
   ch: [45.8, 47.9, 5.9, 10.5],
+  eg: [22.0, 31.8, 25.0, 34.9],
 };
 
 export function checkPoiRules(poi: Poi, ctx: {

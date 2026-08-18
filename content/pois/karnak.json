@@ -1,0 +1,30 @@
+{
+  "id": "poi-karnak",
+  "type": "landmark",
+  "name": "卡纳克神庙",
+  "localName": "معبد الكرنك",
+  "city": "city-luxor",
+  "country": "eg",
+  "location": { "lat": 25.7188, "lng": 32.6573 },
+  "tags": ["世界级", "神庙", "古埃及"],
+  "popularity": 90,
+  "wikidataId": "Q1132633",
+  "visit": {
+    "durationMinutes": [120, 240],
+    "durationNote": "世界最大宗教建筑群，多柱厅震撼；夜间有声光秀",
+    "bestTime": "清晨或傍晚"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "外国游客约 600 埃及镑（约 12 美元）（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 6:00–17:30（夏季至 18:30）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

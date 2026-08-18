@@ -1,0 +1,30 @@
+{
+  "id": "poi-luxor-temple",
+  "type": "landmark",
+  "name": "卢克索神庙",
+  "localName": "معبد الأقصر",
+  "city": "city-luxor",
+  "country": "eg",
+  "location": { "lat": 25.6989, "lng": 32.6391 },
+  "tags": ["神庙", "古埃及", "夜景"],
+  "popularity": 85,
+  "wikidataId": "Q170072",
+  "visit": {
+    "durationMinutes": [90, 150],
+    "durationNote": "尼罗河东岸，卡纳克以南 3 公里，拉美西斯二世方尖碑",
+    "bestTime": "傍晚至夜间灯火最佳"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "外国游客约 400 埃及镑（约 8 美元）（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 6:00–22:00",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "city-alexandria",
+  "name": "亚历山大",
+  "localName": "الإسكندرية",
+  "country": "eg",
+  "location": { "lat": 31.2001, "lng": 29.9187 },
+  "timezone": "Africa/Cairo",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "亚历山大位于地中海滨，距开罗约 2.5–3 小时火车 / 公路；市内以轻轨与出租车为主。",
+      "tips": ["开罗—亚历山大市郊铁路（ARP）便宜准时", "海滨步道适合步行"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    {
+      "topic": "other",
+      "summary": "地中海气候，夏季湿热、冬季多风；海风大时备薄外套。",
+      "tips": ["夏季注意防晒", "冬季海边风大"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  ],
+  "transitPasses": []
+}

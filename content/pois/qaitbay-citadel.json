@@ -1,0 +1,30 @@
+{
+  "id": "poi-qaitbay-citadel",
+  "type": "landmark",
+  "name": "盖特贝城堡",
+  "localName": "قلعة قايتباي",
+  "city": "city-alexandria",
+  "country": "eg",
+  "location": { "lat": 31.2148, "lng": 29.8822 },
+  "tags": ["城堡", "地中海", "海景"],
+  "popularity": 70,
+  "wikidataId": "Q1348479",
+  "visit": {
+    "durationMinutes": [60, 120],
+    "durationNote": "建在法罗斯岛灯塔原址上的 15 世纪海防城堡，俯瞰地中海",
+    "bestTime": "下午至黄昏"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "外国游客约 100 埃及镑（约 2 美元）（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 9:00–17:00",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

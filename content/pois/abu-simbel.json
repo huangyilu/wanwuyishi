@@ -1,0 +1,30 @@
+{
+  "id": "poi-abu-simbel",
+  "type": "landmark",
+  "name": "阿布辛贝神庙",
+  "localName": "أبو سمبل",
+  "city": "city-aswan",
+  "country": "eg",
+  "location": { "lat": 22.3372, "lng": 31.6258 },
+  "tags": ["世界级", "神庙", "拉美西斯二世"],
+  "popularity": 92,
+  "wikidataId": "Q193401",
+  "visit": {
+    "durationMinutes": [120, 200],
+    "durationNote": "拉美西斯二世双神庙，距阿斯旺约 280 公里；通常参加清晨警车护送车队一日游",
+    "bestTime": "清晨抵达光线最佳"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "外国游客约 315 埃及镑（约 6 美元）；含接送一日游另计（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 6:00–17:00（随车队抵达）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

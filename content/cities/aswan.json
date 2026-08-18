@@ -1,0 +1,25 @@
+{
+  "id": "city-aswan",
+  "name": "阿斯旺",
+  "localName": "أسوان",
+  "country": "eg",
+  "location": { "lat": 24.0889, "lng": 32.8998 },
+  "timezone": "Africa/Cairo",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "阿斯旺是上埃及枢纽，去阿布辛贝通常参加清晨警车护送车队（约 3 小时单程），或乘火车 / 飞机会开罗。",
+      "tips": ["阿布辛贝一日游需凌晨出发", "尼罗河帆船 felucca 是本地特色交通"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    {
+      "topic": "other",
+      "summary": "努比亚文化浓厚，物价较开罗低；夏季极热，冬季（10–3 月）是最舒适旅行季。",
+      "tips": ["尊重努比亚本地习俗", "冬季早晚温差大带外套"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  ],
+  "transitPasses": []
+}

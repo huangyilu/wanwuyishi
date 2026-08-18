@@ -1,0 +1,30 @@
+{
+  "id": "poi-giza-pyramids",
+  "type": "landmark",
+  "name": "吉萨金字塔群",
+  "localName": "أهرامات الجيزة",
+  "city": "city-giza",
+  "country": "eg",
+  "location": { "lat": 29.9792, "lng": 31.1342 },
+  "tags": ["世界级", "古埃及", "世界奇迹"],
+  "popularity": 99,
+  "wikidataId": "Q86945",
+  "visit": {
+    "durationMinutes": [180, 360],
+    "durationNote": "含胡夫 / 哈夫拉 / 门卡乌拉三座金字塔与周边，半天到一天",
+    "bestTime": "清晨或傍晚避开烈日与人流"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "外国游客 plateau 入场约 700 埃及镑（约 14 美元）；另入内单座金字塔约 200–400 镑（以官网公示为准，出发前请复核）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 8:00–17:00（夏季延长）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "poi-great-sphinx",
+  "type": "landmark",
+  "name": "狮身人面像",
+  "localName": "أبو الهول",
+  "city": "city-giza",
+  "country": "eg",
+  "location": { "lat": 29.9753, "lng": 31.1376 },
+  "tags": ["世界级", "古埃及", "雕像"],
+  "popularity": 97,
+  "wikidataId": "Q1383",
+  "visit": {
+    "durationMinutes": [30, 60],
+    "durationNote": "与吉萨金字塔同区，通常一并参观",
+    "bestTime": "同吉萨金字塔，清晨或傍晚"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "含于吉萨金字塔群门票，无需单独购票",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}

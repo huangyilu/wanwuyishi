@@ -1,0 +1,25 @@
+{
+  "id": "city-luxor",
+  "name": "卢克索",
+  "localName": "الأقصر",
+  "country": "eg",
+  "location": { "lat": 25.6872, "lng": 32.6396 },
+  "timezone": "Africa/Cairo",
+  "survival": [
+    {
+      "topic": "transport",
+      "summary": "卢克索分东岸（神庙）与西岸（帝王谷等墓葬区），跨尼罗河靠渡轮或桥梁；西岸景点分散，包车 / 自行车常见。",
+      "tips": ["东岸与西岸间轮渡便宜", "西岸包车一天可覆盖主要墓葬"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    {
+      "topic": "other",
+      "summary": "夏季午后酷热（40°C+），墓葬内无空调，务必清晨出行并大量补水；冬季（10–3 月）最舒适。",
+      "tips": ["带足饮水与防晒", "正午尽量安排室内 / 有顶处"],
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  ],
+  "transitPasses": []
+}

@@ -1,0 +1,30 @@
+{
+  "id": "poi-cairo-citadel",
+  "type": "landmark",
+  "name": "萨拉丁城堡（开罗城堡）",
+  "localName": "قلعة صلاح الدين",
+  "city": "city-cairo",
+  "country": "eg",
+  "location": { "lat": 30.0287, "lng": 31.2512 },
+  "tags": ["城堡", "清真寺", "全景"],
+  "popularity": 76,
+  "wikidataId": "Q1121756",
+  "visit": {
+    "durationMinutes": [120, 180],
+    "durationNote": "含穆罕默德·阿里清真寺，俯瞰开罗全景",
+    "bestTime": "上午"
+  },
+  "openness": { "closedWeekdays": [], "closedDates": [], "seasonal": [] },
+  "volatile": {
+    "price": {
+      "value": "外国游客约 300 埃及镑（约 6 美元）（以官网公示为准）",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    },
+    "hours": {
+      "value": "通常 8:00–17:00",
+      "source": "https://www.egypt.travel/",
+      "verifiedAt": "2026-08-18"
+    }
+  }
+}
