@@ -6,10 +6,19 @@
  *
  * 这里只负责「创建 / 编辑 / 删除」一条挂在某个行程条目上的门票；保存走
  * useTripMutations.upsertTicket（乐观更新，松手即生效）。
+ *
+ * 门票保存后可上传 PDF 附件（电子票 / 确认单），走 Supabase Storage，
+ * 预览用 PdfViewer 弹窗（桌面 iframe / 移动新标签页）。
  */
-import { useState } from 'react';
-import type { Ticket } from '../../data/types';
+import { useState, type ChangeEvent } from 'react';
+import type { Ticket, TicketAttachment } from '../../data/types';
 import { useTripMutations } from './queries';
+import { isCloudStorage } from './uploadAttachment';
+import {
+  uploadTicketAttachment,
+  deleteTicketAttachment,
+} from './uploadTicketAttachment';
+import { PdfViewer } from '../../components/PdfViewer';
 import s from './TicketEditor.module.css';
 
 export function TicketEditor({
@@ -31,6 +40,12 @@ export function TicketEditor({
   const [note, setNote] = useState(ticket?.note ?? '');
   const [timeSlot, setTimeSlot] = useState(ticket?.timeSlot ?? '');
   const [busy, setBusy] = useState(false);
+  const [pdfBusy, setPdfBusy] = useState(false);
+  const [pdfErr, setPdfErr] = useState<string | null>(null);
+  const [preview, setPreview] = useState<TicketAttachment | null>(null);
+
+  const attachments = ticket?.attachments ?? [];
+  const cloud = isCloudStorage();
 
   async function save() {
     setBusy(true);
@@ -67,6 +82,49 @@ export function TicketEditor({
     }
   }
 
+  /** 上传 PDF 附件 */
+  async function onPickPdf(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    e.target.value = '';
+    if (!file || !ticket?.id) return;
+    setPdfBusy(true);
+    setPdfErr(null);
+    try {
+      const meta = await uploadTicketAttachment(tripId, ticket.id, file);
+      const next = [...attachments, meta];
+      await mut.upsertTicket.mutateAsync({
+        ...ticket,
+        attachments: next,
+      });
+    } catch (ex) {
+      setPdfErr(ex instanceof Error ? ex.message : '上传失败');
+    } finally {
+      setPdfBusy(false);
+    }
+  }
+
+  /** 删除单个 PDF 附件 */
+  async function onRemovePdf(att: TicketAttachment) {
+    setPdfErr(null);
+    try {
+      await deleteTicketAttachment(att.url);
+      const next = attachments.filter((a) => a.url !== att.url);
+      await mut.upsertTicket.mutateAsync({
+        ...ticket!,
+        attachments: next,
+      });
+    } catch (ex) {
+      setPdfErr(ex instanceof Error ? ex.message : '删除失败');
+    }
+  }
+
+  /** 格式化文件大小 */
+  function fmtSize(bytes: number): string {
+    if (bytes < 1024) return `${bytes} B`;
+    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
+    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+  }
+
   if (!open) {
     return (
       <button type="button" className={s.addBtn} onClick={() => setOpen(true)}>
@@ -76,6 +134,7 @@ export function TicketEditor({
   }
 
   return (
+    <>
     <div className={s.box}>
       <div className={s.title}>🎫 订票信息</div>
 
@@ -124,6 +183,63 @@ export function TicketEditor({
           </button>
         )}
       </div>
+
+      {/* PDF 附件区 —— 门票保存后才可用 */}
+      {ticket?.id && (
+        <div className={s.pdfSection}>
+          <div className={s.pdfTitle}>📎 PDF 附件{attachments.length > 0 ? `（${attachments.length}）` : ''}</div>
+
+          {attachments.length > 0 && (
+            <div className={s.pdfList}>
+              {attachments.map((att) => (
+                <div key={att.url} className={s.pdfItem}>
+                  <button
+                    type="button"
+                    className={s.pdfName}
+                    onClick={() => setPreview(att)}
+                    title="点击预览"
+                  >
+                    {att.name}
+                  </button>
+                  <span className={s.pdfSize}>{fmtSize(att.size)}</span>
+                  <button
+                    type="button"
+                    className={s.pdfDel}
+                    onClick={() => onRemovePdf(att)}
+                    title="删除"
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {cloud ? (
+            <label className={`${s.pdfUpload} ${pdfBusy ? s.pdfBusy : ''}`}>
+              {pdfBusy ? '上传中…' : '+ 上传 PDF'}
+              <input
+                type="file"
+                accept="application/pdf"
+                hidden
+                onChange={onPickPdf}
+                disabled={pdfBusy}
+              />
+            </label>
+          ) : (
+            <div className={s.cloudOnly}>登录云端后可上传 PDF 附件</div>
+          )}
+          {pdfErr && <div className={s.pdfErr}>{pdfErr}</div>}
+        </div>
+      )}
     </div>
+    {preview && (
+      <PdfViewer
+        url={preview.url}
+        name={preview.name}
+        onClose={() => setPreview(null)}
+      />
+    )}
+  </>
   );
 }

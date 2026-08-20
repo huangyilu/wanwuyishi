@@ -192,6 +192,14 @@ export interface ItemVote {
   value: 1 | -1;
 }
 
+export interface TicketAttachment {
+  url: string;
+  name: string;
+  /** 文件大小（字节） */
+  size: number;
+  uploadedAt: string;
+}
+
 export interface Ticket {
   id: string;
   tripId: string;
@@ -207,6 +215,8 @@ export interface Ticket {
   booked: boolean;
   leadDays: number | null;
   note: string | null;
+  /** PDF 附件（电子票 / 确认单），文件存 Supabase Storage，这里只存元数据 */
+  attachments?: TicketAttachment[] | null;
 }
 
 export interface Expense {

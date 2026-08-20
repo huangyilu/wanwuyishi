@@ -102,6 +102,7 @@ export class LocalTripRepository implements TripRepository {
     return {
       ...bundle,
       items: bundle.items.map((it) => ({ ...it, kind: it.kind ?? 'poi', images: it.images ?? [] })) as TripItem[],
+      tickets: bundle.tickets.map((t) => ({ ...t, attachments: t.attachments ?? [] })) as typeof bundle.tickets,
       expenses: bundle.expenses.map((e) => ({ ...e, splitMode: e.splitMode ?? 'aa' })) as typeof bundle.expenses,
       trip: {
         ...bundle.trip,

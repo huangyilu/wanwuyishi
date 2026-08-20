@@ -1,5 +1,5 @@
 -- ============================================================================
--- 玩无一失 · 行程条目图片附件 · 一键应用脚本
+-- 玩无一失 · 行程附件（图片 + PDF）· 一键应用脚本
 -- ============================================================================
 -- 用法：复制本文件全部内容 → Supabase 控制台 → SQL Editor → Run
 -- 本机无 supabase CLI / service_role key，迁移不会自动执行，需手动跑这一段。
@@ -8,7 +8,7 @@
 --
 -- 作用：
 --   1) trip_items 增加 images text[] 列（存 Storage 公开 URL 数组）
---   2) 建 trip-attachments 公开 bucket（单文件 5MB，仅图片）
+--   2) 建 trip-attachments 公开 bucket（单文件 10MB，图片 + PDF）
 --   3) 设 storage.objects 的 读/写/删 RLS（仅已登录用户可写）
 -- ============================================================================
 
@@ -50,8 +50,8 @@ begin
     if v_has_size then v_sql := v_sql || ', file_size_limit'; end if;
     if v_has_mime then v_sql := v_sql || ', allowed_mime_types'; end if;
     v_sql := v_sql || ') values (''trip-attachments'', ''trip-attachments'', true';
-    if v_has_size then v_sql := v_sql || ', 5242880'; end if;
-    if v_has_mime then v_sql := v_sql || ', ''{image/png,image/jpeg,image/webp,image/gif}'''; end if;
+    if v_has_size then v_sql := v_sql || ', 10485760'; end if;
+    if v_has_mime then v_sql := v_sql || ', ''{image/png,image/jpeg,image/webp,image/gif,application/pdf}'''; end if;
     v_sql := v_sql || ')';
     execute v_sql;
   end if;

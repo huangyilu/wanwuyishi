@@ -21,6 +21,7 @@ import type {
   ItemVote,
   PackingItem,
   Ticket,
+  TicketAttachment,
   Trip,
   TripBundle,
   TripDay,
@@ -115,6 +116,7 @@ function mapTicket(r: any): Ticket {
     booked: r.booked,
     leadDays: r.lead_days ?? null,
     note: r.note ?? null,
+    attachments: (r.attachments as TicketAttachment[] | null) ?? [],
   };
 }
 
@@ -449,6 +451,7 @@ export class SupabaseTripRepository implements TripRepository {
       booked: input.booked,
       lead_days: input.leadDays ?? null,
       note: input.note ?? null,
+      attachments: input.attachments ?? [],
     };
     if (input.id) {
       const { data, error } = await this.c

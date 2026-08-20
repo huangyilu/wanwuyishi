@@ -93,3 +93,111 @@
   gap: 8px;
   margin-top: 2px;
 }
+
+/* ---- PDF 附件区 ---- */
+
+.pdfSection {
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line, #e3ded2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pdfTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text, #2c332f);
+}
+
+.pdfList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pdfItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: var(--bg-sub, #f0ede4);
+}
+
+.pdfName {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+  font-size: 13px;
+  color: var(--brand, #4a7f7c);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: inherit;
+}
+.pdfName:hover {
+  text-decoration: underline;
+}
+
+.pdfSize {
+  font-size: 11px;
+  color: var(--text-secondary, #8a8578);
+  flex-shrink: 0;
+}
+
+.pdfDel {
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text, #2c332f);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.pdfDel:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.pdfUpload {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  border: 1px dashed var(--brand, #4a7f7c);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--brand, #4a7f7c);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: center;
+}
+.pdfUpload:hover {
+  background: rgba(74, 127, 124, 0.08);
+}
+.pdfBusy {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.cloudOnly {
+  font-size: 12px;
+  color: var(--text-secondary, #8a8578);
+  text-align: center;
+  padding: 6px 0;
+}
+
+.pdfErr {
+  font-size: 12px;
+  color: #c0392b;
+  text-align: center;
+}

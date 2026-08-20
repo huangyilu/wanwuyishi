@@ -1,0 +1,101 @@
+/* PDF 预览弹窗 —— 与 Lightbox 共享遮罩风格 */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(18, 14, 10, 0.92);
+  backdrop-filter: blur(3px);
+  animation: fade 0.16s ease-out;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  max-width: 900px;
+  height: 88vh;
+  border-radius: var(--radius, 12px);
+  background: #fff;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line, #e3ded2);
+  background: var(--bg-sub, #f0ede4);
+  flex-shrink: 0;
+}
+
+.fileName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text, #2c332f);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.openTab {
+  font-size: 12px;
+  color: var(--brand, #4a7f7c);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.openTab:hover {
+  text-decoration: underline;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--text, #2c332f);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.close:hover {
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #fff;
+}
+
+.loading {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #8a8578);
+  font-size: 14px;
+}
