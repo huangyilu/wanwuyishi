@@ -420,7 +420,7 @@ export function ChatPanel({ tripId }: { tripId: string }) {
         .map((m) => `- ${m.id} : ${m.displayName}${m.role === 'owner' ? '（队长/本人）' : ''}`)
         .join('\n') || '（无）';
 
-    return `你是「玩无一失」旅行行程助手的对话引擎。用户用自然语言描述想建的行程，你要调用工具把它落到数据库。
+    return `你是「Tour the World」旅行行程助手的对话引擎。用户用自然语言描述想建的行程，你要调用工具把它落到数据库。
 
 # 行程
 标题：${trip.title}

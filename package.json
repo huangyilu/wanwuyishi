@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "玩无一失 —— 可执行的旅行作战台",
+  "description": "Tour the World —— 可执行的旅行作战台",
   "scripts": {
     "dev": "npm run content:build && vite",
     "build": "npm run content:check && tsc -b && vite build",

@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: frontend_app
-title: 旅行规划前端应用（React + Repository 模式）
+title: 旅行规划前端应用（React + Repository 分层）
 scope:
     - src/
 source_files: []

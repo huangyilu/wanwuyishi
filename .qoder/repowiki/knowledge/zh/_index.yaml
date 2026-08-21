@@ -3,11 +3,11 @@ schema_version: 1
 locale: zh-CN
 branch: main
 nodes_managed: true
-exported_at: "2026-08-20T16:09:55Z"
+exported_at: "2026-08-21T13:11:31Z"
 modules:
     "":
-        dir_name: 玩无一失单仓编排层（Vite + TypeScript 构建中枢）
-        title: 玩无一失单仓编排层（Vite + TypeScript 构建中枢）
+        dir_name: 玩无一失单仓库编排根
+        title: 玩无一失单仓库编排根
         scope:
             - .gitignore
             - package.json
@@ -48,8 +48,8 @@ modules:
             - path: build_scripts
             - path: frontend_app/feature_world
     frontend_app:
-        dir_name: 旅行规划前端应用（React + Repository 模式）
-        title: 旅行规划前端应用（React + Repository 模式）
+        dir_name: 旅行规划前端应用（React + Repository 分层）
+        title: 旅行规划前端应用（React + Repository 分层）
         scope:
             - src/
         source_files: []
@@ -65,8 +65,8 @@ modules:
         depends_on: []
         related_to: []
     frontend_app/app_shell:
-        dir_name: 应用外壳与页面路由
-        title: 应用外壳与页面路由
+        dir_name: 应用外壳与顶层页面（App Shell & Pages）
+        title: 应用外壳与顶层页面（App Shell & Pages）
         scope:
             - src/app/
             - src/pages/
@@ -107,8 +107,8 @@ modules:
             - path: frontend_app/app_shell
             - path: supabase_backend
     frontend_app/feature_trip:
-        dir_name: 行程规划与协作（Trip Feature）
-        title: 行程规划与协作（Trip Feature）
+        dir_name: 旅行行程规划与协作（Trip Feature）
+        title: 旅行行程规划与协作（Trip Feature）
         scope:
             - src/features/trip/
         source_files: []
@@ -118,8 +118,8 @@ modules:
             - path: frontend_app/app_shell
             - path: supabase_backend
     frontend_app/feature_world:
-        dir_name: 世界景点导航与导览卡片（World Feature）
-        title: 世界景点导航与导览卡片（World Feature）
+        dir_name: 世界景点导航与导览卡片
+        title: 世界景点导航与导览卡片
         scope:
             - src/features/world/
         source_files: []
@@ -140,8 +140,8 @@ modules:
         depends_on: []
         related_to: []
     frontend_app/ui_primitives:
-        dir_name: UI 基础组件与视觉原语
-        title: UI 基础组件与视觉原语
+        dir_name: UI 原语与轻量交互组件库
+        title: UI 原语与轻量交互组件库
         scope:
             - src/ui/
             - src/components/

@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: frontend_app/ui_primitives
-title: UI 基础组件与视觉原语
+title: UI 原语与轻量交互组件库
 scope:
     - src/ui/
     - src/components/

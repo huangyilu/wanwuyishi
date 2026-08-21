@@ -54,7 +54,7 @@ export function TripsPage() {
           <div className={s.heroText}>
             <div className={s.kicker}>
               <span className={s.diamond} />
-              玩无一失
+              Tour the World
             </div>
             <h1 className={s.h1}>我的行程</h1>
             <p className={s.lead}>

@@ -46,8 +46,8 @@ function DesktopShell() {
             <circle cx="12" cy="12" r="1.7" fill="var(--bg)" />
             <circle cx="12" cy="12" r="1.7" fill="none" stroke="var(--brand)" strokeWidth="1" />
           </svg>
-          玩无一失
-          <span className={s.slogan}>把攻略做到万无一失</span>
+          Tour the World
+          <span className={s.slogan}>Plan. Pack. Go.</span>
         </NavLink>
         <nav className={s.nav}>
           <NavLink to="/trips" className={navCls}>

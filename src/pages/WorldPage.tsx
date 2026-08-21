@@ -163,7 +163,9 @@ export function WorldPage() {
               ← 返回
             </button>
           </div>
-          <PoiDetail poiId={selected} />
+          <div className={s.detailMobile}>
+            <PoiDetail poiId={selected} />
+          </div>
         </div>
       );
     }
@@ -177,6 +179,7 @@ export function WorldPage() {
             onChange={(e) => setKeyword(e.target.value)}
           />
         </div>
+        <div className={s.detailMobile}>
         {activeCity && <CityHero city={activeCity} className={s.mHero} />}
         <div className={s.mChips}>
           <button
@@ -214,6 +217,7 @@ export function WorldPage() {
               </div>
             </button>
           ))}
+        </div>
         </div>
       </div>
     );

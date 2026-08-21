@@ -1,5 +1,5 @@
 /**
- * 玩无一失 · 世界库 schema
+ * Tour the World · 世界库 schema
  *
  * 这是世界库的唯一事实来源：
  *   1. TypeScript 类型          →  z.infer
