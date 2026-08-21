@@ -2,6 +2,16 @@
    ui/panel.module.css 与账本共用，保证切换标签视觉一致。
    保留打包自身特色：进度条、分类清单流、hover 显删除、勾选手感。 */
 
+/* 移动端：body 上方 padding 清零，让 topBar sticky top:0 完美吸顶无空隙 */
+.packingBody {
+  /* PC 端保持原样（padding: 0 20px 20px），不做覆盖 */
+}
+@media (max-width: 640px) {
+  .packingBody {
+    padding-top: 0;
+  }
+}
+
 /* 顶部工具栏：添加 + 进度 + 气候参考。可收起——收起后只剩顶部一行
    （进度 + 展开按钮），释放下方清单的浏览空间。滚动时常驻贴顶。 */
 .topBar {
@@ -67,6 +77,10 @@
   .topBar {
     padding: 10px 12px;
     gap: 8px;
+    /* 吸顶时去圆角去左右边框，视觉上与卡片融为一体 */
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
   .topRow {
     flex-wrap: wrap;
@@ -255,13 +269,19 @@
 }
 @media (max-width: 640px) {
   .headTools {
-    margin-left: 0;
-    flex-basis: 100%;
-    justify-content: flex-end;
-    gap: 10px;
+    margin-left: auto;
+    flex-basis: auto;
+    gap: 8px;
   }
   .toolDivider {
-    height: 18px;
+    display: none;
+  }
+  .viewBtn {
+    padding: 4px 10px;
+    font-size: 12px;
+  }
+  .climateNote {
+    display: none;
   }
 }
 .viewBtn {

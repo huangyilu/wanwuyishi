@@ -196,6 +196,11 @@ export function WorldPage() {
           ))}
         </div>
         <div className={s.mList}>
+          {list.length === 0 && (
+            <div style={{ padding: '32px 16px', textAlign: 'center', color: 'var(--text-3)', fontSize: 14 }}>
+              没有匹配的景点
+            </div>
+          )}
           {list.map((p) => (
             <button key={p.id} className={s.mRow} onClick={() => setSelected(p.id)}>
               <div className={s.cardName}>

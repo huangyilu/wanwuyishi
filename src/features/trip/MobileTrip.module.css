@@ -29,6 +29,11 @@
   margin-top: 8px;
   padding-bottom: 8px;
   overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.chips::-webkit-scrollbar {
+  display: none;
 }
 
 .chip {
@@ -92,30 +97,38 @@
   align-items: flex-start;
   gap: 10px;
   width: 100%;
-  padding: 12px;
+  padding: 14px 12px;
   margin-bottom: 8px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--bg);
   text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s, border-color 0.1s;
+}
+.card:active {
+  background: var(--bg-hover);
 }
 
 .seq {
   flex: none;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: var(--surface-2);
   color: var(--text-2);
   font-family: var(--font-num);
-  font-size: 11px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 24px;
   text-align: center;
 }
 
 .cardMain {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .cardName {
@@ -124,6 +137,7 @@
   gap: 6px;
   font-size: 15px;
   font-weight: 600;
+  flex-wrap: wrap;
 }
 
 .cardIcon {
@@ -149,9 +163,14 @@
 }
 
 .cardMeta {
+  display: block;
   margin-top: 3px;
   color: var(--text-3);
   font-size: 12px;
+  line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 
 /* 已订门票的入场时间：行中随身册里最该一眼扫到的时刻 */
@@ -179,10 +198,11 @@
 
 .statusDot {
   flex: none;
-  width: 8px;
-  height: 8px;
-  margin-top: 6px;
+  width: 10px;
+  height: 10px;
+  margin-top: 5px;
   border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--bg);
 }
 
 .empty {
@@ -192,23 +212,38 @@
   font-size: 13px;
 }
 
-/* 详情浮层 */
+/* 详情浮层 —— 从底部弹出的 sheet */
 .sheet {
   position: fixed;
   inset: 0;
   z-index: 50;
   display: flex;
   flex-direction: column;
-  background: var(--bg);
+  background: var(--bg-sub);
+  animation: sheetUp 0.22s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@keyframes sheetUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .sheetHead {
   flex: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 12px;
+  padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
   border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  box-shadow: 0 1px 8px rgba(20, 40, 30, 0.04);
 }
 
 .sheetBody {
@@ -221,8 +256,8 @@
 /* 今天 tab 空档：出发倒计时 + 准备提醒 ------------------------------------ */
 .todayHero {
   margin: 0 12px 4px;
-  padding: 16px 14px;
-  border-radius: var(--radius);
+  padding: 18px 16px;
+  border-radius: var(--radius-lg);
   background: linear-gradient(160deg, var(--brand-soft), var(--bg));
   border: 1px solid var(--line);
 }
@@ -240,8 +275,8 @@
 }
 
 .todayHeroBig {
-  margin-top: 4px;
-  font-size: 32px;
+  margin-top: 6px;
+  font-size: 36px;
   font-weight: 700;
   font-family: var(--font-num);
   color: var(--brand);

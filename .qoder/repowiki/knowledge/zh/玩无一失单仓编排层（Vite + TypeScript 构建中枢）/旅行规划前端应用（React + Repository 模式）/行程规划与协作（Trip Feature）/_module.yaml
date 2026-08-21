@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend_app/feature_trip
+title: 行程规划与协作（Trip Feature）
+scope:
+    - src/features/trip/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend_app/app_shell
+    - path: supabase_backend

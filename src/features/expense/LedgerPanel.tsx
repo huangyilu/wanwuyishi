@@ -6,6 +6,7 @@
  * 实时用 settle() 算出每人净额与"最少转账"方案。
  *
  * 宽屏两栏（左：记一笔 + 明细；右：算账结果，吸顶）；窄屏单列。PC 与移动端共用同一组件。
+ * 移动端：表单收进底部弹出 sheet，列表直接展示。
  */
 import { useMemo, useRef, useState } from 'react';
 import { useTripBundle, useTripMutations } from '../../features/trip/queries';
@@ -14,6 +15,7 @@ import type { Expense, ExpenseCategory, ExpenseSplitMode, TripMember } from '../
 import s from './LedgerPanel.module.css';
 import panel from '../../ui/panel.module.css';
 import { useToast } from '../../ui/toast';
+import { useViewMode } from '../../hooks/useViewMode';
 
 const CATEGORIES: Array<{ code: ExpenseCategory; label: string }> = [
   { code: 'ticket', label: '门票' },
@@ -51,10 +53,14 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
   const [payerId, setPayerId] = useState<string>(members[0]?.id ?? '');
   const [splitMode, setSplitMode] = useState<ExpenseSplitMode>('aa');
   const [editingId, setEditingId] = useState<string | null>(null);
-  const formRef = useRef<HTMLElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<Record<string, boolean>>({});
   const [customWeight, setCustomWeight] = useState(false);
   const [weights, setWeights] = useState<Record<string, number>>({});
+
+  const [mode] = useViewMode();
+  const isMobile = mode === 'mobile';
+  const [showForm, setShowForm] = useState(false);
 
   const isChecked = (id: string) => selected[id] !== false;
   const weightOf = (id: string) => weights[id] ?? 1;
@@ -134,6 +140,7 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
           setAmount('');
           setSplitMode('aa');
           setEditingId(null);
+          if (isMobile) setShowForm(false);
         },
         onError: (err: unknown) => {
           const msg = err instanceof Error ? err.message : String(err);
@@ -170,7 +177,8 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
     setSelected(sel);
     setCustomWeight(anyWeight);
     setWeights(w);
-    // 表单在上方、列表在下方，编辑时把表单滚入可视区
+    // 移动端弹出表单 sheet
+    if (isMobile) setShowForm(true);
     requestAnimationFrame(() => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
   }
 
@@ -179,6 +187,7 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
     setTitle('');
     setAmount('');
     setSplitMode('aa');
+    if (isMobile) setShowForm(false);
   }
 
   function del(id: string) {
@@ -195,176 +204,197 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
   const totalBase = settlement.totalCents;
   const hasDebt = settlement.transfers.length > 0;
 
+  /* 表单内容：PC 内联侧栏与移动端弹出 sheet 共用 */
+  const formContent = (
+    <>
+      <div className={s.form}>
+        <div className={s.formRow3}>
+          <div>
+            <label className={s.label}>项目</label>
+            <input
+              className="field"
+              value={title}
+              placeholder="如：卢浮宫门票"
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div>
+            <label className={s.label}>类别</label>
+            <select className="field" value={category} onChange={(e) => setCategory(e.target.value as ExpenseCategory)}>
+              {CATEGORIES.map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className={s.label}>金额</label>
+            <input
+              className="field"
+              inputMode="decimal"
+              value={amount}
+              placeholder="0.00"
+              onChange={(e) => setAmount(e.target.value.replace(/[^\d.]/g, ''))}
+            />
+          </div>
+        </div>
+
+        <div className={s.formRow}>
+          <div className={s.splitToggleWrap}>
+            <div className={s.splitLabelGroup}>
+              <label className={s.label}>归属</label>
+              <span className={s.segHint}>
+                {splitMode === 'personal' ? '这笔由付款人自己承担，不计入共同分摊' : '这笔由下方参与人共同分摊'}
+              </span>
+            </div>
+            <div className={s.seg}>
+              <button
+                type="button"
+                className={`${s.segBtn} ${splitMode === 'aa' ? s.segOn : ''}`}
+                onClick={() => setSplitMode('aa')}
+              >
+                需要 AA
+              </button>
+              <button
+                type="button"
+                className={`${s.segBtn} ${splitMode === 'personal' ? s.segOn : ''}`}
+                onClick={() => setSplitMode('personal')}
+              >
+                个人
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className={s.formRow}>
+          <div>
+            <label className={s.label}>币种</label>
+            <select className="field" value={currency} onChange={(e) => setCurrencySafe(e.target.value)}>
+              {CURRENCIES.map((c) => (
+                <option key={c} value={c}>
+                  {c}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label className={s.label}>汇率（{currency} → {baseCurrency}）</label>
+            <input
+              className="field"
+              inputMode="decimal"
+              value={fxRate}
+              onChange={(e) => setFxRate(e.target.value.replace(/[^\d.]/g, ''))}
+            />
+          </div>
+        </div>
+        <div className={s.hint}>汇率仅为参考，以实际为准；金额按整数分四舍五入。</div>
+
+        <div>
+          <label className={s.label}>付款人</label>
+          <div className={s.members}>
+            {members.map((m) => (
+              <button
+                key={m.id}
+                type="button"
+                className={`${s.memberChip} ${payerId === m.id ? s.memberChipOn : ''}`}
+                onClick={() => setPayerId(m.id)}
+              >
+                <span className={s.dot} style={{ background: m.color ?? FALLBACK_COLOR }} />
+                {m.displayName}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {splitMode === 'aa' && (
+          <div>
+            <label className={s.label}>参与分摊（默认全员均摊）</label>
+            <div className={s.members}>
+              {members.map((m) => (
+                <button
+                  key={m.id}
+                  type="button"
+                  className={`${s.memberChip} ${isChecked(m.id) ? s.memberChipOn : ''}`}
+                  onClick={() => toggleMember(m.id)}
+                >
+                  <span className={s.dot} style={{ background: m.color ?? FALLBACK_COLOR }} />
+                  {m.displayName}
+                  {customWeight && isChecked(m.id) && (
+                    <input
+                      className={s.weightInput}
+                      inputMode="numeric"
+                      value={weightOf(m.id)}
+                      onClick={(e) => e.stopPropagation()}
+                      onChange={(e) => setWeights((prev) => ({ ...prev, [m.id]: Math.max(1, parseInt(e.target.value || '1', 10)) }))}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+            <label style={{ marginTop: 8, display: 'flex', gap: 6, alignItems: 'center', fontSize: 13, color: 'var(--text-2)' }}>
+              <input type="checkbox" checked={customWeight} onChange={(e) => setCustomWeight(e.target.checked)} />
+              按权重分摊（勾选后可在成员上填整数权重）
+            </label>
+          </div>
+        )}
+
+        <div className={s.formActions}>
+          <button className="btn btn-primary" onClick={submit}>
+            {editingId ? '保存修改' : '记一笔'}
+          </button>
+          {editingId && (
+            <button className="btn btn-ghost" onClick={cancelEdit}>
+              取消
+            </button>
+          )}
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <div className={panel.page}>
       <div className={panel.card}>
         <div className={panel.head}>
           <div>
             <div className={panel.title}>账本</div>
-            <div className={panel.sub}>整数分记账 · 共同支出自动算清谁该给谁，个人花费单独记录</div>
+            {mode !== 'mobile' && <div className={panel.sub}>整数分记账 · 共同支出自动算清谁该给谁，个人花费单独记录</div>}
           </div>
           <div className={s.headSummary}>
             <div className={s.hsMain}>
               <span className={s.hsK}>总支出</span>
               <span className={s.hsV}>{formatMoney(totalBase, baseCurrency)}</span>
             </div>
-            <div className={s.hsSub}>
-              <span>{expenses.length} 笔</span>
-              <span className={s.hsSep} />
-              <span>{members.length} 人</span>
-            </div>
+            {mode !== 'mobile' && (
+              <div className={s.hsSub}>
+                <span>{expenses.length} 笔</span>
+                <span className={s.hsSep} />
+                <span>{members.length} 人</span>
+              </div>
+            )}
           </div>
+          {isMobile && (
+            <button
+              className={s.addBtn}
+              onClick={() => setShowForm(true)}
+              aria-label="记一笔"
+              title="记一笔"
+            >
+              +
+            </button>
+          )}
         </div>
 
         <div className={panel.body}>
         <div className={s.grid}>
-          {/* 记一笔（常驻侧栏） */}
-          <section className={`${s.colForm} ${s.section}`} ref={formRef}>
+          {/* PC：记一笔（常驻侧栏） */}
+          {!isMobile && (
+            <section className={`${s.colForm} ${s.section}`} ref={formRef}>
               <div className={panel.sectionHead}>{editingId ? '编辑账单' : '记一笔'}</div>
-              <div className={s.form}>
-                <div className={s.formRow3}>
-                  <div>
-                    <label className={s.label}>项目</label>
-                    <input
-                      className="field"
-                      value={title}
-                      placeholder="如：卢浮宫门票"
-                      onChange={(e) => setTitle(e.target.value)}
-                    />
-                  </div>
-                  <div>
-                    <label className={s.label}>类别</label>
-                    <select className="field" value={category} onChange={(e) => setCategory(e.target.value as ExpenseCategory)}>
-                      {CATEGORIES.map((c) => (
-                        <option key={c.code} value={c.code}>
-                          {c.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className={s.label}>金额</label>
-                    <input
-                      className="field"
-                      inputMode="decimal"
-                      value={amount}
-                      placeholder="0.00"
-                      onChange={(e) => setAmount(e.target.value.replace(/[^\d.]/g, ''))}
-                    />
-                  </div>
-                </div>
-
-                <div className={s.formRow}>
-                  <div className={s.splitToggleWrap}>
-                    <div className={s.splitLabelGroup}>
-                      <label className={s.label}>归属</label>
-                      <span className={s.segHint}>
-                        {splitMode === 'personal' ? '这笔由付款人自己承担，不计入共同分摊' : '这笔由下方参与人共同分摊'}
-                      </span>
-                    </div>
-                    <div className={s.seg}>
-                      <button
-                        type="button"
-                        className={`${s.segBtn} ${splitMode === 'aa' ? s.segOn : ''}`}
-                        onClick={() => setSplitMode('aa')}
-                      >
-                        需要 AA
-                      </button>
-                      <button
-                        type="button"
-                        className={`${s.segBtn} ${splitMode === 'personal' ? s.segOn : ''}`}
-                        onClick={() => setSplitMode('personal')}
-                      >
-                        个人
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={s.formRow}>
-                  <div>
-                    <label className={s.label}>币种</label>
-                    <select className="field" value={currency} onChange={(e) => setCurrencySafe(e.target.value)}>
-                      {CURRENCIES.map((c) => (
-                        <option key={c} value={c}>
-                          {c}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div>
-                    <label className={s.label}>汇率（{currency} → {baseCurrency}）</label>
-                    <input
-                      className="field"
-                      inputMode="decimal"
-                      value={fxRate}
-                      onChange={(e) => setFxRate(e.target.value.replace(/[^\d.]/g, ''))}
-                    />
-                  </div>
-                </div>
-                <div className={s.hint}>汇率仅为参考，以实际为准；金额按整数分四舍五入。</div>
-
-                <div>
-                  <label className={s.label}>付款人</label>
-                  <div className={s.members}>
-                    {members.map((m) => (
-                      <button
-                        key={m.id}
-                        type="button"
-                        className={`${s.memberChip} ${payerId === m.id ? s.memberChipOn : ''}`}
-                        onClick={() => setPayerId(m.id)}
-                      >
-                        <span className={s.dot} style={{ background: m.color ?? FALLBACK_COLOR }} />
-                        {m.displayName}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {splitMode === 'aa' && (
-                  <div>
-                    <label className={s.label}>参与分摊（默认全员均摊）</label>
-                    <div className={s.members}>
-                      {members.map((m) => (
-                        <button
-                          key={m.id}
-                          type="button"
-                          className={`${s.memberChip} ${isChecked(m.id) ? s.memberChipOn : ''}`}
-                          onClick={() => toggleMember(m.id)}
-                        >
-                          <span className={s.dot} style={{ background: m.color ?? FALLBACK_COLOR }} />
-                          {m.displayName}
-                          {customWeight && isChecked(m.id) && (
-                            <input
-                              className={s.weightInput}
-                              inputMode="numeric"
-                              value={weightOf(m.id)}
-                              onClick={(e) => e.stopPropagation()}
-                              onChange={(e) => setWeights((prev) => ({ ...prev, [m.id]: Math.max(1, parseInt(e.target.value || '1', 10)) }))}
-                            />
-                          )}
-                        </button>
-                      ))}
-                    </div>
-                    <label style={{ marginTop: 8, display: 'flex', gap: 6, alignItems: 'center', fontSize: 13, color: 'var(--text-2)' }}>
-                      <input type="checkbox" checked={customWeight} onChange={(e) => setCustomWeight(e.target.checked)} />
-                      按权重分摊（勾选后可在成员上填整数权重）
-                    </label>
-                  </div>
-                )}
-
-                <div className={s.formActions}>
-                  <button className="btn btn-primary" onClick={submit}>
-                    {editingId ? '保存修改' : '记一笔'}
-                  </button>
-                  {editingId && (
-                    <button className="btn btn-ghost" onClick={cancelEdit}>
-                      取消
-                    </button>
-                  )}
-                </div>
-              </div>
+              {formContent}
             </section>
+          )}
 
             {/* 明细 */}
             <section className={`${s.colList} ${s.section}`}>
@@ -468,6 +498,33 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
         </div>
         </div>
       </div>
+
+      {/* 移动端：记一笔弹出 sheet */}
+      {isMobile && showForm && (
+        <div className={s.formOverlay} onClick={() => setShowForm(false)}>
+          <div
+            className={s.formSheet}
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+            ref={formRef}
+          >
+            <div className={s.formSheetHead}>
+              <span>{editingId ? '编辑账单' : '记一笔'}</span>
+              <button
+                className={s.formSheetClose}
+                onClick={() => setShowForm(false)}
+                aria-label="关闭"
+              >
+                ×
+              </button>
+            </div>
+            <div className={s.formSheetBody}>
+              {formContent}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

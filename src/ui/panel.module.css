@@ -123,4 +123,21 @@
   .body {
     padding: 16px 14px 48px;
   }
+  /* 移动端：头部纵向铺开，避免横向挤压导致标题被竖排 */
+  .head {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .title {
+    font-size: 18px;
+  }
+  .sub {
+    font-size: 12px;
+  }
+  .headAction {
+    margin-left: 0;
+    flex-basis: 100%;
+    justify-content: flex-end;
+  }
 }

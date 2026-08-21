@@ -287,3 +287,23 @@
   text-align: center;
   color: var(--text-3);
 }
+
+/* 移动端：导览卡内边距适配窄屏 */
+@media (max-width: 1023px) {
+  .card {
+    padding: 14px 14px 32px;
+  }
+  .hero {
+    margin: -14px -14px 14px;
+    height: 200px;
+  }
+  .heroText .name {
+    font-size: 20px;
+  }
+  .meta {
+    grid-template-columns: 72px 1fr;
+  }
+  .vRow {
+    grid-template-columns: 56px 1fr;
+  }
+}

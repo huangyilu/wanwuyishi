@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend_app/feature_world
+title: 世界景点导航与导览卡片（World Feature）
+scope:
+    - src/features/world/
+source_files: []
+depends_on: []
+related_to:
+    - path: content_data
+    - path: frontend_app/app_shell

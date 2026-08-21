@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: frontend_app/feature_auth
+title: 认证与用户资料管理（Auth Feature）
+scope:
+    - src/features/auth/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend_app/app_shell
+    - path: supabase_backend

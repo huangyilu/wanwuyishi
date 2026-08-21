@@ -1,0 +1,162 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: zh-CN
+branch: main
+nodes_managed: true
+exported_at: "2026-08-20T16:09:55Z"
+modules:
+    "":
+        dir_name: 玩无一失单仓编排层（Vite + TypeScript 构建中枢）
+        title: 玩无一失单仓编排层（Vite + TypeScript 构建中枢）
+        scope:
+            - .gitignore
+            - package.json
+            - package-lock.json
+            - tsconfig.json
+            - vite.config.ts
+            - index.html
+            - .github/
+            - .env.example
+        source_files: []
+        children:
+            - build_scripts
+            - content_data
+            - frontend_app
+            - supabase_backend
+        depends_on: []
+        related_to: []
+    build_scripts:
+        dir_name: 构建期与运维期辅助脚本集
+        title: 构建期与运维期辅助脚本集
+        scope:
+            - scripts/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: content_data
+    content_data:
+        dir_name: 世界库静态编著数据（国家_城市_POI）
+        title: 世界库静态编著数据（国家/城市/POI）
+        scope:
+            - content/
+            - public/img/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: build_scripts
+            - path: frontend_app/feature_world
+    frontend_app:
+        dir_name: 旅行规划前端应用（React + Repository 模式）
+        title: 旅行规划前端应用（React + Repository 模式）
+        scope:
+            - src/
+        source_files: []
+        children:
+            - frontend_app/app_shell
+            - frontend_app/data_layer
+            - frontend_app/domain_models
+            - frontend_app/feature_auth
+            - frontend_app/feature_trip
+            - frontend_app/feature_world
+            - frontend_app/shared_helpers
+            - frontend_app/ui_primitives
+        depends_on: []
+        related_to: []
+    frontend_app/app_shell:
+        dir_name: 应用外壳与页面路由
+        title: 应用外壳与页面路由
+        scope:
+            - src/app/
+            - src/pages/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend_app/feature_auth
+            - path: frontend_app/feature_trip
+            - path: frontend_app/feature_world
+    frontend_app/data_layer:
+        dir_name: 数据访问层（Repository 适配与注入）
+        title: 数据访问层（Repository 适配与注入）
+        scope:
+            - src/data/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend_app/domain_models:
+        dir_name: 旅行领域模型与业务规则库
+        title: 旅行领域模型与业务规则库
+        scope:
+            - src/domain/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend_app/feature_auth:
+        dir_name: 认证与用户资料管理（Auth Feature）
+        title: 认证与用户资料管理（Auth Feature）
+        scope:
+            - src/features/auth/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend_app/app_shell
+            - path: supabase_backend
+    frontend_app/feature_trip:
+        dir_name: 行程规划与协作（Trip Feature）
+        title: 行程规划与协作（Trip Feature）
+        scope:
+            - src/features/trip/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend_app/app_shell
+            - path: supabase_backend
+    frontend_app/feature_world:
+        dir_name: 世界景点导航与导览卡片（World Feature）
+        title: 世界景点导航与导览卡片（World Feature）
+        scope:
+            - src/features/world/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: content_data
+            - path: frontend_app/app_shell
+    frontend_app/shared_helpers:
+        dir_name: 共享工具与状态管理（hooks_store_utils）
+        title: 共享工具与状态管理（hooks/store/utils）
+        scope:
+            - src/hooks/
+            - src/store/
+            - src/utils/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    frontend_app/ui_primitives:
+        dir_name: UI 基础组件与视觉原语
+        title: UI 基础组件与视觉原语
+        scope:
+            - src/ui/
+            - src/components/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    supabase_backend:
+        dir_name: Supabase 后端：数据库迁移、RLS 权限与 Edge Function
+        title: Supabase 后端：数据库迁移、RLS 权限与 Edge Function
+        scope:
+            - supabase/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to:
+            - path: frontend_app/feature_auth
+            - path: frontend_app/feature_trip

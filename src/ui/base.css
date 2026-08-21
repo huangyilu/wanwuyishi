@@ -110,6 +110,21 @@ textarea {
   opacity: 0.45;
   cursor: not-allowed;
 }
+
+/* 移动端：按钮增大触摸区域，取消 hover 位移（触屏无 hover） */
+@media (max-width: 1023px) {
+  .btn {
+    padding: 9px 16px;
+    font-size: 14px;
+  }
+  .btn-sm {
+    padding: 7px 13px;
+    font-size: 13px;
+  }
+  .btn:hover {
+    transform: none;
+  }
+}
 .btn-primary {
   background: var(--brand);
   border-color: var(--brand);
@@ -142,6 +157,7 @@ textarea {
   color: var(--text-1);
   outline: none;
   transition: border-color 0.12s, box-shadow 0.12s;
+  -webkit-appearance: none;
 }
 .field::placeholder {
   color: var(--text-3);
@@ -149,6 +165,14 @@ textarea {
 .field:focus {
   border-color: var(--brand);
   box-shadow: 0 0 0 3px var(--brand-soft);
+}
+
+/* 移动端：输入框增大触摸区域 */
+@media (max-width: 1023px) {
+  .field {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
 }
 
 .tag {
@@ -194,7 +218,19 @@ textarea {
   background: transparent;
 }
 
-/* 打印：签证行程单与旅行记录都靠浏览器打印导出 PDF，不引入 PDF 库 */
+/* 移动端：隐藏细滚动条（靠原生滑动），增大基础字号 */
+@media (max-width: 1023px) {
+  body {
+    font-size: 14px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .scroll-y::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-y {
+    scrollbar-width: none;
+  }
+}
 @media print {
   .no-print {
     display: none !important;

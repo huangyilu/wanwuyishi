@@ -5,7 +5,7 @@
  * PC 上也不会下移动壳，这是"双端不是响应式"在打包层面的兑现。
  * 账本（LedgerPanel）是单列组件，两端共用同一份。
  */
-import { Suspense, lazy, useMemo, useState } from 'react';
+import { Suspense, lazy, useEffect, useMemo, useRef, useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { useViewMode } from '../hooks/useViewMode';
 import { isSupabaseConfigured, useSession } from '../data/supabase-client';
@@ -45,10 +45,31 @@ export function TripPage() {
   const [invite, setInvite] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const { user } = useSession();
   const { data: bundle } = useTripBundle(tripId);
   const isOwner = Boolean(tripId && user?.id && bundle?.trip.ownerId === user.id);
   const canCollaborate = isSupabaseConfigured && isOwner;
+
+  // 关闭菜单：点外面 / Esc
+  useEffect(() => {
+    if (!menuOpen) return;
+    function onDown(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') setMenuOpen(false);
+    }
+    document.addEventListener('mousedown', onDown);
+    document.addEventListener('keydown', onKey);
+    return () => {
+      document.removeEventListener('mousedown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [menuOpen]);
 
   // 导出行程单所需的世界库查表：把 POI / 城市 id 翻成可读名字
   const poiIds = useMemo(
@@ -102,29 +123,74 @@ export function TripPage() {
         <button className={`${s.tab} ${tab === 'packing' ? s.tabOn : ''}`} onClick={() => setTab('packing')}>
           打包
         </button>
-        {canCollaborate && (
-          <button className={`btn btn-sm ${s.inviteBtn}`} onClick={() => setInvite(true)}>
-            邀请协作
-          </button>
-        )}
-        <span className={s.mdGroup}>
+        <div className={s.moreWrap} ref={menuRef}>
           <button
-            className={s.mdBtn}
-            disabled={!bundle}
-            onClick={() => setShowPreview(true)}
-            title="预览 Markdown 行程单"
+            className={`${s.moreBtn} ${menuOpen ? s.moreBtnOn : ''}`}
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-haspopup="menu"
+            aria-expanded={menuOpen}
+            aria-label="更多操作"
+            title="更多操作（邀请 / 预览 / 下载 / 复制）"
           >
-            预览 md
+            <span className={s.moreIcon} aria-hidden="true">
+              ⋯
+            </span>
+            <span className={s.moreLabel}>更多</span>
           </button>
-          <button
-            className={`${s.mdBtn} ${s.mdBtnPrimary}`}
-            disabled={!bundle}
-            onClick={handleExportMd}
-            title="下载 Markdown 行程单（每日排期 / 交通 / 备注）"
-          >
-            下载 md
-          </button>
-        </span>
+          {menuOpen && (
+            <div className={s.moreMenu} role="menu">
+              {canCollaborate && (
+                <button
+                  className={s.menuItem}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setInvite(true);
+                  }}
+                  role="menuitem"
+                >
+                  <span className={s.menuIcon}>👥</span>
+                  <span>邀请协作</span>
+                </button>
+              )}
+              <button
+                className={s.menuItem}
+                disabled={!bundle}
+                onClick={() => {
+                  setMenuOpen(false);
+                  setShowPreview(true);
+                }}
+                role="menuitem"
+              >
+                <span className={s.menuIcon}>👁</span>
+                <span>预览行程单</span>
+              </button>
+              <button
+                className={`${s.menuItem} ${s.menuItemPrimary}`}
+                disabled={!bundle}
+                onClick={() => {
+                  setMenuOpen(false);
+                  handleExportMd();
+                }}
+                role="menuitem"
+              >
+                <span className={s.menuIcon}>⬇</span>
+                <span>下载行程单</span>
+              </button>
+              <button
+                className={s.menuItem}
+                disabled={!bundle}
+                onClick={() => {
+                  setMenuOpen(false);
+                  void copyMd();
+                }}
+                role="menuitem"
+              >
+                <span className={s.menuIcon}>{copied ? '✓' : '⧉'}</span>
+                <span>{copied ? '已复制' : '复制 Markdown'}</span>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
       <div className={s.body}>
         <Suspense fallback={<Loading />}>

@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: frontend_app/domain_models
+title: 旅行领域模型与业务规则库
+scope:
+    - src/domain/
+source_files: []
+depends_on: []
+related_to: []

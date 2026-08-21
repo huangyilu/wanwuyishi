@@ -1,0 +1,8 @@
+schema_version: 1
+module_path: frontend_app
+title: 旅行规划前端应用（React + Repository 模式）
+scope:
+    - src/
+source_files: []
+depends_on: []
+related_to: []

@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: content_data
+title: 世界库静态编著数据（国家/城市/POI）
+scope:
+    - content/
+    - public/img/
+source_files: []
+depends_on: []
+related_to:
+    - path: build_scripts
+    - path: frontend_app/feature_world

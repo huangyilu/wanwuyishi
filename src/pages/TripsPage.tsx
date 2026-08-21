@@ -58,8 +58,9 @@ export function TripsPage() {
             </div>
             <h1 className={s.h1}>我的行程</h1>
             <p className={s.lead}>
-              把攻略做到万无一失 —— 每份行程都是一段可执行的旅程，
-              从排期、闭馆校验到账本与签证，都从这里出发。
+              小红书收藏的景点、备忘录里的航班、聊天记录里的地址 —— 散落各处的攻略，
+              一次收齐，串成一份<strong>可执行</strong>的行程：
+              排期、订票、闭馆、账本，从这里出发。
             </p>
           </div>
           <div className={s.heroArt} aria-hidden>

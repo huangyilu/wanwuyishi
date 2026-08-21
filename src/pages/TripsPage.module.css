@@ -332,25 +332,74 @@
 }
 
 @media (max-width: 600px) {
+  .page {
+    padding: 20px 16px 80px;
+  }
   .hero {
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
-    margin-bottom: 22px;
+    gap: 8px;
+    margin-bottom: 18px;
   }
   .heroArt {
     align-self: flex-end;
-    width: 96px;
-    height: 96px;
-    margin-top: -10px;
+    width: 80px;
+    height: 80px;
+    margin-top: -6px;
   }
   .h1 {
-    font-size: 30px;
+    font-size: 26px;
   }
+  .lead {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  .creatorCard {
+    padding: 18px 14px 14px;
+  }
+  .creator {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .titleField {
+    min-width: 0;
+  }
+  .dateField {
+    width: 100%;
+  }
+  .creator > .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 16px;
+  }
+
   .card {
-    padding: 12px 13px;
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  .rowTitle {
+    font-size: 15px;
   }
   .rowSub {
     gap: 4px;
+    font-size: 11px;
+  }
+
+  /* 触摸设备：删除按钮常驻可见，不依赖 hover */
+  .del {
+    visibility: visible;
+    padding: 6px 8px;
+    color: var(--text-3);
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+  }
+  .del:hover {
+    color: var(--warn);
+  }
+
+  .stamp {
+    transform: rotate(-5deg) scale(0.9);
   }
 }

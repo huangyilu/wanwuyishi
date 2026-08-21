@@ -1,0 +1,12 @@
+schema_version: 1
+module_path: frontend_app/app_shell
+title: 应用外壳与页面路由
+scope:
+    - src/app/
+    - src/pages/
+source_files: []
+depends_on: []
+related_to:
+    - path: frontend_app/feature_auth
+    - path: frontend_app/feature_trip
+    - path: frontend_app/feature_world

@@ -35,10 +35,11 @@
 
 .mHero {
   margin: 0 12px 8px;
-  height: 120px;
+  height: 140px;
+  border-radius: var(--radius-lg);
 }
 .mHero .cityHeroName {
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .side {
@@ -452,7 +453,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 12px;
+  padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
   border-bottom: 1px solid var(--line);
   background: var(--bg);
 }
@@ -460,17 +461,27 @@
 .mChips {
   display: flex;
   gap: 6px;
-  padding: 8px 12px;
+  padding: 10px 12px 6px;
   overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.mChips::-webkit-scrollbar {
+  display: none;
 }
 
 .mChip {
   flex: none;
-  padding: 4px 10px;
+  padding: 6px 14px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: var(--bg);
-  font-size: 12px;
+  font-size: 13px;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+.mChip:active {
+  background: var(--bg-hover);
 }
 .mChipOn {
   border-color: var(--brand);
@@ -483,11 +494,18 @@
 }
 
 .mRow {
+  display: block;
   width: 100%;
-  padding: 12px;
+  padding: 14px 12px;
   margin-bottom: 8px;
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: var(--bg);
   text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s, border-color 0.1s;
+}
+.mRow:active {
+  background: var(--bg-hover);
+  border-color: var(--brand);
 }

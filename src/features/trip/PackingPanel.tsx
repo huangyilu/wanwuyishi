@@ -16,6 +16,7 @@ import { useWorldIndex } from '../world/queries';
 import { PACK_CATS, suggestPacking } from '../../domain/trip/packing';
 import { climateFor } from '../../domain/trip/climate';
 import { useMyMember } from './useMyMember';
+import { useViewMode } from '../../hooks/useViewMode';
 import s from './PackingPanel.module.css';
 import panel from '../../ui/panel.module.css';
 
@@ -48,7 +49,8 @@ export function PackingPanel({ tripId }: { tripId: string }) {
   /** 视角：全部（按人分区）/ 我的 */
   const [view, setView] = useState<'all' | 'mine'>('mine');
   /** 顶部工具栏（添加 / 进度 / 气候参考）是否收起，收起后释放下方清单空间 */
-  const [collapsed, setCollapsed] = useState(false);
+  const [mode] = useViewMode();
+  const [collapsed, setCollapsed] = useState(mode === 'mobile');
 
   const items = bundle?.trip.packing ?? [];
   const members = bundle?.members ?? [];
@@ -131,6 +133,7 @@ export function PackingPanel({ tripId }: { tripId: string }) {
       },
     ]);
     setDraftText('');
+    if (mode === 'mobile') setCollapsed(true);
   }
   function generate() {
     if (!ctx) return;
@@ -178,7 +181,7 @@ export function PackingPanel({ tripId }: { tripId: string }) {
         <div className={panel.head}>
           <div>
             <div className={panel.title}>打包清单</div>
-            <div className={panel.sub}>按人分清单 · 公共物只备一份，离线保存</div>
+            {mode !== 'mobile' && <div className={panel.sub}>按人分清单 · 公共物只备一份，离线保存</div>}
           </div>
           <div className={s.headTools}>
             <div className={s.viewSwitch}>
@@ -200,18 +203,20 @@ export function PackingPanel({ tripId }: { tripId: string }) {
               智能生成
             </button>
           </div>
-          <div className={s.climateNote}>
-            {climateLabel ? (
-              <>
-                气候参考（按行程月份推导，非实时）：<b>{climateLabel}</b>
-              </>
-            ) : (
-              <>未设出发日期，衣物按天数给通用数量</>
-            )}
-          </div>
+          {mode !== 'mobile' && (
+            <div className={s.climateNote}>
+              {climateLabel ? (
+                <>
+                  气候参考（按行程月份推导，非实时）：<b>{climateLabel}</b>
+                </>
+              ) : (
+                <>未设出发日期，衣物按天数给通用数量</>
+              )}
+            </div>
+          )}
         </div>
 
-        <div className={panel.body}>
+        <div className={`${panel.body} ${s.packingBody}`}>
           <div className={`${s.topBar} ${collapsed ? s.collapsed : ''}`}>
             <div className={s.topHead}>
               {!collapsed ? (

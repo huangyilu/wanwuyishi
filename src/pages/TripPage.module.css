@@ -1,9 +1,11 @@
 .tabs {
   display: flex;
+  align-items: stretch;
   gap: 6px;
   padding: 8px 16px 0;
   border-bottom: 1px dashed var(--line-strong);
   background: var(--surface-1);
+  position: relative;
 }
 .tab {
   appearance: none;
@@ -43,48 +45,103 @@
 .tabOn::before {
   background: var(--brand);
 }
-.inviteBtn {
-  margin-left: auto;
-  align-self: center;
-}
 
-/* —— 导出 md：紧凑双按钮（预览 / 下载） —— */
-.mdGroup {
+/* —— 右上角「更多」下拉按钮 —— */
+.moreWrap {
   margin-left: auto;
   align-self: center;
-  display: inline-flex;
-  gap: 6px;
+  position: relative;
+  margin-bottom: 6px;
 }
-.mdBtn {
+.moreBtn {
   appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
   border: 1px solid var(--line);
   background: var(--surface-1);
   color: var(--text-2);
-  padding: 5px 11px;
-  border-radius: var(--radius-sm);
+  border-radius: 999px;
   font: 500 12px/1 var(--font-sans);
   letter-spacing: 0.02em;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.04s;
 }
-.mdBtn:hover:not(:disabled) {
+.moreBtn:hover {
   background: var(--bg-hover);
   color: var(--text-1);
   border-color: var(--line-strong);
 }
-.mdBtn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.moreBtn:active {
+  transform: translateY(1px);
 }
-.mdBtnPrimary {
+.moreBtnOn {
+  background: var(--brand-soft);
   border-color: var(--brand);
   color: var(--brand-ink);
-  background: var(--brand-soft);
 }
-.mdBtnPrimary:hover:not(:disabled) {
-  background: var(--brand);
-  color: var(--on-brand);
-  border-color: var(--brand);
+.moreIcon {
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+.moreLabel {
+  font-size: 12px;
+}
+.moreMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 30;
+  min-width: 168px;
+  padding: 6px;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  animation: moreIn 0.14s ease-out;
+}
+@keyframes moreIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.menuItem {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-1);
+  font: 500 13px/1 var(--font-sans);
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.menuItem:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+.menuItem:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.menuItemPrimary {
+  color: var(--brand-ink);
+  font-weight: 600;
+}
+.menuIcon {
+  width: 18px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1;
 }
 
 /* —— 行程单预览弹窗 —— */
@@ -163,15 +220,64 @@
   /* 改为块级：作战台 grid / 账本 page 作为唯一子元素时才能 100% 撑满宽度，
      否则 flex 行容器的子项默认 flex-grow:0，宽屏下停在内容宽度、右侧留白 */
   display: block;
+  position: relative;
 }
 
 @media (max-width: 640px) {
   .tabs {
-    padding: 0 12px 0;
+    padding: 0 8px 0 12px;
     overflow-x: auto;
+    gap: 4px;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar {
+    display: none;
   }
   .tab {
-    padding: 10px 12px;
+    padding: 12px 10px 12px;
     white-space: nowrap;
+    font-size: 13px;
+  }
+  .moreWrap {
+    position: sticky;
+    right: 0;
+    margin-bottom: 4px;
+    background: linear-gradient(to right, transparent, var(--surface-1) 16px);
+    padding-left: 24px;
+  }
+  .moreBtn {
+    padding: 7px 12px;
+  }
+  .moreLabel {
+    display: none;
+  }
+  .moreMenu {
+    right: -4px;
+    min-width: 188px;
+    padding: 8px;
+  }
+  .menuItem {
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: var(--radius);
+  }
+  .menuIcon {
+    font-size: 16px;
+    width: 22px;
+  }
+  /* 移动端预览弹窗全屏 */
+  .overlay {
+    padding: 0;
+  }
+  .previewCard {
+    width: 100%;
+    max-width: 100%;
+    max-height: 100vh;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .previewBody {
+    font-size: 12px;
+    padding: 12px 14px;
   }
 }

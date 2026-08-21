@@ -1,0 +1,15 @@
+schema_version: 1
+module_path: ""
+title: 玩无一失单仓编排层（Vite + TypeScript 构建中枢）
+scope:
+    - .gitignore
+    - package.json
+    - package-lock.json
+    - tsconfig.json
+    - vite.config.ts
+    - index.html
+    - .github/
+    - .env.example
+source_files: []
+depends_on: []
+related_to: []

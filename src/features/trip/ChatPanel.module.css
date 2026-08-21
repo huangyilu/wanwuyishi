@@ -20,6 +20,7 @@
   transform: translateY(-1px);
 }
 
+/* —— 桌面版抽屉（先定义，移动端 media query 在后面覆盖） —— */
 .drawer {
   position: fixed;
   top: var(--header-h);
@@ -173,4 +174,41 @@
 .send:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* —— 移动端覆盖（必须在桌面规则之后，才能覆盖） —— */
+@media (max-width: 1023px) {
+  .fab {
+    right: 16px;
+    bottom: calc(64px + env(safe-area-inset-bottom));
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  /* 移动端：聊天抽屉全屏铺满 */
+  .drawer {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    border-left: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .header {
+    padding-top: calc(12px + env(safe-area-inset-top));
+  }
+
+  .input {
+    font-size: 15px;
+  }
+
+  .inputRow {
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+  }
 }
