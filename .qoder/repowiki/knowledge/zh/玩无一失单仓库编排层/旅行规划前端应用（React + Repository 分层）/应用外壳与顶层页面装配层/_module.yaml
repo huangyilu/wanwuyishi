@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: frontend_app/app_shell
-title: 应用外壳与顶层页面（App Shell & Pages）
+title: 应用外壳与顶层页面装配层
 scope:
     - src/app/
     - src/pages/

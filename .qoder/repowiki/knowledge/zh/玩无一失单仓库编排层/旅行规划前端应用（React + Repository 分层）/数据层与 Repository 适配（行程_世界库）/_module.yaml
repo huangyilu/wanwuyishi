@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: frontend_app/data_layer
-title: 数据访问层（Repository 适配与注入）
+title: 数据层与 Repository 适配（行程/世界库）
 scope:
     - src/data/
 source_files: []

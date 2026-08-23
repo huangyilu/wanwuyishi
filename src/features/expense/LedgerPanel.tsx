@@ -26,6 +26,16 @@ const CATEGORIES: Array<{ code: ExpenseCategory; label: string }> = [
   { code: 'other', label: '其他' },
 ];
 
+/** 各分类的图表配色（与手帐暖色系协调，且彼此可区分） */
+const CATEGORY_COLORS: Record<ExpenseCategory, string> = {
+  ticket: '#4a7f7c',
+  transport: '#2f9462',
+  food: '#e0a64a',
+  stay: '#d2552f',
+  shopping: '#7d9bb5',
+  other: '#9aa3af',
+};
+
 const CURRENCIES = ['CNY', 'EUR', 'CHF', 'USD'] as const;
 /** 参考汇率：1 单位外币 = ? 人民币（仅参考，输入框可改） */
 const REF_FX: Record<string, number> = { CNY: 1, EUR: 7.8, CHF: 8.1, USD: 7.2 };
@@ -47,6 +57,8 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
   /* ---- 记一笔表单状态 ---- */
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState<ExpenseCategory>('ticket');
+  /** 明细列表分类筛选（与「记一笔」表单的 category 相互独立） */
+  const [filterCat, setFilterCat] = useState<ExpenseCategory | 'all'>('all');
   const [amount, setAmount] = useState('');
   const [currency, setCurrency] = useState<string>(baseCurrency);
   const [fxRate, setFxRate] = useState<string>(String(REF_FX[baseCurrency] ?? 1));
@@ -84,6 +96,28 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
       shares: e.shares,
     }));
     return settle(inputs);
+  }, [expenses]);
+
+  /* 明细列表：分类筛选（结算仍基于全部账单，不受筛选影响） */
+  const visibleExpenses =
+    filterCat === 'all' ? expenses : expenses.filter((e) => e.category === filterCat);
+
+  /* 分类支出占比（环形图）：按分类汇总全部账单折算基准币种后的金额 */
+  const categoryTotals = useMemo(() => {
+    const byCat = new Map<ExpenseCategory, number>();
+    for (const e of expenses) {
+      byCat.set(e.category, (byCat.get(e.category) ?? 0) + Math.round(e.amountCents * e.fxRate));
+    }
+    const entries = CATEGORIES.map((c) => ({
+      code: c.code,
+      label: c.label,
+      cents: byCat.get(c.code) ?? 0,
+      color: CATEGORY_COLORS[c.code],
+    }))
+      .filter((x) => x.cents > 0)
+      .sort((a, b) => b.cents - a.cents);
+    const total = entries.reduce((sum, x) => sum + x.cents, 0);
+    return { entries, total };
   }, [expenses]);
 
   function submit() {
@@ -398,12 +432,38 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
 
             {/* 明细 */}
             <section className={`${s.colList} ${s.section}`}>
-              <div className={panel.sectionHead}>账单明细</div>
+              <div className={panel.sectionHead}>
+                账单明细
+                <span className={s.listCount}>
+                  {filterCat === 'all' ? `${expenses.length} 笔` : `${visibleExpenses.length}/${expenses.length} 笔`}
+                </span>
+              </div>
+              <div className={s.filterBar}>
+                <button
+                  type="button"
+                  className={`${s.filterPill} ${filterCat === 'all' ? s.filterPillOn : ''}`}
+                  onClick={() => setFilterCat('all')}
+                >
+                  全部
+                </button>
+                {CATEGORIES.map((c) => (
+                  <button
+                    key={c.code}
+                    type="button"
+                    className={`${s.filterPill} ${filterCat === c.code ? s.filterPillOn : ''}`}
+                    onClick={() => setFilterCat(c.code)}
+                  >
+                    {c.label}
+                  </button>
+                ))}
+              </div>
               {expenses.length === 0 ? (
                 <div className={panel.empty}>暂无记录。</div>
+              ) : visibleExpenses.length === 0 ? (
+                <div className={panel.empty}>该分类下暂无记录。</div>
               ) : (
                 <div className={s.list}>
-                  {expenses.map((e) => {
+                  {visibleExpenses.map((e) => {
                     const base = Math.round(e.amountCents * e.fxRate);
                     const shareNames = e.shares.map((sh) => nameOf(sh.memberId)).join('、');
                     const isPersonal = e.splitMode === 'personal';
@@ -496,6 +556,45 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
             </section>
           </aside>
         </div>
+
+        {/* 分类支出占比环形图 */}
+        <section className={`${s.chartCard} ${s.section}`}>
+          <div className={panel.sectionHead}>分类支出占比</div>
+          {expenses.length === 0 ? (
+            <div className={panel.empty}>还没有账单。记一笔之后这里会显示各分类占比。</div>
+          ) : (
+            <div className={s.chartBody}>
+              <CategoryDonut
+                entries={categoryTotals.entries}
+                total={categoryTotals.total}
+                currency={baseCurrency}
+              />
+              <div className={s.legend}>
+                {categoryTotals.entries.map((e) => {
+                  const pct =
+                    categoryTotals.total > 0
+                      ? Math.round((e.cents / categoryTotals.total) * 100)
+                      : 0;
+                  const active = filterCat === e.code;
+                  return (
+                    <button
+                      key={e.code}
+                      type="button"
+                      className={`${s.legendItem} ${active ? s.legendItemOn : ''}`}
+                      onClick={() => setFilterCat(active ? 'all' : e.code)}
+                      title={active ? '取消筛选' : `筛选「${e.label}」`}
+                    >
+                      <span className={s.legendDot} style={{ background: e.color }} />
+                      <span className={s.legendLabel}>{e.label}</span>
+                      <span className={s.legendVal}>{formatMoney(e.cents, baseCurrency)}</span>
+                      <span className={s.legendPct}>{pct}%</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </section>
         </div>
       </div>
 
@@ -526,5 +625,52 @@ export function LedgerPanel({ tripId }: { tripId: string }) {
         </div>
       )}
     </div>
+  );
+}
+
+/** 纯 SVG 环形图（零依赖）：按分类金额占比绘制，中心显示合计金额 */
+function CategoryDonut({
+  entries,
+  total,
+  currency,
+}: {
+  entries: Array<{ code: ExpenseCategory; label: string; cents: number; color: string }>;
+  total: number;
+  currency: string;
+}) {
+  const R = 54;
+  const STROKE = 22;
+  const C = 2 * Math.PI * R;
+  let offset = 0;
+  return (
+    <svg viewBox="0 0 160 160" className={s.donut} role="img" aria-label="分类支出占比环形图">
+      <g transform="rotate(-90 80 80)">
+        <circle cx="80" cy="80" r={R} fill="none" stroke="var(--surface-2)" strokeWidth={STROKE} />
+        {entries.map((e) => {
+          const len = total > 0 ? (e.cents / total) * C : 0;
+          const el = (
+            <circle
+              key={e.code}
+              cx="80"
+              cy="80"
+              r={R}
+              fill="none"
+              stroke={e.color}
+              strokeWidth={STROKE}
+              strokeDasharray={`${len} ${C - len}`}
+              strokeDashoffset={-offset}
+            />
+          );
+          offset += len;
+          return el;
+        })}
+      </g>
+      <text x="80" y="76" textAnchor="middle" className={s.donutTotal}>
+        {formatMoney(total, currency)}
+      </text>
+      <text x="80" y="94" textAnchor="middle" className={s.donutSub}>
+        合计
+      </text>
+    </svg>
   );
 }

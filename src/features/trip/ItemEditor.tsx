@@ -327,6 +327,12 @@ function AddressField({
         placeholder="酒店详细地址 / 街道门牌 / 楼层房间…"
         onChange={(e) => setVal(e.target.value)}
         onBlur={() => onSave(val.trim() || null)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            (e.target as HTMLTextAreaElement).blur();
+          }
+        }}
       />
       <CopyButton text={val} label="复制地址" className={s.copyBtn} />
     </div>
@@ -484,6 +490,12 @@ function CityCombo({
         placeholder={placeholder}
         onChange={(e) => setVal(e.target.value)}
         onBlur={(e) => commit(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            (e.target as HTMLInputElement).blur();
+          }
+        }}
       />
       <datalist id="item-city-options">
         {cities.map((c) => (

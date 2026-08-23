@@ -3,11 +3,11 @@ schema_version: 1
 locale: zh-CN
 branch: main
 nodes_managed: true
-exported_at: "2026-08-21T15:10:35Z"
+exported_at: "2026-08-23T06:31:34Z"
 modules:
     "":
-        dir_name: 玩无一失单仓库编排根
-        title: 玩无一失单仓库编排根
+        dir_name: 玩无一失单仓库编排层
+        title: 玩无一失单仓库编排层
         scope:
             - .gitignore
             - package.json
@@ -65,8 +65,8 @@ modules:
         depends_on: []
         related_to: []
     frontend_app/app_shell:
-        dir_name: 应用外壳与顶层页面（App Shell & Pages）
-        title: 应用外壳与顶层页面（App Shell & Pages）
+        dir_name: 应用外壳与顶层页面装配层
+        title: 应用外壳与顶层页面装配层
         scope:
             - src/app/
             - src/pages/
@@ -78,8 +78,8 @@ modules:
             - path: frontend_app/feature_trip
             - path: frontend_app/feature_world
     frontend_app/data_layer:
-        dir_name: 数据访问层（Repository 适配与注入）
-        title: 数据访问层（Repository 适配与注入）
+        dir_name: 数据层与 Repository 适配（行程_世界库）
+        title: 数据层与 Repository 适配（行程/世界库）
         scope:
             - src/data/
         source_files: []
@@ -87,8 +87,8 @@ modules:
         depends_on: []
         related_to: []
     frontend_app/domain_models:
-        dir_name: 旅行领域模型与业务规则库
-        title: 旅行领域模型与业务规则库
+        dir_name: 旅行领域纯函数模型与规则引擎
+        title: 旅行领域纯函数模型与规则引擎
         scope:
             - src/domain/
         source_files: []
@@ -107,8 +107,8 @@ modules:
             - path: frontend_app/app_shell
             - path: supabase_backend
     frontend_app/feature_trip:
-        dir_name: 旅行行程规划与协作（Trip Feature）
-        title: 旅行行程规划与协作（Trip Feature）
+        dir_name: 旅行行程规划功能模块（Trip Feature）
+        title: 旅行行程规划功能模块（Trip Feature）
         scope:
             - src/features/trip/
         source_files: []

@@ -393,6 +393,13 @@ function DayCard({
           onClick={(e) => e.stopPropagation()}
           onChange={(e) => setCityInput(e.target.value)}
           onBlur={(e) => commitCity(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              e.stopPropagation();
+              (e.target as HTMLInputElement).blur();
+            }
+          }}
         />
         <datalist id="city-options">
           {cities.map((c) => (

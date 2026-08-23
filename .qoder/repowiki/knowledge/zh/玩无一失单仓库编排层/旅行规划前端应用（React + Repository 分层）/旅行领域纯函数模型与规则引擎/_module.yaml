@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: frontend_app/domain_models
-title: 旅行领域模型与业务规则库
+title: 旅行领域纯函数模型与规则引擎
 scope:
     - src/domain/
 source_files: []

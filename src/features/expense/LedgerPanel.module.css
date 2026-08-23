@@ -267,6 +267,41 @@
   display: grid;
   gap: 10px;
 }
+
+/* 明细分类筛选条 */
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.filterPill {
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-1);
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+.filterPill:hover {
+  border-color: var(--brand);
+  color: var(--brand-ink);
+}
+.filterPillOn {
+  background: var(--brand-soft);
+  color: var(--brand-ink);
+  border-color: var(--brand);
+}
+.listCount {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
 .expRow {
   display: grid;
   grid-template-columns: 1fr auto auto;
@@ -439,6 +474,92 @@
 /* 移动端：记一笔按钮 */
 .addBtn {
   display: none;
+}
+
+/* 分类支出占比环形图 */
+.chartCard {
+  margin-top: 28px;
+}
+.chartBody {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding: 8px 4px 4px;
+}
+.donut {
+  width: 160px;
+  height: 160px;
+  flex: none;
+}
+.donutTotal {
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--text-1);
+  font-variant-numeric: tabular-nums;
+}
+.donutSub {
+  font-size: 11px;
+  fill: var(--text-3);
+}
+.legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 20px;
+  flex: 1;
+  min-width: 240px;
+}
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-1);
+  cursor: pointer;
+  font-size: 13px;
+  text-align: left;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.legendItem:hover {
+  border-color: var(--brand);
+}
+.legendItemOn {
+  border-color: var(--brand);
+  background: var(--brand-soft);
+}
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex: none;
+}
+.legendLabel {
+  color: var(--text-2);
+}
+.legendVal {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--text-1);
+  font-variant-numeric: tabular-nums;
+}
+.legendPct {
+  width: 40px;
+  text-align: right;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 640px) {
+  .chartBody {
+    gap: 18px;
+    justify-content: center;
+  }
+  .legend {
+    grid-template-columns: 1fr;
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 /* 移动端：表单弹出 sheet */
