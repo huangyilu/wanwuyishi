@@ -140,7 +140,7 @@ export function WorldNav({
           <span className={s.count}>{pois?.length ?? 0} 个点</span>
         </div>
         <input
-          className="field"
+          className={`field ${s.searchField}`}
           placeholder="搜索景点 / 城市"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
@@ -199,9 +199,7 @@ export function WorldNav({
                   onClick={() => toggleCountry(openCountries, setOpenCountries, country.id)}
                   title={open ? '收起城市' : '展开城市'}
                 >
-                  <span className={s.arrow} aria-hidden>
-                    {open ? '▾' : '▸'}
-                  </span>
+                  <span className={`${s.arrow} ${open ? s.arrowOpen : ''}`} aria-hidden />
                   <span className={s.countryNameGroup}>
                     <span className={s.countryName}>{country.name}</span>
                     {country.localName && (

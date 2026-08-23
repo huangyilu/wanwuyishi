@@ -117,6 +117,38 @@ export const CITY_IMAGES: Record<string, CityImage> = {
     license: 'CC BY-SA 4.0',
     page: 'https://commons.wikimedia.org/wiki/File:Saint-Paul-de-Vence.jpg',
   },
+
+  // ---- 埃及新增（图经 wsrv.nl 代理自 Wikimedia Commons 下载） ----
+  'city-cairo': {
+    src: 'img/cities/city-cairo.jpg',
+    author: 'kallerna',
+    license: 'CC BY-SA 3.0',
+    page: 'https://commons.wikimedia.org/wiki/File:View_over_Cairo_from_Citadel.jpg',
+  },
+  'city-giza': {
+    src: 'img/cities/city-giza.jpg',
+    author: 'kallerna',
+    license: 'CC BY-SA 3.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Sphinx_and_the_Great_Pyramid_of_Giza_panorama.jpg',
+  },
+  'city-luxor': {
+    src: 'img/cities/city-luxor.jpg',
+    author: 'Roland Unger',
+    license: 'CC BY-SA 3.0',
+    page: 'https://commons.wikimedia.org/wiki/File:LuxorTemplePanorama.jpg',
+  },
+  'city-aswan': {
+    src: 'img/cities/city-aswan.jpg',
+    author: 'Marc Ryckaert (MJJR)',
+    license: 'CC BY 3.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Aswan_Nile_Panorama_R01.jpg',
+  },
+  'city-alexandria': {
+    src: 'img/cities/city-alexandria.jpg',
+    author: 'Vyacheslav Argenberg',
+    license: 'CC BY 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Egypt,_Alexandria,_The_Corniche_of_Alexandria,_Mediterranean_Sea.jpg',
+  },
 };
 
 export function cityImage(cityId: string): CityImage | undefined {

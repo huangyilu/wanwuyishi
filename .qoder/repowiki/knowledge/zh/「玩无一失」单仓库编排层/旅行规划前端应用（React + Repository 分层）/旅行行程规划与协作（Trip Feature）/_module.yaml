@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: frontend_app/feature_trip
-title: 旅行行程规划功能模块（Trip Feature）
+title: 旅行行程规划与协作（Trip Feature）
 scope:
     - src/features/trip/
 source_files: []

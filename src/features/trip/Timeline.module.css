@@ -255,7 +255,7 @@
   border-bottom: 1px solid var(--line);
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   cursor: pointer;
-  background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
+  background: var(--surface-1);
 }
 
 /* 驿站节点：圆形打卡章，落在路线轨上（不被卡片裁切，故 .day overflow 改 visible） */
@@ -468,14 +468,16 @@
   line-height: 1;
 }
 .itemCustom {
-  background: var(--surface-2);
+  background: var(--surface-1);
 }
 .itemTransport {
   border-left: 3px solid var(--brand);
+  border-bottom: 3px solid var(--brand);
   padding-left: 5px;
 }
 .itemNote {
   border-left: 3px solid var(--line-strong);
+  border-bottom: 3px solid var(--line-strong);
   padding-left: 5px;
 }
 .itemNote .itemName {
@@ -484,6 +486,7 @@
 }
 .itemAccommodation {
   border-left: 3px solid var(--gold);
+  border-bottom: 3px solid var(--gold);
   padding-left: 5px;
 }
 .itemAccommodation .itemName {

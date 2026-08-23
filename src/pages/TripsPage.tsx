@@ -58,40 +58,20 @@ export function TripsPage() {
             </div>
             <h1 className={s.h1}>我的行程</h1>
             <p className={s.lead}>
-              小红书收藏的景点、备忘录里的航班、聊天记录里的地址 —— 散落各处的攻略，
+              收藏夹里的景点、备忘录里的航班、聊天记录里的地址 —— 散落各处的攻略，
               一次收齐，串成一份<strong>可执行</strong>的行程：
               排期、订票、闭馆、账本，从这里出发。
             </p>
           </div>
           <div className={s.heroArt} aria-hidden>
             <svg viewBox="0 0 160 160" className={s.compass}>
-              <circle cx="80" cy="80" r="74" fill="none" stroke="var(--line-strong)" strokeWidth="1.5" />
-              <circle
-                cx="80"
-                cy="80"
-                r="60"
-                fill="none"
-                stroke="var(--brand)"
-                strokeWidth="2"
-                strokeDasharray="2 11.3"
-                className={s.ring}
-              />
-              <circle cx="80" cy="80" r="42" fill="var(--brand-soft)" />
-              <polygon points="80,44 89,80 71,80" fill="var(--brand)" />
-              <polygon points="80,116 89,80 71,80" fill="var(--gold)" />
-              <circle cx="80" cy="80" r="4.5" fill="var(--bg)" stroke="var(--brand)" strokeWidth="1.5" />
-              <text x="80" y="30" textAnchor="middle" className={s.compassLetter}>
-                N
-              </text>
-              <text x="80" y="141" textAnchor="middle" className={s.compassLetter}>
-                S
-              </text>
-              <text x="143" y="84" textAnchor="middle" className={s.compassLetter}>
-                E
-              </text>
-              <text x="17" y="84" textAnchor="middle" className={s.compassLetter}>
-                W
-              </text>
+              <rect x="30" y="50" width="100" height="70" rx="8" fill="none" stroke="var(--brand)" strokeWidth="2" />
+              <rect x="30" y="50" width="100" height="15" rx="8" fill="var(--brand-soft)" />
+              <circle cx="80" cy="57.5" r="3" fill="var(--brand)" />
+              <path d="M50 85 L65 75 L80 90 L95 70 L110 85" fill="none" stroke="var(--brand)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="65" cy="75" r="3" fill="var(--gold)" />
+              <circle cx="95" cy="70" r="3" fill="var(--gold)" />
+              <path d="M70 105 L90 105" stroke="var(--line-strong)" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </div>
         </section>

@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: ""
-title: 玩无一失单仓库编排层
+title: 「玩无一失」单仓库编排层
 scope:
     - .gitignore
     - package.json

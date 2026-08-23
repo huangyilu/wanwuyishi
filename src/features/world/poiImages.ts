@@ -354,6 +354,86 @@ export const POI_IMAGES: Record<string, PoiImage> = {
     license: 'CC BY-SA 4.0',
     page: 'https://commons.wikimedia.org/wiki/File:Fondation_Maeght.jpg',
   },
+
+  // ---- 埃及 ----
+  'poi-giza-pyramids': {
+    src: 'img/pois/poi-giza-pyramids.jpg',
+    author: 'Ricardo Liberato',
+    license: 'CC BY-SA 2.0',
+    page: 'https://commons.wikimedia.org/wiki/File:All_Gizah_Pyramids.jpg',
+  },
+  'poi-great-sphinx': {
+    src: 'img/pois/poi-great-sphinx.jpg',
+    author: 'Hamerani',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Great_Sphinx_of_Giza_(2).jpg',
+  },
+  'poi-egyptian-museum': {
+    src: 'img/pois/poi-egyptian-museum.jpg',
+    author: 'MusikAnimal',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Egyptian_Museum_in_Cairo_in_May_2015.JPG',
+  },
+  'poi-khan-el-khalili': {
+    src: 'img/pois/poi-khan-el-khalili.jpg',
+    author: 'Mohammed Moussa',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Khan_el-Khalili_2019.jpg',
+  },
+  'poi-cairo-citadel': {
+    src: 'img/pois/poi-cairo-citadel.jpg',
+    author: 'Mariam Mohamed Kamal',
+    license: 'CC BY-SA 3.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Mohamed_Ali_Mosque_at_the_Citadel_-_Cairo.JPG',
+  },
+  'poi-karnak': {
+    src: 'img/pois/poi-karnak.jpg',
+    author: 'Diego Delso',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Templo_de_Karnak,_Luxor,_Egipto,_2022-04-03,_DD_160.jpg',
+  },
+  'poi-valley-of-kings': {
+    src: 'img/pois/poi-valley-of-kings.jpg',
+    author: 'Marc Ryckaert',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Luxor_Valley_of_the_Kings_R01.jpg',
+  },
+  'poi-luxor-temple': {
+    src: 'img/pois/poi-luxor-temple.jpg',
+    author: 'Diego Delso',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Templo_de_Luxor,_Luxor,_Egipto,_2022-04-01,_DD_40.jpg',
+  },
+  'poi-abu-simbel': {
+    src: 'img/pois/poi-abu-simbel.jpg',
+    author: 'Diego Delso',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Templo_de_Rams%C3%A9s_II,_Abu_Simbel,_Egipto,_2022-04-02,_DD_92-94_HDR.jpg',
+  },
+  'poi-philae': {
+    src: 'img/pois/poi-philae.jpg',
+    author: 'Hesham Farouk Ragab',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:PHILAE_TEMPLE.jpg',
+  },
+  'poi-library-alexandria': {
+    src: 'img/pois/poi-library-alexandria.jpg',
+    author: 'Mono Abo-Abda / Radomianin',
+    license: 'CC BY-SA 4.0',
+    page: 'https://commons.wikimedia.org/wiki/File:Bibliotiqa_Alexandria_9_edited.jpg',
+  },
+  'poi-pompeys-pillar': {
+    src: 'img/pois/poi-pompeys-pillar.jpg',
+    author: 'Aya Mahmoud Naguib Ibrahim',
+    license: 'CC BY-SA 4.0',
+    page: "https://commons.wikimedia.org/wiki/File:Pompey's_Pillar,_Alexandria_2016.jpg",
+  },
+  'poi-qaitbay-citadel': {
+    src: 'img/pois/poi-qaitbay-citadel.jpg',
+    author: 'Aimty17',
+    license: 'CC0',
+    page: 'https://commons.wikimedia.org/wiki/File:Qaitbay_citadel_in_Alexandria_02.jpg',
+  },
 };
 
 export function poiImage(poiId: string): PoiImage | undefined {

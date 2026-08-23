@@ -22,6 +22,10 @@
   color: var(--text-1);
 }
 
+.searchField {
+  background: #fff;
+}
+
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -72,10 +76,7 @@
   padding: 4px 0 24px;
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
-  /* 探险手帐：树区铺一层极淡网格点，像一张地图册内页 */
-  background-color: var(--bg-sub);
-  background-image: radial-gradient(var(--tex-dot) 1px, transparent 1px);
-  background-size: 16px 16px;
+  background: var(--bg-sub);
 }
 .tree::-webkit-scrollbar {
   width: 9px;
@@ -87,9 +88,9 @@
   background-clip: padding-box;
 }
 
-/* 国家 = 带分隔的 section 头，和城市/景点层次拉开 */
+/* 国家 = 简洁折叠行，靠旋转箭头 + 底部细线区分层级 */
 .countryBlock {
-  padding-bottom: 4px;
+  padding-bottom: 0;
 }
 .sectionLabel {
   padding: 8px 12px 4px;
@@ -103,26 +104,18 @@
   align-items: center;
   gap: 8px;
   width: 100%;
-  padding: 12px 12px 10px;
-  margin-top: 12px;
+  padding: 10px 12px;
+  margin-top: 8px;
   border: none;
-  border-top: 1px solid var(--line-strong);
-  background: var(--surface-2);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
   text-align: left;
   color: var(--text-1);
   font-family: var(--font-display);
-  font-size: 14.5px;
-  letter-spacing: 0.08em;
+  font-size: 14px;
+  letter-spacing: 0.06em;
   cursor: pointer;
-}
-.countryBtn::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-  background: var(--brand);
-  transform: rotate(45deg);
-  flex: none;
+  transition: background 0.12s;
 }
 .countryBtn:hover {
   color: var(--text-1);
@@ -131,7 +124,7 @@
 .countryNameGroup {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: 6px;
   flex: 1;
   min-width: 0;
 }
@@ -149,17 +142,32 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* 折叠箭头放大、加清晰色，并随悬停变品牌色，让"可展开"一眼可见 */
+/* 折叠箭头：CSS 绘制 V 形，展开时旋转 180°，过渡平滑 */
 .arrow {
-  width: 14px;
+  width: 16px;
+  height: 16px;
   flex: none;
-  font-size: 12px;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-2);
-  transition: color 0.12s;
+  transition: transform 0.2s ease, color 0.12s;
+}
+.arrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(-45deg);
+  margin-top: -2px;
 }
 .countryBtn:hover .arrow {
   color: var(--brand);
+}
+/* 展开态：箭头旋转朝下 */
+.arrowOpen {
+  transform: rotate(180deg);
 }
 
 .city {
@@ -167,25 +175,34 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 6px 12px 6px 26px;
+  padding: 7px 12px 7px 32px;
   border: none;
   border-left: 2px solid transparent;
   background: transparent;
   text-align: left;
-  color: var(--text-1);
+  color: var(--text-2);
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
+  transition: background 0.1s, border-color 0.1s, color 0.1s;
 }
 .city:hover {
   background: var(--bg-hover);
-  border-left-color: var(--brand);
+  border-left-color: var(--line-strong);
+  color: var(--text-1);
 }
 .cityOn {
-  background: var(--brand-soft);
+  background: var(--bg-hover);
   color: var(--brand-ink);
-  font-weight: 700;
+  font-weight: 600;
   border-left-color: var(--brand);
+}
+.cityOn:hover {
+  background: var(--bg-hover);
+  border-left-color: var(--brand);
+}
+.cityOn .count {
+  color: var(--brand);
 }
 
 .count {
@@ -206,7 +223,7 @@
   border: 1px solid var(--line);
   border-left: 3px solid var(--line-strong);
   border-radius: var(--radius);
-  background: var(--surface-2);
+  background: var(--surface-1);
   cursor: grab;
   touch-action: none;
   transition: border-color 0.12s, background 0.12s, transform 0.12s, box-shadow 0.12s;
@@ -214,7 +231,7 @@
 .poi:hover {
   border-color: var(--line-strong);
   border-left-color: var(--brand);
-  background: var(--bg-hover);
+  background: var(--surface-1);
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
 }
@@ -225,16 +242,16 @@
   opacity: 0.4;
 }
 
-/* 已加入行程：绿色态 + 角标，一眼区分出还没加的点 */
+/* 已加入行程：蓝色态 + 角标，一眼区分出还没加的点 */
 .poiAdded {
-  border-color: var(--ok-border);
-  border-left-color: var(--ok);
-  background: var(--ok-soft);
+  border-color: #7DB9DE;
+  border-left-color: #7DB9DE;
+  background: rgba(125, 185, 222, 0.1);
 }
 .poiAdded:hover {
-  border-color: var(--ok);
-  border-left-color: var(--ok);
-  background: var(--ok-soft);
+  border-color: #7DB9DE;
+  border-left-color: #7DB9DE;
+  background: rgba(125, 185, 222, 0.1);
 }
 
 .poiMain {
@@ -276,7 +293,7 @@
   margin-left: 6px;
   padding: 0 5px;
   border-radius: 4px;
-  background: var(--ok);
+  background: #7DB9DE;
   color: #fff;
   font-size: 10px;
   line-height: 16px;

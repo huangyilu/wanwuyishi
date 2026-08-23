@@ -3,11 +3,11 @@ schema_version: 1
 locale: zh-CN
 branch: main
 nodes_managed: true
-exported_at: "2026-08-23T06:31:34Z"
+exported_at: "2026-08-23T08:02:34Z"
 modules:
     "":
-        dir_name: 玩无一失单仓库编排层
-        title: 玩无一失单仓库编排层
+        dir_name: 「玩无一失」单仓库编排层
+        title: 「玩无一失」单仓库编排层
         scope:
             - .gitignore
             - package.json
@@ -87,8 +87,8 @@ modules:
         depends_on: []
         related_to: []
     frontend_app/domain_models:
-        dir_name: 旅行领域纯函数模型与规则引擎
-        title: 旅行领域纯函数模型与规则引擎
+        dir_name: 旅行领域纯函数模型与业务规则
+        title: 旅行领域纯函数模型与业务规则
         scope:
             - src/domain/
         source_files: []
@@ -107,8 +107,8 @@ modules:
             - path: frontend_app/app_shell
             - path: supabase_backend
     frontend_app/feature_trip:
-        dir_name: 旅行行程规划功能模块（Trip Feature）
-        title: 旅行行程规划功能模块（Trip Feature）
+        dir_name: 旅行行程规划与协作（Trip Feature）
+        title: 旅行行程规划与协作（Trip Feature）
         scope:
             - src/features/trip/
         source_files: []
@@ -150,8 +150,8 @@ modules:
         depends_on: []
         related_to: []
     supabase_backend:
-        dir_name: Supabase 后端：数据库迁移、RLS 权限与 Edge Function
-        title: Supabase 后端：数据库迁移、RLS 权限与 Edge Function
+        dir_name: Supabase 后端（数据库迁移、RLS 策略与 Edge Function）
+        title: Supabase 后端（数据库迁移、RLS 策略与 Edge Function）
         scope:
             - supabase/
         source_files: []

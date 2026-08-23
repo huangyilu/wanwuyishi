@@ -40,11 +40,11 @@ function DesktopShell() {
       <header className={s.header}>
         <NavLink to="/" className={s.brand}>
           <svg className={s.brandMark} viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="10" fill="none" stroke="var(--brand)" strokeWidth="1.5" />
-            <path d="M12 3.5 L14.2 12 L12 20.5 L9.8 12 Z" fill="var(--brand)" />
-            <path d="M12 3.5 L12 20.5 L9.8 12 Z" fill="var(--brand-hover)" opacity="0.55" />
-            <circle cx="12" cy="12" r="1.7" fill="var(--bg)" />
-            <circle cx="12" cy="12" r="1.7" fill="none" stroke="var(--brand)" strokeWidth="1" />
+            <circle cx="12" cy="12" r="9" fill="none" stroke="var(--brand)" strokeWidth="1.5" />
+            <ellipse cx="12" cy="12" rx="4" ry="9" fill="none" stroke="var(--brand)" strokeWidth="1" />
+            <path d="M3 12 L21 12" stroke="var(--brand)" strokeWidth="1" />
+            <path d="M4.5 7.5 L19.5 7.5" stroke="var(--brand)" strokeWidth="0.75" opacity="0.6" />
+            <path d="M4.5 16.5 L19.5 16.5" stroke="var(--brand)" strokeWidth="0.75" opacity="0.6" />
           </svg>
           Tour the World
           <span className={s.slogan}>Plan. Pack. Go.</span>

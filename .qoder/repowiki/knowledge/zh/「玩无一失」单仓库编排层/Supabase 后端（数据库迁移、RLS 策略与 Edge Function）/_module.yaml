@@ -1,6 +1,6 @@
 schema_version: 1
 module_path: supabase_backend
-title: Supabase 后端：数据库迁移、RLS 权限与 Edge Function
+title: Supabase 后端（数据库迁移、RLS 策略与 Edge Function）
 scope:
     - supabase/
 source_files: []
