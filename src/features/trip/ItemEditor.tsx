@@ -54,8 +54,13 @@ export function ItemEditor({
   }
 
   const day = item.dayId ? bundle.days.find((d) => d.id === item.dayId) : undefined;
+  // 「把当天城市设为此处」按钮：当 item 有到达城市（预设或自定义）且与当天城市不一致时显示
+  const itemToCityName = item.toCityId ? cities.find((c) => c.id === item.toCityId)?.name : item.customToCity;
+  const dayCityName = day?.cityId ? cities.find((c) => c.id === day.cityId)?.name : day?.customCity;
   const canSetDayCity =
-    (kind === 'transport' || kind === 'accommodation') && item.toCityId && day && day.cityId !== item.toCityId;
+    (kind === 'transport' || kind === 'accommodation') &&
+    Boolean(itemToCityName) &&
+    itemToCityName !== dayCityName;
 
   return (
     <div className={s.panel}>
@@ -151,33 +156,23 @@ export function ItemEditor({
           <div className={s.row}>
             <div className={s.field}>
               <label className={s.label}>出发地</label>
-              <select
-                className={s.input}
-                value={item.fromCityId ?? ''}
-                onChange={(e) => patch({ fromCityId: e.target.value || null })}
-              >
-                <option value="">—</option>
-                {cities.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
+              <CityCombo
+                cities={cities}
+                cityId={item.fromCityId}
+                customCity={item.customFromCity}
+                placeholder="选择或输入城市"
+                onCommit={(cityId, customCity) => patch({ fromCityId: cityId, customFromCity: customCity })}
+              />
             </div>
             <div className={s.field}>
               <label className={s.label}>到达地</label>
-              <select
-                className={s.input}
-                value={item.toCityId ?? ''}
-                onChange={(e) => patch({ toCityId: e.target.value || null })}
-              >
-                <option value="">—</option>
-                {cities.map((c) => (
-                  <option key={c.id} value={c.id}>
-                    {c.name}
-                  </option>
-                ))}
-              </select>
+              <CityCombo
+                cities={cities}
+                cityId={item.toCityId}
+                customCity={item.customToCity}
+                placeholder="选择或输入城市"
+                onCommit={(cityId, customCity) => patch({ toCityId: cityId, customToCity: customCity })}
+              />
             </div>
           </div>
 
@@ -205,9 +200,15 @@ export function ItemEditor({
           {canSetDayCity && (
             <button
               className={s.setDayBtn}
-              onClick={() => day && mut.updateDay.mutate({ id: day.id, patch: { cityId: item.toCityId } })}
+              onClick={() =>
+                day &&
+                mut.updateDay.mutate({
+                  id: day.id,
+                  patch: { cityId: item.toCityId ?? null, customCity: item.toCityId ? null : item.customToCity ?? null },
+                })
+              }
             >
-              把当天城市设为「{cities.find((c) => c.id === item.toCityId)?.name}」
+              把当天城市设为「{cities.find((c) => c.id === item.toCityId)?.name ?? item.customToCity ?? ''}」
             </button>
           )}
 
@@ -237,18 +238,13 @@ export function ItemEditor({
 
           <div className={s.field}>
             <label className={s.label}>所在城市</label>
-            <select
-              className={s.input}
-              value={item.toCityId ?? ''}
-              onChange={(e) => patch({ toCityId: e.target.value || null })}
-            >
-              <option value="">—</option>
-              {cities.map((c) => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
+            <CityCombo
+              cities={cities}
+              cityId={item.toCityId}
+              customCity={item.customToCity}
+              placeholder="选择或输入城市"
+              onCommit={(cityId, customCity) => patch({ toCityId: cityId, customToCity: customCity })}
+            />
           </div>
 
           <div className={s.row}>
@@ -445,5 +441,55 @@ function ImageSection({
       </div>
       {err && <div className={s.cloudErr}>{err}</div>}
     </div>
+  );
+}
+
+/* ------------------------------ 城市选择 combobox ------------------------------ */
+
+/**
+ * 既可以从世界库预设城市里选，也能自由输入自定义城市名的 combobox。
+ * 输入匹配某个预设城市 → 关联到该城市的完整数据；否则当作自定义文本存着。
+ * 用本地 state 缓冲输入过程，失焦时再提交，避免每次按键打一次 mutation。
+ */
+function CityCombo({
+  cities,
+  cityId,
+  customCity,
+  placeholder,
+  onCommit,
+}: {
+  cities: CitySummary[];
+  cityId?: string | null;
+  customCity?: string | null;
+  placeholder?: string;
+  onCommit: (cityId: string | null, customCity: string | null) => void;
+}) {
+  const [val, setVal] = useState('');
+  const matched = cityId ? cities.find((c) => c.id === cityId) : undefined;
+  const display = val || matched?.name || customCity || '';
+  function commit(text: string) {
+    const trimmed = text.trim();
+    const hit = cities.find((c) => c.name === trimmed || c.localName === trimmed);
+    if (trimmed === '') onCommit(null, null);
+    else if (hit) onCommit(hit.id, null);
+    else onCommit(null, trimmed);
+    setVal('');
+  }
+  return (
+    <>
+      <input
+        className={s.input}
+        list="item-city-options"
+        value={display}
+        placeholder={placeholder}
+        onChange={(e) => setVal(e.target.value)}
+        onBlur={(e) => commit(e.target.value)}
+      />
+      <datalist id="item-city-options">
+        {cities.map((c) => (
+          <option key={c.id} value={c.name} />
+        ))}
+      </datalist>
+    </>
   );
 }

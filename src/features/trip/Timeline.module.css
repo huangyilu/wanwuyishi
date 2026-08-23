@@ -311,16 +311,22 @@
   font-size: 12px;
 }
 
-.citySelect {
-  padding: 2px 4px;
+.cityInput {
+  padding: 2px 6px;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-2);
   font-size: 12px;
+  min-width: 100px;
+  outline: none;
 }
-.citySelect:hover {
+.cityInput:hover {
   border-color: var(--line);
+}
+.cityInput:focus {
+  border-color: var(--brand);
+  background: var(--bg);
 }
 
 .dayStat {
@@ -335,6 +341,9 @@
 }
 
 .items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   padding: 4px;
   min-height: 44px;
 }
@@ -405,7 +414,8 @@
 
 .itemSub {
   color: var(--text-3);
-  font-size: 11px;
+  font-size: 13px;
+  line-height: 1.4;
   white-space: pre-wrap;
   word-break: break-word;
 }

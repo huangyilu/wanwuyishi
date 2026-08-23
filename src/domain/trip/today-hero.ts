@@ -14,8 +14,15 @@ import type { CitySummary, CountrySummary, TripBundle } from '../../data/types';
 
 export interface TodayReminder {
   icon: string;
+  /** 卡片小标题，2-4 字。如"待订票" / "打包" / "签证" / "货币" */
+  kicker: string;
+  /** 卡片正文，描述具体待办 */
   text: string;
   warn?: boolean;
+  /** 点击这张卡该跳到哪：跳到 packing / ledger tab，或定位到某天 */
+  action:
+    | { kind: 'tab'; tab: 'packing' | 'ledger' }
+    | { kind: 'day'; dayId: string };
 }
 
 export interface TodayHero {
@@ -52,7 +59,9 @@ export function computeTodayHero({ today, bundle, poiMap, cities, countries }: T
     }
   }
   const delta = nearest ? diffDays(today, nearest.date) : 0;
-  const cityName = nearest?.cityId ? cities.find((c) => c.id === nearest!.cityId)?.name : '';
+  const cityName = nearest
+    ? (nearest.cityId ? cities.find((c) => c.id === nearest.cityId)?.name : '') || nearest.customCity || ''
+    : '';
   const when = nearest ? `${formatCn(nearest.date)} ${weekdayLabel(nearest.date)}` : '';
   const headline = !nearest
     ? '还没排期'
@@ -78,8 +87,12 @@ export function computeTodayHero({ today, bundle, poiMap, cities, countries }: T
       .filter(Boolean) as string[];
     reminders.push({
       icon: '🎫',
+      kicker: '待订票',
       text: `${unbooked.length} 个景点待订票${names.length ? `：${names.join('、')}` : ''}`,
       warn: true,
+      action: nearest
+        ? { kind: 'day', dayId: nearest.id }
+        : { kind: 'tab', tab: 'packing' },
     });
   }
 
@@ -87,7 +100,12 @@ export function computeTodayHero({ today, bundle, poiMap, cities, countries }: T
   if (undone.length > 0) {
     const docs = undone.filter((p) => p.category === '证件' || p.category === '票据');
     const tail = docs.length ? `，证件类 ${docs.length} 件未装` : '';
-    reminders.push({ icon: '🎒', text: `打包清单还剩 ${undone.length} 件未勾${tail}` });
+    reminders.push({
+      icon: '🎒',
+      kicker: '打包',
+      text: `打包清单还剩 ${undone.length} 件未勾${tail}`,
+      action: { kind: 'tab', tab: 'packing' },
+    });
   }
 
   const countryIds = new Set(
@@ -102,15 +120,21 @@ export function computeTodayHero({ today, bundle, poiMap, cities, countries }: T
     const names = visaCountries.map((c) => c!.name).join('、');
     reminders.push({
       icon: '🛂',
+      kicker: '签证',
       text: `需办理 ${names} 签证，确认护照有效期 ≥ 6 个月`,
       warn: true,
+      action: nearest
+        ? { kind: 'day', dayId: nearest.id }
+        : { kind: 'tab', tab: 'packing' },
     });
   }
 
   if (bundle.trip.baseCurrency && bundle.trip.baseCurrency !== 'CNY') {
     reminders.push({
       icon: '💶',
+      kicker: '货币',
       text: `目的地货币 ${bundle.trip.baseCurrency}，记得换汇 / 开通免货币转换费银行卡`,
+      action: { kind: 'tab', tab: 'ledger' },
     });
   }
 

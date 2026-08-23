@@ -5,7 +5,6 @@
   min-height: 0;
 }
 
-/* 选中某个点位：收起中间网格 → 中间改为可滚动窄列表，右栏加宽占满剩余宽度 */
 .page.withDetail {
   grid-template-columns: 240px 248px minmax(0, 1fr);
 }
@@ -26,6 +25,8 @@
   background-clip: padding-box;
 }
 
+/* ============================== 移动端 ============================== */
+
 .mobile {
   display: flex;
   flex-direction: column;
@@ -33,21 +34,324 @@
   background: var(--bg-sub);
 }
 
-/* 详情视图：内容区自己滚动，让 mHead 始终贴顶 */
 .detailMobile {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.mHero {
-  margin: 0 12px 8px;
-  height: 140px;
+.mHead {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.mHeadTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+/* —— 探索首页 —— */
+
+.mExploreHero {
+  padding: 28px 16px 20px;
+  background: linear-gradient(160deg, var(--brand-soft), transparent);
+}
+
+.mExploreTitle {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-1);
+  letter-spacing: 0.03em;
+}
+
+.mExploreSub {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+.mContinent {
+  margin-bottom: 8px;
+}
+
+.mContinentLabel {
+  padding: 16px 16px 8px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mCountrySection {
+  margin-bottom: 12px;
+}
+
+.mCountryHead {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 8px 16px 8px;
+}
+
+.mCountryFlag {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.mCountryName {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.mCountryLocal {
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.mCountryMeta {
+  font-size: 11px;
+  color: var(--text-3);
+  font-family: var(--font-num);
+  margin-left: auto;
+}
+
+/* 城市卡片横滚 */
+.mCityScroll {
+  display: flex;
+  gap: 10px;
+  padding: 4px 12px 14px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.mCityScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.mCityCard {
+  flex: none;
+  width: 150px;
+  padding: 0;
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
+  background: var(--bg);
+  overflow: hidden;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, transform 0.08s;
 }
-.mHero .cityHeroName {
-  font-size: 24px;
+.mCityCard:active {
+  border-color: var(--brand);
+  transform: scale(0.97);
 }
+
+.mCityCardImgWrap {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.mCityCardImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mCityCardName {
+  padding: 8px 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.mCityCardLocal {
+  padding: 1px 10px 0;
+  font-size: 11px;
+  color: var(--text-3);
+}
+
+.mCityCardCount {
+  padding: 2px 10px 10px;
+  font-size: 11px;
+  color: var(--text-2);
+  font-family: var(--font-num);
+}
+
+/* 无图城市卡片（简约态） */
+.mCityCardPlain {
+  flex: none;
+  width: 120px;
+  padding: 14px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.12s, transform 0.08s;
+}
+.mCityCardPlain:active {
+  border-color: var(--brand);
+  transform: scale(0.97);
+}
+
+/* —— 城市景点列表 —— */
+
+.mCityHero {
+  margin: 0 12px 0;
+  height: 160px;
+  border-radius: 0;
+}
+.mCityHero .cityHeroName {
+  font-size: 26px;
+}
+
+.mCityInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 10px 16px 6px;
+}
+
+.mCityLocal {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.mCityCountry {
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.mCityCount {
+  font-size: 12px;
+  color: var(--text-3);
+  font-family: var(--font-num);
+}
+
+.mPoiList {
+  padding: 8px 12px 24px;
+}
+
+/* 景点卡片（带图标） */
+.mPoiCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 12px;
+  margin-bottom: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.1s, border-color 0.1s;
+}
+.mPoiCard:active {
+  background: var(--bg-hover);
+  border-color: var(--brand);
+}
+
+.mPoiIcon {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.mPoiBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.mPoiName {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.mPoiLocal {
+  margin-top: 1px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.mPoiMeta {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+
+.mPoiTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.mPoiTag {
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: var(--surface-2);
+  font-size: 11px;
+  color: var(--text-2);
+}
+
+/* 搜索结果行 */
+.mSearchRow {
+  display: block;
+  width: 100%;
+  padding: 14px 12px;
+  margin-bottom: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+.mSearchRow:active {
+  background: var(--bg-hover);
+}
+
+.mSearchHint {
+  padding: 8px 4px 4px;
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+.mEmpty {
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 14px;
+}
+
+/* ============================== PC 端 ============================== */
 
 .side {
   border-right: 1px solid var(--line);
@@ -62,7 +366,6 @@
   font-size: 11px;
 }
 
-/* 国家 = 可折叠的 section 头：主色 + 衬线 + 实线分隔 + 品牌菱形，明显比城市重 */
 .countryBtn {
   display: flex;
   align-items: center;
@@ -84,9 +387,6 @@
   border-top: none;
   margin-top: 0;
 }
-.countryBtn:hover {
-  color: var(--text-1);
-}
 .countryBtn::before {
   content: '';
   width: 7px;
@@ -107,7 +407,6 @@
   font-weight: 700;
   white-space: nowrap;
 }
-/* 当地语言名降级为小灰别名，不再与中文名并列抢视觉 */
 .countryAlias {
   color: var(--text-3);
   font-size: 10px;
@@ -116,7 +415,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-/* 折叠箭头放大、加清晰色，悬停变品牌色，让"可展开"一眼可见 */
 .arrow {
   width: 14px;
   flex: none;
@@ -155,7 +453,7 @@
   font-size: 11px;
 }
 
-/* 城市图片卡片（仅带图城市使用） */
+/* 城市图片卡片（侧栏） */
 .cityCard {
   margin-bottom: 8px;
   border: 1px solid var(--line);
@@ -281,7 +579,6 @@
   color: #fff;
 }
 
-/* 窄列表里更小的 Hero */
 .railHero {
   height: 100px;
   border-radius: var(--radius);
@@ -304,6 +601,132 @@
   max-width: 320px;
   margin-bottom: 14px;
 }
+
+/* —— PC 探索首页 —— */
+
+.discover {
+  margin-top: 4px;
+}
+
+.discoverContinent {
+  margin-bottom: 24px;
+}
+
+.discoverContinentLabel {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 14px;
+}
+
+.discoverCountry {
+  margin-bottom: 18px;
+}
+
+.discoverCountryHead {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.discoverCountryName {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.discoverCountryLocal {
+  font-size: 13px;
+  color: var(--text-3);
+}
+
+.discoverCountryMeta {
+  font-size: 12px;
+  color: var(--text-3);
+  font-family: var(--font-num);
+}
+
+.discoverCityGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.discoverCityCard {
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.discoverCityCard:hover {
+  border-color: var(--brand);
+  box-shadow: var(--shadow-sm);
+}
+
+.discoverCityImgWrap {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+}
+.discoverCityImgWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.25s ease;
+}
+.discoverCityCard:hover .discoverCityImgWrap img {
+  transform: scale(1.04);
+}
+
+.discoverCityInfo {
+  padding: 10px 12px;
+}
+
+.discoverCityName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-1);
+}
+
+.discoverCityLocal {
+  font-size: 12px;
+  color: var(--text-3);
+  margin-top: 1px;
+}
+
+.discoverCityCount {
+  font-size: 12px;
+  color: var(--text-2);
+  font-family: var(--font-num);
+  margin-top: 4px;
+}
+
+.discoverCityPlain {
+  padding: 16px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.12s, box-shadow 0.12s;
+}
+.discoverCityPlain:hover {
+  border-color: var(--brand);
+  box-shadow: var(--shadow-sm);
+}
+
+/* —— POI 网格卡片 —— */
 
 .grid {
   display: grid;
@@ -328,6 +751,29 @@
   box-shadow: 0 0 0 3px var(--brand-soft);
 }
 
+.cardTypeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.typeBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  font-size: 11px;
+  color: var(--text-2);
+}
+
+.cardGuideTag {
+  font-size: 10px;
+  color: var(--brand);
+  font-weight: 600;
+}
+
 .cardName {
   display: flex;
   align-items: center;
@@ -342,6 +788,7 @@
   height: 6px;
   border-radius: 50%;
   background: var(--brand);
+  flex: none;
 }
 
 .cardLocal {
@@ -362,7 +809,8 @@
   margin-top: 8px;
 }
 
-/* 选中后的中间窄列表：可滚动，点击切换点位 */
+/* —— 窄列表 —— */
+
 .rail {
   border-right: 1px solid var(--line);
   background: var(--bg);
@@ -423,7 +871,6 @@
   overflow-y: auto;
 }
 
-/* 详情内容限宽居中，宽屏下不无限拉伸，读起来像一张宽卡片 */
 .detailInner {
   max-width: 760px;
   margin: 0 auto;
@@ -437,7 +884,6 @@
 }
 
 @media (max-width: 760px) {
-  /* 极窄窗口：收起城市侧栏，保留窄列表 + 详情，避免挤压阅读区 */
   .page.withDetail {
     grid-template-columns: 0 minmax(180px, 220px) minmax(0, 1fr);
   }
@@ -451,69 +897,4 @@
   color: var(--text-3);
   font-size: 12px;
   line-height: 1.8;
-}
-
-.mHead {
-  flex: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: calc(10px + env(safe-area-inset-top)) 12px 10px;
-  border-bottom: 1px solid var(--line);
-  background: var(--bg);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.mChips {
-  display: flex;
-  gap: 6px;
-  padding: 10px 12px 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-.mChips::-webkit-scrollbar {
-  display: none;
-}
-
-.mChip {
-  flex: none;
-  padding: 6px 14px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--bg);
-  font-size: 13px;
-  white-space: nowrap;
-  -webkit-tap-highlight-color: transparent;
-}
-.mChip:active {
-  background: var(--bg-hover);
-}
-.mChipOn {
-  border-color: var(--brand);
-  background: var(--brand-soft);
-  color: var(--brand);
-}
-
-.mList {
-  padding: 4px 12px 24px;
-}
-
-.mRow {
-  display: block;
-  width: 100%;
-  padding: 14px 12px;
-  margin-bottom: 8px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  background: var(--bg);
-  text-align: left;
-  -webkit-tap-highlight-color: transparent;
-  transition: background 0.1s, border-color 0.1s;
-}
-.mRow:active {
-  background: var(--bg-hover);
-  border-color: var(--brand);
 }

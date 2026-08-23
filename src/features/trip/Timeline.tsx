@@ -65,9 +65,9 @@ const TRANSPORT_ICON: Record<TransportMode, string> = {
   other: '🔁',
 };
 
-function cityName(cities: CitySummary[], id?: string | null): string {
-  if (!id) return '';
-  return cities.find((c) => c.id === id)?.name ?? '';
+function cityName(cities: CitySummary[], id?: string | null, fallback?: string | null): string {
+  if (!id) return fallback ?? '';
+  return cities.find((c) => c.id === id)?.name ?? fallback ?? '';
 }
 
 export const POOL_DROP_ID = 'day:pool';
@@ -129,7 +129,10 @@ function ItemRow({
     if (poi?.booking?.required && !ticket?.booked) sub.push(`需提前 ${poi.booking.leadDays} 天订`);
     if (item.note) sub.push(item.note);
   } else if (kind === 'transport') {
-    const route = [cityName(cities, item.fromCityId), cityName(cities, item.toCityId)]
+    const route = [
+      cityName(cities, item.fromCityId, item.customFromCity),
+      cityName(cities, item.toCityId, item.customToCity),
+    ]
       .filter(Boolean)
       .join(' → ');
     if (route) sub.push(route);
@@ -137,7 +140,7 @@ function ItemRow({
       sub.push(item.slotEnd ? `${item.slotStart.slice(0, 5)}–${item.slotEnd.slice(0, 5)}` : item.slotStart.slice(0, 5));
     if (item.note) sub.push(item.note);
   } else if (kind === 'accommodation') {
-    const city = cityName(cities, item.toCityId);
+    const city = cityName(cities, item.toCityId, item.customToCity);
     if (city) sub.push(city);
     if (item.slotStart)
       sub.push(item.slotEnd ? `入住 ${item.slotStart.slice(0, 5)} – 退房 ${item.slotEnd.slice(0, 5)}` : `入住 ${item.slotStart.slice(0, 5)}`);
@@ -347,6 +350,25 @@ function DayCard({
   });
   const { selectedDate, setSelectedDate } = useWorkbench();
 
+  // 城市输入缓冲：combobox 既能从世界库选，也能自由输入自定义城市名。
+  // 显示值 = cityId 对应的预设城市名 || customCity || ''；输入过程中用本地 state 暂存，
+  // 失焦时再提交，避免每次按键都打一次 mutation。
+  const matchedCity = day.cityId ? cities.find((c) => c.id === day.cityId) : undefined;
+  const [cityInput, setCityInput] = useState('');
+  const cityValue = cityInput || matchedCity?.name || day.customCity || '';
+  function commitCity(text: string) {
+    const trimmed = text.trim();
+    const hit = cities.find((c) => c.name === trimmed || c.localName === trimmed);
+    if (trimmed === '') {
+      mut.updateDay.mutate({ id: day.id, patch: { cityId: null, customCity: null } });
+    } else if (hit) {
+      mut.updateDay.mutate({ id: day.id, patch: { cityId: hit.id, customCity: null } });
+    } else {
+      mut.updateDay.mutate({ id: day.id, patch: { cityId: null, customCity: trimmed } });
+    }
+    setCityInput('');
+  }
+
   const active = selectedDate === day.date;
   // 「个点」只数 POI 景点，备注/交通/住宿不计入
   const poiCount = items.filter((i) => (i.kind ?? 'poi') === 'poi').length;
@@ -363,21 +385,20 @@ function DayCard({
         <span className={s.dayDate}>{formatCn(day.date)}</span>
         <span className={s.dayWeek}>{weekdayLabel(day.date)}</span>
         {allConfirmed && <span className={s.dayStamp}>已定</span>}
-        <select
-          className={s.citySelect}
-          value={day.cityId ?? ''}
+        <input
+          className={s.cityInput}
+          list="city-options"
+          value={cityValue}
+          placeholder="选择或输入城市"
           onClick={(e) => e.stopPropagation()}
-          onChange={(e) =>
-            mut.updateDay.mutate({ id: day.id, patch: { cityId: e.target.value || null } })
-          }
-        >
-          <option value="">选择城市</option>
+          onChange={(e) => setCityInput(e.target.value)}
+          onBlur={(e) => commitCity(e.target.value)}
+        />
+        <datalist id="city-options">
           {cities.map((c) => (
-            <option key={c.id} value={c.id}>
-              {c.name}
-            </option>
+            <option key={c.id} value={c.name} />
           ))}
-        </select>
+        </datalist>
         <span className={`${s.dayStat} ${hasError ? s.dayWarn : ''}`}>
           {items.length > 0 && [
             poiCount > 0 ? `${poiCount} 个点` : null,

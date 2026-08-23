@@ -26,7 +26,6 @@ import { useWorkbench } from '../../store/workbench';
 import { PoiGuideCard } from '../world/PoiGuideCard';
 import { WorldNav } from '../world/WorldNav';
 import { usePoiMap, useWorldIndex } from '../world/queries';
-import { EmptyArt } from '../../ui/illustrations';
 import { useTripBundle, useTripMutations } from './queries';
 import { ItemEditor } from './ItemEditor';
 import { VotePanel } from './VotePanel';
@@ -328,9 +327,6 @@ export function Workbench({ tripId }: { tripId: string }) {
 
             {inspector.type === 'none' && (
               <div className={s.placeholder}>
-                <div className={s.phArt}>
-                  <EmptyArt kind="compass" size={84} />
-                </div>
                 <h3>{bundle.trip.title}</h3>
                 <div className={s.kv}>
                   <span className={s.kvKey}>天数</span>
@@ -372,7 +368,7 @@ export function Workbench({ tripId }: { tripId: string }) {
                           const dayItems = bundle.items.filter((i) => i.dayId === d.id);
                           const poiN = dayItems.filter((i) => (i.kind ?? 'poi') === 'poi').length;
                           const transN = dayItems.filter((i) => (i.kind ?? 'poi') === 'transport').length;
-                          const city = cityName(index?.cities ?? [], d.cityId);
+                          const city = cityName(index?.cities ?? [], d.cityId) || d.customCity || '';
                           const active = selectedDate === d.date;
                           return (
                             <li

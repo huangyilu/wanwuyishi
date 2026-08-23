@@ -201,7 +201,15 @@ export function TripPage() {
           ) : mode === 'desktop' ? (
             <Workbench tripId={tripId} />
           ) : (
-            <MobileTrip tripId={tripId} />
+            <MobileTrip
+              tripId={tripId}
+              onAction={(a) => {
+                if (a.kind === 'tab') setTab(a.tab);
+                // day 跳转到具体某天，需要在时间线 tab 下生效；这里先切到时间线，
+                // 由 MobileTrip 通过 URL 锚点 / state 进一步定位。
+                else if (a.kind === 'day') setTab('timeline');
+              }}
+            />
           )}
         </Suspense>
       </div>

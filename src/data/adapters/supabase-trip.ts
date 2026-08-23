@@ -71,6 +71,7 @@ function mapDay(r: any): TripDay {
     tripId: r.trip_id,
     date: r.date,
     cityId: r.city_id ?? null,
+    customCity: r.custom_city ?? null,
     note: r.note ?? null,
   };
 }
@@ -86,6 +87,8 @@ function mapItem(r: any): TripItem {
     transportMode: r.transport_mode ?? null,
     fromCityId: r.from_city_id ?? null,
     toCityId: r.to_city_id ?? null,
+    customFromCity: r.custom_from_city ?? null,
+    customToCity: r.custom_to_city ?? null,
     rank: r.rank,
     slotStart: r.slot_start ? String(r.slot_start).slice(0, 5) : null,
     slotEnd: r.slot_end ? String(r.slot_end).slice(0, 5) : null,
@@ -257,6 +260,7 @@ export class SupabaseTripRepository implements TripRepository {
     const row: Record<string, unknown> = {};
     if (patch.date !== undefined) row.date = patch.date;
     if (patch.cityId !== undefined) row.city_id = patch.cityId;
+    if (patch.customCity !== undefined) row.custom_city = patch.customCity;
     if (patch.note !== undefined) row.note = patch.note;
     const { data, error } = await this.c
       .from('trip_days')
@@ -325,6 +329,8 @@ export class SupabaseTripRepository implements TripRepository {
     if (patch.transportMode !== undefined) row.transport_mode = patch.transportMode ?? null;
     if (patch.fromCityId !== undefined) row.from_city_id = patch.fromCityId ?? null;
     if (patch.toCityId !== undefined) row.to_city_id = patch.toCityId ?? null;
+    if (patch.customFromCity !== undefined) row.custom_from_city = patch.customFromCity ?? null;
+    if (patch.customToCity !== undefined) row.custom_to_city = patch.customToCity ?? null;
     const { data, error } = await this.c
       .from('trip_items')
       .update(row)

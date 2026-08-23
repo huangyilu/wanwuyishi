@@ -253,78 +253,151 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* 今天 tab 空档：出发倒计时 + 准备提醒 ------------------------------------ */
-.todayHero {
-  margin: 0 12px 4px;
-  padding: 18px 16px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, var(--brand-soft), var(--bg));
-  border: 1px solid var(--line);
-}
-
-.todayHeroTop {
-  text-align: center;
-  padding-bottom: 12px;
-  border-bottom: 1px dashed var(--line-strong);
-}
-
-.todayHeroLabel {
-  font-size: 12px;
-  color: var(--text-3);
-  letter-spacing: 2px;
-}
-
-.todayHeroBig {
-  margin-top: 6px;
-  font-size: 36px;
-  font-weight: 700;
-  font-family: var(--font-num);
-  color: var(--brand);
-  line-height: 1.15;
-}
-
-.todayHeroSub {
-  margin-top: 4px;
-  font-size: 13px;
-  color: var(--text-2);
-}
-
-.prepList {
-  margin-top: 12px;
+/* 今天 tab 空档：紧凑倒计时条 + 可点准备卡 ------------------------------- */
+.today {
+  flex: none;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding: 8px 12px 4px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
 }
 
-.prepTitle {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-3);
-}
-
-.prepItem {
+/* 倒计时横条 ----------------------------------------------------------- */
+.todayBar {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--brand-soft), var(--bg));
+  border: 1px solid color-mix(in srgb, var(--brand) 20%, var(--line));
+}
+
+.todayCountdown {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  flex: none;
+  color: var(--brand);
+  line-height: 1;
+}
+
+.todayNum {
+  font-family: var(--font-num);
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.todayUnit {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-2);
+}
+
+.todayMeta {
+  min-width: 0;
+  flex: 1;
+  border-left: 1px solid var(--line-strong);
+  padding-left: 12px;
+}
+
+.todayMetaKicker {
+  font-size: 11px;
+  color: var(--text-3);
+  letter-spacing: 1px;
+}
+
+.todayMetaMain {
+  margin-top: 2px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 准备卡 2 列网格 ------------------------------------------------------ */
+.todayGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 8px;
-  padding: 9px 10px;
+}
+
+.todayCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--bg);
-  border: 1px solid var(--line);
-  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.15s ease, background 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.todayCard:active {
+  transform: scale(0.97);
+  background: var(--bg-hover);
+}
+
+.todayCardWarn {
+  border-color: color-mix(in srgb, var(--st-warn) 50%, var(--line));
+  background: color-mix(in srgb, var(--st-warn) 8%, var(--bg));
+}
+
+.todayCardHead {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.todayCardIcon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.todayCardKicker {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-3);
+  letter-spacing: 1px;
+}
+
+.todayCardText {
+  font-size: 12px;
   line-height: 1.4;
+  color: var(--text-2);
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.prepWarn {
-  border-color: color-mix(in srgb, var(--st-warn) 45%, var(--line));
-  background: color-mix(in srgb, var(--st-warn) 10%, var(--bg));
+.todayCardCta {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--brand);
+  font-weight: 600;
 }
 
-.prepIcon {
-  flex: none;
-  font-size: 15px;
-  line-height: 1.3;
-}
-
+/* 旧 todayHero 类名保留以防引用（已不再渲染，但保险） -------------- */
+.todayHero,
+.todayHeroTop,
+.todayHeroLabel,
+.todayHeroBig,
+.todayHeroSub,
+.prepList,
+.prepTitle,
+.prepItem,
+.prepWarn,
+.prepIcon,
 .prepText {
-  min-width: 0;
+  /* no-op */
 }

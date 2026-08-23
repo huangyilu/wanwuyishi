@@ -14,7 +14,7 @@ import type { ItemStatus, TransportMode } from '../../data/types';
 import { PoiGuideCard } from '../world/PoiGuideCard';
 import { usePoiMap, useWorldIndex } from '../world/queries';
 import { useTripBundle } from './queries';
-import { MobileToday } from './MobileToday';
+import { MobileToday, type TodayAction } from './MobileToday';
 import { CopyButton } from '../../components/CopyButton';
 import s from './MobileTrip.module.css';
 
@@ -36,7 +36,14 @@ const TRANSPORT_ICON: Record<TransportMode, string> = {
   other: '🔁',
 };
 
-export function MobileTrip({ tripId }: { tripId: string }) {
+export function MobileTrip({
+  tripId,
+  onAction,
+}: {
+  tripId: string;
+  /** 「今天」tab 准备卡的点击回调：跳到 packing/ledger tab，或定位到某天 */
+  onAction?: (a: TodayAction) => void;
+}) {
   const { data: bundle, isLoading } = useTripBundle(tripId);
   const poiIds = useMemo(
     () =>
@@ -54,8 +61,8 @@ export function MobileTrip({ tripId }: { tripId: string }) {
   const [openPoi, setOpenPoi] = useState<string | null>(null);
   const [openItemId, setOpenItemId] = useState<string | null>(null);
 
-  const cityName = (id?: string | null): string =>
-    id ? cities.find((c) => c.id === id)?.name ?? '' : '';
+  const cityName = (id?: string | null, fallback?: string | null): string =>
+    id ? cities.find((c) => c.id === id)?.name ?? fallback ?? '' : fallback ?? '';
 
   const days = useMemo(
     () => [...(bundle?.days ?? [])].sort((a, b) => (a.date < b.date ? -1 : 1)),
@@ -102,7 +109,13 @@ export function MobileTrip({ tripId }: { tripId: string }) {
       </div>
 
       {todayMode && (
-        <MobileToday bundle={bundle} poiMap={poiMap} cities={cities} countries={countries} />
+        <MobileToday
+          bundle={bundle}
+          poiMap={poiMap}
+          cities={cities}
+          countries={countries}
+          onAction={onAction}
+        />
       )}
 
       <div className={`${s.body} scroll-y`}>
@@ -130,13 +143,13 @@ export function MobileTrip({ tripId }: { tripId: string }) {
           if (it.slotStart) meta.push(it.slotStart.slice(0, 5));
           if (!ticket?.booked && poi?.booking?.required) meta.push('未订票');
           if (isTransport) {
-            const route = [cityName(it.fromCityId), cityName(it.toCityId)].filter(Boolean).join(' → ');
+            const route = [cityName(it.fromCityId, it.customFromCity), cityName(it.toCityId, it.customToCity)].filter(Boolean).join(' → ');
             if (route) meta.push(route);
             if (it.slotEnd) meta.push(`${it.slotStart?.slice(0, 5)}–${it.slotEnd.slice(0, 5)}`);
             else if (it.slotStart) meta.push(it.slotStart.slice(0, 5));
           }
           if (isStay) {
-            const city = cityName(it.toCityId);
+            const city = cityName(it.toCityId, it.customToCity);
             if (city) meta.push(city);
             if (it.slotStart)
               meta.push(it.slotEnd ? `${it.slotStart.slice(0, 5)}入住–${it.slotEnd.slice(0, 5)}退房` : `${it.slotStart.slice(0, 5)}入住`);

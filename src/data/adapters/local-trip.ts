@@ -170,7 +170,7 @@ export class LocalTripRepository implements TripRepository {
     return this.mutate(tripId, (b) => {
       const exist = b.days.find((d) => d.date === date);
       if (exist) return exist;
-      const day: TripDay = { id: uid('day'), tripId, date, cityId, note: null };
+      const day: TripDay = { id: uid('day'), tripId, date, cityId, customCity: null, note: null };
       b.days.push(day);
       b.days.sort((x, y) => (x.date < y.date ? -1 : 1));
       return day;
@@ -217,6 +217,8 @@ export class LocalTripRepository implements TripRepository {
         transportMode: kind === 'transport' ? (input.transportMode ?? 'train') : null,
         fromCityId: kind === 'transport' ? (input.fromCityId ?? null) : null,
         toCityId: kind === 'transport' ? (input.toCityId ?? null) : null,
+        customFromCity: null,
+        customToCity: null,
         rank: input.rank ?? (last ? rankBetween(last.rank, null) : initialRank()),
         slotStart: null,
         slotEnd: null,

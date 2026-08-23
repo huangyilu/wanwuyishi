@@ -153,6 +153,8 @@ export interface TripDay {
   tripId: string;
   date: string;
   cityId: string | null;
+  /** 当 cityId 为 null 时，用户自己输入的城市名（不来自世界库） */
+  customCity: string | null;
   note: string | null;
 }
 
@@ -170,6 +172,9 @@ export interface TripItem {
   /** kind==='transport' 时有效：出发 / 到达城市（世界库引用，如 city-paris） */
   fromCityId?: string | null;
   toCityId?: string | null;
+  /** 当 fromCityId / toCityId 为 null 时，用户自己输入的城市名（不来自世界库） */
+  customFromCity?: string | null;
+  customToCity?: string | null;
   rank: string;
   slotStart: string | null;
   slotEnd: string | null;
