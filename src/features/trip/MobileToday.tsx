@@ -88,6 +88,7 @@ function parseHeadline(h: string): { num: string; unit: string } {
   if (h === '还没排期') return { num: '—', unit: '排期待补' };
   const m = h.match(/(\d+)/);
   if (!m) return { num: h, unit: '' };
-  if (h.startsWith('已过去')) return { num: m[1], unit: '天前' };
-  return { num: m[1], unit: '天后' };
+  const n = m[1] ?? '';
+  if (h.startsWith('已过去')) return { num: n, unit: '天前' };
+  return { num: n, unit: '天后' };
 }

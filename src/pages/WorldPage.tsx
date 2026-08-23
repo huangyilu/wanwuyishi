@@ -33,6 +33,8 @@ const POI_TYPE_META: Record<string, { label: string; icon: string }> = {
   other: { label: '其他', icon: '📍' },
 };
 
+const POI_TYPE_FALLBACK = { label: '其他', icon: '📍' };
+
 /** 国家 → 大洲映射 */
 const CONTINENT_MAP: Record<string, string> = {
   fr: '欧洲',
@@ -93,13 +95,13 @@ function CityHero({ city, className }: { city?: CityInList; className?: string }
 
 /** POI 类型徽章 */
 function TypeBadge({ type }: { type: string }) {
-  const meta = POI_TYPE_META[type] || POI_TYPE_META.other;
+  const meta = POI_TYPE_META[type] ?? POI_TYPE_META.other ?? POI_TYPE_FALLBACK;
   return <span className={s.typeBadge}>{meta.icon} {meta.label}</span>;
 }
 
 /** 移动端景点卡片 */
 function MobilePoiCard({ poi, onClick }: { poi: PoiSummary; onClick: () => void }) {
-  const meta = POI_TYPE_META[poi.type] || POI_TYPE_META.other;
+  const meta = POI_TYPE_META[poi.type] ?? POI_TYPE_META.other ?? POI_TYPE_FALLBACK;
   return (
     <button className={s.mPoiCard} onClick={onClick}>
       <div className={s.mPoiIcon}>{meta.icon}</div>
@@ -541,7 +543,6 @@ export function WorldPage() {
           ) : (
             <div className={s.grid}>
               {list.map((p) => {
-                const meta = POI_TYPE_META[p.type] || POI_TYPE_META.other;
                 return (
                   <button
                     key={p.id}

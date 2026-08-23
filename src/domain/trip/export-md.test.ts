@@ -49,8 +49,8 @@ const baseBundle: TripBundle = {
   },
   members: [{ id: 'm1', tripId: 't1', userId: null, displayName: '小黄', role: 'owner' }],
   days: [
-    { id: 'd1', tripId: 't1', date: '2026-09-20', cityId: 'city-paris', note: null },
-    { id: 'd2', tripId: 't1', date: '2026-09-21', cityId: 'city-rome', note: null },
+    { id: 'd1', tripId: 't1', date: '2026-09-20', cityId: 'city-paris', customCity: null, note: null },
+    { id: 'd2', tripId: 't1', date: '2026-09-21', cityId: 'city-rome', customCity: null, note: null },
   ],
   items: [
     item({ id: 'i1', dayId: 'd1', kind: 'poi', poiId: 'poi-eiffel', rank: 'a', slotStart: '09:00', slotEnd: '11:00', status: 'confirmed', note: '登顶看全景' }),
@@ -114,7 +114,7 @@ describe('tripToMarkdown', () => {
   it('无排期日显示占位提示', () => {
     const b: TripBundle = {
       ...baseBundle,
-      days: [{ id: 'd1', tripId: 't1', date: '2026-09-20', cityId: 'city-paris', note: null }],
+      days: [{ id: 'd1', tripId: 't1', date: '2026-09-20', cityId: 'city-paris', customCity: null, note: null }],
       items: [item({ id: 'x', dayId: null, kind: 'poi', poiId: 'poi-eiffel' })],
     };
     const out = tripToMarkdown(b, { poiMap, cities, countries });

@@ -26,6 +26,7 @@ const day = (id: string, date: string, cityId: string | null = 'c-fr'): TripDay 
   tripId: 't',
   date,
   cityId,
+  customCity: null,
   note: null,
 });
 
