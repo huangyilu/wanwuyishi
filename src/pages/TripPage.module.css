@@ -4,7 +4,7 @@
   gap: 6px;
   padding: 8px 16px 0;
   border-bottom: 1px dashed var(--line-strong);
-  background: var(--surface-1);
+  background: var(--bg-sub);
   position: relative;
 }
 .tab {

@@ -2,13 +2,14 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: var(--bg);
+  background: var(--bg-sub);
   border-right: 1px solid var(--line);
 }
 
 .head {
   padding: 10px 12px;
   border-bottom: 1px solid var(--line);
+  background: var(--bg-sub);
 }
 
 .title {
@@ -72,7 +73,7 @@
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
   /* 探险手帐：树区铺一层极淡网格点，像一张地图册内页 */
-  background-color: var(--bg);
+  background-color: var(--bg-sub);
   background-image: radial-gradient(var(--tex-dot) 1px, transparent 1px);
   background-size: 16px 16px;
 }

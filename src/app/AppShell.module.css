@@ -14,7 +14,7 @@
   padding: 0 16px;
   /* 笔记本穿孔感：顶栏底部一条虚线分隔，像手帐纸的裁切线 */
   border-bottom: 1px dashed var(--line-strong);
-  background: var(--bg);
+  background: var(--bg-sub);
 }
 
 .brand {

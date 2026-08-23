@@ -11,7 +11,7 @@
 .head {
   flex: none;
   padding: 10px 16px;
-  background: var(--bg);
+  background: var(--bg-sub);
   border-bottom: 1px solid var(--line);
 }
 
@@ -152,6 +152,7 @@
   min-height: 0;
   scrollbar-width: thin;
   scrollbar-color: var(--line-strong) transparent;
+  background: var(--bg-sub);
 }
 
 /* 地图模式容器：撑满中栏，给 Leaflet 画布定位基准 */
