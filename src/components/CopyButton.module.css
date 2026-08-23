@@ -15,7 +15,7 @@
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 .btn:hover {
-  background: var(--bg-sub, #f0ede4);
+  background: var(--bg);
 }
 .copied {
   color: var(--st-confirmed, #2f9462);

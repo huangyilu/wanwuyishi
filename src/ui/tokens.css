@@ -14,16 +14,16 @@
   --text-3: #949a90;
 
   /* —— 表面层级：暖纸色画布，白面板逐级抬升 —— */
-  --bg-sub: #FCFAF2; /* 画布 / 页面底（暖纸米白） */
-  --bg: #ffffff; /* 面板 / 卡片 */
+  --bg-sub: #F1ECE0; /* 整体页面底色：暖米纸 */
+  --bg: #ffffff; /* 卡片 / 面板（白卡浮于米纸之上） */
   --surface-1: #ffffff;
-  --surface-2: #F8F5ED; /* 略暖的嵌套面板 */
-  --bg-hover: #F1EDE1; /* hover 态 */
-  --bg-inset: #F3F0E6; /* 输入框内陷底 */
+  --surface-2: #F7F3EA; /* 白卡内的嵌套面板，极淡暖米 */
+  --bg-hover: #F3EEE3; /* hover 态 */
+  --bg-inset: #EDE7D8; /* 输入框 / 内陷底 */
 
   /* —— 描边（暖米灰） —— */
-  --line: #EAE5D7;
-  --line-strong: #D8D2C3;
+  --line: #E4DDCC;
+  --line-strong: #D2CAB6;
   --border: var(--line);
   --border-strong: var(--line-strong);
 
