@@ -8,7 +8,7 @@
 import { useDroppable } from '@dnd-kit/core';
 import { SortableContext, useSortable, verticalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { lazy, Suspense, useMemo, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { ClickableImage } from '../../components/ClickableImage';
 import { CopyButton } from '../../components/CopyButton';
 import type {
@@ -379,7 +379,7 @@ function DayCard({
   const allConfirmed = items.length > 0 && items.every((i) => i.status === 'confirmed');
 
   return (
-    <div className={`${s.day} ${active ? s.dayActive : ''} ${isOver ? s.dayOver : ''}`}>
+    <div className={`${s.day} ${active ? s.dayActive : ''} ${isOver ? s.dayOver : ''}`} data-date={day.date}>
       <div className={s.dayHead} onClick={() => setSelectedDate(active ? null : day.date)}>
         <span className={s.dayIdx}>{index + 1}</span>
         <span className={s.dayDate}>{formatCn(day.date)}</span>
@@ -534,9 +534,21 @@ export function Timeline({
   cities: CitySummary[];
   mut: Mutations;
 }) {
-  const { showSanity, toggleSanity, inspect } = useWorkbench();
+  const { showSanity, toggleSanity, inspect, selectedDate } = useWorkbench();
   const [title, setTitle] = useState(bundle.trip.title);
   const [view, setView] = useState<'timeline' | 'map'>('timeline');
+
+  // 选中某一天（点右栏「每天行程」或日卡头部）时，让中栏时间线平滑滚动到当天
+  const scrollRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!selectedDate || view !== 'timeline') return;
+    const container = scrollRef.current;
+    const el = container?.querySelector<HTMLElement>(`[data-date="${selectedDate}"]`);
+    if (container && el) {
+      const delta = el.getBoundingClientRect().top - container.getBoundingClientRect().top;
+      container.scrollTo({ top: container.scrollTop + delta - 12, behavior: 'smooth' });
+    }
+  }, [selectedDate, view]);
 
   /** 加一段交通 / 一条备注：先建条目并自动打开右栏编辑面板 */
   async function addCustom(kind: 'transport' | 'note' | 'accommodation', dayId: string | null) {
@@ -564,6 +576,15 @@ export function Timeline({
   const errors = issues.filter((i) => i.level === 'error').length;
   const warns = issues.filter((i) => i.level === 'warn').length;
 
+  // 「共 X 天」按行程最新起止日期算跨度（闭区间），而不是数日卡数——
+  // 否则缩窄日期范围后，范围外的日卡没被清掉，天数就"没有根据最新时间"。
+  const rangeDays =
+    bundle.trip.startDate && bundle.trip.endDate && bundle.trip.startDate <= bundle.trip.endDate
+      ? dateRange(bundle.trip.startDate, bundle.trip.endDate).length
+      : days.length;
+  // 「个点」只数 POI 景点，与 DayCard / WorldNav 的口径一致；备注/交通/住宿不计入。
+  const poiTotal = bundle.items.filter((i) => (i.kind ?? 'poi') === 'poi').length;
+
   /**
    * 设了起止日期就把中间的天一次性补齐，省得一天天点。
    * 串行 await：本地档是"读—改—写"整份存储，并发写会互相覆盖。
@@ -571,9 +592,15 @@ export function Timeline({
   async function applyRange(start: string | null, end: string | null) {
     await mut.updateTrip.mutateAsync({ startDate: start, endDate: end });
     if (!start || !end || start > end) return;
+    const range = new Set(dateRange(start, end));
     const exist = new Set(days.map((d) => d.date));
     for (const d of dateRange(start, end)) {
       if (!exist.has(d)) await mut.addDay.mutateAsync({ date: d });
+    }
+    // 缩窄范围时，移除范围外的日卡（其条目退回候选池，与 removeDay 行为一致），
+    // 否则旧日卡残留会让"共 X 天"与实际范围对不上。
+    for (const d of days) {
+      if (!range.has(d.date)) await mut.removeDay.mutateAsync(d.id);
     }
   }
 
@@ -637,7 +664,7 @@ export function Timeline({
             value={bundle.trip.endDate ?? ''}
             onChange={(e) => void applyRange(bundle.trip.startDate, e.target.value || null)}
           />
-          <span>共 {days.length} 天 · {bundle.items.length} 个点</span>
+          <span>共 {rangeDays} 天 · {poiTotal} 个点</span>
 
           <div className={s.members}>
             {bundle.members.map((m) => (
@@ -670,7 +697,7 @@ export function Timeline({
           </Suspense>
         </div>
       ) : (
-        <div className={`${s.scroll} scroll-y`}>
+        <div className={`${s.scroll} scroll-y`} ref={scrollRef}>
         {showSanity && issues.length > 0 && (
           <div className={s.issues}>
             {issues.slice(0, 8).map((iss, i) => (
