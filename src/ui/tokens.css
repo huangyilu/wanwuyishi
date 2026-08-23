@@ -17,13 +17,13 @@
   --bg-sub: #FCFAF2; /* 画布 / 页面底（暖纸米白） */
   --bg: #ffffff; /* 面板 / 卡片 */
   --surface-1: #ffffff;
-  --surface-2: #f4f1e8; /* 略灰的嵌套面板 */
-  --bg-hover: #e9e5d9; /* hover 态 */
-  --bg-inset: #ece8dc; /* 输入框内陷底 */
+  --surface-2: #F8F5ED; /* 略暖的嵌套面板 */
+  --bg-hover: #F1EDE1; /* hover 态 */
+  --bg-inset: #F3F0E6; /* 输入框内陷底 */
 
   /* —— 描边（暖米灰） —— */
-  --line: #e2ddd0;
-  --line-strong: #cbc4b2;
+  --line: #EAE5D7;
+  --line-strong: #D8D2C3;
   --border: var(--line);
   --border-strong: var(--line-strong);
 
