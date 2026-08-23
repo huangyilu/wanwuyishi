@@ -28,7 +28,7 @@ const CATEGORIES: Array<{ code: ExpenseCategory; label: string }> = [
 
 /** 各分类的图表配色（与手帐暖色系协调，且彼此可区分；交通改为蓝、购物改为紫，避免与门票的青瓷绿撞色） */
 const CATEGORY_COLORS: Record<ExpenseCategory, string> = {
-  ticket: '#4a7f7c',
+  ticket: '#305A56',
   transport: '#4a73b8',
   food: '#e0a64a',
   stay: '#d2552f',

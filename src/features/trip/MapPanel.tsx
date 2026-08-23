@@ -276,7 +276,7 @@ export function MapPanel({
         source: 'routes',
         filter: ['==', ['get', 'kind'], 'order'],
         layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: { 'line-color': '#2f9462', 'line-width': 2, 'line-opacity': 0.45 },
+        paint: { 'line-color': '#376B6D', 'line-width': 2, 'line-opacity': 0.45 },
       });
       map.addLayer({
         id: 'route-transport',
@@ -284,7 +284,7 @@ export function MapPanel({
         source: 'routes',
         filter: ['==', ['get', 'kind'], 'transport'],
         layout: { 'line-cap': 'round', 'line-join': 'round' },
-        paint: { 'line-color': '#4a7f7c', 'line-width': 3, 'line-dasharray': [6, 7], 'line-opacity': 0.85 },
+        paint: { 'line-color': '#305A56', 'line-width': 3, 'line-dasharray': [6, 7], 'line-opacity': 0.85 },
       });
     }
 

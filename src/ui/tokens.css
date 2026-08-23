@@ -1,12 +1,12 @@
-/* 设计 token —— 浅色 · 青瓷绿 + 暖纸风（teal 品牌 + 米纸画布）
+/* 设计 token —— 浅色 · 日式青瓷绿 + 暖纸风（传统色 高麗納戸/御召茶/白群 一族）
    说明：浅/暗主题靠变量驱动切换，改这一处即可全局换肤；组件不写死颜色。 */
 :root {
-  /* —— 品牌：青瓷绿，作主色与强调 —— */
-  --brand: #4a7f7c;
-  --brand-hover: #3d6b68;
-  --brand-soft: rgba(74, 127, 124, 0.1);
-  --brand-ink: #386460; /* 浅底上的品牌文字（深青，保证对比） */
-  --on-brand: #ffffff; /* 品牌底（青瓷绿）上的反白文字 */
+  /* —— 品牌：日式青瓷绿，作主色与强调 —— */
+  --brand: #305A56;            /* 高麗納戸 */
+  --brand-hover: #376B6D;      /* 御召茶 */
+  --brand-soft: rgba(48, 90, 86, 0.1);
+  --brand-ink: #234a47;        /* 浅底上的品牌文字（深青，保证对比） */
+  --on-brand: #ffffff;         /* 品牌底（青瓷绿）上的反白文字 */
 
   /* —— 文字：墨绿灰 → 中灰 三级 —— */
   --text-1: #2c332f;
@@ -27,14 +27,14 @@
   --border: var(--line);
   --border-strong: var(--line-strong);
 
-  /* —— 行程状态色（浅底可读） —— */
-  --st-wishlist: #a19c90;
-  --st-candidate: #b9852a;
-  --st-confirmed: #2f9462;
-  --st-visited: #4a7fc0;
-  --st-dropped: #9aa39c;
+  /* —— 行程状态色（日式青瓷系，浅底可读） —— */
+  --st-wishlist: #A5DEE4;  /* 瓶覗（仅圆点） */
+  --st-candidate: #6699A1; /* 錆浅葱 */
+  --st-confirmed: #376B6D; /* 御召茶 */
+  --st-visited: #405B55;  /* 錆鉄御納戸 */
+  --st-dropped: #77969A;   /* 深川鼠 */
 
-  /* —— 语义色 —— */
+  /* —— 语义色：warn/danger/ok 保留红绿，保证警示与确认意图清晰 —— */
   --warn: #d2552f;
   --warn-soft: rgba(210, 85, 47, 0.12);
   --danger: #d2552f;
@@ -67,11 +67,11 @@
   --right-w: 384px;
 
   /* —— 创意层：手帐 / 地图质感（探险笔记本调性，全部 token 驱动） —— */
-  --tex-dot: rgba(74, 127, 124, 0.055);     /* 纸面网格点，极淡 */
+  --tex-dot: rgba(48, 90, 86, 0.055);     /* 纸面网格点，极淡 */
   --route: var(--line-strong);              /* 行程路线轨（虚线） */
   --route-brand: var(--brand);              /* 选中节点的路线轨 */
   --stamp-rot: -7deg;                        /* 印章默认倾斜，手写盖章感 */
   --brand-grad: linear-gradient(135deg, var(--brand), var(--brand-hover));
-  --gold: #c98a3a;                           /* 暖金点缀，与候选色呼应 */
-  --gold-soft: rgba(201, 138, 58, 0.14);
+  --gold: #78C2C4;                           /* 白群，替代原暖金点缀 */
+  --gold-soft: rgba(120, 194, 196, 0.14);
 }
