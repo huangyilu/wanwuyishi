@@ -45,7 +45,7 @@ function vectorStyle(pmUrl: string): maplibregl.StyleSpecification {
     version: 8,
     sources: { pm: { type: 'vector', url: pmUrl } },
     layers: [
-      { id: 'bg', type: 'background', paint: { 'background-color': '#ECE4D2' } },
+      { id: 'bg', type: 'background', paint: { 'background-color': '#E1D4B6' } },
       // 陆地：earth(Protomaps) / landcover(OpenMapTiles)
       { id: 'land', type: 'fill', source: 'pm', 'source-layer': 'earth', paint: { 'fill-color': '#e4ebe1' } },
       { id: 'land2', type: 'fill', source: 'pm', 'source-layer': 'landcover', paint: { 'fill-color': '#e4ebe1' } },
